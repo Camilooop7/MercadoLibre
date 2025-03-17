@@ -1,6 +1,8 @@
 package co.edu.unbosque.model;
 
-public abstract class Hogar extends Producto {
+import java.io.Serializable;
+
+public abstract class Hogar extends Producto implements Serializable{
 
 	private boolean esDecoracion;
 

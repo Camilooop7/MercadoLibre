@@ -16,14 +16,14 @@ public class FileManager {
 	private static Scanner lectorArchivo;
 	private static File archivo;
 	private static PrintWriter escritorArchivo;
-	private static final String RUTA_CARPETA = "src/archivos";
+	private static final String RUTA_CARPETA = "../archivos";
 	// atributos para archivos serealizado
 	private static FileOutputStream fos; // sirve para ubcar el archivo
 	private static ObjectOutputStream oos;// para escribir obejtos en el arvhivo
 	private static FileInputStream fis;
 	private static ObjectInputStream ois;
 
-	public static void crarCarpeta() {
+	public static void crearCarpeta() {
 		archivo = new File(RUTA_CARPETA);
 		if (!archivo.exists() || !archivo.isDirectory()) {
 			archivo.mkdir();// cree la carpeta

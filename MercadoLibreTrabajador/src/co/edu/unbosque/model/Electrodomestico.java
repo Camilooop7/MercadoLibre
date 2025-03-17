@@ -1,6 +1,8 @@
 package co.edu.unbosque.model;
 
-public class Electrodomestico extends Oficina {
+import java.io.Serializable;
+
+public class Electrodomestico extends Oficina implements Serializable{
 
 	private String fuenteDeEnergia;
 

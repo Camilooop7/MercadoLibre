@@ -1,6 +1,8 @@
 package co.edu.unbosque.model;
 
-public abstract class Oficina extends Producto {
+import java.io.Serializable;
+
+public abstract class Oficina extends Producto implements Serializable{
 	private boolean esPortatil;
 
 	public Oficina() {

@@ -1,6 +1,8 @@
 package co.edu.unbosque.model;
 
-public class Deporte extends Ocio {
+import java.io.Serializable;
+
+public class Deporte extends Ocio implements Serializable{
 	private String deporte;
 
 	public Deporte() {

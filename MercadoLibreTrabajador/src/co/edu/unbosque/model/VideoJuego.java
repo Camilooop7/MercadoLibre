@@ -1,6 +1,8 @@
 package co.edu.unbosque.model;
 
-public class VideoJuego extends Ocio {
+import java.io.Serializable;
+
+public class VideoJuego extends Ocio implements Serializable{
 
 	private String referenciaConsola;
 

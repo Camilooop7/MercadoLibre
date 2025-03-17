@@ -6,6 +6,7 @@ import java.io.IOException;
 
 import co.edu.unbosque.model.ModelFacade;
 import co.edu.unbosque.model.Trabajador;
+import co.edu.unbosque.model.persistence.FileManager;
 import co.edu.unbosque.util.exception.CapitalException;
 import co.edu.unbosque.util.exception.CharacterException;
 import co.edu.unbosque.util.exception.EqualPasswordException;
@@ -19,6 +20,7 @@ public class Controller implements ActionListener {
 	private ViewFacade vf;
 
 	public Controller() throws IOException {
+		FileManager.crearCarpeta();
 		mf = new ModelFacade();
 		vf = new ViewFacade();
 		asignarLectores();

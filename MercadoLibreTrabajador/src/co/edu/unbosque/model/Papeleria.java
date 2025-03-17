@@ -1,6 +1,8 @@
 package co.edu.unbosque.model;
 
-public class Papeleria extends Oficina {
+import java.io.Serializable;
+
+public class Papeleria extends Oficina implements Serializable{
 	private int cantidadPorPaquete;
 
 	public Papeleria() {

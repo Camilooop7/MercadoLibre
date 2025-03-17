@@ -1,6 +1,8 @@
 package co.edu.unbosque.model;
 
-public class Bano extends Hogar {
+import java.io.Serializable;
+
+public class Bano extends Hogar implements Serializable{
 	private boolean esLimpieza;
 
 	public Bano() {

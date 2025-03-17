@@ -1,6 +1,8 @@
 package co.edu.unbosque.model;
 
-public class Cocina extends Hogar {
+import java.io.Serializable;
+
+public class Cocina extends Hogar implements Serializable{
 	private boolean resisteAltaTemperatuta;
 	private boolean esPeligroso;
 

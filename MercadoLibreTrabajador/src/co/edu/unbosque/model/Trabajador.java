@@ -1,8 +1,9 @@
 package co.edu.unbosque.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Trabajador extends Usuario {
+public class Trabajador extends Usuario implements Serializable{
 	private ArrayList<Producto> listaProductoAnadido;
 
 	public Trabajador() {
