@@ -18,6 +18,7 @@ import co.edu.unbosque.view.ViewFacade;
 public class Controller implements ActionListener {
 	private ModelFacade mf;
 	private ViewFacade vf;
+	private Trabajador trabajadorActual;
 
 	public Controller() throws IOException {
 		FileManager.crearCarpeta();
@@ -78,15 +79,15 @@ public class Controller implements ActionListener {
 			try {
 				ExceptionCheker.checkerCharacter(usuario);
 				ExceptionCheker.checkerPasword(contrasena);
-				
-				if (usuario.equals(mf.getTrabajadorDAO())&&contrasena.equals(mf.getTrabajadorDAO())) {
+
+				if (mf.getTrabajadorDAO().encontrarUsuario(usuario, contrasena) != null) {
+
 					vf.getVpt().getPis().setVisible(false);
 					vf.getVpt().getPt().setVisible(true);
-					
-					
+					trabajadorActual = mf.getTrabajadorDAO().encontrarUsuario(usuario, contrasena);
+
 				}
 
-				
 			} catch (CharacterException e1) {
 				vf.getVemer().mostrar("No cumple los requisitos de caracteres.");
 			} catch (CapitalException e1) {
