@@ -3,11 +3,11 @@ package co.edu.unbosque.model.persistence;
 import java.util.ArrayList;
 
 import co.edu.unbosque.model.VideoJuego;
-/*
+/**
  * Clase en la cual se implementa la interfaz OperacionDAO
  */
 public class VideoJuegoDAO implements OperacionDAO<VideoJuego> {
-	/*
+	/**
 	 * Se declara una variable constante definida por el final la cual 
 	 * no deja de ser modificada una vez inicializada y se le indica el 
 	 * tipo de archivo .dat
@@ -28,7 +28,7 @@ public class VideoJuegoDAO implements OperacionDAO<VideoJuego> {
 		listaVideoJuegos = new ArrayList<>();
 		cargarSerializado();
 	}
-    /*
+    /**
 	 *Metodo crear el cual recibe como parametro nuevoDato y se recurre a la lista agregando el nuevoDato
 	 *además de eso se llama al metodo de escribirSerializado. 
 	 */

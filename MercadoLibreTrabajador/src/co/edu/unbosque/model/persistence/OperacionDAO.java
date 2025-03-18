@@ -1,6 +1,6 @@
 package co.edu.unbosque.model.persistence;
 
-/*
+/**
  * Interfaz que define las operaciones básicas para un DAO (Data Access Object).
  * Estas operaciones incluyen métodos para crear, eliminar, actualizar, mostrar todos los
  * objetos, y métodos para cargar y guardar los datos serializados.
