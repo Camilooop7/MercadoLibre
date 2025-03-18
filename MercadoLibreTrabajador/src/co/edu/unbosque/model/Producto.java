@@ -1,70 +1,70 @@
 package co.edu.unbosque.model;
 
-import java.io.Serializable;
+import java.io.Serializable; // Importa la interfaz Serializable
 
-public abstract class Producto implements Serializable{
-	private String nombre;
-	private int precio;
-	private int id;
-	private int cantidad;
-	private String imagen;
+public abstract class Producto implements Serializable { // Declara la clase abstracta Producto
 
-	public Producto() {
+	private String nombre; // Atributo que almacena el nombre del producto
+	private int precio; // Atributo que almacena el precio del producto
+	private int id; // Atributo que almacena el identificador del producto
+	private int cantidad; // Atributo que almacena la cantidad disponible del producto
+	private String imagen; // Atributo que almacena la ruta de la imagen del producto
+
+	public Producto() { // Constructor vacío
 		// TODO Auto-generated constructor stub
 	}
 
-	public Producto(String nombre, int precio, int id, int cantidad, String imagen) {
-		super();
-		this.nombre = nombre;
-		this.precio = precio;
-		this.id = id;
-		this.cantidad = cantidad;
-		this.imagen = imagen;
+	public Producto(String nombre, int precio, int id, int cantidad, String imagen) { // Constructor con parámetros
+		super(); // Llama al constructor de la clase padre
+		this.nombre = nombre; // Asigna el valor del nombre
+		this.precio = precio; // Asigna el valor del precio
+		this.id = id; // Asigna el valor del id
+		this.cantidad = cantidad; // Asigna el valor de la cantidad
+		this.imagen = imagen; // Asigna la ruta de la imagen
 	}
 
-	public String getNombre() {
-		return nombre;
+	public String getNombre() { // Método para obtener el nombre del producto
+		return nombre; // Retorna el nombre
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setNombre(String nombre) { // Método para modificar el nombre del producto
+		this.nombre = nombre; // Asigna el nuevo nombre
 	}
 
-	public int getPrecio() {
-		return precio;
+	public int getPrecio() { // Método para obtener el precio del producto
+		return precio; // Retorna el precio
 	}
 
-	public void setPrecio(int precio) {
-		this.precio = precio;
+	public void setPrecio(int precio) { // Método para modificar el precio del producto
+		this.precio = precio; // Asigna el nuevo precio
 	}
 
-	public int getId() {
-		return id;
+	public int getId() { // Método para obtener el identificador del producto
+		return id; // Retorna el identificador
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setId(int id) { // Método para modificar el identificador del producto
+		this.id = id; // Asigna el nuevo identificador
 	}
 
-	public int getCantidad() {
-		return cantidad;
+	public int getCantidad() { // Método para obtener la cantidad disponible del producto
+		return cantidad; // Retorna la cantidad
 	}
 
-	public void setCantidad(int cantidad) {
-		this.cantidad = cantidad;
+	public void setCantidad(int cantidad) { // Método para modificar la cantidad del producto
+		this.cantidad = cantidad; // Asigna la nueva cantidad
 	}
 
-	public String getImagen() {
-		return imagen;
+	public String getImagen() { // Método para obtener la imagen del producto
+		return imagen; // Retorna la imagen
 	}
 
-	public void setImagen(String imagen) {
-		this.imagen = imagen;
+	public void setImagen(String imagen) { // Método para modificar la imagen del producto
+		this.imagen = imagen; // Asigna la nueva imagen
 	}
 
 	@Override
-	public String toString() {
-		return "Nombre: " + nombre + "Precio: " + precio + "ID: " + id + "Cantidad: " + cantidad + "Imagen: " + imagen;
+	public String toString() { // Método para representar el objeto como cadena
+		return "Nombre: " + nombre + " Precio: " + precio + " ID: " + id + " Cantidad: " + cantidad + " Imagen: " + imagen;
 	}
-
 }

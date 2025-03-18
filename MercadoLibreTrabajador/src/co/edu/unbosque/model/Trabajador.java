@@ -3,34 +3,45 @@ package co.edu.unbosque.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+/** 
+ * Clase Trabajador que extiende de Usuario e implementa Serializable.
+ */
 public class Trabajador extends Usuario implements Serializable{
-	private ArrayList<Producto> listaProductoAnadido;
 
-	public Trabajador() {
-		listaProductoAnadido = new ArrayList<>();
-	}
+    /** Lista de productos añadidos por el trabajador */
+    private ArrayList<Producto> listaProductoAnadido;
 
-	public Trabajador(ArrayList<Producto> listaProductoAnadido) {
-		super();
-		this.listaProductoAnadido = listaProductoAnadido;
-	}
+    /** Constructor por defecto */
+    public Trabajador() {
+        listaProductoAnadido = new ArrayList<>();
+    }
 
-	public Trabajador(String nombre, String contrasena, ArrayList<Producto> listaProductoAnadido) {
-		super(nombre, contrasena);
-		this.listaProductoAnadido = listaProductoAnadido;
-	}
+    /** Constructor que recibe una lista de productos añadidos. */
+    public Trabajador(ArrayList<Producto> listaProductoAnadido) {
+        super();
+        this.listaProductoAnadido = listaProductoAnadido;
+    }
 
-	public Trabajador(String nombre, String contrasena) {
-		super(nombre, contrasena);
-		// TODO Auto-generated constructor stub
-	}
+    /** Constructor que recibe nombre, contraseña y lista de productos añadidos. */
+    public Trabajador(String nombre, String contrasena, ArrayList<Producto> listaProductoAnadido) {
+        super(nombre, contrasena);
+        this.listaProductoAnadido = listaProductoAnadido;
+    }
 
-	public ArrayList<Producto> getListaProductoAnadido() {
-		return listaProductoAnadido;
-	}
+    /** Constructor que recibe nombre y contraseña. */
+    public Trabajador(String nombre, String contrasena) {
+        super(nombre, contrasena);
+        // TODO Auto-generated constructor stub
+    }
 
-	public void setListaProductoAnadido(ArrayList<Producto> listaProductoAnadido) {
-		this.listaProductoAnadido = listaProductoAnadido;
-	}
+    /** Obtiene la lista de productos añadidos. */
+    public ArrayList<Producto> getListaProductoAnadido() {
+        return listaProductoAnadido;
+    }
 
+    /** Establece la lista de productos añadidos. */
+    public void setListaProductoAnadido(ArrayList<Producto> listaProductoAnadido) {
+        this.listaProductoAnadido = listaProductoAnadido;
+    }
 }
+

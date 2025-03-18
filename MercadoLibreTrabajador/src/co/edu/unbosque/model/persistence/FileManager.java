@@ -10,19 +10,29 @@ import java.io.PrintWriter;
 import java.util.Scanner;
 
 public class FileManager {
-//funcion especial de leer y guaradr archivos
+/**
+ * funcion especial de leer y guaradr archivos
+ */
 
-	// estos 3 son para acrhivos de texto
+	/**
+	 *estos 3 son para acrhivos de texto
+	 */
 	private static Scanner lectorArchivo;
 	private static File archivo;
 	private static PrintWriter escritorArchivo;
 	private static final String RUTA_CARPETA = "../archivos";
-	// atributos para archivos serealizado
-	private static FileOutputStream fos; // sirve para ubcar el archivo
-	private static ObjectOutputStream oos;// para escribir obejtos en el arvhivo
-	private static FileInputStream fis; // para leer archivo
-	private static ObjectInputStream ois; // para leer objetos desde el archivo
-	/*
+	/**
+	 * atributos para archivos serealizado
+	 */
+	 
+	/**
+	 * Variables para ubicar el archivo, escribir obejtos en el arvhivo, leer archivo, leer objetos desde el archivo
+	 */
+	private static FileOutputStream fos; 
+	private static ObjectOutputStream oos;
+	private static FileInputStream fis; 
+	private static ObjectInputStream ois; 
+	/**
      * Método que crea la carpeta donde se almacenarán los archivos.
      * Si la carpeta no existe, la crea.
      */
@@ -34,7 +44,7 @@ public class FileManager {
 
 	}
 
-    /*
+    /**
      * Método para escribir en un archivo de texto.
      * Recibe el nombre del archivo y el contenido a escribir.
      * Si el archivo no existe, lo crea antes de escribir en él.
@@ -57,7 +67,7 @@ public class FileManager {
 			e.printStackTrace();
 		}
 	}
-	 /*
+	 /**
      * Método para leer un archivo de texto.
      * Recibe el nombre del archivo a leer.
      * Si el archivo no existe, lo crea.
@@ -84,7 +94,7 @@ public class FileManager {
 		return null; // retorna null si hubo un error
 	}
 
-	 /*
+	 /**
      * Método para escribir un objeto en un archivo serializado.
      * Recibe el nombre del archivo y el contenido (objeto) a escribir.
      * Si el archivo no existe, lo crea antes de escribir en él.
@@ -107,7 +117,7 @@ public class FileManager {
 		}
 
 	}
-	 /*
+	 /**
      * Método para leer un archivo serializado.
      * Recibe el nombre del archivo a leer.
      * Devuelve el objeto leído del archivo.
@@ -119,13 +129,26 @@ public class FileManager {
 		try {
 			archivo = new File(RUTA_CARPETA + "/" + nombreArchivo);
 			if (!archivo.exists()) {
-				archivo.createNewFile();// crea el archivo si no existe
+				/**
+				 * crea el archivo si no existe
+				 */
+				archivo.createNewFile();
 			}
-			fis = new FileInputStream(archivo);// abre el archivo para lectura
-			ois = new ObjectInputStream(fis);// crea un ObjectInputStream para leer objetos
-			contenido = ois.readObject();// lee el objeto desde el archivo
-			ois.close();// cierra el ObjectInputStream
-			fis.close();// cierra el FileInputStream
+			/**
+			 *abre el archivo para lectura
+			 */
+			fis = new FileInputStream(archivo);
+			
+			/**
+			 *crea un ObjectInputStream para leer objetos
+			 */
+			ois = new ObjectInputStream(fis);
+			/**
+			 *lee el objeto desde el archivo
+			 */
+			contenido = ois.readObject();// 
+			ois.close();
+			fis.close();
 		} catch (IOException e) {
 			System.out.println("Error al leer el archivo serializado.");
 			e.printStackTrace();
@@ -134,6 +157,9 @@ public class FileManager {
 			System.out.println("Error en los datos del archivo serializado.");
 			e.printStackTrace();
 		}
-		return contenido; // devuelve el objeto leído o null si hubo un error
+		/**
+		 *devuelve el objeto leído o null si hubo un error
+		 */
+		return contenido;  
 	}
 }

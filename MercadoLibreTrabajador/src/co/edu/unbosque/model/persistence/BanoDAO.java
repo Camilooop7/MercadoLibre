@@ -4,11 +4,11 @@ import java.util.ArrayList;
 
 import co.edu.unbosque.model.Bano;
 
-/*
+/**
  * Clase en la cual se implementa la interfaz OperacionDAO
  */
 public class BanoDAO implements OperacionDAO<Bano> {
-	/*
+	/**
 	 * Se declara una variable constante definida por el final la cual 
 	 * no deja de ser modificada una vez inicializada y se le indica el 
 	 * tipo de archivo .dat
@@ -16,13 +16,13 @@ public class BanoDAO implements OperacionDAO<Bano> {
 	 */
 	private final String SERIAL_FILE_NAME = "bano.dat"; 
 	
-	/*
+	/**
 	 * Variable la cual contiene un arraylist y además se define el nombre.
 	 */
 	private ArrayList<Bano> listaBanos;
 	
 	
-	/*
+	/**
 	 * Constructor en cual cual se llama al metodo de cargarSerializado y
 	 * se inicializa la Arraylist.
 	 */
@@ -33,7 +33,7 @@ public class BanoDAO implements OperacionDAO<Bano> {
 	}
 	
 	
-	/*
+	/**
 	 *Metodo crear el cual recibe como parametro nuevoDato y se recurre a la lista agregando el nuevoDato
 	 *además de eso se llama al metodo de escribirSerializado. 
 	 */
@@ -44,7 +44,7 @@ public class BanoDAO implements OperacionDAO<Bano> {
         escribirSerializado();
 	}
 
-	/*
+	/**
 	 *Metodo eliminar el cual recibe como parametro un dato tipo entero en el cual se incluye
 	 *un condicional tipo if, verifica y recorre los limites de las lista eliminando 
 	 *el objeto en la posicion indicada, si no devuelve el numero indicado si no se cumple el ciclo.
@@ -62,7 +62,7 @@ public class BanoDAO implements OperacionDAO<Bano> {
         }
 	}
 
-	/*
+	/**
 	 *Metodo actualizar el cual recibe como parametro un dato tipo entero y nuevoDato en el cual se incluye
 	 *un condicional tipo if, verifica y recorre los limites de las lista actualizando 
 	 *el objeto en la posicion indicada con el .set recibiendo los parametros definidos, si no devuelve 
@@ -82,7 +82,7 @@ public class BanoDAO implements OperacionDAO<Bano> {
 	}
 
 	
-	/*
+	/**
 	 *Metodo mosrtarTodo el cual no recibe parametros 
 	 *Se crea una variable tipo String y se recorre la lista con el uso del for 
 	 * y se realiza la concatenación de salida con el .toString, por ultimo se retorna la variable 
@@ -99,7 +99,7 @@ public class BanoDAO implements OperacionDAO<Bano> {
 	}
 	
 	
-	/*
+	/**
 	 * Metodo el cual tiene como objetivo guardar la lista definida dentro del archivo como .dat
 	 */
 	@Override
@@ -108,7 +108,7 @@ public class BanoDAO implements OperacionDAO<Bano> {
 	}
 	
 	
-	/*
+	/**
 	 * Este metodo carga el archivo la lista en el archivoSerializado
 	 * donde se lee la lista con el leerArchivoSerializado en este caso SERIAL_FILE_NAME.
 	 * Se utiliza un condiconal tipo if en donde si la lista se encuentra vacia se inicializa 
