@@ -5,12 +5,12 @@ import java.io.IOException;
 public class ViewFacade {
 
 	private VentanaEmergente vemer;
-	private VentanaPrincipalT vpt;
+	private VentanaPrincipalC vpc;
 	
 	
 	public ViewFacade() throws IOException {
 		vemer = new VentanaEmergente();
-		vpt = new VentanaPrincipalT();
+		vpc = new VentanaPrincipalC();
 	}
 
 
@@ -24,13 +24,13 @@ public class ViewFacade {
 	}
 
 
-	public VentanaPrincipalT getVpt() {
-		return vpt;
+	public VentanaPrincipalC getVpc() {
+		return vpc;
 	}
 
 
-	public void setVpt(VentanaPrincipalT vpt) {
-		this.vpt = vpt;
+	public void setVpc(VentanaPrincipalC vpc) {
+		this.vpc = vpc;
 	}
 	
 	
