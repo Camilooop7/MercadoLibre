@@ -79,7 +79,7 @@ public class Controller implements ActionListener {
 				ExceptionCheker.checkerCharacter(usuario);
 				ExceptionCheker.checkerPasword(contrasena);
 				
-				if (usuario.equals(mf.getTrabajadorDAO())) {
+				if (usuario.equals(mf.getTrabajadorDAO())&&contrasena.equals(mf.getTrabajadorDAO())) {
 					vf.getVpt().getPis().setVisible(false);
 					vf.getVpt().getPt().setVisible(true);
 					
