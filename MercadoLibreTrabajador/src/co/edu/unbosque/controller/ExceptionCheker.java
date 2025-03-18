@@ -5,6 +5,7 @@ import co.edu.unbosque.util.exception.CharacterException;
 import co.edu.unbosque.util.exception.EqualPasswordException;
 import co.edu.unbosque.util.exception.NumberException;
 import co.edu.unbosque.util.exception.SymbolException;
+import co.edu.unbosque.util.exception.UsernameException;
 import co.edu.unbosque.util.exception.SmallException;
 
 public class ExceptionCheker {
@@ -55,6 +56,14 @@ public class ExceptionCheker {
 		if (!a.matches(".*[^A-Za-z0-9].*")) {
 			throw new SymbolException();
 		}
+	}
+	
+	public static void checkerUsername( String b) throws UsernameException {
+		
+		if (b.matches("ok")) {
+			throw new UsernameException();
+		}
+		
 	}
 
 }
