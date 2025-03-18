@@ -1,42 +1,44 @@
-package co.edu.unbosque.model;
+package co.edu.unbosque.model; 
 
-import java.io.Serializable;
+import java.io.Serializable; 
 
-public class Electrodomestico extends Oficina implements Serializable{
+public class Electrodomestico extends Oficina implements Serializable { // Declara la clase Electrodomestico, que hereda de Oficina e implementa Serializable
 
-	private String fuenteDeEnergia;
+	private String fuenteDeEnergia; // Atributo que almacena la fuente de energía del electrodoméstico (ej. electricidad, gas)
 
-	public Electrodomestico() {
-		// TODO Auto-generated constructor stub
+	public Electrodomestico() { 
+		// Constructor vacío por defecto
 	}
 
-	public Electrodomestico(String fuenteDeEnergia) {
-		super();
-		this.fuenteDeEnergia = fuenteDeEnergia;
+	public Electrodomestico(String fuenteDeEnergia) { 
+		super(); // Llama al constructor de la clase padre (Oficina)
+		this.fuenteDeEnergia = fuenteDeEnergia; // Asigna el valor al atributo fuenteDeEnergia
 	}
 
 	public Electrodomestico(String nombre, int precio, int id, int cantidad, String imagen, boolean esPortatil,
-			String fuenteDeEnergia) {
-		super(nombre, precio, id, cantidad, imagen, esPortatil);
-		this.fuenteDeEnergia = fuenteDeEnergia;
+			String fuenteDeEnergia) { 
+		super(nombre, precio, id, cantidad, imagen, esPortatil); // Llama al constructor de la clase padre con los parámetros
+		this.fuenteDeEnergia = fuenteDeEnergia; // Asigna el valor al atributo fuenteDeEnergia
 	}
 
-	public Electrodomestico(String nombre, int precio, int id, int cantidad, String imagen, boolean esPortatil) {
-		super(nombre, precio, id, cantidad, imagen, esPortatil);
-		// TODO Auto-generated constructor stub
+	public Electrodomestico(String nombre, int precio, int id, int cantidad, String imagen, boolean esPortatil) { 
+		super(nombre, precio, id, cantidad, imagen, esPortatil); // Llama al constructor de la clase padre sin fuenteDeEnergia
+		// Constructor sin inicializar el atributo fuenteDeEnergia
 	}
 
-	public String getFuenteDeEnergia() {
-		return fuenteDeEnergia;
+	public String getFuenteDeEnergia() { 
+		return fuenteDeEnergia; // Método getter que retorna la fuente de energía
 	}
 
-	public void setFuenteDeEnergia(String fuenteDeEnergia) {
-		this.fuenteDeEnergia = fuenteDeEnergia;
+	public void setFuenteDeEnergia(String fuenteDeEnergia) { 
+		this.fuenteDeEnergia = fuenteDeEnergia; // Método setter para modificar la fuente de energía
 	}
 
 	@Override
-	public String toString() {
-		return super.toString() + "¿Que fuente de energía tiene? " + fuenteDeEnergia;
+	public String toString() { 
+		return super.toString() + " ¿Qué fuente de energía tiene? " + fuenteDeEnergia; 
+		// Sobrescribe toString para incluir el atributo fuenteDeEnergia
 	}
 
 }
+

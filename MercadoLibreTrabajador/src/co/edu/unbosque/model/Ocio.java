@@ -1,40 +1,41 @@
 package co.edu.unbosque.model;
 
-import java.io.Serializable;
+import java.io.Serializable; 
 
-public abstract class Ocio extends Producto implements Serializable{
-	private boolean esAccesorio;
+public abstract class Ocio extends Producto implements Serializable { // Declara la clase Ocio como abstracta y hereda de Producto
 
-	public Ocio() {
+	private boolean esAccesorio; // Atributo que indica si el producto es un accesorio
+
+	public Ocio() { // Constructor vacío
 		// TODO Auto-generated constructor stub
 	}
 
-	public Ocio(boolean esAccesorio) {
-		super();
-		this.esAccesorio = esAccesorio;
+	public Ocio(boolean esAccesorio) { // Constructor que recibe esAccesorio
+		super(); // Llama al constructor de la clase padre
+		this.esAccesorio = esAccesorio; // Asigna el valor recibido
 	}
 
-	public Ocio(String nombre, int precio, int id, int cantidad, String imagen, boolean esAccesorio) {
-		super(nombre, precio, id, cantidad, imagen);
-		this.esAccesorio = esAccesorio;
+	public Ocio(String nombre, int precio, int id, int cantidad, String imagen, boolean esAccesorio) { 
+		super(nombre, precio, id, cantidad, imagen); // Llama al constructor de Producto
+		this.esAccesorio = esAccesorio; // Asigna el valor recibido
 	}
 
-	public Ocio(String nombre, int precio, int id, int cantidad, String imagen) {
-		super(nombre, precio, id, cantidad, imagen);
+	public Ocio(String nombre, int precio, int id, int cantidad, String imagen) { 
+		super(nombre, precio, id, cantidad, imagen); // Llama al constructor de Producto
 		// TODO Auto-generated constructor stub
 	}
 
-	public boolean isEsAccesorio() {
-		return esAccesorio;
+	public boolean isEsAccesorio() { // Método para obtener esAccesorio
+		return esAccesorio; // Retorna el valor de esAccesorio
 	}
 
-	public void setEsAccesorio(boolean esAccesorio) {
-		this.esAccesorio = esAccesorio;
+	public void setEsAccesorio(boolean esAccesorio) { // Método para modificar esAccesorio
+		this.esAccesorio = esAccesorio; // Asigna el nuevo valor
 	}
 
 	@Override
-	public String toString() {
-		return super.toString() + "¿Es accesorio? " + esAccesorio;
+	public String toString() { // Método para representar el objeto como cadena
+		return super.toString() + "¿Es accesorio? " + esAccesorio; // Retorna la información del objeto
 	}
-
 }
+
