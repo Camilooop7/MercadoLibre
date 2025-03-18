@@ -41,15 +41,21 @@ public class VentanaEmergente {
 	 * Metodo el cual emite una ventana emergente solicitando un boolean. definido
 	 * con la palabra si.
 	 */
-	public boolean leerBoleano(String mensaje) {
 
-		String entrada = JOptionPane.showInputDialog(mensaje).toLowerCase();
-		if (entrada.contains("si")) {
-			return true;
-		} else {
-			return false;
-		}
-
-	}
+	
+	  public  boolean leerBoleano(String mensaje) {
+	        Object[] opciones = {"Sí", "No"};
+	        int respuesta = JOptionPane.showOptionDialog(
+	                null,
+	                mensaje,
+	                "Confirmación",
+	                JOptionPane.YES_NO_OPTION,
+	                JOptionPane.QUESTION_MESSAGE,
+	                null,
+	                opciones,
+	                opciones[0]
+	        );
+	        return respuesta == 0; // Retorna true si elige "Sí", false si elige "No"
+	    }
 
 }
