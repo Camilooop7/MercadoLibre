@@ -79,6 +79,13 @@ public class TrabajadorDAO implements OperacionDAO<Trabajador> {
 		return salida;
 
 	}
+	public Trabajador econtrarNombre(String a) {
+		for (Trabajador trabajador : listaTrabajadores) {
+			if (listaTrabajadores.contains(trabajador.getNombre())) {
+				
+			}
+		}
+	}
 
 	public ArrayList<Trabajador> getListaTrabajadores() {
 		return listaTrabajadores;

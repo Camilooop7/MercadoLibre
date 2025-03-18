@@ -6,6 +6,7 @@ import java.io.IOException;
 
 import co.edu.unbosque.model.ModelFacade;
 import co.edu.unbosque.model.Trabajador;
+import co.edu.unbosque.model.Usuario;
 import co.edu.unbosque.model.persistence.FileManager;
 import co.edu.unbosque.util.exception.CapitalException;
 import co.edu.unbosque.util.exception.CharacterException;
@@ -108,9 +109,15 @@ public class Controller implements ActionListener {
 			break;
 		}
 		case "btnIngresarC": {
+		
+				
+
 			String usuario = (String) vf.getVpt().getPcu().getNombreUsuario();
 			String contrasena1 = (String) vf.getVpt().getPcu().getContrasena1();
 			String contrasena2 = (String) vf.getVpt().getPcu().getContrasena2();
+			if (usuario.equals(T)) {
+				
+			}
 
 			try {
 				ExceptionCheker.checkerCharacter(usuario);
