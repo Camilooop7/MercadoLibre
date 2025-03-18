@@ -49,6 +49,16 @@ public class Controller implements ActionListener {
 		vf.getVpt().getPcu().getBtnIngresar().setActionCommand("btnIngresarC");
 		vf.getVpt().getPcu().getBtnVolver().addActionListener(this);
 		vf.getVpt().getPcu().getBtnVolver().setActionCommand("btnVolverC");
+		vf.getVpt().getPt().getBtnAnadir().addActionListener(this);
+		vf.getVpt().getPt().getBtnAnadir().setActionCommand("btnAnadir");
+		vf.getVpt().getPt().getBtnModificarProducto().addActionListener(this);
+		vf.getVpt().getPt().getBtnModificarProducto().setActionCommand("btnModificarP");
+		vf.getVpt().getPt().getBtnEliminarProducto().addActionListener(this);
+		vf.getVpt().getPt().getBtnEliminarProducto().setActionCommand("btnEliminarP");
+		vf.getVpt().getPt().getBtnModificarUsuario().addActionListener(this);
+		vf.getVpt().getPt().getBtnModificarUsuario().setActionCommand("btnModificarU");
+		vf.getVpt().getPt().getBtnSalir().addActionListener(this);
+		vf.getVpt().getPt().getBtnSalir().setActionCommand("btnSalirT");
 
 	}
 
@@ -146,6 +156,29 @@ public class Controller implements ActionListener {
 			vf.getVpt().getPcu().setVisible(false);
 			vf.getVpt().getPpt().setVisible(true);
 			break;
+		}
+		case "btnAnadir": {
+
+			break;
+		}
+		case "btnModificarP": {
+
+			break;
+		}
+		case "btnEliminarP": {
+
+			break;
+		}
+		case "btnModificarU": {
+
+			break;
+		}
+		case "btnSalirT": {
+
+			vf.getVpt().getPt().setVisible(false);
+			vf.getVpt().getPpt().setVisible(true);
+			break;
+
 		}
 
 		}
