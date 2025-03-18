@@ -62,4 +62,13 @@ public class PapeleriaDAO implements OperacionDAO<Papeleria> {
             listaPapeleria = new ArrayList<>();
         }
     }
+
+	public ArrayList<Papeleria> getListaPapeleria() {
+		return listaPapeleria;
+	}
+
+	public void setListaPapeleria(ArrayList<Papeleria> listaPapeleria) {
+		this.listaPapeleria = listaPapeleria;
+	}
+    
 }

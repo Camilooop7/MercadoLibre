@@ -61,4 +61,11 @@ public class ElectrodomesticoDAO implements OperacionDAO<Electrodomestico> {
             listaElectrodomesticos = new ArrayList<>();
         }
     }
+	public ArrayList<Electrodomestico> getListaElectrodomesticos() {
+		return listaElectrodomesticos;
+	}
+	public void setListaElectrodomesticos(ArrayList<Electrodomestico> listaElectrodomesticos) {
+		this.listaElectrodomesticos = listaElectrodomesticos;
+	}
+    
 }

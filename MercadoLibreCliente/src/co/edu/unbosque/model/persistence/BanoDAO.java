@@ -121,6 +121,16 @@ public class BanoDAO implements OperacionDAO<Bano> {
 			listaBanos = new ArrayList<>();
 		}
 	}
+
+
+	public ArrayList<Bano> getListaBanos() {
+		return listaBanos;
+	}
+
+
+	public void setListaBanos(ArrayList<Bano> listaBanos) {
+		this.listaBanos = listaBanos;
+	}
 	
 
 }
