@@ -14,7 +14,7 @@ public class VideoJuegoDAO implements OperacionDAO<VideoJuego> {
 	 * 
 	 */
     private final String SERIAL_FILE_NAME = "videojuego.dat";
-    /*
+    /**
 	 * Variable la cual contiene un arraylist y además se define el nombre.
 	 */
     private ArrayList<VideoJuego> listaVideoJuegos;
@@ -33,12 +33,13 @@ public class VideoJuegoDAO implements OperacionDAO<VideoJuego> {
 	 *además de eso se llama al metodo de escribirSerializado. 
 	 */
 
+    
     @Override
     public void crear(VideoJuego nuevoDato) {
         listaVideoJuegos.add(nuevoDato);
         escribirSerializado();
     }
-    /*
+    /**
 	 *Metodo eliminar el cual recibe como parametro un dato tipo entero en el cual se incluye
 	 *un condicional tipo if, verifica y recorre los limites de las lista eliminando 
 	 *el objeto en la posicion indicada, si no devuelve el numero indicado si no se cumple el ciclo.
@@ -55,7 +56,7 @@ public class VideoJuegoDAO implements OperacionDAO<VideoJuego> {
             return 1;
         }
     }
-    /*
+    /**
 	 *Metodo actualizar el cual recibe como parametro un dato tipo entero y nuevoDato en el cual se incluye
 	 *un condicional tipo if, verifica y recorre los limites de las lista actualizando 
 	 *el objeto en la posicion indicada con el .set recibiendo los parametros definidos, si no devuelve 
@@ -74,7 +75,7 @@ public class VideoJuegoDAO implements OperacionDAO<VideoJuego> {
         }
     }
 
-	/*
+	/**
 	 *Metodo mosrtarTodo el cual no recibe parametros 
 	 *Se crea una variable tipo String y se recorre la lista con el uso del for 
 	 * y se realiza la concatenación de salida con el .toString, por ultimo se retorna la variable 
@@ -89,7 +90,7 @@ public class VideoJuegoDAO implements OperacionDAO<VideoJuego> {
         }
         return salida;
     }
-    /*
+    /**
 	 * Metodo el cual tiene como objetivo guardar la lista definida dentro del archivo como .dat
 	 */
 
@@ -98,13 +99,14 @@ public class VideoJuegoDAO implements OperacionDAO<VideoJuego> {
         FileManager.escribirArchivoSerializado(SERIAL_FILE_NAME, listaVideoJuegos);
     }
 
-	/*
+	
+
+    /**
 	 * Este metodo carga el archivo la lista en el archivoSerializado
 	 * donde se lee la lista con el leerArchivoSerializado en este caso SERIAL_FILE_NAME.
 	 * Se utiliza un condiconal tipo if en donde si la lista se encuentra vacia se inicializa 
 	 * un nuevo array para la lista.
 	 */
-
     @Override
     public void cargarSerializado() {
         listaVideoJuegos = (ArrayList<VideoJuego>) FileManager.leerArchivoSerialziado(SERIAL_FILE_NAME);
