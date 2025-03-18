@@ -61,4 +61,11 @@ public class CarritoDAO implements OperacionDAO<Carrito> {
             listaCarritos = new ArrayList<>();
         }
     }
+	public ArrayList<Carrito> getListaCarritos() {
+		return listaCarritos;
+	}
+	public void setListaCarritos(ArrayList<Carrito> listaCarritos) {
+		this.listaCarritos = listaCarritos;
+	}
+    
 }

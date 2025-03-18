@@ -62,4 +62,13 @@ public class VideoJuegoDAO implements OperacionDAO<VideoJuego> {
             listaVideoJuegos = new ArrayList<>();
         }
     }
+
+	public ArrayList<VideoJuego> getListaVideoJuegos() {
+		return listaVideoJuegos;
+	}
+
+	public void setListaVideoJuegos(ArrayList<VideoJuego> listaVideoJuegos) {
+		this.listaVideoJuegos = listaVideoJuegos;
+	}
+    
 }

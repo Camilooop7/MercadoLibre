@@ -62,4 +62,13 @@ public class TrabajadorDAO implements OperacionDAO<Trabajador> {
             listaTrabajadores = new ArrayList<>();
         }
     }
+
+	public ArrayList<Trabajador> getListaTrabajadores() {
+		return listaTrabajadores;
+	}
+
+	public void setListaTrabajadores(ArrayList<Trabajador> listaTrabajadores) {
+		this.listaTrabajadores = listaTrabajadores;
+	}
+    
 }

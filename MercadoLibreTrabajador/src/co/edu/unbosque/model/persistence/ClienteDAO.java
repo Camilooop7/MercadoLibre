@@ -62,4 +62,13 @@ public class ClienteDAO implements OperacionDAO<Cliente> {
             listaClientes = new ArrayList<>();
         }
     }
+
+	public ArrayList<Cliente> getListaClientes() {
+		return listaClientes;
+	}
+
+	public void setListaClientes(ArrayList<Cliente> listaClientes) {
+		this.listaClientes = listaClientes;
+	}
+    
 }
