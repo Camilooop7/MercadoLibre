@@ -28,7 +28,6 @@ public class Controller implements ActionListener {
 
 	public void run() {
 		vf.getVpt().setVisible(true);
-		vf.getVemer().leerBoleano("aaa");
 
 	}
 

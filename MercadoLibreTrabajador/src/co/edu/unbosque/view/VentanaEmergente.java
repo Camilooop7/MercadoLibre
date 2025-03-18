@@ -48,14 +48,14 @@ public class VentanaEmergente {
 	        int respuesta = JOptionPane.showOptionDialog(
 	                null,
 	                mensaje,
-	                "Confirmación",
+	                "Verdadero o falso",
 	                JOptionPane.YES_NO_OPTION,
 	                JOptionPane.QUESTION_MESSAGE,
 	                null,
 	                opciones,
 	                opciones[0]
 	        );
-	        return respuesta == 0; // Retorna true si elige "Sí", false si elige "No"
-	    }
+	        return respuesta == 0;
+	    } 
 
 }
