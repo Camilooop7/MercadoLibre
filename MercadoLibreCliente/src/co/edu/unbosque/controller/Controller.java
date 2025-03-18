@@ -12,6 +12,7 @@ import co.edu.unbosque.util.exception.CapitalException;
 import co.edu.unbosque.util.exception.CharacterException;
 import co.edu.unbosque.util.exception.EqualPasswordException;
 import co.edu.unbosque.util.exception.NumberException;
+import co.edu.unbosque.util.exception.SameUserExcepetion;
 import co.edu.unbosque.util.exception.SimbolException;
 import co.edu.unbosque.util.exception.SmallException;
 import co.edu.unbosque.util.exception.SymbolException;
@@ -120,6 +121,12 @@ public class Controller implements ActionListener {
 				ExceptionCheker.checkerEqualPassword(contrasena1, contrasena2);
 				ExceptionCheker.checkerPasword(contrasena1);
 
+				for (Cliente c : mf.getClienteDAO().getListaClientes()) {
+					if (c.getNombre().equals(usuario)) {
+						throw new SameUserExcepetion();
+					}
+				}
+				
 				mf.getClienteDAO().crear(new Cliente(usuario, contrasena1));
 				vf.getVemer().mostrar("Usuario creado con exito, Regrese al menu para iniciar sesión.");
 
@@ -135,6 +142,8 @@ public class Controller implements ActionListener {
 				vf.getVemer().mostrar("Debe contener al menos un número.");
 			} catch (SymbolException e1) {
 				vf.getVemer().mostrar("Debe contener al menos un simbolo.");
+			} catch (SameUserExcepetion e1) {
+				vf.getVemer().mostrar("Ya existe otro usuario con ese nombre.");
 			}
 
 			break;
