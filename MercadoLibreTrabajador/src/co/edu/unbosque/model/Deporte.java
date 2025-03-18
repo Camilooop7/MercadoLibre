@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 public class Deporte extends Ocio implements Serializable{
 	private String deporte;
+	// luis es muy gayyyyy
 
 	public Deporte() {
 		// TODO Auto-generated constructor stub
