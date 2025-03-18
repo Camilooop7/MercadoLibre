@@ -11,7 +11,7 @@ import co.edu.unbosque.util.exception.CapitalException;
 import co.edu.unbosque.util.exception.CharacterException;
 import co.edu.unbosque.util.exception.EqualPasswordException;
 import co.edu.unbosque.util.exception.NumberException;
-import co.edu.unbosque.util.exception.SimbolException;
+import co.edu.unbosque.util.exception.SymbolException;
 import co.edu.unbosque.util.exception.SmallException;
 import co.edu.unbosque.view.ViewFacade;
 
@@ -73,6 +73,32 @@ public class Controller implements ActionListener {
 		}
 		case "btnIngresarI": {
 
+			String usuario = (String) vf.getVpt().getPis().getNombreUsuario();
+			String contrasena = (String) vf.getVpt().getPis().getContrasena();
+			try {
+				ExceptionCheker.checkerCharacter(usuario);
+				ExceptionCheker.checkerPasword(contrasena);
+				
+				if (usuario.equals(mf.getTrabajadorDAO())) {
+					vf.getVpt().getPis().setVisible(false);
+					vf.getVpt().getPt().setVisible(true);
+					
+					
+				}
+
+				
+			} catch (CharacterException e1) {
+				vf.getVemer().mostrar("No cumple los requisitos de caracteres.");
+			} catch (CapitalException e1) {
+				vf.getVemer().mostrar("Debe contener al menos una mayuscula.");
+			} catch (SmallException e1) {
+				vf.getVemer().mostrar("Debe contener al menos una minuscula.");
+			} catch (NumberException e1) {
+				vf.getVemer().mostrar("Debe contener al menos un número.");
+			} catch (SymbolException e1) {
+				vf.getVemer().mostrar("Debe contener al menos un simbolo.");
+			}
+
 			break;
 		}
 		case "btnVolverI": {
@@ -88,11 +114,7 @@ public class Controller implements ActionListener {
 			try {
 				ExceptionCheker.checkerCharacter(usuario);
 				ExceptionCheker.checkerEqualPassword(contrasena1, contrasena2);
-				ExceptionCheker.checkerCharacter(contrasena1);
-				ExceptionCheker.checkerCapital(contrasena1);
-				ExceptionCheker.checkerSmall(contrasena1);
-				ExceptionCheker.checkerNumber(contrasena1);
-				ExceptionCheker.checkerSimbol(contrasena1);
+				ExceptionCheker.checkerPasword(contrasena1);
 
 				mf.getTrabajadorDAO().crear(new Trabajador(usuario, contrasena1));
 				vf.getVemer().mostrar("Usuario creado con exito, Regrese al menu para iniciar sesión.");
@@ -107,7 +129,7 @@ public class Controller implements ActionListener {
 				vf.getVemer().mostrar("Debe contener al menos una minuscula.");
 			} catch (NumberException e1) {
 				vf.getVemer().mostrar("Debe contener al menos un número.");
-			} catch (SimbolException e1) {
+			} catch (SymbolException e1) {
 				vf.getVemer().mostrar("Debe contener al menos un simbolo.");
 			}
 

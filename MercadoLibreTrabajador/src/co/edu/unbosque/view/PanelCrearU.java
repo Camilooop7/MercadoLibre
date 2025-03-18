@@ -50,7 +50,7 @@ public class PanelCrearU extends JPanel {
 
 		btnIngresar = new JButton();
 		btnIngresar.setBounds(480, 600, 320, 50);
-		btnIngresar.setText("Ingresar");
+		btnIngresar.setText("Crear Usuario");
 		btnIngresar.setFocusable(false);
 		btnIngresar.setForeground(Color.black);
 		btnIngresar.setBackground(new Color(235, 219, 79));

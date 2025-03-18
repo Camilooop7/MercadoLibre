@@ -63,7 +63,7 @@ public class PanelPrincipalT extends JPanel {
 		btnSalir.setFont(new Font("Baloo", Font.BOLD, 35));
 		add(btnSalir);
 
-		add(fondo); // TODO Auto-generated constructor stub
+		add(fondo); 
 	}
 
 	public JLabel getFondo() {

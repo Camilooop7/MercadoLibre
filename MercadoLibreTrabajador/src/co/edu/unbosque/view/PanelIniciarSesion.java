@@ -96,16 +96,17 @@ public class PanelIniciarSesion extends JPanel {
 		this.fondo = fondo;
 	}
 
-	public JTextField getNombreUsuario() {
-		return nombreUsuario;
+	public String getNombreUsuario() {
+		return (String) nombreUsuario.getText();
 	}
 
 	public void setNombreUsuario(JTextField nombreUsuario) {
 		this.nombreUsuario = nombreUsuario;
 	}
 
-	public JPasswordField getContrasena() {
-		return contrasena;
+	public String getContrasena() {
+		char[] con = contrasena.getPassword();
+		return new String(con);
 	}
 
 	public void setContrasena(JPasswordField contrasena) {
