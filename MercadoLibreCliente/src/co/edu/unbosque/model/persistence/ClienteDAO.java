@@ -2,6 +2,7 @@ package co.edu.unbosque.model.persistence;
 
 import java.util.ArrayList;
 import co.edu.unbosque.model.Cliente;
+import co.edu.unbosque.model.Trabajador;
 
 public class ClienteDAO implements OperacionDAO<Cliente> {
     private final String SERIAL_FILE_NAME = "cliente.dat";
@@ -62,4 +63,30 @@ public class ClienteDAO implements OperacionDAO<Cliente> {
             listaClientes = new ArrayList<>();
         }
     }
+    
+	public Cliente encontrarUsuario(String a, String b) {
+
+		Cliente salida = null;
+
+		for (Cliente cliente : listaClientes) {
+
+			if (cliente.getNombre().equals(a) && cliente.getContrasena().equals(b)) {
+
+				salida = cliente;
+
+			}
+
+		}
+		return salida;
+
+	}
+
+	public ArrayList<Cliente> getListaClientes() {
+		return listaClientes;
+	}
+
+	public void setListaClientes(ArrayList<Cliente> listaClientes) {
+		this.listaClientes = listaClientes;
+	}
+    
 }

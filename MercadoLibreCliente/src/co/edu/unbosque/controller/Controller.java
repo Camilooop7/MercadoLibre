@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
+import co.edu.unbosque.model.Cliente;
 import co.edu.unbosque.model.ModelFacade;
 import co.edu.unbosque.model.Trabajador;
 import co.edu.unbosque.model.persistence.FileManager;
@@ -11,13 +12,17 @@ import co.edu.unbosque.util.exception.CapitalException;
 import co.edu.unbosque.util.exception.CharacterException;
 import co.edu.unbosque.util.exception.EqualPasswordException;
 import co.edu.unbosque.util.exception.NumberException;
+import co.edu.unbosque.util.exception.SameUserExcepetion;
 import co.edu.unbosque.util.exception.SimbolException;
 import co.edu.unbosque.util.exception.SmallException;
+import co.edu.unbosque.util.exception.SymbolException;
 import co.edu.unbosque.view.ViewFacade;
 
 public class Controller implements ActionListener {
 	private ModelFacade mf;
 	private ViewFacade vf;
+
+	private Cliente clienteActual;
 
 	public Controller() throws IOException {
 		FileManager.crearCarpeta();
@@ -27,26 +32,26 @@ public class Controller implements ActionListener {
 	}
 
 	public void run() {
-		vf.getVpt().setVisible(true);
+		vf.getVpc().setVisible(true);
 
 	}
 
 	public void asignarLectores() {
 
-		vf.getVpt().getPpt().getBtnIniciarS().addActionListener(this);
-		vf.getVpt().getPpt().getBtnIniciarS().setActionCommand("btnIniciarS");
-		vf.getVpt().getPpt().getBtnCrearU().addActionListener(this);
-		vf.getVpt().getPpt().getBtnCrearU().setActionCommand("btnCrearU");
-		vf.getVpt().getPpt().getBtnSalir().addActionListener(this);
-		vf.getVpt().getPpt().getBtnSalir().setActionCommand("btnSalir");
-		vf.getVpt().getPis().getBtnIngresar().addActionListener(this);
-		vf.getVpt().getPis().getBtnIngresar().setActionCommand("btnIngresarI");
-		vf.getVpt().getPis().getBtnVolver().addActionListener(this);
-		vf.getVpt().getPis().getBtnVolver().setActionCommand("btnVolverI");
-		vf.getVpt().getPcu().getBtnIngresar().addActionListener(this);
-		vf.getVpt().getPcu().getBtnIngresar().setActionCommand("btnIngresarC");
-		vf.getVpt().getPcu().getBtnVolver().addActionListener(this);
-		vf.getVpt().getPcu().getBtnVolver().setActionCommand("btnVolverC");
+		vf.getVpc().getPpc().getBtnIniciarS().addActionListener(this);
+		vf.getVpc().getPpc().getBtnIniciarS().setActionCommand("btnIniciarS");
+		vf.getVpc().getPpc().getBtnCrearU().addActionListener(this);
+		vf.getVpc().getPpc().getBtnCrearU().setActionCommand("btnCrearU");
+		vf.getVpc().getPpc().getBtnSalir().addActionListener(this);
+		vf.getVpc().getPpc().getBtnSalir().setActionCommand("btnSalir");
+		vf.getVpc().getPis().getBtnIngresar().addActionListener(this);
+		vf.getVpc().getPis().getBtnIngresar().setActionCommand("btnIngresarI");
+		vf.getVpc().getPis().getBtnVolver().addActionListener(this);
+		vf.getVpc().getPis().getBtnVolver().setActionCommand("btnVolverI");
+		vf.getVpc().getPcu().getBtnIngresar().addActionListener(this);
+		vf.getVpc().getPcu().getBtnIngresar().setActionCommand("btnIngresarC");
+		vf.getVpc().getPcu().getBtnVolver().addActionListener(this);
+		vf.getVpc().getPcu().getBtnVolver().setActionCommand("btnVolverC");
 
 	}
 
@@ -55,46 +60,74 @@ public class Controller implements ActionListener {
 		switch (e.getActionCommand()) {
 
 		case "btnIniciarS": {
-			vf.getVpt().getPpt().setVisible(false);
-			vf.getVpt().getPis().setVisible(true);
+			vf.getVpc().getPpc().setVisible(false);
+			vf.getVpc().getPis().setVisible(true);
 
 			break;
 		}
 		case "btnCrearU": {
-			vf.getVpt().getPpt().setVisible(false);
-			vf.getVpt().getPcu().setVisible(true);
+			vf.getVpc().getPpc().setVisible(false);
+			vf.getVpc().getPcu().setVisible(true);
 
 			break;
 		}
 		case "btnSalir": {
-			vf.getVpt().setVisible(false);
+			vf.getVpc().setVisible(false);
 
 			break;
 		}
 		case "btnIngresarI": {
 
+			String usuario = vf.getVpc().getPis().getNombreUsuario().getText();
+			String contrasena = vf.getVpc().getPis().getContrasena();
+			try {
+				ExceptionCheker.checkerCharacter(usuario);
+				ExceptionCheker.checkerPasword(contrasena);
+
+				if (mf.getClienteDAO().encontrarUsuario(usuario, contrasena) != null) {
+
+					vf.getVpc().getPis().setVisible(false);
+					vf.getVpc().getPc().setVisible(true);
+					clienteActual = mf.getClienteDAO().encontrarUsuario(usuario, contrasena);
+
+				}
+
+			} catch (CharacterException e1) {
+				vf.getVemer().mostrar("No cumple los requisitos de caracteres.");
+			} catch (CapitalException e1) {
+				vf.getVemer().mostrar("Debe contener al menos una mayuscula.");
+			} catch (SmallException e1) {
+				vf.getVemer().mostrar("Debe contener al menos una minuscula.");
+			} catch (NumberException e1) {
+				vf.getVemer().mostrar("Debe contener al menos un número.");
+			} catch (SymbolException e1) {
+				vf.getVemer().mostrar("Debe contener al menos un simbolo.");
+			}
+
 			break;
 		}
 		case "btnVolverI": {
-			vf.getVpt().getPis().setVisible(false);
-			vf.getVpt().getPpt().setVisible(true);
+			vf.getVpc().getPis().setVisible(false);
+			vf.getVpc().getPpc().setVisible(true);
 			break;
 		}
 		case "btnIngresarC": {
-			String usuario = (String) vf.getVpt().getPcu().getNombreUsuario();
-			String contrasena1 = (String) vf.getVpt().getPcu().getContrasena1();
-			String contrasena2 = (String) vf.getVpt().getPcu().getContrasena2();
+			String usuario = (String) vf.getVpc().getPcu().getNombreUsuario();
+			String contrasena1 = (String) vf.getVpc().getPcu().getContrasena1();
+			String contrasena2 = (String) vf.getVpc().getPcu().getContrasena2();
 
 			try {
 				ExceptionCheker.checkerCharacter(usuario);
 				ExceptionCheker.checkerEqualPassword(contrasena1, contrasena2);
-				ExceptionCheker.checkerCharacter(contrasena1);
-				ExceptionCheker.checkerCapital(contrasena1);
-				ExceptionCheker.checkerSmall(contrasena1);
-				ExceptionCheker.checkerNumber(contrasena1);
-				ExceptionCheker.checkerSimbol(contrasena1);
+				ExceptionCheker.checkerPasword(contrasena1);
 
-				mf.getTrabajadorDAO().crear(new Trabajador(usuario, contrasena1));
+				for (Cliente c : mf.getClienteDAO().getListaClientes()) {
+					if (c.getNombre().equals(usuario)) {
+						throw new SameUserExcepetion();
+					}
+				}
+				
+				mf.getClienteDAO().crear(new Cliente(usuario, contrasena1));
 				vf.getVemer().mostrar("Usuario creado con exito, Regrese al menu para iniciar sesión.");
 
 			} catch (CharacterException e1) {
@@ -107,15 +140,17 @@ public class Controller implements ActionListener {
 				vf.getVemer().mostrar("Debe contener al menos una minuscula.");
 			} catch (NumberException e1) {
 				vf.getVemer().mostrar("Debe contener al menos un número.");
-			} catch (SimbolException e1) {
+			} catch (SymbolException e1) {
 				vf.getVemer().mostrar("Debe contener al menos un simbolo.");
+			} catch (SameUserExcepetion e1) {
+				vf.getVemer().mostrar("Ya existe otro usuario con ese nombre.");
 			}
 
 			break;
 		}
 		case "btnVolverC": {
-			vf.getVpt().getPcu().setVisible(false);
-			vf.getVpt().getPpt().setVisible(true);
+			vf.getVpc().getPcu().setVisible(false);
+			vf.getVpc().getPpc().setVisible(true);
 			break;
 		}
 

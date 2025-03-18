@@ -5,13 +5,14 @@ import java.io.IOException;
 
 import javax.swing.JFrame;
 
-public class VentanaPrincipalT extends JFrame {
+public class VentanaPrincipalC extends JFrame {
 
-	private PanelPrincipalT ppt;
+	private PanelPrincipalC ppc;
 	private PanelIniciarSesion pis;
 	private PanelCrearU pcu;
+	private PanelCliente pc;
 
-	public VentanaPrincipalT() throws IOException {
+	public VentanaPrincipalC() throws IOException {
 
 		setBounds(10, 10, 1290, 750);
 		setTitle("Mercado Libre");
@@ -19,22 +20,22 @@ public class VentanaPrincipalT extends JFrame {
 		setResizable(false);
 		setLayout(null);
 		
-		ppt = new PanelPrincipalT();
+		ppc = new PanelPrincipalC();
 		pis = new PanelIniciarSesion();
 		pcu = new PanelCrearU();
 
-		add(ppt).setVisible(true);
+		add(ppc).setVisible(true);
 		add(pis).setVisible(false);
 		add(pcu).setVisible(false);
 
 	}
 
-	public PanelPrincipalT getPpt() {
-		return ppt;
+	public PanelPrincipalC getPpc() {
+		return ppc;
 	}
 
-	public void setPpt(PanelPrincipalT ppt) {
-		this.ppt = ppt;
+	public void setPpc(PanelPrincipalC ppc) {
+		this.ppc = ppc;
 	}
 
 	public PanelIniciarSesion getPis() {
@@ -52,5 +53,14 @@ public class VentanaPrincipalT extends JFrame {
 	public void setPcu(PanelCrearU pcu) {
 		this.pcu = pcu;
 	}
+
+	public PanelCliente getPc() {
+		return pc;
+	}
+
+	public void setPc(PanelCliente pc) {
+		this.pc = pc;
+	}
+	
 
 }

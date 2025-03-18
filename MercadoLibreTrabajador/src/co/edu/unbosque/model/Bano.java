@@ -5,6 +5,7 @@ import java.io.Serializable;
 public class Bano extends Hogar implements Serializable{
 	private boolean esLimpieza;
 
+
 	public Bano() {
 		// TODO Auto-generated constructor stub
 	}

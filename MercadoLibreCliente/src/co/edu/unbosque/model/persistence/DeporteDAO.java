@@ -62,4 +62,13 @@ public class DeporteDAO implements OperacionDAO<Deporte> {
             listaDeportes = new ArrayList<>();
         }
     }
+
+	public ArrayList<Deporte> getListaDeportes() {
+		return listaDeportes;
+	}
+
+	public void setListaDeportes(ArrayList<Deporte> listaDeportes) {
+		this.listaDeportes = listaDeportes;
+	}
+    
 }
