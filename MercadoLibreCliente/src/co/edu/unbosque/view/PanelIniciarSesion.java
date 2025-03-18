@@ -31,7 +31,7 @@ public class PanelIniciarSesion extends JPanel {
 		setLayout(null);
 
 		fondo = new JLabel();
-		BufferedImage fd = ImageIO.read(new File("src/co/edu/unbosque/view/FondoT.png"));
+		BufferedImage fd = ImageIO.read(new File("src/co/edu/unbosque/view/FondoC.png"));
 		ImageIcon imagenFondo = new ImageIcon(fd);
 		Image fdRedim = fd.getScaledInstance(1290, 750, Image.SCALE_SMOOTH);
 		fondo.setIcon(new ImageIcon(fdRedim));
@@ -104,8 +104,9 @@ public class PanelIniciarSesion extends JPanel {
 		this.nombreUsuario = nombreUsuario;
 	}
 
-	public JPasswordField getContrasena() {
-		return contrasena;
+	public String getContrasena() {
+		char[] con = contrasena.getPassword();
+		return new String(con);
 	}
 
 	public void setContrasena(JPasswordField contrasena) {

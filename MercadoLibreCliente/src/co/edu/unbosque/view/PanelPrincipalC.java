@@ -13,7 +13,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class PanelPrincipalT extends JPanel {
+public class PanelPrincipalC extends JPanel {
 	
 	
 	private JLabel fondo;
@@ -21,13 +21,13 @@ public class PanelPrincipalT extends JPanel {
 	private JButton btnCrearU;
 	private JButton btnSalir;
 
-	public PanelPrincipalT() throws IOException {
+	public PanelPrincipalC() throws IOException {
 		
 		setBounds(0, 0, 1290, 750);
 		setLayout(null);
 		
 		fondo = new JLabel();
-		BufferedImage fd = ImageIO.read(new File("src/co/edu/unbosque/view/FondoT.png"));
+		BufferedImage fd = ImageIO.read(new File("src/co/edu/unbosque/view/FondoC.png"));
 		ImageIcon imagenFondo = new ImageIcon(fd);
 		Image fdRedim = fd.getScaledInstance(1290, 750, Image.SCALE_SMOOTH);
 		fondo.setIcon(new ImageIcon(fdRedim));

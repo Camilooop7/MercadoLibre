@@ -62,4 +62,13 @@ public class CocinaDAO implements OperacionDAO<Cocina> {
             listaCocinas = new ArrayList<>();
         }
     }
+
+	public ArrayList<Cocina> getListaCocinas() {
+		return listaCocinas;
+	}
+
+	public void setListaCocinas(ArrayList<Cocina> listaCocinas) {
+		this.listaCocinas = listaCocinas;
+	}
+    
 }
