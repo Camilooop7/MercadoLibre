@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
+import javax.swing.SwingConstants;
+
 import co.edu.unbosque.model.ModelFacade;
 import co.edu.unbosque.model.Trabajador;
 import co.edu.unbosque.model.persistence.FileManager;
@@ -39,6 +41,8 @@ public class Controller implements ActionListener {
 		vf.getVpt().getPpt().getBtnIniciarS().setActionCommand("btnIniciarS");
 		vf.getVpt().getPpt().getBtnCrearU().addActionListener(this);
 		vf.getVpt().getPpt().getBtnCrearU().setActionCommand("btnCrearU");
+		vf.getVpt().getPpt().getBtnCrearU().addActionListener(this);
+		vf.getVpt().getPpt().getBtnCrearU().setActionCommand("btnCrearU");
 		vf.getVpt().getPpt().getBtnSalir().addActionListener(this);
 		vf.getVpt().getPpt().getBtnSalir().setActionCommand("btnSalir");
 		vf.getVpt().getPis().getBtnIngresar().addActionListener(this);
@@ -47,6 +51,8 @@ public class Controller implements ActionListener {
 		vf.getVpt().getPis().getBtnVolver().setActionCommand("btnVolverI");
 		vf.getVpt().getPcu().getBtnIngresar().addActionListener(this);
 		vf.getVpt().getPcu().getBtnIngresar().setActionCommand("btnIngresarC");
+		vf.getVpt().getPcu().getMostrarContrasena().addActionListener(this);
+		vf.getVpt().getPcu().getMostrarContrasena().setActionCommand("checkMostrar");
 		vf.getVpt().getPcu().getBtnVolver().addActionListener(this);
 		vf.getVpt().getPcu().getBtnVolver().setActionCommand("btnVolverC");
 		vf.getVpt().getPt().getBtnAnadir().addActionListener(this);
@@ -111,6 +117,15 @@ public class Controller implements ActionListener {
 				vf.getVemer().mostrar("Debe contener al menos un simbolo.");
 			}
 
+			break;
+		}
+		case "checkMostrar": {
+			    if (vf.getVpt().getPcu().getMostrarContrasena().isSelected()) {
+			        vf.getVpt().getPcu().getContrasena1F().setEchoChar((char) 0);
+			    } else {
+			        vf.getVpt().getPcu().getContrasena1F().setEchoChar('*');
+			    }
+			
 			break;
 		}
 		case "btnVolverI": {

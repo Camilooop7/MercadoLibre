@@ -10,6 +10,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
@@ -27,6 +28,7 @@ public class PanelCrearU extends JPanel {
 	private JLabel textContra2;
 	private JLabel textEstandarContra;
 	private JLabel textEstandarNombre;
+	private JCheckBox mostrarContrasena;
 
 	public PanelCrearU() throws IOException {
 		setBounds(0, 0, 1290, 750);
@@ -65,6 +67,9 @@ public class PanelCrearU extends JPanel {
 		contrasena1 = new JPasswordField();
 		contrasena1.setBounds(480, 400, 490, 60);
 		contrasena1.setFont(new Font("Baloo", Font.BOLD, 26));
+		mostrarContrasena= new JCheckBox();
+		mostrarContrasena.setBounds(980, 420, 20, 20);
+		add(mostrarContrasena);
 		add(contrasena1);
 
 		contrasena2 = new JPasswordField();
@@ -136,7 +141,15 @@ public class PanelCrearU extends JPanel {
 		 char[] contrasena = contrasena2.getPassword();
 		 return new String(contrasena);
 	}
+	
+	public JPasswordField getContrasena1F() {
+		return this.contrasena1;
+	}
 
+	public JPasswordField getContrasena2F() {
+		return this.contrasena2;
+	}
+	
 	public void setContrasena2(JPasswordField contrasena2) {
 		this.contrasena2 = contrasena2;
 	}
@@ -195,6 +208,14 @@ public class PanelCrearU extends JPanel {
 
 	public void setTextEstandarNombre(JLabel textEstandarNombre) {
 		this.textEstandarNombre = textEstandarNombre;
+	}
+
+	public JCheckBox getMostrarContrasena() {
+		return mostrarContrasena;
+	}
+
+	public void setMostrarContrasena(JCheckBox mostrarContrasena) {
+		this.mostrarContrasena = mostrarContrasena;
 	}
 
 }
