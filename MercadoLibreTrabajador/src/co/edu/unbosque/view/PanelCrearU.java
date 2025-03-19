@@ -36,9 +36,9 @@ public class PanelCrearU extends JPanel {
 		setLayout(null);
 
 		fondo = new JLabel();
-		BufferedImage fd = ImageIO.read(new File("src/co/edu/unbosque/view/FondoT.png"));
+		BufferedImage fd = ImageIO.read(new File("src/co/edu/unbosque/view/FondoTC.png"));
 		ImageIcon imagenFondo = new ImageIcon(fd);
-		Image fdRedim = fd.getScaledInstance(1290, 750, Image.SCALE_SMOOTH);
+		Image fdRedim = fd.getScaledInstance(1300, 746, Image.SCALE_SMOOTH);
 		fondo.setIcon(new ImageIcon(fdRedim));
 		fondo.setBounds(0, 0, 1290, 750);
 
