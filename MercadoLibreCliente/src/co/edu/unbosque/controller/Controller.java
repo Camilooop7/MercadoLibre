@@ -12,7 +12,7 @@ import co.edu.unbosque.util.exception.CapitalException;
 import co.edu.unbosque.util.exception.CharacterException;
 import co.edu.unbosque.util.exception.EqualPasswordException;
 import co.edu.unbosque.util.exception.NumberException;
-import co.edu.unbosque.util.exception.SameUserExcepetion;
+import co.edu.unbosque.util.exception.UsernameException;
 import co.edu.unbosque.util.exception.SimbolException;
 import co.edu.unbosque.util.exception.SmallException;
 import co.edu.unbosque.util.exception.SymbolException;
@@ -52,7 +52,18 @@ public class Controller implements ActionListener {
 		vf.getVpc().getPcu().getBtnIngresar().setActionCommand("btnIngresarC");
 		vf.getVpc().getPcu().getBtnVolver().addActionListener(this);
 		vf.getVpc().getPcu().getBtnVolver().setActionCommand("btnVolverC");
-
+        vf.getVpc().getPcm().getBtnVolver().addActionListener(this);
+        vf.getVpc().getPcm().getBtnVolver().setActionCommand("btnVolverCL");
+        vf.getVpc().getPcm().getBtnCarrito().addActionListener(this);
+        vf.getVpc().getPcm().getBtnCarrito().setActionCommand("btnCarritoCL");
+        vf.getVpc().getPcm().getBtnHistorial().addActionListener(this);
+        vf.getVpc().getPcm().getBtnHistorial().setActionCommand("btnHistorialCL");
+        vf.getVpc().getPcm().getBtnTienda().addActionListener(this);
+        vf.getVpc().getPcm().getBtnTienda().setActionCommand("btnTiendaCL");
+        vf.getVpc().getPcm().getBtnFavoritos().addActionListener(this);
+        vf.getVpc().getPcm().getBtnFavoritos().setActionCommand("btnFavoritoCL");
+          
+        
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -80,28 +91,14 @@ public class Controller implements ActionListener {
 
 			String usuario = vf.getVpc().getPis().getNombreUsuario().getText();
 			String contrasena = vf.getVpc().getPis().getContrasena();
-			try {
-				ExceptionCheker.checkerCharacter(usuario);
-				ExceptionCheker.checkerPasword(contrasena);
+			if (mf.getClienteDAO().encontrarUsuario(usuario, contrasena) != null) {
 
-				if (mf.getClienteDAO().encontrarUsuario(usuario, contrasena) != null) {
+				vf.getVpc().getPis().setVisible(false);
+				vf.getVpc().getPcm().setVisible(true);
+				clienteActual = mf.getClienteDAO().encontrarUsuario(usuario, contrasena);
 
-					vf.getVpc().getPis().setVisible(false);
-					vf.getVpc().getPc().setVisible(true);
-					clienteActual = mf.getClienteDAO().encontrarUsuario(usuario, contrasena);
-
-				}
-
-			} catch (CharacterException e1) {
-				vf.getVemer().mostrar("No cumple los requisitos de caracteres.");
-			} catch (CapitalException e1) {
-				vf.getVemer().mostrar("Debe contener al menos una mayuscula.");
-			} catch (SmallException e1) {
-				vf.getVemer().mostrar("Debe contener al menos una minuscula.");
-			} catch (NumberException e1) {
-				vf.getVemer().mostrar("Debe contener al menos un número.");
-			} catch (SymbolException e1) {
-				vf.getVemer().mostrar("Debe contener al menos un simbolo.");
+			}else {
+				vf.getVemer().mostrar("Problema en el usuario o contraseña.");
 			}
 
 			break;
@@ -123,10 +120,10 @@ public class Controller implements ActionListener {
 
 				for (Cliente c : mf.getClienteDAO().getListaClientes()) {
 					if (c.getNombre().equals(usuario)) {
-						throw new SameUserExcepetion();
+						throw new UsernameException();
 					}
 				}
-				
+
 				mf.getClienteDAO().crear(new Cliente(usuario, contrasena1));
 				vf.getVemer().mostrar("Usuario creado con exito, Regrese al menu para iniciar sesión.");
 
@@ -142,7 +139,7 @@ public class Controller implements ActionListener {
 				vf.getVemer().mostrar("Debe contener al menos un número.");
 			} catch (SymbolException e1) {
 				vf.getVemer().mostrar("Debe contener al menos un simbolo.");
-			} catch (SameUserExcepetion e1) {
+			} catch (UsernameException e1) {
 				vf.getVemer().mostrar("Ya existe otro usuario con ese nombre.");
 			}
 
@@ -153,6 +150,35 @@ public class Controller implements ActionListener {
 			vf.getVpc().getPpc().setVisible(true);
 			break;
 		}
+		case "btnVolverCL" :{
+			vf.getVpc().getPcm().setVisible(false);
+			vf.getVpc().getPpc().setVisible(true);
+			break;
+		}
+		case "btnCarritoCL" : {
+			vf.getVpc().getPcm().setVisible(false);
+			vf.getVpc().getPc().setVisible(true);
+			break;
+		}
+		case "btnHistorialCL":{
+			vf.getVpc().getPcm().setVisible(false);
+			vf.getVpc().getPh().setVisible(true);
+			break;
+		}
+		case "btnTiendaCL" : {
+			vf.getVpc().getPcm().setVisible(false);
+			vf.getVpc().getPt().setVisible(true);
+			break;
+		}
+		case "btnFavoritoCL" : { 
+			vf.getVpc().getPcm().setVisible(false);
+			vf.getVpc().getPf().setVisible(true);
+			break;
+			
+			
+		}
+		
+	
 
 		}
 

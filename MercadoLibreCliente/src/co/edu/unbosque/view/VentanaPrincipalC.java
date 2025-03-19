@@ -10,7 +10,11 @@ public class VentanaPrincipalC extends JFrame {
 	private PanelPrincipalC ppc;
 	private PanelIniciarSesion pis;
 	private PanelCrearU pcu;
-	private PanelCliente pc;
+	private PanelClienteMenu pcm;
+	private PanelCarrito pc;
+	private PanelHistorial ph;
+	private PanelTienda pt;
+	private PanelFavorito pf;
 
 	public VentanaPrincipalC() throws IOException {
 
@@ -23,11 +27,30 @@ public class VentanaPrincipalC extends JFrame {
 		ppc = new PanelPrincipalC();
 		pis = new PanelIniciarSesion();
 		pcu = new PanelCrearU();
+		pcm = new PanelClienteMenu();
+		pc = new PanelCarrito();
+		ph = new PanelHistorial();
+		pt = new PanelTienda();
+		pf = new PanelFavorito();
 
 		add(ppc).setVisible(true);
 		add(pis).setVisible(false);
 		add(pcu).setVisible(false);
+		add(pcm).setVisible(false);
+		add(pc).setVisible(true);
+		add(ph).setVisible(true);
+		add(pt).setVisible(true);
+		add(pf).setVisible(true);
+		
 
+	}
+
+	public PanelCarrito getPc() {
+		return pc;
+	}
+
+	public void setPc(PanelCarrito pc) {
+		this.pc = pc;
 	}
 
 	public PanelPrincipalC getPpc() {
@@ -54,13 +77,41 @@ public class VentanaPrincipalC extends JFrame {
 		this.pcu = pcu;
 	}
 
-	public PanelCliente getPc() {
-		return pc;
+	public PanelClienteMenu getPcm() {
+		return pcm;
 	}
 
-	public void setPc(PanelCliente pc) {
-		this.pc = pc;
+	public void setPc(PanelClienteMenu pcm) {
+		this.pcm = pcm;
 	}
+
+	public PanelHistorial getPh() {
+		return ph;
+	}
+
+	public void setPh(PanelHistorial ph) {
+		this.ph = ph;
+	}
+
+	public PanelTienda getPt() {
+		return pt;
+	}
+
+	public void setPt(PanelTienda pt) {
+		this.pt = pt;
+	}
+
+	public PanelFavorito getPf() {
+		return pf;
+	}
+
+	public void setPf(PanelFavorito pf) {
+		this.pf = pf;
+	}
+	
+	
+	
+	
 	
 
 }
