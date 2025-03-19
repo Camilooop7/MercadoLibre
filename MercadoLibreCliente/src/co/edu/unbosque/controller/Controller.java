@@ -62,10 +62,7 @@ public class Controller implements ActionListener {
         vf.getVpc().getPcm().getBtnTienda().setActionCommand("btnTiendaCL");
         vf.getVpc().getPcm().getBtnFavoritos().addActionListener(this);
         vf.getVpc().getPcm().getBtnFavoritos().setActionCommand("btnFavoritoCL");
-       
-        
-        
-        
+          
         
 	}
 
@@ -180,6 +177,8 @@ public class Controller implements ActionListener {
 			
 			
 		}
+		
+	
 
 		}
 
