@@ -52,18 +52,23 @@ public class Controller implements ActionListener {
 		vf.getVpc().getPcu().getBtnIngresar().setActionCommand("btnIngresarC");
 		vf.getVpc().getPcu().getBtnVolver().addActionListener(this);
 		vf.getVpc().getPcu().getBtnVolver().setActionCommand("btnVolverC");
-        vf.getVpc().getPcm().getBtnVolver().addActionListener(this);
-        vf.getVpc().getPcm().getBtnVolver().setActionCommand("btnVolverCL");
-        vf.getVpc().getPcm().getBtnCarrito().addActionListener(this);
-        vf.getVpc().getPcm().getBtnCarrito().setActionCommand("btnCarritoCL");
-        vf.getVpc().getPcm().getBtnHistorial().addActionListener(this);
-        vf.getVpc().getPcm().getBtnHistorial().setActionCommand("btnHistorialCL");
-        vf.getVpc().getPcm().getBtnTienda().addActionListener(this);
-        vf.getVpc().getPcm().getBtnTienda().setActionCommand("btnTiendaCL");
-        vf.getVpc().getPcm().getBtnFavoritos().addActionListener(this);
-        vf.getVpc().getPcm().getBtnFavoritos().setActionCommand("btnFavoritoCL");
-          
-        
+		vf.getVpc().getPcm().getBtnVolver().addActionListener(this);
+		vf.getVpc().getPcu().getMostrarContrasena().addActionListener(this);
+		vf.getVpc().getPcu().getMostrarContrasena().setActionCommand("checkMostrar");
+		vf.getVpc().getPcu().getMostrarContrasena2().addActionListener(this);
+		vf.getVpc().getPcu().getMostrarContrasena2().setActionCommand("checkMostrar2");
+		vf.getVpc().getPis().getMostrarContrasena().addActionListener(this);
+		vf.getVpc().getPis().getMostrarContrasena().setActionCommand("checkMostrarIni");
+		vf.getVpc().getPcm().getBtnVolver().setActionCommand("btnVolverCL");
+		vf.getVpc().getPcm().getBtnCarrito().addActionListener(this);
+		vf.getVpc().getPcm().getBtnCarrito().setActionCommand("btnCarritoCL");
+		vf.getVpc().getPcm().getBtnHistorial().addActionListener(this);
+		vf.getVpc().getPcm().getBtnHistorial().setActionCommand("btnHistorialCL");
+		vf.getVpc().getPcm().getBtnTienda().addActionListener(this);
+		vf.getVpc().getPcm().getBtnTienda().setActionCommand("btnTiendaCL");
+		vf.getVpc().getPcm().getBtnFavoritos().addActionListener(this);
+		vf.getVpc().getPcm().getBtnFavoritos().setActionCommand("btnFavoritoCL");
+
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -97,12 +102,31 @@ public class Controller implements ActionListener {
 				vf.getVpc().getPcm().setVisible(true);
 				clienteActual = mf.getClienteDAO().encontrarUsuario(usuario, contrasena);
 
-			}else {
+			} else {
 				vf.getVemer().mostrar("Problema en el usuario o contraseña.");
 			}
 
 			break;
 		}
+		case "checkMostrar": {
+			if (vf.getVpc().getPcu().getMostrarContrasena().isSelected()) {
+				vf.getVpc().getPcu().getContrasena1F().setEchoChar((char) 0);
+			} else {
+				vf.getVpc().getPcu().getContrasena1F().setEchoChar('*');
+			}
+
+			break;
+		}
+		case "checkMostrar2": {
+			if (vf.getVpc().getPcu().getMostrarContrasena2().isSelected()) {
+				vf.getVpc().getPcu().getContrasena2F().setEchoChar((char) 0);
+			} else {
+				vf.getVpc().getPcu().getContrasena2F().setEchoChar('*');
+			}
+
+			break;
+		}
+
 		case "btnVolverI": {
 			vf.getVpc().getPis().setVisible(false);
 			vf.getVpc().getPpc().setVisible(true);
@@ -145,40 +169,46 @@ public class Controller implements ActionListener {
 
 			break;
 		}
+		case "checkMostrarIni": {
+			if (vf.getVpc().getPis().getMostrarContrasena().isSelected()) {
+				vf.getVpc().getPis().getContrasenaF().setEchoChar((char) 0);
+			} else {
+				vf.getVpc().getPis().getContrasenaF().setEchoChar('*');
+			}
+
+			break;
+		}
 		case "btnVolverC": {
 			vf.getVpc().getPcu().setVisible(false);
 			vf.getVpc().getPpc().setVisible(true);
 			break;
 		}
-		case "btnVolverCL" :{
+		case "btnVolverCL": {
 			vf.getVpc().getPcm().setVisible(false);
 			vf.getVpc().getPpc().setVisible(true);
 			break;
 		}
-		case "btnCarritoCL" : {
+		case "btnCarritoCL": {
 			vf.getVpc().getPcm().setVisible(false);
 			vf.getVpc().getPc().setVisible(true);
 			break;
 		}
-		case "btnHistorialCL":{
+		case "btnHistorialCL": {
 			vf.getVpc().getPcm().setVisible(false);
 			vf.getVpc().getPh().setVisible(true);
 			break;
 		}
-		case "btnTiendaCL" : {
+		case "btnTiendaCL": {
 			vf.getVpc().getPcm().setVisible(false);
 			vf.getVpc().getPt().setVisible(true);
 			break;
 		}
-		case "btnFavoritoCL" : { 
+		case "btnFavoritoCL": {
 			vf.getVpc().getPcm().setVisible(false);
 			vf.getVpc().getPf().setVisible(true);
 			break;
-			
-			
+
 		}
-		
-	
 
 		}
 
