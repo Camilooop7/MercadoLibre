@@ -49,6 +49,8 @@ public class Controller implements ActionListener {
 		vf.getVpt().getPis().getBtnIngresar().setActionCommand("btnIngresarI");
 		vf.getVpt().getPis().getBtnVolver().addActionListener(this);
 		vf.getVpt().getPis().getBtnVolver().setActionCommand("btnVolverI");
+		vf.getVpt().getPis().getMostrarContrasena().addActionListener(this);
+		vf.getVpt().getPis().getMostrarContrasena().setActionCommand("checkMostrarIni");
 		vf.getVpt().getPcu().getBtnIngresar().addActionListener(this);
 		vf.getVpt().getPcu().getBtnIngresar().setActionCommand("btnIngresarC");
 		vf.getVpt().getPcu().getMostrarContrasena().addActionListener(this);
@@ -135,6 +137,15 @@ public class Controller implements ActionListener {
 				vf.getVpt().getPcu().getContrasena2F().setEchoChar((char) 0);
 			} else {
 				vf.getVpt().getPcu().getContrasena2F().setEchoChar('*');
+			}
+			
+			break;
+		}
+		case "checkMostrarIni": {
+			if (vf.getVpt().getPis().getMostrarContrasena().isSelected()) {
+				vf.getVpt().getPis().getContrasenaF().setEchoChar((char) 0);
+			} else {
+				vf.getVpt().getPis().getContrasenaF().setEchoChar('*');
 			}
 			
 			break;

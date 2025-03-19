@@ -10,6 +10,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
@@ -27,6 +28,8 @@ public class PanelCrearU extends JPanel {
 	private JLabel textContra2;
 	private JLabel textEstandarContra;
 	private JLabel textEstandarNombre;
+	private JCheckBox mostrarContrasena;
+	private JCheckBox mostrarContrasena2;
 
 	public PanelCrearU() throws IOException {
 		setBounds(0, 0, 1290, 750);
@@ -82,12 +85,18 @@ public class PanelCrearU extends JPanel {
 		textContra1.setBounds(324, 400, 400, 60);
 		textContra1.setText("Contraseña: ");
 		textContra1.setFont(new Font("Baloo", Font.BOLD, 26));
+		mostrarContrasena= new JCheckBox();
+		mostrarContrasena.setBounds(980, 420, 20, 20);
+		add(mostrarContrasena);
 		add(textContra1);
 
 		textContra2 = new JLabel();
 		textContra2.setBounds(230, 500, 400, 60);
 		textContra2.setText("Repetir contraseña: ");
 		textContra2.setFont(new Font("Baloo", Font.BOLD, 26));
+		mostrarContrasena2= new JCheckBox();
+		mostrarContrasena2.setBounds(980, 520, 20, 20);
+		add(mostrarContrasena2);
 		add(textContra2);
 
 		textEstandarNombre = new JLabel();
@@ -137,6 +146,12 @@ public class PanelCrearU extends JPanel {
 		 return new String(contrasena);
 	}
 
+	public JPasswordField getContrasena2F() {
+		return this.contrasena2;
+	}
+	public JPasswordField getContrasena1F() {
+		return this.contrasena1;
+	}
 	public void setContrasena2(JPasswordField contrasena2) {
 		this.contrasena2 = contrasena2;
 	}
@@ -197,4 +212,22 @@ public class PanelCrearU extends JPanel {
 		this.textEstandarNombre = textEstandarNombre;
 	}
 
+	public JCheckBox getMostrarContrasena() {
+		return mostrarContrasena;
+	}
+
+	public void setMostrarContrasena(JCheckBox mostrarContrasena) {
+		this.mostrarContrasena = mostrarContrasena;
+	}
+
+	public JCheckBox getMostrarContrasena2() {
+		return mostrarContrasena2;
+	}
+
+	public void setMostrarContrasena2(JCheckBox mostrarContrasena2) {
+		this.mostrarContrasena2 = mostrarContrasena2;
+	}
+
+	
+	
 }
