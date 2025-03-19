@@ -28,11 +28,20 @@ public class VentanaPrincipalC extends JFrame {
 		pis = new PanelIniciarSesion();
 		pcu = new PanelCrearU();
 		pcm = new PanelClienteMenu();
+		pc = new PanelCarrito();
+		ph = new PanelHistorial();
+		pt = new PanelTienda();
+		pf = new PanelFavorito();
 
 		add(ppc).setVisible(true);
 		add(pis).setVisible(false);
 		add(pcu).setVisible(false);
 		add(pcm).setVisible(false);
+		add(pc).setVisible(true);
+		add(ph).setVisible(true);
+		add(pt).setVisible(true);
+		add(pf).setVisible(true);
+		
 
 	}
 
