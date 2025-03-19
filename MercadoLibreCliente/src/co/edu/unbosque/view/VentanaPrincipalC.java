@@ -10,7 +10,7 @@ public class VentanaPrincipalC extends JFrame {
 	private PanelPrincipalC ppc;
 	private PanelIniciarSesion pis;
 	private PanelCrearU pcu;
-	private PanelCliente pc;
+	private PanelClienteMenu pcm;
 
 	public VentanaPrincipalC() throws IOException {
 
@@ -23,10 +23,12 @@ public class VentanaPrincipalC extends JFrame {
 		ppc = new PanelPrincipalC();
 		pis = new PanelIniciarSesion();
 		pcu = new PanelCrearU();
+		pcm = new PanelClienteMenu();
 
 		add(ppc).setVisible(true);
 		add(pis).setVisible(false);
 		add(pcu).setVisible(false);
+		add(pcm).setVisible(false);
 
 	}
 
@@ -54,12 +56,12 @@ public class VentanaPrincipalC extends JFrame {
 		this.pcu = pcu;
 	}
 
-	public PanelCliente getPc() {
-		return pc;
+	public PanelClienteMenu getPcm() {
+		return pcm;
 	}
 
-	public void setPc(PanelCliente pc) {
-		this.pc = pc;
+	public void setPc(PanelClienteMenu pcm) {
+		this.pcm = pcm;
 	}
 	
 

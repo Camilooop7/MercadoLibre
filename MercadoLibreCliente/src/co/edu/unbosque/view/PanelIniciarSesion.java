@@ -77,13 +77,6 @@ public class PanelIniciarSesion extends JPanel {
 		textContra.setFont(new Font("Baloo", Font.BOLD, 26));
 		add(textContra);
 
-		textEstandar = new JLabel();
-		textEstandar.setBounds(480, 441, 800, 60);
-		textEstandar.setText(
-				"Debe contener 8 caracteres, una mayuscula, una minuscula, un simbolo y al menos un número.  ");
-		textEstandar.setFont(new Font("Baloo", Font.BOLD, 10));
-		add(textEstandar);
-
 		add(fondo);
 
 	}
