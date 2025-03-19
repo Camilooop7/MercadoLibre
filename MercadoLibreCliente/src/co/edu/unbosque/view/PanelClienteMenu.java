@@ -80,4 +80,54 @@ public class PanelClienteMenu extends JPanel {
 
 	}
 
+	public JLabel getFondo() {
+		return fondo;
+	}
+
+	public void setFondo(JLabel fondo) {
+		this.fondo = fondo;
+	}
+
+	public JButton getBtnVolver() {
+		return btnVolver;
+	}
+
+	public void setBtnVolver(JButton btnVolver) {
+		this.btnVolver = btnVolver;
+	}
+
+	public JButton getBtnCarrito() {
+		return btnCarrito;
+	}
+
+	public void setBtnCarrito(JButton btnCarrito) {
+		this.btnCarrito = btnCarrito;
+	}
+
+	public JButton getBtnHistorial() {
+		return btnHistorial;
+	}
+
+	public void setBtnHistorial(JButton btnHistorial) {
+		this.btnHistorial = btnHistorial;
+	}
+
+	public JButton getBtnTienda() {
+		return btnTienda;
+	}
+
+	public void setBtnTienda(JButton btnTienda) {
+		this.btnTienda = btnTienda;
+	}
+
+	public JButton getBtnFavoritos() {
+		return btnFavoritos;
+	}
+
+	public void setBtnFavoritos(JButton btnFavoritos) {
+		this.btnFavoritos = btnFavoritos;
+	}
+
+	
+	
 }

@@ -52,7 +52,20 @@ public class Controller implements ActionListener {
 		vf.getVpc().getPcu().getBtnIngresar().setActionCommand("btnIngresarC");
 		vf.getVpc().getPcu().getBtnVolver().addActionListener(this);
 		vf.getVpc().getPcu().getBtnVolver().setActionCommand("btnVolverC");
-
+        vf.getVpc().getPcm().getBtnVolver().addActionListener(this);
+        vf.getVpc().getPcm().getBtnVolver().setActionCommand("btnVolverCL");
+        vf.getVpc().getPcm().getBtnCarrito().addActionListener(this);
+        vf.getVpc().getPcm().getBtnCarrito().setActionCommand("btnCarritoCL");
+        vf.getVpc().getPcm().getBtnHistorial().addActionListener(this);
+        vf.getVpc().getPcm().getBtnHistorial().setActionCommand("btnHistorialCL");
+        vf.getVpc().getPcm().getBtnTienda().addActionListener(this);
+        vf.getVpc().getPcm().getBtnTienda().setActionCommand("btnFavoritoCL");
+        vf.getVpc().getPcm().getBtnFavoritos().addActionListener(this);
+        vf.getVpc().getPcm().getBtnFavoritos().setActionCommand("btnFavoritoCL");
+        
+        
+        
+        
 	}
 
 	public void actionPerformed(ActionEvent e) {
