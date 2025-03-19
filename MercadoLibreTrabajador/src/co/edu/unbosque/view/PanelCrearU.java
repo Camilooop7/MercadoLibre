@@ -29,6 +29,7 @@ public class PanelCrearU extends JPanel {
 	private JLabel textEstandarContra;
 	private JLabel textEstandarNombre;
 	private JCheckBox mostrarContrasena;
+	private JCheckBox mostrarContrasena2;
 
 	public PanelCrearU() throws IOException {
 		setBounds(0, 0, 1290, 750);
@@ -75,6 +76,9 @@ public class PanelCrearU extends JPanel {
 		contrasena2 = new JPasswordField();
 		contrasena2.setBounds(480, 500, 490, 60);
 		contrasena2.setFont(new Font("Baloo", Font.BOLD, 26));
+		mostrarContrasena2= new JCheckBox();
+		mostrarContrasena2.setBounds(980,520, 20, 20);
+		add(mostrarContrasena2);
 		add(contrasena2);
 
 		textNombre = new JLabel();
@@ -217,5 +221,14 @@ public class PanelCrearU extends JPanel {
 	public void setMostrarContrasena(JCheckBox mostrarContrasena) {
 		this.mostrarContrasena = mostrarContrasena;
 	}
+
+	public JCheckBox getMostrarContrasena2() {
+		return mostrarContrasena2;
+	}
+
+	public void setMostrarContrasena2(JCheckBox mostrarContrasena2) {
+		this.mostrarContrasena2 = mostrarContrasena2;
+	}
+	
 
 }
