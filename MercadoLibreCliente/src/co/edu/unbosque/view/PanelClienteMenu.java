@@ -21,7 +21,7 @@ public class PanelClienteMenu extends JPanel {
 	public PanelClienteMenu() throws IOException {
 		
 		setBounds(0, 0, 1290, 750);
-		setLayout(null); 
+		setLayout(null);
 
 		fondo = new JLabel();
 		BufferedImage fd = ImageIO.read(new File("src/co/edu/unbosque/view/FondoCMenu.png"));

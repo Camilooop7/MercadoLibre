@@ -20,9 +20,9 @@ public class PanelFavorito extends JPanel{
 		setBounds(0, 0, 1290, 750);
 		setLayout(null);
 		fondo = new JLabel();
-		BufferedImage fd = ImageIO.read(new File("src/co/edu/unbosque/view/FondoC.png"));
+		BufferedImage fd = ImageIO.read(new File("src/co/edu/unbosque/view/Fondoa.png"));
 		ImageIcon imagenFondo = new ImageIcon(fd);
-		Image fdRedim = fd.getScaledInstance(1290, 750, Image.SCALE_SMOOTH);
+		Image fdRedim = fd.getScaledInstance(1290, 750, Image.SCALE_SMOOTH); 
 		fondo.setIcon(new ImageIcon(fdRedim));
 		fondo.setBounds(0, 0, 1290, 750);
 		
