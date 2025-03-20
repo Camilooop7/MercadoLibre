@@ -68,6 +68,16 @@ public class Controller implements ActionListener {
 		vf.getVpc().getPcm().getBtnTienda().setActionCommand("btnTiendaCL");
 		vf.getVpc().getPcm().getBtnFavoritos().addActionListener(this);
 		vf.getVpc().getPcm().getBtnFavoritos().setActionCommand("btnFavoritoCL");
+		vf.getVpc().getPc().getBtnVolver().addActionListener(this);
+		vf.getVpc().getPc().getBtnVolver().setActionCommand("btnVolverCA");
+		vf.getVpc().getPc().getBtnVolver().addActionListener(this);
+		vf.getVpc().getPc().getBtnVolver().setActionCommand("btnVolverH");
+		vf.getVpc().getPh().getBtnVolver().addActionListener(this);
+		vf.getVpc().getPh().getBtnVolver().setActionCommand("btnVolverH");
+		vf.getVpc().getPt().getBtnVolver().addActionListener(this);
+		vf.getVpc().getPt().getBtnVolver().setActionCommand("btnVolverT");
+		vf.getVpc().getPf().getBtnVolver().addActionListener(this);
+		vf.getVpc().getPf().getBtnVolver().setActionCommand("btnVolverF");
 
 	}
 
@@ -176,7 +186,7 @@ public class Controller implements ActionListener {
 				vf.getVpc().getPis().getContrasenaF().setEchoChar('*');
 			}
 
-			break;
+			break; 
 		}
 		case "btnVolverC": {
 			vf.getVpc().getPcu().setVisible(false);
@@ -208,6 +218,22 @@ public class Controller implements ActionListener {
 			vf.getVpc().getPf().setVisible(true);
 			break;
 
+		}
+		case "btnVolverCA": {
+			vf.getVpc().getPc().setVisible(false);
+			vf.getVpc().getPcm().setVisible(true);
+		}
+		case "btnVolverH": {
+			vf.getVpc().getPh().setVisible(false);
+			vf.getVpc().getPcm().setVisible(true);
+		}
+		case "btnVolverT": {
+			vf.getVpc().getPt().setVisible(false);
+			vf.getVpc().getPcm().setVisible(true);
+		}
+		case "btnVolverF": {
+			vf.getVpc().getPf().setVisible(false);
+			vf.getVpc().getPcm().setVisible(true);
 		}
 
 		}

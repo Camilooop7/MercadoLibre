@@ -51,7 +51,7 @@ public class VentanaPrincipalC extends JFrame {
 
 	public void setPc(PanelCarrito pc) {
 		this.pc = pc;
-	}
+	}  
 
 	public PanelPrincipalC getPpc() {
 		return ppc;

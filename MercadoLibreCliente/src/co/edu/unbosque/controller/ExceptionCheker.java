@@ -14,7 +14,7 @@ public class ExceptionCheker {
 		checkerCapital(a);
 		checkerCharacter(a);
 		checkerNumber(a);
-		checkerSymbol(a);
+		checkerSymbol(a); 
 		checkerSmall(a);
 
 	}
@@ -39,7 +39,7 @@ public class ExceptionCheker {
 
 	public static void checkerSmall(String a) throws SmallException {
 		if (!a.matches(".*[a-z].*")) {
-			throw new SmallException();
+			throw new SmallException(); 
 		}
 	}
 
