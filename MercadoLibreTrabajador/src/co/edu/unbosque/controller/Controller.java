@@ -195,6 +195,8 @@ public class Controller implements ActionListener {
 			break;
 		}
 		case "btnAnadir": {
+			vf.getVpt().getPt().setVisible(false);
+			vf.getVpt().getPap().setVisible(true);
 
 			break;
 		}

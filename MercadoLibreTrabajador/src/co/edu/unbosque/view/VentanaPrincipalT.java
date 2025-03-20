@@ -11,6 +11,7 @@ public class VentanaPrincipalT extends JFrame {
 	private PanelIniciarSesion pis;
 	private PanelCrearU pcu;
 	private PanelTrabajador pt;
+	private PanelAnadirProducto pap;
 
 	public VentanaPrincipalT() throws IOException {
 
@@ -24,11 +25,13 @@ public class VentanaPrincipalT extends JFrame {
 		pis = new PanelIniciarSesion();
 		pcu = new PanelCrearU();
 		pt = new PanelTrabajador();
+		pap = new PanelAnadirProducto();
 
 		add(ppt).setVisible(true);
 		add(pis).setVisible(false);
 		add(pcu).setVisible(false);
 		add(pt).setVisible(false);
+		add(pap).setVisible(false);
 
 	}
 
@@ -62,6 +65,14 @@ public class VentanaPrincipalT extends JFrame {
 
 	public void setPt(PanelTrabajador pt) {
 		this.pt = pt;
+	}
+
+	public PanelAnadirProducto getPap() {
+		return pap;
+	}
+
+	public void setPap(PanelAnadirProducto pap) {
+		this.pap = pap;
 	}
 
 }
