@@ -66,7 +66,12 @@ public class PanelIniciarSesion extends JPanel {
 		contrasena.setBounds(480, 400, 490, 60);
 		contrasena.setFont(new Font("Baloo", Font.BOLD, 26));
 		mostrarContrasena= new JCheckBox();
-		mostrarContrasena.setBounds(980,420, 20, 20);
+		mostrarContrasena.setBounds(1020, 420, 25, 25);
+		mostrarContrasena.setOpaque(false);
+		mostrarContrasena.setContentAreaFilled(false);
+		mostrarContrasena.setBorderPainted(false);
+		mostrarContrasena.setFocusPainted(false);
+
 		add(mostrarContrasena);
 		add(contrasena);
 

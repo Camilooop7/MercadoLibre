@@ -68,16 +68,26 @@ public class PanelCrearU extends JPanel {
 		contrasena1 = new JPasswordField();
 		contrasena1.setBounds(480, 400, 490, 60);
 		contrasena1.setFont(new Font("Baloo", Font.BOLD, 26));
-		mostrarContrasena= new JCheckBox();
-		mostrarContrasena.setBounds(980, 420, 20, 20);
+		mostrarContrasena = new JCheckBox();
+		mostrarContrasena.setBounds(1020, 420, 25, 25);
+		mostrarContrasena.setOpaque(false);
+		mostrarContrasena.setContentAreaFilled(false);
+		mostrarContrasena.setBorderPainted(false);
+		mostrarContrasena.setFocusPainted(false);
+
 		add(mostrarContrasena);
 		add(contrasena1);
 
 		contrasena2 = new JPasswordField();
 		contrasena2.setBounds(480, 500, 490, 60);
 		contrasena2.setFont(new Font("Baloo", Font.BOLD, 26));
-		mostrarContrasena2= new JCheckBox();
-		mostrarContrasena2.setBounds(980,520, 20, 20);
+		mostrarContrasena2 = new JCheckBox();
+		mostrarContrasena2.setBounds(1020, 520, 25, 25);
+		mostrarContrasena2.setOpaque(false);
+		mostrarContrasena2.setContentAreaFilled(false);
+		mostrarContrasena2.setBorderPainted(false);
+		mostrarContrasena2.setFocusPainted(false);
+
 		add(mostrarContrasena2);
 		add(contrasena2);
 
@@ -133,8 +143,8 @@ public class PanelCrearU extends JPanel {
 	}
 
 	public String getContrasena1() {
-		 char[] contrasena = contrasena1.getPassword();
-		 return new String(contrasena);
+		char[] contrasena = contrasena1.getPassword();
+		return new String(contrasena);
 	}
 
 	public void setContrasena1(JPasswordField contrasena1) {
@@ -142,10 +152,10 @@ public class PanelCrearU extends JPanel {
 	}
 
 	public String getContrasena2() {
-		 char[] contrasena = contrasena2.getPassword();
-		 return new String(contrasena);
+		char[] contrasena = contrasena2.getPassword();
+		return new String(contrasena);
 	}
-	
+
 	public JPasswordField getContrasena1F() {
 		return this.contrasena1;
 	}
@@ -153,7 +163,7 @@ public class PanelCrearU extends JPanel {
 	public JPasswordField getContrasena2F() {
 		return this.contrasena2;
 	}
-	
+
 	public void setContrasena2(JPasswordField contrasena2) {
 		this.contrasena2 = contrasena2;
 	}
@@ -229,6 +239,5 @@ public class PanelCrearU extends JPanel {
 	public void setMostrarContrasena2(JCheckBox mostrarContrasena2) {
 		this.mostrarContrasena2 = mostrarContrasena2;
 	}
-	
 
 }
