@@ -20,7 +20,7 @@ public class PanelTienda extends JPanel {
 		 setBounds(0, 0, 1290, 750);
 			setLayout(null);
 			fondo = new JLabel();
-			BufferedImage fd = ImageIO.read(new File("src/co/edu/unbosque/view/Fondoa.png"));
+			BufferedImage fd = ImageIO.read(new File("src/co/edu/unbosque/view/FondoC.png"));
 			ImageIcon imagenFondo = new ImageIcon(fd);
 			Image fdRedim = fd.getScaledInstance(1290, 750, Image.SCALE_SMOOTH);
 			fondo.setIcon(new ImageIcon(fdRedim));
@@ -29,7 +29,7 @@ public class PanelTienda extends JPanel {
 			btnVolver = new JButton();
 			btnVolver.setBounds(1120, 70, 120, 70);
 			btnVolver.setFocusable(false);
-			btnVolver.setBackground(new Color(0, 0, 0)); 
+			btnVolver.setBackground(new Color(0, 0, 0));
 			btnVolver.setContentAreaFilled(false);
 			btnVolver.setOpaque(false);
 			btnVolver.setVisible(true);
