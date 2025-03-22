@@ -48,7 +48,7 @@ public abstract class Usuario implements Serializable {
     /** Representación en cadena del objeto Usuario */
     @Override
     public String toString() {
-        return "Nombre: " + nombre + " Contrasena: " + contrasena;
+        return "Nombre: " + nombre + "     Contrasena: " + contrasena;
     }
 }
 

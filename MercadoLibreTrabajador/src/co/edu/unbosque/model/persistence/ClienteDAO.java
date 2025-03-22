@@ -85,10 +85,12 @@ public class ClienteDAO implements OperacionDAO<Cliente> {
     @Override
     public String mostrarTodo() {
         String salida = "";
+        int a = 1;
         for (Cliente cliente : listaClientes) {
-            salida += cliente.toString();
+            salida += a+". "+cliente.toString()+"\n";
+            a++;
         }
-        return salida;
+        return salida.toString();
     }
 
     /**

@@ -6,14 +6,17 @@ import java.io.IOException;
 
 import javax.swing.SwingConstants;
 
+import co.edu.unbosque.model.Cliente;
 import co.edu.unbosque.model.ModelFacade;
 import co.edu.unbosque.model.Trabajador;
 import co.edu.unbosque.model.persistence.FileManager;
 import co.edu.unbosque.util.exception.CapitalException;
 import co.edu.unbosque.util.exception.CharacterException;
 import co.edu.unbosque.util.exception.EqualPasswordException;
+import co.edu.unbosque.util.exception.NegativeNumberException;
 import co.edu.unbosque.util.exception.NumberException;
 import co.edu.unbosque.util.exception.SymbolException;
+import co.edu.unbosque.util.exception.TextException;
 import co.edu.unbosque.util.exception.UsernameException;
 import co.edu.unbosque.util.exception.SmallException;
 import co.edu.unbosque.view.ViewFacade;
@@ -70,6 +73,17 @@ public class Controller implements ActionListener {
 		vf.getVpt().getPt().getBtnSalir().addActionListener(this);
 		vf.getVpt().getPt().getBtnSalir().setActionCommand("btnSalirT");
 
+		vf.getVpt().getPmu().getBtnVolver().addActionListener(this);
+		vf.getVpt().getPmu().getBtnVolver().setActionCommand("btnVolverMU");
+		vf.getVpt().getPmu().getBtnModificar().addActionListener(this);
+		vf.getVpt().getPmu().getBtnModificar().setActionCommand("btnModificarMU");
+		vf.getVpt().getPmu().getBtnEliminar().addActionListener(this);
+		vf.getVpt().getPmu().getBtnEliminar().setActionCommand("btnEliminarMU");
+		vf.getVpt().getPmu().getBtnCliente().addActionListener(this);
+		vf.getVpt().getPmu().getBtnCliente().setActionCommand("btnClientesMU");
+		vf.getVpt().getPmu().getBtnTrabajador().addActionListener(this);
+		vf.getVpt().getPmu().getBtnTrabajador().setActionCommand("btnTrabajadoresMU");
+
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -124,12 +138,12 @@ public class Controller implements ActionListener {
 			break;
 		}
 		case "checkMostrar": {
-			    if (vf.getVpt().getPcu().getMostrarContrasena().isSelected()) {
-			        vf.getVpt().getPcu().getContrasena1F().setEchoChar((char) 0);
-			    } else {
-			        vf.getVpt().getPcu().getContrasena1F().setEchoChar('*');
-			    }
-			
+			if (vf.getVpt().getPcu().getMostrarContrasena().isSelected()) {
+				vf.getVpt().getPcu().getContrasena1F().setEchoChar((char) 0);
+			} else {
+				vf.getVpt().getPcu().getContrasena1F().setEchoChar('*');
+			}
+
 			break;
 		}
 		case "checkMostrar2": {
@@ -138,7 +152,7 @@ public class Controller implements ActionListener {
 			} else {
 				vf.getVpt().getPcu().getContrasena2F().setEchoChar('*');
 			}
-			
+
 			break;
 		}
 		case "checkMostrarIni": {
@@ -147,7 +161,7 @@ public class Controller implements ActionListener {
 			} else {
 				vf.getVpt().getPis().getContrasenaF().setEchoChar('*');
 			}
-			
+
 			break;
 		}
 		case "btnVolverI": {
@@ -173,18 +187,25 @@ public class Controller implements ActionListener {
 
 			} catch (CharacterException e1) {
 				vf.getVemer().mostrar("No cumple los requisitos de caracteres.");
+				e1.printStackTrace();
 			} catch (EqualPasswordException e1) {
 				vf.getVemer().mostrar("Las contraseñas no son iguales.");
+				e1.printStackTrace();
 			} catch (CapitalException e1) {
 				vf.getVemer().mostrar("Debe contener al menos una mayuscula.");
+				e1.printStackTrace();
 			} catch (SmallException e1) {
 				vf.getVemer().mostrar("Debe contener al menos una minuscula.");
+				e1.printStackTrace();
 			} catch (NumberException e1) {
 				vf.getVemer().mostrar("Debe contener al menos un número.");
+				e1.printStackTrace();
 			} catch (SymbolException e1) {
 				vf.getVemer().mostrar("Debe contener al menos un simbolo.");
+				e1.printStackTrace();
 			} catch (UsernameException e1) {
 				vf.getVemer().mostrar("Nombre de usuario ya registrado, intente nuevamente.");
+				e1.printStackTrace();
 			}
 
 			break;
@@ -209,6 +230,8 @@ public class Controller implements ActionListener {
 			break;
 		}
 		case "btnModificarU": {
+			vf.getVpt().getPt().setVisible(false);
+			vf.getVpt().getPmu().setVisible(true);
 
 			break;
 		}
@@ -216,6 +239,164 @@ public class Controller implements ActionListener {
 
 			vf.getVpt().getPt().setVisible(false);
 			vf.getVpt().getPpt().setVisible(true);
+			break;
+
+		}
+		case "btnVolverMU": {
+
+			vf.getVpt().getPmu().setVisible(false);
+			vf.getVpt().getPt().setVisible(true);
+			break;
+
+		}
+		case "btnModificarMU": {
+			String tipo = vf.getVemer().leerTexto("¿Que tipo de usuario desea modificar?").toLowerCase();
+			try {
+				ExceptionCheker.checkerText(tipo);
+				int a = vf.getVemer().leerInt("¿Cual desea actualizar?");
+				ExceptionCheker.checkerNegativeNumber(a - 1);
+
+				String nombre = vf.getVemer().leerTexto("Nombre nuevo:");
+				String verificar = mf.getTrabajadorDAO().econtrarNombre(nombre);
+				ExceptionCheker.checkerCharacter(nombre);
+				ExceptionCheker.checkerUsername(verificar);
+				String contra = vf.getVemer().leerTexto("Contraseña nueva:");
+				ExceptionCheker.checkerPasword(contra);
+
+				if (tipo.contains("cliente")) {
+					mf.getClienteDAO().actulizar(a - 1, new Cliente(nombre, contra));
+					vf.getVpt().getPmu().setTexto(mf.getClienteDAO().mostrarTodo());
+					vf.getVpt().getPmu().revalidate();
+					vf.getVpt().getPmu().repaint();
+
+				}
+			} catch (TextException e1) {
+				vf.getVemer().mostrar("Solo se permiten letras.");
+				e1.printStackTrace();
+			} catch (NegativeNumberException e1) {
+				vf.getVemer().mostrar("Numero no valido.");
+				e1.printStackTrace();
+			} catch (CharacterException e1) {
+				vf.getVemer().mostrar("No cumple los requisitos de caracteres.");
+				e1.printStackTrace();
+			} catch (UsernameException e1) {
+				vf.getVemer().mostrar("Nombre de usuario ya registrado, intente nuevamente.");
+				e1.printStackTrace();
+			} catch (CapitalException e1) {
+				vf.getVemer().mostrar("Debe contener al menos una mayuscula.");
+				e1.printStackTrace();
+			} catch (SmallException e1) {
+				vf.getVemer().mostrar("Debe contener al menos una minuscula.");
+				e1.printStackTrace();
+			} catch (NumberException e1) {
+				vf.getVemer().mostrar("Debe contener al menos un número.");
+				e1.printStackTrace();
+			} catch (SymbolException e1) {
+				vf.getVemer().mostrar("Debe contener al menos un simbolo.");
+				e1.printStackTrace();
+			}
+
+			try {
+				ExceptionCheker.checkerText(tipo);
+				int a = vf.getVemer().leerInt("¿Cual desea actualizar?");
+				ExceptionCheker.checkerNegativeNumber(a - 1);
+
+				String nombre = vf.getVemer().leerTexto("Nombre nuevo:");
+				String verificar = mf.getTrabajadorDAO().econtrarNombre(nombre);
+				ExceptionCheker.checkerCharacter(nombre);
+				ExceptionCheker.checkerUsername(verificar);
+				String contra = vf.getVemer().leerTexto("Contraseña nueva:");
+				ExceptionCheker.checkerPasword(contra);
+
+				if (tipo.contains("trabajador")) {
+					mf.getTrabajadorDAO().actulizar(a - 1, new Trabajador(nombre, contra));
+					vf.getVpt().getPmu().setTexto(mf.getTrabajadorDAO().mostrarTodo());
+					vf.getVpt().getPmu().revalidate();
+					vf.getVpt().getPmu().repaint();
+				}
+			} catch (TextException e1) {
+				e1.printStackTrace();
+			} catch (NegativeNumberException e1) {
+				vf.getVemer().mostrar("Numero no valido.");
+				e1.printStackTrace();
+			} catch (CharacterException e1) {
+				vf.getVemer().mostrar("No cumple los requisitos de caracteres.");
+				e1.printStackTrace();
+			} catch (UsernameException e1) {
+				vf.getVemer().mostrar("Nombre de usuario ya registrado, intente nuevamente.");
+				e1.printStackTrace();
+			} catch (CapitalException e1) {
+				vf.getVemer().mostrar("Debe contener al menos una mayuscula.");
+				e1.printStackTrace();
+			} catch (SmallException e1) {
+				vf.getVemer().mostrar("Debe contener al menos una minuscula.");
+				e1.printStackTrace();
+			} catch (NumberException e1) {
+				vf.getVemer().mostrar("Debe contener al menos un número.");
+				e1.printStackTrace();
+			} catch (SymbolException e1) {
+				vf.getVemer().mostrar("Debe contener al menos un simbolo.");
+				e1.printStackTrace();
+			}
+			break;
+
+		}
+		case "btnEliminarMU": {
+			String tipo = vf.getVemer().leerTexto("¿Que tipo de usuario desea eliminar?").toLowerCase();
+
+			try {
+				ExceptionCheker.checkerText(tipo);
+				if (tipo.contains("cliente")) {
+					int a = vf.getVemer().leerInt("¿Cual desea eliminar?");
+					ExceptionCheker.checkerNegativeNumber(a - 1);
+
+					mf.getClienteDAO().eliminar(a - 1);
+					vf.getVpt().getPmu().setTexto(mf.getClienteDAO().mostrarTodo());
+					vf.getVpt().getPmu().revalidate();
+					vf.getVpt().getPmu().repaint();
+
+				}
+			} catch (TextException e1) {
+				vf.getVemer().mostrar("Solo se permiten letras.");
+				e1.printStackTrace();
+			} catch (NegativeNumberException e1) {
+				vf.getVemer().mostrar("Numero no valido.");
+				e1.printStackTrace();
+			}
+
+			try {
+				ExceptionCheker.checkerText(tipo);
+				if (tipo.contains("trabajador")) {
+					int a = vf.getVemer().leerInt("¿Cual desea eliminar?");
+					ExceptionCheker.checkerNegativeNumber(a - 1);
+
+					mf.getTrabajadorDAO().eliminar(a - 1);
+					vf.getVpt().getPmu().setTexto(mf.getTrabajadorDAO().mostrarTodo());
+					vf.getVpt().getPmu().revalidate();
+					vf.getVpt().getPmu().repaint();
+				}
+
+			} catch (TextException e1) {
+				e1.printStackTrace();
+			} catch (NegativeNumberException e1) {
+				vf.getVemer().mostrar("Numero no valido.");
+				e1.printStackTrace();
+			}
+			break;
+
+		}
+		case "btnClientesMU": {
+			vf.getVpt().getPmu().setTexto(mf.getClienteDAO().mostrarTodo());
+			vf.getVpt().getPmu().revalidate();
+			vf.getVpt().getPmu().repaint();
+
+			break;
+
+		}
+		case "btnTrabajadoresMU": {
+			vf.getVpt().getPmu().setTexto(mf.getTrabajadorDAO().mostrarTodo());
+			vf.getVpt().getPmu().revalidate();
+			vf.getVpt().getPmu().repaint();
 			break;
 
 		}

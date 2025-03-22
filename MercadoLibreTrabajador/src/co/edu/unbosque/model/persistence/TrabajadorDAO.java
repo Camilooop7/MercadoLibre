@@ -83,10 +83,12 @@ public class TrabajadorDAO implements OperacionDAO<Trabajador> {
 	@Override
 	public String mostrarTodo() {
 		String salida = "";
+		int a= 1;
 		for (Trabajador trabajador : listaTrabajadores) {
-			salida += trabajador.toString();
+			salida +=a+". "+ trabajador.toString()+"\n";
+			a++;
 		}
-		return salida;
+		return salida.toString();
 	}
 
 	/**

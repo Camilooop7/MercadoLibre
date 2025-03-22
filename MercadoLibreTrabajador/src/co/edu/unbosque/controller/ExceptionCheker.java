@@ -3,8 +3,10 @@ package co.edu.unbosque.controller;
 import co.edu.unbosque.util.exception.CapitalException;
 import co.edu.unbosque.util.exception.CharacterException;
 import co.edu.unbosque.util.exception.EqualPasswordException;
+import co.edu.unbosque.util.exception.NegativeNumberException;
 import co.edu.unbosque.util.exception.NumberException;
 import co.edu.unbosque.util.exception.SymbolException;
+import co.edu.unbosque.util.exception.TextException;
 import co.edu.unbosque.util.exception.UsernameException;
 import co.edu.unbosque.util.exception.SmallException;
 
@@ -57,13 +59,23 @@ public class ExceptionCheker {
 			throw new SymbolException();
 		}
 	}
-	
-	public static void checkerUsername( String b) throws UsernameException {
-		
+
+	public static void checkerUsername(String b) throws UsernameException {
+
 		if (b.matches("ok")) {
 			throw new UsernameException();
 		}
-		
+
 	}
 
+	public static void checkerNegativeNumber(int a) throws NegativeNumberException {
+		if (a<0) {
+			throw new NegativeNumberException();
+		}
+	}
+	public static void checkerText(String a) throws TextException{
+		if (!a.matches("[A-Za-záéíóúÁÉÍÓÚñÑ]+")) {
+			throw new TextException();
+		}
+	}
 }

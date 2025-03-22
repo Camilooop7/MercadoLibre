@@ -1,7 +1,6 @@
 package co.edu.unbosque.model;
 
-import java.util.ArrayList; 
-
+import java.util.ArrayList;
 
 import co.edu.unbosque.model.persistence.BanoDAO;
 import co.edu.unbosque.model.persistence.CarritoDAO;
@@ -40,7 +39,11 @@ public class ModelFacade { // Clase que actúa como fachada para manejar los DAO
 		listaProducto = new ArrayList<>(); // Inicializa la lista de productos
 	}
 
+	public String convertirAHtml(String texto) {
+		String cadena = texto.replace("\n", "<br>");
+		return "<html><p>" + cadena + "</p></html>";
 
+	}
 
 	public BanoDAO getBanoDAO() {
 		return banoDAO;
