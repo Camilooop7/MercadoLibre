@@ -253,17 +253,18 @@ public class Controller implements ActionListener {
 			String tipo = vf.getVemer().leerTexto("¿Que tipo de usuario desea modificar?").toLowerCase();
 			try {
 				ExceptionCheker.checkerText(tipo);
-				int a = vf.getVemer().leerInt("¿Cual desea actualizar?");
-				ExceptionCheker.checkerNegativeNumber(a - 1);
-
-				String nombre = vf.getVemer().leerTexto("Nombre nuevo:");
-				String verificar = mf.getTrabajadorDAO().econtrarNombre(nombre);
-				ExceptionCheker.checkerCharacter(nombre);
-				ExceptionCheker.checkerUsername(verificar);
-				String contra = vf.getVemer().leerTexto("Contraseña nueva:");
-				ExceptionCheker.checkerPasword(contra);
 
 				if (tipo.contains("cliente")) {
+					int a = vf.getVemer().leerInt("¿Cual desea actualizar?");
+					ExceptionCheker.checkerNegativeNumber(a - 1);
+
+					String nombre = vf.getVemer().leerTexto("Nombre nuevo:");
+					String verificar = mf.getTrabajadorDAO().econtrarNombre(nombre);
+					ExceptionCheker.checkerCharacter(nombre);
+					ExceptionCheker.checkerUsername(verificar);
+					String contra = vf.getVemer().leerTexto("Contraseña nueva:");
+					ExceptionCheker.checkerPasword(contra);
+
 					mf.getClienteDAO().actulizar(a - 1, new Cliente(nombre, contra));
 					vf.getVpt().getPmu().setTexto(mf.getClienteDAO().mostrarTodo());
 					vf.getVpt().getPmu().revalidate();
@@ -298,17 +299,17 @@ public class Controller implements ActionListener {
 
 			try {
 				ExceptionCheker.checkerText(tipo);
-				int a = vf.getVemer().leerInt("¿Cual desea actualizar?");
-				ExceptionCheker.checkerNegativeNumber(a - 1);
-
-				String nombre = vf.getVemer().leerTexto("Nombre nuevo:");
-				String verificar = mf.getTrabajadorDAO().econtrarNombre(nombre);
-				ExceptionCheker.checkerCharacter(nombre);
-				ExceptionCheker.checkerUsername(verificar);
-				String contra = vf.getVemer().leerTexto("Contraseña nueva:");
-				ExceptionCheker.checkerPasword(contra);
 
 				if (tipo.contains("trabajador")) {
+					int a = vf.getVemer().leerInt("¿Cual desea actualizar?");
+					ExceptionCheker.checkerNegativeNumber(a - 1);
+
+					String nombre = vf.getVemer().leerTexto("Nombre nuevo:");
+					String verificar = mf.getTrabajadorDAO().econtrarNombre(nombre);
+					ExceptionCheker.checkerCharacter(nombre);
+					ExceptionCheker.checkerUsername(verificar);
+					String contra = vf.getVemer().leerTexto("Contraseña nueva:");
+					ExceptionCheker.checkerPasword(contra);
 					mf.getTrabajadorDAO().actulizar(a - 1, new Trabajador(nombre, contra));
 					vf.getVpt().getPmu().setTexto(mf.getTrabajadorDAO().mostrarTodo());
 					vf.getVpt().getPmu().revalidate();
