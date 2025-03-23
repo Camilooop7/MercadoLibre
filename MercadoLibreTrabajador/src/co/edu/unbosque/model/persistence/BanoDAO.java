@@ -80,6 +80,11 @@ public class BanoDAO implements OperacionDAO<Bano> {
             return 1;
         }
 	}
+	@Override
+	public boolean encontrar(int index) {
+		// TODO Auto-generated method stub
+		return index < 0 && index >= listaBanos.size();
+	}
 
 	
 	/**
@@ -131,6 +136,9 @@ public class BanoDAO implements OperacionDAO<Bano> {
 	public void setListaBanos(ArrayList<Bano> listaBanos) {
 		this.listaBanos = listaBanos;
 	}
+
+
+	
 	
 
 }

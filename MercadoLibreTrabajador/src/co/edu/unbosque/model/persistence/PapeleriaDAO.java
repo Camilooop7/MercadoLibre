@@ -79,6 +79,10 @@ public class PapeleriaDAO implements OperacionDAO<Papeleria> {
             return 1;
         }
     }
+    public boolean encontrar(int index) {
+		// TODO Auto-generated method stub
+		return index < 0 && index >= listaPapeleria.size();
+	}
 
     /**
      * Método para mostrar todos los objetos Papeleria almacenados en la lista.
