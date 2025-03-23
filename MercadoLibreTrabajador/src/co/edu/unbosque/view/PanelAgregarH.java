@@ -28,19 +28,20 @@ public class PanelAgregarH extends JPanel {
 		ImageIcon imagenFondo = new ImageIcon(fd);
 		Image fdRedim = fd.getScaledInstance(780, 433, Image.SCALE_SMOOTH);
 		fondo.setIcon(new ImageIcon(fdRedim));
+		fondo.setBounds(0, 0, 780, 433);
 
 		btnCocina = new JButton();
-		btnCocina.setBounds(120, 71, 130, 130);
+		btnCocina.setBounds(140, 128, 182, 180);
 		btnCocina.setFocusable(false);
 		btnCocina.setBackground(new Color(0, 0, 0));
 		btnCocina.setContentAreaFilled(false);
 		btnCocina.setOpaque(false);
-		btnCocina.setBorderPainted(true);
+		btnCocina.setBorderPainted(false);
 		btnCocina.setVisible(true);
 		add(btnCocina);
 
 		btnBano = new JButton();
-		btnBano.setBounds(300, 71, 130, 130);
+		btnBano.setBounds(440, 128, 182, 180);
 		btnBano.setFocusable(false);
 		btnBano.setBackground(new Color(0, 0, 0));
 		btnBano.setContentAreaFilled(false);

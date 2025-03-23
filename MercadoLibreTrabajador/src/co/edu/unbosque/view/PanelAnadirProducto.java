@@ -21,6 +21,8 @@ public class PanelAnadirProducto extends JPanel {
 	private JButton btnOficina;
 	private JButton btnOcio;
 	private PanelAgregarH pah;
+	private PanelAgregarOficina paof;
+	private PanelAgregarOcio paoc;
 
 	public PanelAnadirProducto() throws IOException {
 
@@ -72,8 +74,11 @@ public class PanelAnadirProducto extends JPanel {
 		add(btnOcio);
 
 		pah = new PanelAgregarH();
-
+		paof = new PanelAgregarOficina();
+		paoc = new PanelAgregarOcio();
 		add(pah).setVisible(false);
+		add(paof).setVisible(false);
+		add(paoc).setVisible(false);		
 		add(fondo);
 	}
 
@@ -123,6 +128,22 @@ public class PanelAnadirProducto extends JPanel {
 
 	public void setPah(PanelAgregarH pah) {
 		this.pah = pah;
+	}
+
+	public PanelAgregarOficina getPaof() {
+		return paof;
+	}
+
+	public void setPaof(PanelAgregarOficina paof) {
+		this.paof = paof;
+	}
+
+	public PanelAgregarOcio getPaoc() {
+		return paoc;
+	}
+
+	public void setPaoc(PanelAgregarOcio paoc) {
+		this.paoc = paoc;
 	}
 
 }

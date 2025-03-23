@@ -4,8 +4,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
-import javax.swing.SwingConstants;
-
 import co.edu.unbosque.model.Cliente;
 import co.edu.unbosque.model.ModelFacade;
 import co.edu.unbosque.model.Trabajador;
@@ -54,6 +52,7 @@ public class Controller implements ActionListener {
 		vf.getVpt().getPis().getBtnVolver().setActionCommand("btnVolverI");
 		vf.getVpt().getPis().getMostrarContrasena().addActionListener(this);
 		vf.getVpt().getPis().getMostrarContrasena().setActionCommand("checkMostrarIni");
+
 		vf.getVpt().getPcu().getBtnIngresar().addActionListener(this);
 		vf.getVpt().getPcu().getBtnIngresar().setActionCommand("btnIngresarC");
 		vf.getVpt().getPcu().getMostrarContrasena().addActionListener(this);
@@ -62,6 +61,7 @@ public class Controller implements ActionListener {
 		vf.getVpt().getPcu().getMostrarContrasena2().setActionCommand("checkMostrar2");
 		vf.getVpt().getPcu().getBtnVolver().addActionListener(this);
 		vf.getVpt().getPcu().getBtnVolver().setActionCommand("btnVolverC");
+
 		vf.getVpt().getPt().getBtnAnadir().addActionListener(this);
 		vf.getVpt().getPt().getBtnAnadir().setActionCommand("btnAnadir");
 		vf.getVpt().getPt().getBtnModificarProducto().addActionListener(this);
@@ -77,8 +77,11 @@ public class Controller implements ActionListener {
 		vf.getVpt().getPap().getBtnVolver().setActionCommand("btnVolverAna");
 		vf.getVpt().getPap().getBtnHogar().addActionListener(this);
 		vf.getVpt().getPap().getBtnHogar().setActionCommand("btnAnadirHogar");
-		
-		
+		vf.getVpt().getPap().getBtnOficina().addActionListener(this);
+		vf.getVpt().getPap().getBtnOficina().setActionCommand("btnAnadirOficina");
+		vf.getVpt().getPap().getBtnOcio().addActionListener(this);
+		vf.getVpt().getPap().getBtnOcio().setActionCommand("btnAnadirOcio");
+
 		vf.getVpt().getPmu().getBtnVolver().addActionListener(this);
 		vf.getVpt().getPmu().getBtnVolver().setActionCommand("btnVolverMU");
 		vf.getVpt().getPmu().getBtnModificar().addActionListener(this);
@@ -228,12 +231,27 @@ public class Controller implements ActionListener {
 			break;
 		}
 		case "btnAnadirHogar": {
+			vf.getVpt().getPap().getPaof().setVisible(false);
+			vf.getVpt().getPap().getPaoc().setVisible(false);
 			vf.getVpt().getPap().getPah().setVisible(true);
-			
+
+			break;
+		}
+		case "btnAnadirOficina": {
+			vf.getVpt().getPap().getPah().setVisible(false);
+			vf.getVpt().getPap().getPaoc().setVisible(false);
+			vf.getVpt().getPap().getPaof().setVisible(true);
+
+			break;
+		}
+		case "btnAnadirOcio": {
+			vf.getVpt().getPap().getPah().setVisible(false);
+			vf.getVpt().getPap().getPaof().setVisible(false);
+			vf.getVpt().getPap().getPaoc().setVisible(true);
 			break;
 		}
 		case "btnModificarP": {
-
+			vf.getVpt().getPap().getPaof().setVisible(true);
 			break;
 		}
 		case "btnEliminarP": {
@@ -268,7 +286,7 @@ public class Controller implements ActionListener {
 				if (tipo.contains("cliente")) {
 					int a = vf.getVemer().leerInt("¿Cual desea actualizar?");
 					ExceptionCheker.checkerNegativeNumber(a - 1);
-					a = a-1;
+					a = a - 1;
 					if (mf.getClienteDAO().encontrar(a)) {
 
 						String nombre = vf.getVemer().leerTexto("Nombre nuevo:");
@@ -277,15 +295,14 @@ public class Controller implements ActionListener {
 						ExceptionCheker.checkerUsername(verificar);
 						String contra = vf.getVemer().leerTexto("Contraseña nueva:");
 						ExceptionCheker.checkerPasword(contra);
-						
+
 						mf.getClienteDAO().actulizar(a, new Cliente(nombre, contra));
 						vf.getVpt().getPmu().setTexto(mf.getClienteDAO().mostrarTodo());
 						vf.getVpt().getPmu().revalidate();
 						vf.getVpt().getPmu().repaint();
-					}else {
+					} else {
 						vf.getVemer().mostrar("la posicion que desea actualizar no esta en la lista");
 					}
-
 
 				}
 			} catch (TextException e1) {
@@ -320,9 +337,9 @@ public class Controller implements ActionListener {
 				if (tipo.contains("trabajador")) {
 					int a = vf.getVemer().leerInt("¿Cual desea actualizar?");
 					ExceptionCheker.checkerNegativeNumber(a - 1);
-					a = a-1;
+					a = a - 1;
 					if (mf.getTrabajadorDAO().encontrar(a)) {
-						
+
 						String nombre = vf.getVemer().leerTexto("Nombre nuevo:");
 						String verificar = mf.getTrabajadorDAO().econtrarNombre(nombre);
 						ExceptionCheker.checkerCharacter(nombre);
@@ -333,7 +350,7 @@ public class Controller implements ActionListener {
 						vf.getVpt().getPmu().setTexto(mf.getTrabajadorDAO().mostrarTodo());
 						vf.getVpt().getPmu().revalidate();
 						vf.getVpt().getPmu().repaint();
-					}else {
+					} else {
 						vf.getVemer().mostrar("la posicion que desea actualizar no esta en la lista");
 					}
 				}
@@ -371,15 +388,15 @@ public class Controller implements ActionListener {
 				ExceptionCheker.checkerText(tipo);
 				if (tipo.contains("cliente")) {
 					int a = vf.getVemer().leerInt("¿Cual desea eliminar?");
-					a = a-1;
+					a = a - 1;
 					ExceptionCheker.checkerNegativeNumber(a - 1);
 					if (mf.getClienteDAO().encontrar(a)) {
-						
+
 						mf.getClienteDAO().eliminar(a);
 						vf.getVpt().getPmu().setTexto(mf.getClienteDAO().mostrarTodo());
 						vf.getVpt().getPmu().revalidate();
 						vf.getVpt().getPmu().repaint();
-						
+
 					} else {
 						vf.getVemer().mostrar("la posicion a eliminar no esta en la lista");
 
@@ -399,15 +416,15 @@ public class Controller implements ActionListener {
 				if (tipo.contains("trabajador")) {
 					int a = vf.getVemer().leerInt("¿Cual desea eliminar?");
 					ExceptionCheker.checkerNegativeNumber(a - 1);
-					a = a-1;
+					a = a - 1;
 					if (mf.getTrabajadorDAO().encontrar(a)) {
-						
+
 						mf.getTrabajadorDAO().eliminar(a);
 						vf.getVpt().getPmu().setTexto(mf.getTrabajadorDAO().mostrarTodo());
 						vf.getVpt().getPmu().revalidate();
 						vf.getVpt().getPmu().repaint();
-						
-					}else {
+
+					} else {
 						vf.getVemer().mostrar("la posicion a eliminar no esta en la lista");
 					}
 				}
@@ -435,7 +452,8 @@ public class Controller implements ActionListener {
 			vf.getVpt().getPmu().repaint();
 			break;
 
-		}case "btnVolverAna": {
+		}
+		case "btnVolverAna": {
 
 			vf.getVpt().getPap().setVisible(false);
 			vf.getVpt().getPt().setVisible(true);

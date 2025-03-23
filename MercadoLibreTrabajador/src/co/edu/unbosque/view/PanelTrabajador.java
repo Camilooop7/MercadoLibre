@@ -35,49 +35,53 @@ public class PanelTrabajador extends JPanel {
 		fondo.setBounds(0, 0, 1290, 750);
 
 		btnAnadir = new JButton();
-		btnAnadir.setBounds(148, 254, 170, 170);
+		btnAnadir.setBounds(75, 323, 210, 214);
 		btnAnadir.setFocusable(false);
 		btnAnadir.setBackground(new Color(0, 0, 0));
 		btnAnadir.setContentAreaFilled(false);
 		btnAnadir.setOpaque(false);
+		btnAnadir.setBorderPainted(false);
 		btnAnadir.setVisible(true);
 		add(btnAnadir);
 
 		btnModificarProducto = new JButton();
-		btnModificarProducto.setBounds(153, 506, 170, 170);
+		btnModificarProducto.setBounds(372, 323, 214, 224);
 		btnModificarProducto.setFocusable(false);
 		btnModificarProducto.setBackground(new Color(0, 0, 0, 0));
 		btnModificarProducto.setContentAreaFilled(false);
 		btnModificarProducto.setOpaque(false);
+		btnModificarProducto.setBorderPainted(false);
 		btnModificarProducto.setVisible(true);
 		add(btnModificarProducto);
 
 		btnEliminarProducto = new JButton();
-		btnEliminarProducto.setBounds(477, 254, 170, 170);
+		btnEliminarProducto.setBounds(666, 323, 216, 224);
 		btnEliminarProducto.setFocusable(false);
 		btnEliminarProducto.setBackground(new Color(0, 0, 0));
 		btnEliminarProducto.setContentAreaFilled(false);
 		btnEliminarProducto.setOpaque(false);
+		btnEliminarProducto.setBorderPainted(false);
 		btnEliminarProducto.setVisible(true);
 		add(btnEliminarProducto);
 
 		btnModificarUsuario = new JButton();
-		btnModificarUsuario.setBounds(478, 509, 170, 170);
+		btnModificarUsuario.setBounds(960, 323, 219, 224);
 		btnModificarUsuario.setFocusable(false);
 		btnModificarUsuario.setBackground(new Color(0, 0, 0));
 		btnModificarUsuario.setContentAreaFilled(false);
 		btnModificarUsuario.setOpaque(false);
+		btnModificarUsuario.setBorderPainted(false);
 		btnModificarUsuario.setVisible(true);
 		add(btnModificarUsuario);
 
 		btnSalir = new JButton();
-		btnSalir.setBounds(880, 500, 190, 120);
-		btnSalir.setText("Salir");
+		btnSalir.setBounds(1092, 71, 130, 97);
 		btnSalir.setFocusable(false);
-		btnSalir.setBackground(Color.WHITE);
-		btnSalir.setForeground(Color.black);
-		btnSalir.setBackground(new Color(246, 86, 86));
-		btnSalir.setFont(new Font("Baloo", Font.BOLD, 35));
+		btnSalir.setBackground(new Color(0, 0, 0));
+		btnSalir.setContentAreaFilled(false);
+		btnSalir.setOpaque(false);
+		btnSalir.setBorderPainted(false);
+		btnSalir.setVisible(true);
 		add(btnSalir);
 
 		add(fondo);
