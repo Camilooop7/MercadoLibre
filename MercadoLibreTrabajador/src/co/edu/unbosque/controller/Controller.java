@@ -73,6 +73,9 @@ public class Controller implements ActionListener {
 		vf.getVpt().getPt().getBtnSalir().addActionListener(this);
 		vf.getVpt().getPt().getBtnSalir().setActionCommand("btnSalirT");
 
+		vf.getVpt().getPap().getBtnVolver().addActionListener(this);
+		vf.getVpt().getPap().getBtnVolver().setActionCommand("btnVolverAna");
+		
 		vf.getVpt().getPmu().getBtnVolver().addActionListener(this);
 		vf.getVpt().getPmu().getBtnVolver().setActionCommand("btnVolverMU");
 		vf.getVpt().getPmu().getBtnModificar().addActionListener(this);
@@ -398,6 +401,12 @@ public class Controller implements ActionListener {
 			vf.getVpt().getPmu().setTexto(mf.getTrabajadorDAO().mostrarTodo());
 			vf.getVpt().getPmu().revalidate();
 			vf.getVpt().getPmu().repaint();
+			break;
+
+		}case "btnVolverAna": {
+
+			vf.getVpt().getPap().setVisible(false);
+			vf.getVpt().getPt().setVisible(true);
 			break;
 
 		}
