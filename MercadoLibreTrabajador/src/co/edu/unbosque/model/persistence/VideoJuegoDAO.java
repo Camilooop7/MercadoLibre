@@ -14,6 +14,7 @@ public class VideoJuegoDAO implements OperacionDAO<VideoJuego> {
 	 * 
 	 */
     private final String SERIAL_FILE_NAME = "videojuego.dat";
+    private final String TEXT_FILE_NAME = "videojuego.csv";
     /**
 	 * Variable la cual contiene un arraylist y además se define el nombre.
 	 */
@@ -38,6 +39,7 @@ public class VideoJuegoDAO implements OperacionDAO<VideoJuego> {
     public void crear(VideoJuego nuevoDato) {
         listaVideoJuegos.add(nuevoDato);
         escribirSerializado();
+        escribirArchivo();
     }
     /**
 	 *Metodo eliminar el cual recibe como parametro un dato tipo entero en el cual se incluye
@@ -51,6 +53,7 @@ public class VideoJuegoDAO implements OperacionDAO<VideoJuego> {
         if (index >= 0 && index < listaVideoJuegos.size()) {
             listaVideoJuegos.remove(index);
             escribirSerializado();
+            escribirArchivo();
             return 0;
         } else {
             return 1;
@@ -70,6 +73,7 @@ public class VideoJuegoDAO implements OperacionDAO<VideoJuego> {
         if (index >= 0 && index < listaVideoJuegos.size()) {
             listaVideoJuegos.set(index, nuevoDato);
             escribirSerializado();
+            escribirArchivo();
             return 0;
         } else {
             return 1;
@@ -119,6 +123,18 @@ public class VideoJuegoDAO implements OperacionDAO<VideoJuego> {
             listaVideoJuegos = new ArrayList<>();
         }
     }
+    public void escribirArchivo() {
+		String contenido ="";
+		for (int i = 0; i < listaVideoJuegos.size(); i++) {
+			contenido += listaVideoJuegos.get(i).getNombre()+";";
+			contenido += listaVideoJuegos.get(i).getPrecio()+";";
+			contenido += listaVideoJuegos.get(i).getId()+";";
+			contenido += listaVideoJuegos.get(i).getImagen()+";";
+			contenido += listaVideoJuegos.get(i).isEsAccesorio()+";";
+			contenido += listaVideoJuegos.get(i).getReferenciaConsola()+"\n";
+		}
+		FileManager.escribirArchivoTexto(TEXT_FILE_NAME, contenido);
+	}
 
 	public ArrayList<VideoJuego> getListaVideoJuegos() {
 		return listaVideoJuegos;

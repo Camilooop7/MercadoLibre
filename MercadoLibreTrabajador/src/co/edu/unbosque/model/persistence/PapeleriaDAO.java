@@ -17,6 +17,7 @@ public class PapeleriaDAO implements OperacionDAO<Papeleria> {
      * del archivo serializado (papeleria.dat).
      */
     private final String SERIAL_FILE_NAME = "papeleria.dat";
+    private final String TEXT_FILE_NAME = "papeleria.csv";
     
     /**
      * Se declara una lista de tipo ArrayList que almacenará los objetos Papeleria.
@@ -43,6 +44,7 @@ public class PapeleriaDAO implements OperacionDAO<Papeleria> {
         // Agrega el nuevo objeto Papeleria a la lista y guarda la lista serializada.
         listaPapeleria.add(nuevoDato);
         escribirSerializado();
+        escribirArchivo();
     }
 
     /**
@@ -56,6 +58,7 @@ public class PapeleriaDAO implements OperacionDAO<Papeleria> {
             // Elimina el objeto en la posición indicada y guarda la lista actualizada.
             listaPapeleria.remove(index);
             escribirSerializado();
+            escribirArchivo();
             return 0;
         } else {
             return 1;
@@ -74,6 +77,7 @@ public class PapeleriaDAO implements OperacionDAO<Papeleria> {
             // Reemplaza el objeto en la posición indicada y guarda la lista actualizada.
             listaPapeleria.set(index, nuevoDato);
             escribirSerializado();
+            escribirArchivo();
             return 0;
         } else {
             return 1;
@@ -119,6 +123,19 @@ public class PapeleriaDAO implements OperacionDAO<Papeleria> {
             listaPapeleria = new ArrayList<>();
         }
     }
+    
+    public void escribirArchivo() {
+		String contenido ="";
+		for (int i = 0; i < listaPapeleria.size(); i++) {
+			contenido += listaPapeleria.get(i).getNombre()+";";
+			contenido += listaPapeleria.get(i).getPrecio()+";";
+			contenido += listaPapeleria.get(i).getId()+";";
+			contenido += listaPapeleria.get(i).getImagen()+";";
+			contenido += listaPapeleria.get(i).isEsPortatil()+";";
+			contenido += listaPapeleria.get(i).getCantidadPorPaquete()+"\n";
+		}
+		FileManager.escribirArchivoTexto(TEXT_FILE_NAME, contenido);
+	}
 
     /**
      * Método para obtener la lista de objetos Papeleria.

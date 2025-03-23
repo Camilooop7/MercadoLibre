@@ -14,6 +14,7 @@ public class CocinaDAO implements OperacionDAO<Cocina> {
 	 * 
 	 */
 	private final String SERIAL_FILE_NAME = "cocina.dat";
+	private final String TEXT_FILE_NAME = "cocina.csv";
 
 	/**
 	 * Variable la cual contiene un arraylist y además se define el nombre.
@@ -28,6 +29,7 @@ public class CocinaDAO implements OperacionDAO<Cocina> {
 		// TODO Auto-generated constructor stub
 		listaCocinas = new ArrayList<>();
 		cargarSerializado();
+	
 	}
 
 	/**
@@ -39,6 +41,7 @@ public class CocinaDAO implements OperacionDAO<Cocina> {
 	public void crear(Cocina nuevoDato) {
 		listaCocinas.add(nuevoDato);
 		escribirSerializado();
+		escribirArchivor();
 	}
 
 	/**
@@ -52,6 +55,7 @@ public class CocinaDAO implements OperacionDAO<Cocina> {
 		if (index >= 0 && index < listaCocinas.size()) {
 			listaCocinas.remove(index);
 			escribirSerializado();
+			escribirArchivor();
 			return 0;
 		} else {
 			return 1;
@@ -70,6 +74,7 @@ public class CocinaDAO implements OperacionDAO<Cocina> {
 		if (index >= 0 && index < listaCocinas.size()) {
 			listaCocinas.set(index, nuevoDato);
 			escribirSerializado();
+			escribirArchivor();
 			return 0;
 		} else {
 			return 1;
@@ -117,6 +122,21 @@ public class CocinaDAO implements OperacionDAO<Cocina> {
 			listaCocinas = new ArrayList<>();
 		}
 	}
+	public void escribirArchivor() {
+		String contenido ="";
+		for (int i = 0; i < listaCocinas.size(); i++) {
+			contenido += listaCocinas.get(i).getNombre()+";";
+			contenido += listaCocinas.get(i).getPrecio()+";";
+			contenido += listaCocinas.get(i).getId()+";";
+			contenido += listaCocinas.get(i).getImagen()+";";
+			contenido += listaCocinas.get(i).isEsDecoracion()+";";
+			contenido += listaCocinas.get(i).isResisteAltaTemperatuta()+";";
+			contenido += listaCocinas.get(i).isEsPeligroso()+"\n";
+		}
+		FileManager.escribirArchivoTexto(TEXT_FILE_NAME, contenido);
+	}
+
+
 
 	public ArrayList<Cocina> getListaCocinas() {
 		return listaCocinas;

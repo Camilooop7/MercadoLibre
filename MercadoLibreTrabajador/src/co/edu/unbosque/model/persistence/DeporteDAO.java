@@ -14,6 +14,7 @@ public class DeporteDAO implements OperacionDAO<Deporte> {
 	 * 
 	 */
 	private final String SERIAL_FILE_NAME = "deporte.dat";
+	private final String TEXT_FILE_NAME = "deporte.csv";
 
 	/**
 	 * Variable la cual contiene un arraylist y además se define el nombre.
@@ -39,6 +40,7 @@ public class DeporteDAO implements OperacionDAO<Deporte> {
 	public void crear(Deporte nuevoDato) {
 		listaDeportes.add(nuevoDato);
 		escribirSerializado();
+		escribirArchivo();
 	}
 
 	/**
@@ -52,6 +54,7 @@ public class DeporteDAO implements OperacionDAO<Deporte> {
 		if (index >= 0 && index < listaDeportes.size()) {
 			listaDeportes.remove(index);
 			escribirSerializado();
+			escribirArchivo();
 			return 0;
 		} else {
 			return 1;
@@ -70,6 +73,7 @@ public class DeporteDAO implements OperacionDAO<Deporte> {
 		if (index >= 0 && index < listaDeportes.size()) {
 			listaDeportes.set(index, nuevoDato);
 			escribirSerializado();
+			escribirArchivo();
 			return 0;
 		} else {
 			return 1;
@@ -117,6 +121,18 @@ public class DeporteDAO implements OperacionDAO<Deporte> {
 			listaDeportes = new ArrayList<>();
 		}
 	}
+	 public void escribirArchivo() {
+			String contenido ="";
+			for (int i = 0; i < listaDeportes.size(); i++) {
+				contenido += listaDeportes.get(i).getNombre()+";";
+				contenido += listaDeportes.get(i).getPrecio()+";";
+				contenido += listaDeportes.get(i).getId()+";";
+				contenido += listaDeportes.get(i).getImagen()+";";
+				contenido += listaDeportes.get(i).isEsAccesorio()+";";
+				contenido += listaDeportes.get(i).getDeporte()+"\n";
+			}
+			FileManager.escribirArchivoTexto(TEXT_FILE_NAME, contenido);
+		}
 
 	public ArrayList<Deporte> getListaDeportes() {
 		return listaDeportes;

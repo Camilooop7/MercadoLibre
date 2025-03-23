@@ -15,6 +15,7 @@ public class BanoDAO implements OperacionDAO<Bano> {
 	 * 
 	 */
 	private final String SERIAL_FILE_NAME = "bano.dat"; 
+	private final String TEXT_FILE_NAME = "bano.csv";
 	
 	/**
 	 * Variable la cual contiene un arraylist y además se define el nombre.
@@ -42,6 +43,7 @@ public class BanoDAO implements OperacionDAO<Bano> {
 		// TODO Auto-generated method stub
 		listaBanos.add(nuevoDato);
         escribirSerializado();
+        escribirArchivo();
 	}
 
 	/**
@@ -56,6 +58,7 @@ public class BanoDAO implements OperacionDAO<Bano> {
 		if (index >= 0 && index < listaBanos.size()) {
             listaBanos.remove(index);
             escribirSerializado();
+            escribirArchivo();
             return 0;
         } else {
             return 1;
@@ -75,6 +78,7 @@ public class BanoDAO implements OperacionDAO<Bano> {
 		if (index >= 0 && index < listaBanos.size()) {
             listaBanos.set(index,nuevoDato);
             escribirSerializado();
+            escribirArchivo();
             return 0;
         } else {
             return 1;
@@ -125,6 +129,19 @@ public class BanoDAO implements OperacionDAO<Bano> {
 		if(listaBanos == null) {
 			listaBanos = new ArrayList<>();
 		}
+	}
+	
+	public void escribirArchivo() {
+		String contenido ="";
+		for (int i = 0; i < listaBanos.size(); i++) {
+			contenido += listaBanos.get(i).getNombre()+";";
+			contenido += listaBanos.get(i).getPrecio()+";";
+			contenido += listaBanos.get(i).getId()+";";
+			contenido += listaBanos.get(i).getImagen()+";";
+			contenido += listaBanos.get(i).isEsDecoracion()+";";
+			contenido += listaBanos.get(i).isEsLimpieza()+"\n";
+		}
+		FileManager.escribirArchivoTexto(TEXT_FILE_NAME, contenido);
 	}
 
 

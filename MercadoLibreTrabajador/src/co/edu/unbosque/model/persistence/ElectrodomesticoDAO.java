@@ -15,6 +15,7 @@ public class ElectrodomesticoDAO implements OperacionDAO<Electrodomestico> {
 	 * 
 	 */
     private final String SERIAL_FILE_NAME = "electrodomestico.dat";
+	private final String TEXT_FILE_NAME = "electrodomestico.csv";
     
 	/**
 	 * Variable la cual contiene un arraylist y además se define el nombre.
@@ -40,6 +41,7 @@ public class ElectrodomesticoDAO implements OperacionDAO<Electrodomestico> {
     public void crear(Electrodomestico nuevoDato) {
         listaElectrodomesticos.add(nuevoDato);
         escribirSerializado();
+        escribirArchivo();
     }
 
     /**
@@ -53,6 +55,7 @@ public class ElectrodomesticoDAO implements OperacionDAO<Electrodomestico> {
         if (index >= 0 && index < listaElectrodomesticos.size()) {
             listaElectrodomesticos.remove(index);
             escribirSerializado();
+            escribirArchivo();
             return 0;
         } else {
             return 1;
@@ -71,6 +74,7 @@ public class ElectrodomesticoDAO implements OperacionDAO<Electrodomestico> {
         if (index >= 0 && index < listaElectrodomesticos.size()) {
             listaElectrodomesticos.set(index, nuevoDato);
             escribirSerializado();
+            escribirArchivo();
             return 0;
         } else {
             return 1;
@@ -118,6 +122,20 @@ public class ElectrodomesticoDAO implements OperacionDAO<Electrodomestico> {
             listaElectrodomesticos = new ArrayList<>();
         }
     }
+	public void escribirArchivo() {
+		String contenido ="";
+		for (int i = 0; i < listaElectrodomesticos.size(); i++) {
+			contenido += listaElectrodomesticos.get(i).getNombre()+";";
+			contenido += listaElectrodomesticos.get(i).getPrecio()+";";
+			contenido += listaElectrodomesticos.get(i).getId()+";";
+			contenido += listaElectrodomesticos.get(i).getImagen()+";";
+			contenido += listaElectrodomesticos.get(i).isEsPortatil()+";";
+			contenido += listaElectrodomesticos.get(i).getFuenteDeEnergia()+"\n";
+		}
+		FileManager.escribirArchivoTexto(TEXT_FILE_NAME, contenido);
+	}
+    
+    
 	public ArrayList<Electrodomestico> getListaElectrodomesticos() {
 		return listaElectrodomesticos;
 	}
