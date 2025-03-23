@@ -268,6 +268,7 @@ public class Controller implements ActionListener {
 				if (tipo.contains("cliente")) {
 					int a = vf.getVemer().leerInt("¿Cual desea actualizar?");
 					ExceptionCheker.checkerNegativeNumber(a - 1);
+					a = a-1;
 					if (mf.getClienteDAO().encontrar(a)) {
 
 						String nombre = vf.getVemer().leerTexto("Nombre nuevo:");
@@ -277,7 +278,7 @@ public class Controller implements ActionListener {
 						String contra = vf.getVemer().leerTexto("Contraseña nueva:");
 						ExceptionCheker.checkerPasword(contra);
 						
-						mf.getClienteDAO().actulizar(a - 1, new Cliente(nombre, contra));
+						mf.getClienteDAO().actulizar(a, new Cliente(nombre, contra));
 						vf.getVpt().getPmu().setTexto(mf.getClienteDAO().mostrarTodo());
 						vf.getVpt().getPmu().revalidate();
 						vf.getVpt().getPmu().repaint();
@@ -319,6 +320,7 @@ public class Controller implements ActionListener {
 				if (tipo.contains("trabajador")) {
 					int a = vf.getVemer().leerInt("¿Cual desea actualizar?");
 					ExceptionCheker.checkerNegativeNumber(a - 1);
+					a = a-1;
 					if (mf.getTrabajadorDAO().encontrar(a)) {
 						
 						String nombre = vf.getVemer().leerTexto("Nombre nuevo:");
@@ -327,7 +329,7 @@ public class Controller implements ActionListener {
 						ExceptionCheker.checkerUsername(verificar);
 						String contra = vf.getVemer().leerTexto("Contraseña nueva:");
 						ExceptionCheker.checkerPasword(contra);
-						mf.getTrabajadorDAO().actulizar(a - 1, new Trabajador(nombre, contra));
+						mf.getTrabajadorDAO().actulizar(a, new Trabajador(nombre, contra));
 						vf.getVpt().getPmu().setTexto(mf.getTrabajadorDAO().mostrarTodo());
 						vf.getVpt().getPmu().revalidate();
 						vf.getVpt().getPmu().repaint();
@@ -369,10 +371,11 @@ public class Controller implements ActionListener {
 				ExceptionCheker.checkerText(tipo);
 				if (tipo.contains("cliente")) {
 					int a = vf.getVemer().leerInt("¿Cual desea eliminar?");
+					a = a-1;
 					ExceptionCheker.checkerNegativeNumber(a - 1);
 					if (mf.getClienteDAO().encontrar(a)) {
 						
-						mf.getClienteDAO().eliminar(a - 1);
+						mf.getClienteDAO().eliminar(a);
 						vf.getVpt().getPmu().setTexto(mf.getClienteDAO().mostrarTodo());
 						vf.getVpt().getPmu().revalidate();
 						vf.getVpt().getPmu().repaint();
@@ -396,10 +399,10 @@ public class Controller implements ActionListener {
 				if (tipo.contains("trabajador")) {
 					int a = vf.getVemer().leerInt("¿Cual desea eliminar?");
 					ExceptionCheker.checkerNegativeNumber(a - 1);
-					int a2 = a-1;
-					if (mf.getTrabajadorDAO().encontrar(a2)) {
+					a = a-1;
+					if (mf.getTrabajadorDAO().encontrar(a)) {
 						
-						mf.getTrabajadorDAO().eliminar(a2);
+						mf.getTrabajadorDAO().eliminar(a);
 						vf.getVpt().getPmu().setTexto(mf.getTrabajadorDAO().mostrarTodo());
 						vf.getVpt().getPmu().revalidate();
 						vf.getVpt().getPmu().repaint();
