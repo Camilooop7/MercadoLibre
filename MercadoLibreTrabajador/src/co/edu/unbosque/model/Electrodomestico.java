@@ -2,13 +2,15 @@ package co.edu.unbosque.model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Random;
 
 public class Electrodomestico extends Oficina implements Serializable { // Declara la clase Electrodomestico, que hereda
 																		// de Oficina e implementa Serializable
 
 	private String fuenteDeEnergia; // Atributo que almacena la fuente de energía del electrodoméstico (ej.
 									// electricidad, gas)
-
+	private HashSet<Integer> generatedCodes = new HashSet<>();
 	public Electrodomestico() {
 		// Constructor vacío por defecto
 	}
@@ -43,6 +45,17 @@ public class Electrodomestico extends Oficina implements Serializable { // Decla
 	public String toString() {
 		return super.toString() + " ¿Qué fuente de energía tiene? " + fuenteDeEnergia;
 		// Sobrescribe toString para incluir el atributo fuenteDeEnergia
+	}
+	public int codigoAleatorio() {
+		int codigo;
+		Random random = new Random();
+		
+		 do {
+	            codigo = random.nextInt((3999 - 3000 + 1)) + 3000;
+	        } while (generatedCodes.contains(codigo));
+
+	        generatedCodes.add(codigo);
+	        return codigo;
 	}
 
 }

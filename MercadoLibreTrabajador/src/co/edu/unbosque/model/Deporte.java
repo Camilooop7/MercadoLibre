@@ -2,12 +2,14 @@ package co.edu.unbosque.model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Random;
 
 public class Deporte extends Ocio implements Serializable { // Declara la clase Deporte, que hereda de Ocio e implementa
 															// Serializable
 
 	private String deporte; // Atributo que almacena el nombre del deporte relacionado con el producto
-
+	private HashSet<Integer> generatedCodes = new HashSet<>();
 	public Deporte() {
 		// Constructor vacío por defecto
 	}
@@ -41,5 +43,15 @@ public class Deporte extends Ocio implements Serializable { // Declara la clase 
 	public String toString() {
 		return super.toString() + "Deporte: " + deporte; // Sobrescribe toString para incluir el atributo deporte
 	}
+	public int codigoAleatorio() {
+		int codigo;
+		Random random = new Random();
+		
+		 do {
+	            codigo = random.nextInt((6999 - 6000 + 1)) + 6000;
+	        } while (generatedCodes.contains(codigo));
 
+	        generatedCodes.add(codigo);
+	        return codigo;
+	}
 }

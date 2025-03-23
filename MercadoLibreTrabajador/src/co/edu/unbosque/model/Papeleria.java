@@ -2,11 +2,13 @@ package co.edu.unbosque.model;
 
 import java.io.Serializable; // Importa la interfaz Serializable
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Random;
 
 public class Papeleria extends Oficina implements Serializable { // Declara la clase Papeleria que hereda de Oficina
 
 	private int cantidadPorPaquete; // Atributo que indica la cantidad de productos por paquete
-
+	private HashSet<Integer> generatedCodes = new HashSet<>();
 	public Papeleria() { // Constructor vacío
 		// TODO Auto-generated constructor stub
 	}
@@ -39,5 +41,16 @@ public class Papeleria extends Oficina implements Serializable { // Declara la c
 	public String toString() { // Método para representar el objeto como cadena
 		return super.toString() + "Cuantos vienen en el paquete: " + cantidadPorPaquete; // Retorna la información del
 																							// objeto
+	}
+	public int codigoAleatorio() {
+		int codigo;
+		Random random = new Random();
+		
+		 do {
+	            codigo = random.nextInt((4999 - 4000 + 1)) + 4000;
+	        } while (generatedCodes.contains(codigo));
+
+	        generatedCodes.add(codigo);
+	        return codigo;
 	}
 }

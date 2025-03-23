@@ -2,11 +2,13 @@ package co.edu.unbosque.model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Random;
 
 public class Bano extends Hogar implements Serializable { // Declara la clase Bano, que hereda de Hogar e implementa
 															// Serializable
 	private boolean esLimpieza; // Atributo booleano que indica si el producto es de limpieza
-
+	private HashSet<Integer> generatedCodes = new HashSet<>();
 	public Bano() {
 		// Constructor vacío por defecto
 	}
@@ -42,5 +44,17 @@ public class Bano extends Hogar implements Serializable { // Declara la clase Ba
 		return super.toString() + "¿Es de limpieza? " + esLimpieza; // Sobrescribe toString para incluir el atributo
 																	// esLimpieza
 	}
+	public int codigoAleatorio() {
+		int codigo;
+		Random random = new Random();
+		
+		 do {
+	            codigo = random.nextInt((2999 - 2000 + 1)) + 2000;
+	        } while (generatedCodes.contains(codigo));
+
+	        generatedCodes.add(codigo);
+	        return codigo;
+	}
+
 
 }

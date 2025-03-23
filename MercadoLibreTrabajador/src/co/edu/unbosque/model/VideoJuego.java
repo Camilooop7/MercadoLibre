@@ -2,6 +2,8 @@ package co.edu.unbosque.model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Random;
 
 /**
  * Clase VideoJuego que extiende de Ocio e implementa Serializable.
@@ -10,6 +12,7 @@ public class VideoJuego extends Ocio implements Serializable {
 
 	/** Referencia de la consola en la que se puede jugar el videojuego */
 	private String referenciaConsola;
+	private HashSet<Integer> generatedCodes = new HashSet<>();
 
 	/** Constructor por defecto */
 	public VideoJuego() {
@@ -55,5 +58,17 @@ public class VideoJuego extends Ocio implements Serializable {
 	@Override
 	public String toString() {
 		return super.toString() + " ¿Que consola es? " + referenciaConsola;
+	}
+
+	public int codigoAleatorio() {
+		int codigo;
+		Random random = new Random();
+		
+		 do {
+	            codigo = random.nextInt((5999 - 5000 + 1)) + 5000;
+	        } while (generatedCodes.contains(codigo));
+
+	        generatedCodes.add(codigo);
+	        return codigo;
 	}
 }
