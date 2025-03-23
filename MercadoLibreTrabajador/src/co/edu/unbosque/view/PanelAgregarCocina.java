@@ -11,10 +11,8 @@ import javax.imageio.ImageIO;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
@@ -35,7 +33,6 @@ public class PanelAgregarCocina extends JPanel {
 	private JLabel textResistecia;
 	private JRadioButton siR;
 	private JRadioButton noR;
-	private ButtonGroup opcioR;
 
 	public PanelAgregarCocina() throws IOException {
 
@@ -110,7 +107,7 @@ public class PanelAgregarCocina extends JPanel {
 		siP.setBorderPainted(false);
 		siP.setFocusPainted(false);
 		add(siP);
-        
+
 		noP = new JRadioButton("NO");
 		noP.setBounds(340, 310, 80, 30); // Ajustar el tamaño para que el texto sea visible
 		noP.setFont(new Font("Baloo", Font.BOLD, 15));
@@ -129,7 +126,7 @@ public class PanelAgregarCocina extends JPanel {
 		textResistecia.setText("¿Resiste altas temperatuas? ");
 		textResistecia.setFont(new Font("Baloo", Font.BOLD, 26));
 		add(textResistecia);
-		
+
 		siR = new JRadioButton("SI");
 		siR.setBounds(410, 370, 80, 30); // Ajustar el tamaño para que el texto sea visible
 		siR.setFont(new Font("Baloo", Font.BOLD, 15));
@@ -138,7 +135,7 @@ public class PanelAgregarCocina extends JPanel {
 		siR.setBorderPainted(false);
 		siR.setFocusPainted(false);
 		add(siR);
-        
+
 		noR = new JRadioButton("NO");
 		noR.setBounds(494, 370, 80, 30); // Ajustar el tamaño para que el texto sea visible
 		noR.setFont(new Font("Baloo", Font.BOLD, 15));
@@ -169,6 +166,102 @@ public class PanelAgregarCocina extends JPanel {
 
 	public void setBtnAgregar(JButton btnAgregar) {
 		this.btnAgregar = btnAgregar;
+	}
+
+	public JLabel getTextNombre() {
+		return textNombre;
+	}
+
+	public void setTextNombre(JLabel textNombre) {
+		this.textNombre = textNombre;
+	}
+
+	public JTextField getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(JTextField nombre) {
+		this.nombre = nombre;
+	}
+
+	public JLabel getTextPrecio() {
+		return textPrecio;
+	}
+
+	public void setTextPrecio(JLabel textPrecio) {
+		this.textPrecio = textPrecio;
+	}
+
+	public JSpinner getPrecio() {
+		return precio;
+	}
+
+	public void setPrecio(JSpinner precio) {
+		this.precio = precio;
+	}
+
+	public JLabel getImportImg() {
+		return ImportImg;
+	}
+
+	public void setImportImg(JLabel importImg) {
+		ImportImg = importImg;
+	}
+
+	public JButton getImagen() {
+		return imagen;
+	}
+
+	public void setImagen(JButton imagen) {
+		this.imagen = imagen;
+	}
+
+	public JLabel getTextPeligro() {
+		return textPeligro;
+	}
+
+	public void setTextPeligro(JLabel textPeligro) {
+		this.textPeligro = textPeligro;
+	}
+
+	public JRadioButton getSiP() {
+		return siP;
+	}
+
+	public void setSiP(JRadioButton siP) {
+		this.siP = siP;
+	}
+
+	public JRadioButton getNoP() {
+		return noP;
+	}
+
+	public void setNoP(JRadioButton noP) {
+		this.noP = noP;
+	}
+
+	public JLabel getTextResistecia() {
+		return textResistecia;
+	}
+
+	public void setTextResistecia(JLabel textResistecia) {
+		this.textResistecia = textResistecia;
+	}
+
+	public JRadioButton getSiR() {
+		return siR;
+	}
+
+	public void setSiR(JRadioButton siR) {
+		this.siR = siR;
+	}
+
+	public JRadioButton getNoR() {
+		return noR;
+	}
+
+	public void setNoR(JRadioButton noR) {
+		this.noR = noR;
 	}
 
 }
