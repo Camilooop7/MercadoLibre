@@ -77,7 +77,7 @@ public class CocinaDAO implements OperacionDAO<Cocina> {
 	}
 	public boolean encontrar(int index) {
 		// TODO Auto-generated method stub
-		return index < 0 && index >= listaCocinas.size();
+		return index >= 0 && index < listaCocinas.size();
 	}
 
 	/**

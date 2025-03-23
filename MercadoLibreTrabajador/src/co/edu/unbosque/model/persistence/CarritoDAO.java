@@ -78,7 +78,7 @@ public class CarritoDAO implements OperacionDAO<Carrito> {
 	
 	public boolean encontrar(int index) {
 		// TODO Auto-generated method stub
-		return index < 0 && index >= listaCarritos.size();
+		return index >= 0 && index < listaCarritos.size();
 	}
 
 	/**

@@ -77,7 +77,7 @@ public class DeporteDAO implements OperacionDAO<Deporte> {
 	}
 	public boolean encontrar(int index) {
 		// TODO Auto-generated method stub
-		return index < 0 && index >= listaDeportes.size();
+		return index >= 0 && index < listaDeportes.size();
 	}
 
 	/**

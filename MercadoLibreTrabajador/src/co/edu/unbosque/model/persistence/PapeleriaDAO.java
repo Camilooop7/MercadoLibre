@@ -81,7 +81,7 @@ public class PapeleriaDAO implements OperacionDAO<Papeleria> {
     }
     public boolean encontrar(int index) {
 		// TODO Auto-generated method stub
-		return index < 0 && index >= listaPapeleria.size();
+		return index >= 0 && index < listaPapeleria.size();
 	}
 
     /**

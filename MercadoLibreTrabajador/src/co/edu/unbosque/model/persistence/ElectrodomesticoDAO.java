@@ -78,7 +78,7 @@ public class ElectrodomesticoDAO implements OperacionDAO<Electrodomestico> {
     }
     public boolean encontrar(int index) {
 		// TODO Auto-generated method stub
-		return index < 0 && index >= listaElectrodomesticos.size();
+		return index >= 0 && index < listaElectrodomesticos.size();
 	}
 
     /**
