@@ -176,8 +176,8 @@ public class PanelAgregarCocina extends JPanel {
 		this.textNombre = textNombre;
 	}
 
-	public JTextField getNombre() {
-		return nombre;
+	public String getNombre() {
+		return  (String) nombre.getName();
 	}
 
 	public void setNombre(JTextField nombre) {
@@ -192,8 +192,8 @@ public class PanelAgregarCocina extends JPanel {
 		this.textPrecio = textPrecio;
 	}
 
-	public JSpinner getPrecio() {
-		return precio;
+	public int getPrecio() {
+		return (int) precio.getValue();
 	}
 
 	public void setPrecio(JSpinner precio) {

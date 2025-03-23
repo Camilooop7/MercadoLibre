@@ -47,7 +47,7 @@ public class Controller implements ActionListener {
 		vf.getVpt().getPpt().getBtnCrearU().setActionCommand("btnCrearU");
 		vf.getVpt().getPpt().getBtnSalir().addActionListener(this);
 		vf.getVpt().getPpt().getBtnSalir().setActionCommand("btnSalir");
-		
+
 		vf.getVpt().getPis().getBtnIngresar().addActionListener(this);
 		vf.getVpt().getPis().getBtnIngresar().setActionCommand("btnIngresarI");
 		vf.getVpt().getPis().getBtnVolver().addActionListener(this);
@@ -109,7 +109,7 @@ public class Controller implements ActionListener {
 		vf.getVpt().getPap().getPaoc().getBtnVideoJuego().setActionCommand("btnAgregarVJ");
 		vf.getVpt().getPap().getPaoc().getBtnDeporte().addActionListener(this);
 		vf.getVpt().getPap().getPaoc().getBtnDeporte().setActionCommand("btnAgregarDepor");
-		//cocina
+		// cocina
 		vf.getVpt().getPap().getPaco().getBtnAgregar().addActionListener(this);
 		vf.getVpt().getPap().getPaco().getBtnAgregar().setActionCommand("btnAgregaProCocina");
 		vf.getVpt().getPap().getPaco().getSiP().addActionListener(this);
@@ -120,10 +120,8 @@ public class Controller implements ActionListener {
 		vf.getVpt().getPap().getPaco().getSiR().setActionCommand("btnSiPeligo");
 		vf.getVpt().getPap().getPaco().getNoR().addActionListener(this);
 		vf.getVpt().getPap().getPaco().getNoR().setActionCommand("btNoPeligo");
-		
-		
 
-		//TODO botones
+		// TODO botones
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -567,11 +565,37 @@ public class Controller implements ActionListener {
 		
 		case "btnAgregaProCocina": {
 			String nombre = vf.getVpt().getPap().getPaco().getName();
-			int precio =
-			boolean esDecoracion;
-			boolean resisteAltaTemperatuta;
-			boolean esPeligroso;
-			mf.getBanoDAO().crear(new Bano());
+			int precio = (int) vf.getVpt().getPap().getPaco().getPrecio();
+			
+			
+			
+			
+			
+			boolean esDecoracion = false;
+			if (esDecoracion) {
+				vf.getVpt().getPap().getPaco();
+			} else {
+
+			}
+			
+			boolean resisteAltaTemperatuta = false;
+			if (resisteAltaTemperatuta) {
+				vf.getVpt().getPap().getPaco().getSiP();
+				resisteAltaTemperatuta = true;
+			} else if (resisteAltaTemperatuta) {
+				vf.getVpt().getPap().getPaco().getNoP();
+				resisteAltaTemperatuta = false;
+			} 
+			boolean esPeligroso= false;
+			if (esPeligroso) {
+				vf.getVpt().getPap().getPaco().getSiR();
+				esPeligroso = true;
+			} else if (esPeligroso) {
+				vf.getVpt().getPap().getPaco().getNoR();
+				esPeligroso = false;
+			} 
+			
+			
 			
 			
 			break;
