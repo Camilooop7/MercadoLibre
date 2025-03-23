@@ -2,13 +2,15 @@ package co.edu.unbosque.model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Random;
 
 public class Cocina extends Hogar implements Serializable { // Declara la clase Cocina, que hereda de Hogar e implementa
 															// Serializable
 
 	private boolean resisteAltaTemperatuta; // Atributo que indica si el producto resiste altas temperaturas
 	private boolean esPeligroso; // Atributo que indica si el producto es peligroso
-
+	private HashSet<Integer> generatedCodes = new HashSet<>();
 	public Cocina() {
 		// Constructor vacío por defecto
 	}
@@ -56,5 +58,15 @@ public class Cocina extends Hogar implements Serializable { // Declara la clase 
 		// Sobrescribe toString para incluir los atributos resisteAltaTemperatuta y
 		// esPeligroso
 	}
+	public int codigoAleatorio() {
+		int codigo;
+		Random random = new Random();
+		
+		 do {
+	            codigo = random.nextInt((1999 - 1000 + 1)) + 1000;
+	        } while (generatedCodes.contains(codigo));
 
+	        generatedCodes.add(codigo);
+	        return codigo;
+	}
 }
