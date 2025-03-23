@@ -127,6 +127,7 @@ public class DeporteDAO implements OperacionDAO<Deporte> {
 				contenido += listaDeportes.get(i).getNombre()+";";
 				contenido += listaDeportes.get(i).getPrecio()+";";
 				contenido += listaDeportes.get(i).getId()+";";
+				contenido += listaDeportes.get(i).getFecha()+";";
 				contenido += listaDeportes.get(i).getImagen()+";";
 				contenido += listaDeportes.get(i).isEsAccesorio()+";";
 				contenido += listaDeportes.get(i).getDeporte()+"\n";

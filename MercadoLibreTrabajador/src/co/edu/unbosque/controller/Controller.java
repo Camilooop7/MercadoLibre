@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
+import co.edu.unbosque.model.Bano;
 import co.edu.unbosque.model.Cliente;
 import co.edu.unbosque.model.ModelFacade;
 import co.edu.unbosque.model.Trabajador;
@@ -108,6 +109,17 @@ public class Controller implements ActionListener {
 		vf.getVpt().getPap().getPaoc().getBtnVideoJuego().setActionCommand("btnAgregarVJ");
 		vf.getVpt().getPap().getPaoc().getBtnDeporte().addActionListener(this);
 		vf.getVpt().getPap().getPaoc().getBtnDeporte().setActionCommand("btnAgregarDepor");
+		//cocina
+		vf.getVpt().getPap().getPaco().getBtnAgregar().addActionListener(this);
+		vf.getVpt().getPap().getPaco().getBtnAgregar().setActionCommand("btnAgregaProCocina");
+		vf.getVpt().getPap().getPaco().getSiP().addActionListener(this);
+		vf.getVpt().getPap().getPaco().getSiP().setActionCommand("btnSiPeligo");
+		vf.getVpt().getPap().getPaco().getNoP().addActionListener(this);
+		vf.getVpt().getPap().getPaco().getNoP().setActionCommand("btNoPeligo");
+		vf.getVpt().getPap().getPaco().getSiR().addActionListener(this);
+		vf.getVpt().getPap().getPaco().getSiR().setActionCommand("btnSiPeligo");
+		vf.getVpt().getPap().getPaco().getNoR().addActionListener(this);
+		vf.getVpt().getPap().getPaco().getNoR().setActionCommand("btNoPeligo");
 		
 		
 
@@ -550,6 +562,20 @@ public class Controller implements ActionListener {
 			vf.getVpt().getPt().setVisible(true);
 			break;
 
+		}
+		
+		
+		case "btnAgregaProCocina": {
+			String nombre = vf.getVpt().getPap().getPaco().getName();
+			int precio =
+			boolean esDecoracion;
+			boolean resisteAltaTemperatuta;
+			boolean esPeligroso;
+			mf.getBanoDAO().crear(new Bano());
+			
+			
+			break;
+			
 		}
 
 		}

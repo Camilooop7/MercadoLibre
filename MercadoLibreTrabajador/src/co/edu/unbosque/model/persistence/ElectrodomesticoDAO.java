@@ -128,6 +128,7 @@ public class ElectrodomesticoDAO implements OperacionDAO<Electrodomestico> {
 			contenido += listaElectrodomesticos.get(i).getNombre()+";";
 			contenido += listaElectrodomesticos.get(i).getPrecio()+";";
 			contenido += listaElectrodomesticos.get(i).getId()+";";
+			contenido += listaElectrodomesticos.get(i).getFecha()+";";
 			contenido += listaElectrodomesticos.get(i).getImagen()+";";
 			contenido += listaElectrodomesticos.get(i).isEsPortatil()+";";
 			contenido += listaElectrodomesticos.get(i).getFuenteDeEnergia()+"\n";

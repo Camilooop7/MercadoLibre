@@ -129,6 +129,7 @@ public class VideoJuegoDAO implements OperacionDAO<VideoJuego> {
 			contenido += listaVideoJuegos.get(i).getNombre()+";";
 			contenido += listaVideoJuegos.get(i).getPrecio()+";";
 			contenido += listaVideoJuegos.get(i).getId()+";";
+			contenido += listaVideoJuegos.get(i).getFecha()+";";
 			contenido += listaVideoJuegos.get(i).getImagen()+";";
 			contenido += listaVideoJuegos.get(i).isEsAccesorio()+";";
 			contenido += listaVideoJuegos.get(i).getReferenciaConsola()+"\n";

@@ -137,6 +137,7 @@ public class BanoDAO implements OperacionDAO<Bano> {
 			contenido += listaBanos.get(i).getNombre()+";";
 			contenido += listaBanos.get(i).getPrecio()+";";
 			contenido += listaBanos.get(i).getId()+";";
+			contenido += listaBanos.get(i).getFecha()+";";
 			contenido += listaBanos.get(i).getImagen()+";";
 			contenido += listaBanos.get(i).isEsDecoracion()+";";
 			contenido += listaBanos.get(i).isEsLimpieza()+"\n";

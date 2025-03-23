@@ -128,6 +128,7 @@ public class CocinaDAO implements OperacionDAO<Cocina> {
 			contenido += listaCocinas.get(i).getNombre()+";";
 			contenido += listaCocinas.get(i).getPrecio()+";";
 			contenido += listaCocinas.get(i).getId()+";";
+			contenido += listaCocinas.get(i).getFecha()+";";
 			contenido += listaCocinas.get(i).getImagen()+";";
 			contenido += listaCocinas.get(i).isEsDecoracion()+";";
 			contenido += listaCocinas.get(i).isResisteAltaTemperatuta()+";";

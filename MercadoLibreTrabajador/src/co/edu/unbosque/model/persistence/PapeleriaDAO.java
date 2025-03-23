@@ -130,6 +130,7 @@ public class PapeleriaDAO implements OperacionDAO<Papeleria> {
 			contenido += listaPapeleria.get(i).getNombre()+";";
 			contenido += listaPapeleria.get(i).getPrecio()+";";
 			contenido += listaPapeleria.get(i).getId()+";";
+			contenido += listaPapeleria.get(i).getFecha()+";";
 			contenido += listaPapeleria.get(i).getImagen()+";";
 			contenido += listaPapeleria.get(i).isEsPortatil()+";";
 			contenido += listaPapeleria.get(i).getCantidadPorPaquete()+"\n";
