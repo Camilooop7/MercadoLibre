@@ -27,6 +27,9 @@ public class PanelAgregarCocina extends JPanel {
 	private JSpinner precio;
 	private JLabel ImportImg;
 	private JButton imagen;
+	private JLabel textDecoracion;
+	private JRadioButton siD;
+	private JRadioButton noD;
 	private JLabel textPeligro;
 	private JRadioButton siP;
 	private JRadioButton noP;
@@ -93,14 +96,42 @@ public class PanelAgregarCocina extends JPanel {
 		imagen.setFont(new Font("Baloo", Font.BOLD, 21));
 		add(imagen);
 
+		textDecoracion = new JLabel();
+		textDecoracion.setBounds(50, 260, 400, 60);
+		textDecoracion.setText("¿Es decoración? ");
+		textDecoracion.setFont(new Font("Baloo", Font.BOLD, 26));
+		add(textDecoracion);
+
+		siD = new JRadioButton("SI");
+		siD.setBounds(257, 280, 80, 30); // Ajustar el tamaño para que el texto sea visible
+		siD.setFont(new Font("Baloo", Font.BOLD, 15));
+		siD.setOpaque(false);
+		siD.setContentAreaFilled(false);
+		siD.setBorderPainted(false);
+		siD.setFocusPainted(false);
+		add(siD);
+
+		noD = new JRadioButton("NO");
+		noD.setBounds(340, 280, 80, 30); // Ajustar el tamaño para que el texto sea visible
+		noD.setFont(new Font("Baloo", Font.BOLD, 15));
+		noD.setOpaque(false);
+		noD.setContentAreaFilled(false);
+		noD.setBorderPainted(false);
+		noD.setFocusPainted(false);
+		add(noD);
+		// Agrupar los JRadioButton
+		ButtonGroup grupo = new ButtonGroup();
+		grupo.add(siD);
+		grupo.add(noD);
+
 		textPeligro = new JLabel();
-		textPeligro.setBounds(50, 290, 400, 60);
+		textPeligro.setBounds(50, 310, 400, 60);
 		textPeligro.setText("¿Es peligroso? ");
 		textPeligro.setFont(new Font("Baloo", Font.BOLD, 26));
 		add(textPeligro);
 
 		siP = new JRadioButton("SI");
-		siP.setBounds(257, 310, 80, 30); // Ajustar el tamaño para que el texto sea visible
+		siP.setBounds(257, 330, 80, 30); // Ajustar el tamaño para que el texto sea visible
 		siP.setFont(new Font("Baloo", Font.BOLD, 15));
 		siP.setOpaque(false);
 		siP.setContentAreaFilled(false);
@@ -109,7 +140,7 @@ public class PanelAgregarCocina extends JPanel {
 		add(siP);
 
 		noP = new JRadioButton("NO");
-		noP.setBounds(340, 310, 80, 30); // Ajustar el tamaño para que el texto sea visible
+		noP.setBounds(340, 330, 80, 30); // Ajustar el tamaño para que el texto sea visible
 		noP.setFont(new Font("Baloo", Font.BOLD, 15));
 		noP.setOpaque(false);
 		noP.setContentAreaFilled(false);
@@ -117,18 +148,18 @@ public class PanelAgregarCocina extends JPanel {
 		noP.setFocusPainted(false);
 		add(noP);
 		// Agrupar los JRadioButton
-		ButtonGroup grupo = new ButtonGroup();
-		grupo.add(siP);
-		grupo.add(noP);
+		ButtonGroup grupo1 = new ButtonGroup();
+		grupo1.add(siP);
+		grupo1.add(noP);
 
 		textResistecia = new JLabel();
-		textResistecia.setBounds(50, 350, 400, 60);
+		textResistecia.setBounds(50, 360, 400, 60);
 		textResistecia.setText("¿Resiste altas temperatuas? ");
 		textResistecia.setFont(new Font("Baloo", Font.BOLD, 26));
 		add(textResistecia);
 
 		siR = new JRadioButton("SI");
-		siR.setBounds(410, 370, 80, 30); // Ajustar el tamaño para que el texto sea visible
+		siR.setBounds(410, 380, 80, 30); // Ajustar el tamaño para que el texto sea visible
 		siR.setFont(new Font("Baloo", Font.BOLD, 15));
 		siR.setOpaque(false);
 		siR.setContentAreaFilled(false);
@@ -137,7 +168,7 @@ public class PanelAgregarCocina extends JPanel {
 		add(siR);
 
 		noR = new JRadioButton("NO");
-		noR.setBounds(494, 370, 80, 30); // Ajustar el tamaño para que el texto sea visible
+		noR.setBounds(494, 380, 80, 30); // Ajustar el tamaño para que el texto sea visible
 		noR.setFont(new Font("Baloo", Font.BOLD, 15));
 		noR.setOpaque(false);
 		noR.setContentAreaFilled(false);
@@ -145,9 +176,9 @@ public class PanelAgregarCocina extends JPanel {
 		noR.setFocusPainted(false);
 		add(noR);
 		// Agrupar los JRadioButton
-		ButtonGroup grupo1 = new ButtonGroup();
-		grupo1.add(siR);
-		grupo1.add(noR);
+		ButtonGroup grupo2 = new ButtonGroup();
+		grupo2.add(siR);
+		grupo2.add(noR);
 
 		add(fondo);
 	}
@@ -177,7 +208,7 @@ public class PanelAgregarCocina extends JPanel {
 	}
 
 	public String getNombre() {
-		return  (String) nombre.getName();
+		return (String) nombre.getName();
 	}
 
 	public void setNombre(JTextField nombre) {
@@ -262,6 +293,30 @@ public class PanelAgregarCocina extends JPanel {
 
 	public void setNoR(JRadioButton noR) {
 		this.noR = noR;
+	}
+
+	public JLabel getTextDecoracion() {
+		return textDecoracion;
+	}
+
+	public void setTextDecoracion(JLabel textDecoracion) {
+		this.textDecoracion = textDecoracion;
+	}
+
+	public JRadioButton getSiD() {
+		return siD;
+	}
+
+	public void setSiD(JRadioButton siD) {
+		this.siD = siD;
+	}
+
+	public JRadioButton getNoD() {
+		return noD;
+	}
+
+	public void setNoD(JRadioButton noD) {
+		this.noD = noD;
 	}
 
 }
