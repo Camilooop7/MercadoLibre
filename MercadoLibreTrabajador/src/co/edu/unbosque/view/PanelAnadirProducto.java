@@ -20,7 +20,6 @@ public class PanelAnadirProducto extends JPanel {
 	private JButton btnHogar;
 	private JButton btnOficina;
 	private JButton btnOcio;
-	private JTextArea espacioDato;
 	private PanelAgregarH pah;
 
 	public PanelAnadirProducto() throws IOException {
@@ -72,16 +71,6 @@ public class PanelAnadirProducto extends JPanel {
 		btnOcio.setFont(new Font("Baloo", Font.BOLD, 35));
 		add(btnOcio);
 
-		espacioDato = new JTextArea();
-		espacioDato.setBounds(412, 250, 780, 433);
-		espacioDato.setFocusable(false);
-		espacioDato.setBackground(Color.WHITE);
-		espacioDato.setFont(new Font("Baloo", Font.BOLD, 20));
-		espacioDato.setLineWrap(true);
-		espacioDato.setWrapStyleWord(true);
-		espacioDato.setEditable(false);
-		add(espacioDato);
-
 		pah = new PanelAgregarH();
 
 		add(pah).setVisible(false);
@@ -126,14 +115,6 @@ public class PanelAnadirProducto extends JPanel {
 
 	public void setBtnOcio(JButton btnOcio) {
 		this.btnOcio = btnOcio;
-	}
-
-	public JTextArea getEspacioDato() {
-		return espacioDato;
-	}
-
-	public void setEspacioDato(JTextArea espacioDato) {
-		this.espacioDato = espacioDato;
 	}
 
 	public PanelAgregarH getPah() {

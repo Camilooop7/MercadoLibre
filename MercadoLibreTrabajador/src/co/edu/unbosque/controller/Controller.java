@@ -75,6 +75,9 @@ public class Controller implements ActionListener {
 
 		vf.getVpt().getPap().getBtnVolver().addActionListener(this);
 		vf.getVpt().getPap().getBtnVolver().setActionCommand("btnVolverAna");
+		vf.getVpt().getPap().getBtnHogar().addActionListener(this);
+		vf.getVpt().getPap().getBtnHogar().setActionCommand("btnAnadirHogar");
+		
 		
 		vf.getVpt().getPmu().getBtnVolver().addActionListener(this);
 		vf.getVpt().getPmu().getBtnVolver().setActionCommand("btnVolverMU");
@@ -222,6 +225,11 @@ public class Controller implements ActionListener {
 			vf.getVpt().getPt().setVisible(false);
 			vf.getVpt().getPap().setVisible(true);
 
+			break;
+		}
+		case "btnAnadirHogar": {
+			vf.getVpt().getPap().getPah().setVisible(true);
+			
 			break;
 		}
 		case "btnModificarP": {
