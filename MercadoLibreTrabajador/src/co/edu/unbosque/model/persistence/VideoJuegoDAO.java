@@ -56,6 +56,10 @@ public class VideoJuegoDAO implements OperacionDAO<VideoJuego> {
             return 1;
         }
     }
+    public boolean encontrar(int index) {
+		// TODO Auto-generated method stub
+		return index < 0 && index >= listaVideoJuegos.size();
+	}
     /**
 	 *Metodo actualizar el cual recibe como parametro un dato tipo entero y nuevoDato en el cual se incluye
 	 *un condicional tipo if, verifica y recorre los limites de las lista actualizando 

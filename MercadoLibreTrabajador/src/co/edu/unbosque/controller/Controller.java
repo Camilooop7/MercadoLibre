@@ -260,18 +260,23 @@ public class Controller implements ActionListener {
 				if (tipo.contains("cliente")) {
 					int a = vf.getVemer().leerInt("¿Cual desea actualizar?");
 					ExceptionCheker.checkerNegativeNumber(a - 1);
+					if (mf.getClienteDAO().encontrar(a)) {
 
-					String nombre = vf.getVemer().leerTexto("Nombre nuevo:");
-					String verificar = mf.getTrabajadorDAO().econtrarNombre(nombre);
-					ExceptionCheker.checkerCharacter(nombre);
-					ExceptionCheker.checkerUsername(verificar);
-					String contra = vf.getVemer().leerTexto("Contraseña nueva:");
-					ExceptionCheker.checkerPasword(contra);
+						String nombre = vf.getVemer().leerTexto("Nombre nuevo:");
+						String verificar = mf.getTrabajadorDAO().econtrarNombre(nombre);
+						ExceptionCheker.checkerCharacter(nombre);
+						ExceptionCheker.checkerUsername(verificar);
+						String contra = vf.getVemer().leerTexto("Contraseña nueva:");
+						ExceptionCheker.checkerPasword(contra);
+						
+						mf.getClienteDAO().actulizar(a - 1, new Cliente(nombre, contra));
+						vf.getVpt().getPmu().setTexto(mf.getClienteDAO().mostrarTodo());
+						vf.getVpt().getPmu().revalidate();
+						vf.getVpt().getPmu().repaint();
+					}else {
+						vf.getVemer().mostrar("la posicion que desea actualizar no esta en la lista");
+					}
 
-					mf.getClienteDAO().actulizar(a - 1, new Cliente(nombre, contra));
-					vf.getVpt().getPmu().setTexto(mf.getClienteDAO().mostrarTodo());
-					vf.getVpt().getPmu().revalidate();
-					vf.getVpt().getPmu().repaint();
 
 				}
 			} catch (TextException e1) {
@@ -306,17 +311,21 @@ public class Controller implements ActionListener {
 				if (tipo.contains("trabajador")) {
 					int a = vf.getVemer().leerInt("¿Cual desea actualizar?");
 					ExceptionCheker.checkerNegativeNumber(a - 1);
-
-					String nombre = vf.getVemer().leerTexto("Nombre nuevo:");
-					String verificar = mf.getTrabajadorDAO().econtrarNombre(nombre);
-					ExceptionCheker.checkerCharacter(nombre);
-					ExceptionCheker.checkerUsername(verificar);
-					String contra = vf.getVemer().leerTexto("Contraseña nueva:");
-					ExceptionCheker.checkerPasword(contra);
-					mf.getTrabajadorDAO().actulizar(a - 1, new Trabajador(nombre, contra));
-					vf.getVpt().getPmu().setTexto(mf.getTrabajadorDAO().mostrarTodo());
-					vf.getVpt().getPmu().revalidate();
-					vf.getVpt().getPmu().repaint();
+					if (mf.getTrabajadorDAO().encontrar(a)) {
+						
+						String nombre = vf.getVemer().leerTexto("Nombre nuevo:");
+						String verificar = mf.getTrabajadorDAO().econtrarNombre(nombre);
+						ExceptionCheker.checkerCharacter(nombre);
+						ExceptionCheker.checkerUsername(verificar);
+						String contra = vf.getVemer().leerTexto("Contraseña nueva:");
+						ExceptionCheker.checkerPasword(contra);
+						mf.getTrabajadorDAO().actulizar(a - 1, new Trabajador(nombre, contra));
+						vf.getVpt().getPmu().setTexto(mf.getTrabajadorDAO().mostrarTodo());
+						vf.getVpt().getPmu().revalidate();
+						vf.getVpt().getPmu().repaint();
+					}else {
+						vf.getVemer().mostrar("la posicion que desea actualizar no esta en la lista");
+					}
 				}
 			} catch (TextException e1) {
 				e1.printStackTrace();
@@ -353,11 +362,17 @@ public class Controller implements ActionListener {
 				if (tipo.contains("cliente")) {
 					int a = vf.getVemer().leerInt("¿Cual desea eliminar?");
 					ExceptionCheker.checkerNegativeNumber(a - 1);
+					if (mf.getClienteDAO().encontrar(a)) {
+						
+						mf.getClienteDAO().eliminar(a - 1);
+						vf.getVpt().getPmu().setTexto(mf.getClienteDAO().mostrarTodo());
+						vf.getVpt().getPmu().revalidate();
+						vf.getVpt().getPmu().repaint();
+						
+					} else {
+						vf.getVemer().mostrar("la posicion a eliminar no esta en la lista");
 
-					mf.getClienteDAO().eliminar(a - 1);
-					vf.getVpt().getPmu().setTexto(mf.getClienteDAO().mostrarTodo());
-					vf.getVpt().getPmu().revalidate();
-					vf.getVpt().getPmu().repaint();
+					}
 
 				}
 			} catch (TextException e1) {
@@ -373,11 +388,17 @@ public class Controller implements ActionListener {
 				if (tipo.contains("trabajador")) {
 					int a = vf.getVemer().leerInt("¿Cual desea eliminar?");
 					ExceptionCheker.checkerNegativeNumber(a - 1);
-
-					mf.getTrabajadorDAO().eliminar(a - 1);
-					vf.getVpt().getPmu().setTexto(mf.getTrabajadorDAO().mostrarTodo());
-					vf.getVpt().getPmu().revalidate();
-					vf.getVpt().getPmu().repaint();
+					int a2 = a-1;
+					if (mf.getTrabajadorDAO().encontrar(a2)) {
+						
+						mf.getTrabajadorDAO().eliminar(a2);
+						vf.getVpt().getPmu().setTexto(mf.getTrabajadorDAO().mostrarTodo());
+						vf.getVpt().getPmu().revalidate();
+						vf.getVpt().getPmu().repaint();
+						
+					}else {
+						vf.getVemer().mostrar("la posicion a eliminar no esta en la lista");
+					}
 				}
 
 			} catch (TextException e1) {

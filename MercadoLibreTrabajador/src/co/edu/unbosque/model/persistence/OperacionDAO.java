@@ -32,6 +32,8 @@ public interface OperacionDAO<C> {
      * Retorna una cadena de texto que contiene la representación de todos los objetos.
      */
     public String mostrarTodo();
+    
+    public boolean encontrar(int index);
 
     /**
      * Método para cargar los datos serializados desde un archivo o fuente de datos.

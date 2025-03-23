@@ -75,6 +75,10 @@ public class ClienteDAO implements OperacionDAO<Cliente> {
             return 1;
         }
     }
+    public boolean encontrar(int index) {
+		// TODO Auto-generated method stub
+		return index >= 0 && index < listaClientes.size();
+	}
 
     /**
 	 * Metodo mosrtarTodo el cual no recibe parametros Se crea una variable tipo
