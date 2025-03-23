@@ -1,25 +1,26 @@
 package co.edu.unbosque.model;
 
 import java.io.Serializable; // Importa la interfaz Serializable
+import java.time.LocalDate;
 
 public abstract class Producto implements Serializable { // Declara la clase abstracta Producto
 
 	private String nombre; // Atributo que almacena el nombre del producto
 	private int precio; // Atributo que almacena el precio del producto
 	private int id; // Atributo que almacena el identificador del producto
-	private int cantidad; // Atributo que almacena la cantidad disponible del producto
+	private LocalDate fecha = LocalDate.now(); // Atributo que almacena la cantidad disponible del producto
 	private String imagen; // Atributo que almacena la ruta de la imagen del producto
 
 	public Producto() { // Constructor vacío
 		// TODO Auto-generated constructor stub
 	}
 
-	public Producto(String nombre, int precio, int id, int cantidad, String imagen) { // Constructor con parámetros
+	public Producto(String nombre, int precio, int id, LocalDate fecha, String imagen) { // Constructor con parámetros
 		super(); // Llama al constructor de la clase padre
 		this.nombre = nombre; // Asigna el valor del nombre
 		this.precio = precio; // Asigna el valor del precio
 		this.id = id; // Asigna el valor del id
-		this.cantidad = cantidad; // Asigna el valor de la cantidad
+		this.fecha = fecha; // Asigna el valor de la cantidad
 		this.imagen = imagen; // Asigna la ruta de la imagen
 	}
 
@@ -47,14 +48,6 @@ public abstract class Producto implements Serializable { // Declara la clase abs
 		this.id = id; // Asigna el nuevo identificador
 	}
 
-	public int getCantidad() { // Método para obtener la cantidad disponible del producto
-		return cantidad; // Retorna la cantidad
-	}
-
-	public void setCantidad(int cantidad) { // Método para modificar la cantidad del producto
-		this.cantidad = cantidad; // Asigna la nueva cantidad
-	}
-
 	public String getImagen() { // Método para obtener la imagen del producto
 		return imagen; // Retorna la imagen
 	}
@@ -63,8 +56,16 @@ public abstract class Producto implements Serializable { // Declara la clase abs
 		this.imagen = imagen; // Asigna la nueva imagen
 	}
 
+	public LocalDate getFecha() {
+		return fecha;
+	}
+
+	public void setFecha(LocalDate fecha) {
+		this.fecha = fecha;
+	}
+
 	@Override
 	public String toString() { // Método para representar el objeto como cadena
-		return "Nombre: " + nombre + " Precio: " + precio + " ID: " + id + " Cantidad: " + cantidad + " Imagen: " + imagen;
+		return "Nombre: " + nombre + " Precio: " + precio + " ID: " + id + " Fecha: " + fecha + " Imagen: " + imagen;
 	}
 }

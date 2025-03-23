@@ -1,8 +1,10 @@
 package co.edu.unbosque.model;
 
-import java.io.Serializable; 
+import java.io.Serializable;
+import java.time.LocalDate;
 
-public abstract class Ocio extends Producto implements Serializable { // Declara la clase Ocio como abstracta y hereda de Producto
+public abstract class Ocio extends Producto implements Serializable { // Declara la clase Ocio como abstracta y hereda
+																		// de Producto
 
 	private boolean esAccesorio; // Atributo que indica si el producto es un accesorio
 
@@ -15,13 +17,13 @@ public abstract class Ocio extends Producto implements Serializable { // Declara
 		this.esAccesorio = esAccesorio; // Asigna el valor recibido
 	}
 
-	public Ocio(String nombre, int precio, int id, int cantidad, String imagen, boolean esAccesorio) { 
-		super(nombre, precio, id, cantidad, imagen); // Llama al constructor de Producto
+	public Ocio(String nombre, int precio, int id, LocalDate fecha, String imagen, boolean esAccesorio) {
+		super(nombre, precio, id, fecha, imagen); // Llama al constructor de Producto
 		this.esAccesorio = esAccesorio; // Asigna el valor recibido
 	}
 
-	public Ocio(String nombre, int precio, int id, int cantidad, String imagen) { 
-		super(nombre, precio, id, cantidad, imagen); // Llama al constructor de Producto
+	public Ocio(String nombre, int precio, int id, LocalDate fecha, String imagen) {
+		super(nombre, precio, id, fecha, imagen); // Llama al constructor de Producto
 		// TODO Auto-generated constructor stub
 	}
 
@@ -38,4 +40,3 @@ public abstract class Ocio extends Producto implements Serializable { // Declara
 		return super.toString() + "¿Es accesorio? " + esAccesorio; // Retorna la información del objeto
 	}
 }
-

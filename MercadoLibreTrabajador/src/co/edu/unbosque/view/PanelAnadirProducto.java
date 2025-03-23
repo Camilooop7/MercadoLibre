@@ -23,6 +23,12 @@ public class PanelAnadirProducto extends JPanel {
 	private PanelAgregarH pah;
 	private PanelAgregarOficina paof;
 	private PanelAgregarOcio paoc;
+	private PanelAgregarCocina paco;
+	private PanelAgregarBano paba;
+	private PanelAgregarElectro pae;
+	private PanelAgregarPapeleria papape;
+	private PanelAgregarVideoJuego pavj;
+	private PanelAgregarDeporte padepor;
 
 	public PanelAnadirProducto() throws IOException {
 
@@ -76,9 +82,22 @@ public class PanelAnadirProducto extends JPanel {
 		pah = new PanelAgregarH();
 		paof = new PanelAgregarOficina();
 		paoc = new PanelAgregarOcio();
+		paco = new PanelAgregarCocina();
+		paba = new PanelAgregarBano();
+		pae = new PanelAgregarElectro();
+		papape = new PanelAgregarPapeleria();
+		pavj = new PanelAgregarVideoJuego();
+		padepor = new PanelAgregarDeporte();
+
+		add(pae).setVisible(false);
+		add(papape).setVisible(false);
+		add(pavj).setVisible(false);
+		add(padepor).setVisible(false);
+		add(paco).setVisible(false);
+		add(paba).setVisible(false);
 		add(pah).setVisible(false);
 		add(paof).setVisible(false);
-		add(paoc).setVisible(false);		
+		add(paoc).setVisible(false);
 		add(fondo);
 	}
 
@@ -144,6 +163,54 @@ public class PanelAnadirProducto extends JPanel {
 
 	public void setPaoc(PanelAgregarOcio paoc) {
 		this.paoc = paoc;
+	}
+
+	public PanelAgregarCocina getPaco() {
+		return paco;
+	}
+
+	public void setPaco(PanelAgregarCocina paco) {
+		this.paco = paco;
+	}
+
+	public PanelAgregarBano getPaba() {
+		return paba;
+	}
+
+	public void setPaba(PanelAgregarBano paba) {
+		this.paba = paba;
+	}
+
+	public PanelAgregarElectro getPae() {
+		return pae;
+	}
+
+	public void setPae(PanelAgregarElectro pae) {
+		this.pae = pae;
+	}
+
+	public PanelAgregarPapeleria getPapape() {
+		return papape;
+	}
+
+	public void setPapape(PanelAgregarPapeleria papape) {
+		this.papape = papape;
+	}
+
+	public PanelAgregarVideoJuego getPavj() {
+		return pavj;
+	}
+
+	public void setPavj(PanelAgregarVideoJuego pavj) {
+		this.pavj = pavj;
+	}
+
+	public PanelAgregarDeporte getPadepor() {
+		return padepor;
+	}
+
+	public void setPadepor(PanelAgregarDeporte padepor) {
+		this.padepor = padepor;
 	}
 
 }

@@ -46,6 +46,7 @@ public class Controller implements ActionListener {
 		vf.getVpt().getPpt().getBtnCrearU().setActionCommand("btnCrearU");
 		vf.getVpt().getPpt().getBtnSalir().addActionListener(this);
 		vf.getVpt().getPpt().getBtnSalir().setActionCommand("btnSalir");
+		
 		vf.getVpt().getPis().getBtnIngresar().addActionListener(this);
 		vf.getVpt().getPis().getBtnIngresar().setActionCommand("btnIngresarI");
 		vf.getVpt().getPis().getBtnVolver().addActionListener(this);
@@ -93,6 +94,24 @@ public class Controller implements ActionListener {
 		vf.getVpt().getPmu().getBtnTrabajador().addActionListener(this);
 		vf.getVpt().getPmu().getBtnTrabajador().setActionCommand("btnTrabajadoresMU");
 
+		vf.getVpt().getPap().getPah().getBtnCocina().addActionListener(this);
+		vf.getVpt().getPap().getPah().getBtnCocina().setActionCommand("btnAgregarCocina");
+		vf.getVpt().getPap().getPah().getBtnBano().addActionListener(this);
+		vf.getVpt().getPap().getPah().getBtnBano().setActionCommand("btnAgregarBano");
+
+		vf.getVpt().getPap().getPaof().getBtnElectrodomestico().addActionListener(this);
+		vf.getVpt().getPap().getPaof().getBtnElectrodomestico().setActionCommand("btnAgregarElectro");
+		vf.getVpt().getPap().getPaof().getBtnPapeleria().addActionListener(this);
+		vf.getVpt().getPap().getPaof().getBtnPapeleria().setActionCommand("btnAgregarPapel");
+
+		vf.getVpt().getPap().getPaoc().getBtnVideoJuego().addActionListener(this);
+		vf.getVpt().getPap().getPaoc().getBtnVideoJuego().setActionCommand("btnAgregarVJ");
+		vf.getVpt().getPap().getPaoc().getBtnDeporte().addActionListener(this);
+		vf.getVpt().getPap().getPaoc().getBtnDeporte().setActionCommand("btnAgregarDepor");
+		
+		
+
+		//TODO botones
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -232,30 +251,102 @@ public class Controller implements ActionListener {
 		}
 		case "btnAnadirHogar": {
 			vf.getVpt().getPap().getPaof().setVisible(false);
+			vf.getVpt().getPap().getPae().setVisible(false);
+			vf.getVpt().getPap().getPapape().setVisible(false);
+
 			vf.getVpt().getPap().getPaoc().setVisible(false);
+			vf.getVpt().getPap().getPavj().setVisible(false);
+			vf.getVpt().getPap().getPadepor().setVisible(false);
+
+			vf.getVpt().getPap().getPaco().setVisible(false);
+			vf.getVpt().getPap().getPaba().setVisible(false);
 			vf.getVpt().getPap().getPah().setVisible(true);
 
 			break;
 		}
 		case "btnAnadirOficina": {
 			vf.getVpt().getPap().getPah().setVisible(false);
+			vf.getVpt().getPap().getPaco().setVisible(false);
+			vf.getVpt().getPap().getPaba().setVisible(false);
+
 			vf.getVpt().getPap().getPaoc().setVisible(false);
+			vf.getVpt().getPap().getPavj().setVisible(false);
+			vf.getVpt().getPap().getPadepor().setVisible(false);
+
+			vf.getVpt().getPap().getPae().setVisible(false);
+			vf.getVpt().getPap().getPapape().setVisible(false);
 			vf.getVpt().getPap().getPaof().setVisible(true);
 
 			break;
 		}
 		case "btnAnadirOcio": {
 			vf.getVpt().getPap().getPah().setVisible(false);
+			vf.getVpt().getPap().getPaco().setVisible(false);
+			vf.getVpt().getPap().getPaba().setVisible(false);
+
 			vf.getVpt().getPap().getPaof().setVisible(false);
+			vf.getVpt().getPap().getPae().setVisible(false);
+			vf.getVpt().getPap().getPapape().setVisible(false);
+
+			vf.getVpt().getPap().getPavj().setVisible(false);
+			vf.getVpt().getPap().getPadepor().setVisible(false);
 			vf.getVpt().getPap().getPaoc().setVisible(true);
+
 			break;
 		}
+		case "btnAgregarCocina": {
+			vf.getVpt().getPap().getPah().setVisible(false);
+			vf.getVpt().getPap().getPaba().setVisible(false);
+			vf.getVpt().getPap().getPaco().setVisible(true);
+
+			break;
+
+		}
+		case "btnAgregarBano": {
+			vf.getVpt().getPap().getPah().setVisible(false);
+			vf.getVpt().getPap().getPaco().setVisible(false);
+			vf.getVpt().getPap().getPaba().setVisible(true);
+			break;
+
+		}
+		case "btnAgregarElectro": {
+			vf.getVpt().getPap().getPaof().setVisible(false);
+			vf.getVpt().getPap().getPapape().setVisible(false);
+			vf.getVpt().getPap().getPae().setVisible(true);
+
+			break;
+
+		}
+		case "btnAgregarPapel": {
+			vf.getVpt().getPap().getPaof().setVisible(false);
+			vf.getVpt().getPap().getPae().setVisible(false);
+			vf.getVpt().getPap().getPapape().setVisible(true);
+			break;
+
+		}
+		case "btnAgregarVJ": {
+			vf.getVpt().getPap().getPaoc().setVisible(false);
+			vf.getVpt().getPap().getPadepor().setVisible(false);
+			vf.getVpt().getPap().getPavj().setVisible(true);
+
+			break;
+
+		}
+		case "btnAgregarDepor": {
+			vf.getVpt().getPap().getPaoc().setVisible(false);
+			vf.getVpt().getPap().getPavj().setVisible(false);
+			vf.getVpt().getPap().getPadepor().setVisible(true);
+
+			break;
+
+		}
+
 		case "btnModificarP": {
-			vf.getVpt().getPap().getPaof().setVisible(true);
+			//TODO 
 			break;
 		}
 		case "btnEliminarP": {
-
+			// TODO
 			break;
 		}
 		case "btnModificarU": {

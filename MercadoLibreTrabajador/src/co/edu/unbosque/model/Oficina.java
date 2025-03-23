@@ -1,8 +1,10 @@
 package co.edu.unbosque.model;
 
-import java.io.Serializable; 
+import java.io.Serializable;
+import java.time.LocalDate;
 
-public abstract class Oficina extends Producto implements Serializable { // Declara la clase abstracta Oficina que hereda de Producto
+public abstract class Oficina extends Producto implements Serializable { // Declara la clase abstracta Oficina que
+																			// hereda de Producto
 
 	private boolean esPortatil; // Atributo que indica si el producto es portátil
 
@@ -15,13 +17,13 @@ public abstract class Oficina extends Producto implements Serializable { // Decl
 		this.esPortatil = esPortatil; // Asigna el valor recibido
 	}
 
-	public Oficina(String nombre, int precio, int id, int cantidad, String imagen, boolean esPortatil) { 
-		super(nombre, precio, id, cantidad, imagen); // Llama al constructor de Producto
+	public Oficina(String nombre, int precio, int id, LocalDate fecha, String imagen, boolean esPortatil) {
+		super(nombre, precio, id, fecha, imagen); // Llama al constructor de Producto
 		this.esPortatil = esPortatil; // Asigna el valor recibido
 	}
 
-	public Oficina(String nombre, int precio, int id, int cantidad, String imagen) { 
-		super(nombre, precio, id, cantidad, imagen); // Llama al constructor de Producto
+	public Oficina(String nombre, int precio, int id, LocalDate fecha, String imagen) {
+		super(nombre, precio, id, fecha, imagen); // Llama al constructor de Producto
 		// TODO Auto-generated constructor stub
 	}
 
@@ -38,4 +40,3 @@ public abstract class Oficina extends Producto implements Serializable { // Decl
 		return super.toString() + "¿Es portatil? " + esPortatil; // Retorna la información del objeto
 	}
 }
-

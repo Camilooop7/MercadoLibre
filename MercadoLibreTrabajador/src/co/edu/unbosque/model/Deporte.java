@@ -1,43 +1,45 @@
-package co.edu.unbosque.model; 
+package co.edu.unbosque.model;
 
-import java.io.Serializable; 
+import java.io.Serializable;
+import java.time.LocalDate;
 
-public class Deporte extends Ocio implements Serializable { // Declara la clase Deporte, que hereda de Ocio e implementa Serializable
+public class Deporte extends Ocio implements Serializable { // Declara la clase Deporte, que hereda de Ocio e implementa
+															// Serializable
 
 	private String deporte; // Atributo que almacena el nombre del deporte relacionado con el producto
 
-	public Deporte() { 
+	public Deporte() {
 		// Constructor vacío por defecto
 	}
 
-	public Deporte(String deporte) { 
+	public Deporte(String deporte) {
 		super(); // Llama al constructor de la clase padre (Ocio)
 		this.deporte = deporte; // Asigna el valor al atributo deporte
 	}
 
-	public Deporte(String nombre, int precio, int id, int cantidad, String imagen, boolean esAccesorio,
-			String deporte) { 
-		super(nombre, precio, id, cantidad, imagen, esAccesorio); // Llama al constructor de la clase padre con los parámetros
+	public Deporte(String nombre, int precio, int id, LocalDate fecha, String imagen, boolean esAccesorio,
+			String deporte) {
+		super(nombre, precio, id, fecha, imagen, esAccesorio); // Llama al constructor de la clase padre con los
+																// parámetros
 		this.deporte = deporte; // Asigna el valor al atributo deporte
 	}
 
-	public Deporte(String nombre, int precio, int id, int cantidad, String imagen, boolean esAccesorio) { 
-		super(nombre, precio, id, cantidad, imagen, esAccesorio); // Llama al constructor de la clase padre sin deporte
+	public Deporte(String nombre, int precio, int id, LocalDate fecha, String imagen, boolean esAccesorio) {
+		super(nombre, precio, id, fecha, imagen, esAccesorio); // Llama al constructor de la clase padre sin deporte
 		// Constructor sin inicializar el atributo deporte
 	}
 
-	public String getDeporte() { 
+	public String getDeporte() {
 		return deporte; // Método getter que retorna el nombre del deporte
 	}
 
-	public void setDeporte(String deporte) { 
+	public void setDeporte(String deporte) {
 		this.deporte = deporte; // Método setter para modificar el nombre del deporte
 	}
 
 	@Override
-	public String toString() { 
+	public String toString() {
 		return super.toString() + "Deporte: " + deporte; // Sobrescribe toString para incluir el atributo deporte
 	}
 
 }
-

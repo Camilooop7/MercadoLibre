@@ -54,4 +54,28 @@ public class PanelAgregarOcio extends JPanel {
 
 	}
 
+	public JLabel getFondo() {
+		return fondo;
+	}
+
+	public void setFondo(JLabel fondo) {
+		this.fondo = fondo;
+	}
+
+	public JButton getBtnVideoJuego() {
+		return btnVideoJuego;
+	}
+
+	public void setBtnVideoJuego(JButton btnVideoJuego) {
+		this.btnVideoJuego = btnVideoJuego;
+	}
+
+	public JButton getBtnDeporte() {
+		return btnDeporte;
+	}
+
+	public void setBtnDeporte(JButton btnDeporte) {
+		this.btnDeporte = btnDeporte;
+	}
+
 }
