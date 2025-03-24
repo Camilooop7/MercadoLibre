@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.time.LocalDate;
+import java.util.InputMismatchException;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
@@ -125,9 +126,6 @@ public class Controller implements ActionListener {
 		// cocina
 		vf.getVpt().getPap().getPaco().getBtnAgregar().addActionListener(this);
 		vf.getVpt().getPap().getPaco().getBtnAgregar().setActionCommand("btnAgregaProCocina");
-
-		vf.getVpt().getPap().getPaco().getImagen().addActionListener(this);
-		vf.getVpt().getPap().getPaco().getImagen().setActionCommand("imagenCocina");
 
 		// TODO botones
 	}
@@ -581,6 +579,9 @@ public class Controller implements ActionListener {
 			String imagen = "../archivos/imagenes/cocina/";
 
 			try {
+				ExceptionCheker.checkerNegativeNumber(precio);
+				ExceptionCheker.checkerNumber(precio);
+				ExceptionCheker.checkerIsBlank(nombre);
 
 				if (vf.getVpt().getPap().getPaco().getSiD().isSelected()) {
 					esDecoracion = true;
@@ -635,9 +636,6 @@ public class Controller implements ActionListener {
 					ExceptionCheker.checkerImage();
 				}
 
-				ExceptionCheker.checkerNegativeNumber(precio);
-				ExceptionCheker.checkerIsBlank(nombre);
-
 				// Crear el objeto Cocina con la URL de la imagen
 				mf.getCocinaDAO().crear(new Cocina(nombre, precio, id, fecha, imagen, esDecoracion,
 						resisteAltaTemperatuta, esPeligroso));
@@ -651,7 +649,9 @@ public class Controller implements ActionListener {
 				vf.getVemer().mostrar("Completar toda la información.");
 				e2.printStackTrace();
 			} catch (ImageException e2) {
-				vf.getVemer().mostrar("No seleciono una imagen" );
+				vf.getVemer().mostrar("No seleciono una imagen");
+			} catch (InputMismatchException e2) {
+				vf.getVemer().mostrar("Solo se pueden insertar numeros");
 			}
 			break;
 		}

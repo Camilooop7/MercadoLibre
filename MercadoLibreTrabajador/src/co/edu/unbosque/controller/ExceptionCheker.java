@@ -1,5 +1,7 @@
 package co.edu.unbosque.controller;
 
+import java.util.InputMismatchException;
+
 import co.edu.unbosque.util.exception.CapitalException;
 import co.edu.unbosque.util.exception.CharacterException;
 import co.edu.unbosque.util.exception.EqualPasswordException;
@@ -63,9 +65,9 @@ public class ExceptionCheker {
 	}
 
 	public static void checkerUsername(boolean existe) throws UsernameException {
-	    if (existe) {
-	        throw new UsernameException();
-	    }
+		if (existe) {
+			throw new UsernameException();
+		}
 	}
 
 	public static void checkerNegativeNumber(int a) throws NegativeNumberException {
@@ -90,8 +92,15 @@ public class ExceptionCheker {
 		throw new IsBlackException();
 
 	}
+
 	public static void checkerImage() throws ImageException {
 		throw new ImageException();
-		
+
+	}
+
+	public static void checkerNumber(int a) throws InputMismatchException {
+
+		throw new InputMismatchException();
+
 	}
 }

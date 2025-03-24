@@ -25,8 +25,6 @@ public class PanelAgregarCocina extends JPanel {
 	private JTextField nombre;
 	private JLabel textPrecio;
 	private JSpinner precio;
-	private JLabel ImportImg;
-	private JButton imagen;
 	private JLabel textDecoracion;
 	private JRadioButton siD;
 	private JRadioButton noD;
@@ -81,29 +79,14 @@ public class PanelAgregarCocina extends JPanel {
 		precio.setFont(new Font("Baloo", Font.BOLD, 24));
 		add(precio);
 
-		ImportImg = new JLabel();
-		ImportImg.setBounds(50, 220, 150, 60);
-		ImportImg.setText("Imagen: ");
-		ImportImg.setFont(new Font("Baloo", Font.BOLD, 24));
-		add(ImportImg);
-
-		imagen = new JButton();
-		imagen.setBounds(149, 227, 250, 40);
-		imagen.setText("Seleccionar Imagen");
-		imagen.setFocusable(false);
-		imagen.setForeground(Color.black);
-		imagen.setBackground(new Color(235, 219, 79));
-		imagen.setFont(new Font("Baloo", Font.BOLD, 21));
-		add(imagen);
-
 		textDecoracion = new JLabel();
-		textDecoracion.setBounds(50, 260, 400, 60);
+		textDecoracion.setBounds(50, 190, 400, 60);
 		textDecoracion.setText("¿Es decoración? ");
 		textDecoracion.setFont(new Font("Baloo", Font.BOLD, 26));
 		add(textDecoracion);
 
 		siD = new JRadioButton("SI");
-		siD.setBounds(257, 280, 80, 30); // Ajustar el tamaño para que el texto sea visible
+		siD.setBounds(257, 210, 80, 30); // Ajustar el tamaño para que el texto sea visible
 		siD.setFont(new Font("Baloo", Font.BOLD, 15));
 		siD.setOpaque(false);
 		siD.setContentAreaFilled(false);
@@ -112,7 +95,7 @@ public class PanelAgregarCocina extends JPanel {
 		add(siD);
 
 		noD = new JRadioButton("NO");
-		noD.setBounds(340, 280, 80, 30); // Ajustar el tamaño para que el texto sea visible
+		noD.setBounds(340, 210, 80, 30); // Ajustar el tamaño para que el texto sea visible
 		noD.setFont(new Font("Baloo", Font.BOLD, 15));
 		noD.setOpaque(false);
 		noD.setContentAreaFilled(false);
@@ -125,13 +108,13 @@ public class PanelAgregarCocina extends JPanel {
 		grupo.add(noD);
 
 		textPeligro = new JLabel();
-		textPeligro.setBounds(50, 310, 400, 60);
+		textPeligro.setBounds(50, 270, 400, 60);
 		textPeligro.setText("¿Es peligroso? ");
 		textPeligro.setFont(new Font("Baloo", Font.BOLD, 26));
 		add(textPeligro);
 
 		siP = new JRadioButton("SI");
-		siP.setBounds(257, 330, 80, 30); // Ajustar el tamaño para que el texto sea visible
+		siP.setBounds(257, 290, 80, 30); // Ajustar el tamaño para que el texto sea visible
 		siP.setFont(new Font("Baloo", Font.BOLD, 15));
 		siP.setOpaque(false);
 		siP.setContentAreaFilled(false);
@@ -140,7 +123,7 @@ public class PanelAgregarCocina extends JPanel {
 		add(siP);
 
 		noP = new JRadioButton("NO");
-		noP.setBounds(340, 330, 80, 30); // Ajustar el tamaño para que el texto sea visible
+		noP.setBounds(340, 290, 80, 30); // Ajustar el tamaño para que el texto sea visible
 		noP.setFont(new Font("Baloo", Font.BOLD, 15));
 		noP.setOpaque(false);
 		noP.setContentAreaFilled(false);
@@ -153,13 +136,13 @@ public class PanelAgregarCocina extends JPanel {
 		grupo1.add(noP);
 
 		textResistecia = new JLabel();
-		textResistecia.setBounds(50, 360, 400, 60);
+		textResistecia.setBounds(50, 350, 400, 60);
 		textResistecia.setText("¿Resiste altas temperatuas? ");
 		textResistecia.setFont(new Font("Baloo", Font.BOLD, 26));
 		add(textResistecia);
 
 		siR = new JRadioButton("SI");
-		siR.setBounds(410, 380, 80, 30); // Ajustar el tamaño para que el texto sea visible
+		siR.setBounds(410, 370, 80, 30); // Ajustar el tamaño para que el texto sea visible
 		siR.setFont(new Font("Baloo", Font.BOLD, 15));
 		siR.setOpaque(false);
 		siR.setContentAreaFilled(false);
@@ -168,7 +151,7 @@ public class PanelAgregarCocina extends JPanel {
 		add(siR);
 
 		noR = new JRadioButton("NO");
-		noR.setBounds(494, 380, 80, 30); // Ajustar el tamaño para que el texto sea visible
+		noR.setBounds(494, 370, 80, 30); // Ajustar el tamaño para que el texto sea visible
 		noR.setFont(new Font("Baloo", Font.BOLD, 15));
 		noR.setOpaque(false);
 		noR.setContentAreaFilled(false);
@@ -229,22 +212,6 @@ public class PanelAgregarCocina extends JPanel {
 
 	public void setPrecio(JSpinner precio) {
 		this.precio = precio;
-	}
-
-	public JLabel getImportImg() {
-		return ImportImg;
-	}
-
-	public void setImportImg(JLabel importImg) {
-		ImportImg = importImg;
-	}
-
-	public JButton getImagen() {
-		return imagen;
-	}
-
-	public void setImagen(JButton imagen) {
-		this.imagen = imagen;
 	}
 
 	public JLabel getTextPeligro() {
