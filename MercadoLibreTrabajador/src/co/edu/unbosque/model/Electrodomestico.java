@@ -2,6 +2,7 @@ package co.edu.unbosque.model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Random;
 
@@ -20,14 +21,14 @@ public class Electrodomestico extends Oficina implements Serializable { // Decla
 		this.fuenteDeEnergia = fuenteDeEnergia; // Asigna el valor al atributo fuenteDeEnergia
 	}
 
-	public Electrodomestico(String nombre, int precio, int id, LocalDate fecha, String imagen, boolean esPortatil,
+	public Electrodomestico(String nombre, int precio, int id, LocalDateTime fecha, String imagen, boolean esPortatil,
 			String fuenteDeEnergia) {
 		super(nombre, precio, id, fecha, imagen, esPortatil); // Llama al constructor de la clase padre con los
 																// parámetros
 		this.fuenteDeEnergia = fuenteDeEnergia; // Asigna el valor al atributo fuenteDeEnergia
 	}
 
-	public Electrodomestico(String nombre, int precio, int id, LocalDate fecha, String imagen, boolean esPortatil) {
+	public Electrodomestico(String nombre, int precio, int id, LocalDateTime fecha, String imagen, boolean esPortatil) {
 		super(nombre, precio, id, fecha, imagen, esPortatil); // Llama al constructor de la clase padre sin
 																// fuenteDeEnergia
 		// Constructor sin inicializar el atributo fuenteDeEnergia

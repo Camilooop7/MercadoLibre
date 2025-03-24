@@ -2,6 +2,7 @@ package co.edu.unbosque.model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Random;
 
@@ -21,7 +22,7 @@ public class Cocina extends Hogar implements Serializable { // Declara la clase 
 		this.esPeligroso = esPeligroso; // Asigna el valor al atributo esPeligroso
 	}
 
-	public Cocina(String nombre, int precio, int id, LocalDate fecha, String imagen, boolean esDecoracion,
+	public Cocina(String nombre, int precio, int id, LocalDateTime fecha, String imagen, boolean esDecoracion,
 			boolean resisteAltaTemperatuta, boolean esPeligroso) {
 		super(nombre, precio, id, fecha, imagen, esDecoracion); // Llama al constructor de la clase padre con los
 																// parámetros
@@ -29,7 +30,7 @@ public class Cocina extends Hogar implements Serializable { // Declara la clase 
 		this.esPeligroso = esPeligroso; // Asigna el valor al atributo esPeligroso
 	}
 
-	public Cocina(String nombre, int precio, int id, LocalDate fecha, String imagen, boolean esDecoracion) {
+	public Cocina(String nombre, int precio, int id, LocalDateTime fecha, String imagen, boolean esDecoracion) {
 		super(nombre, precio, id, fecha, imagen, esDecoracion); // Llama al constructor de la clase padre sin
 																// resisteAltaTemperatuta ni esPeligroso
 		// Constructor sin inicializar resisteAltaTemperatuta ni esPeligroso

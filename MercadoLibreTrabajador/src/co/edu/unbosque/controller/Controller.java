@@ -6,6 +6,8 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.InputMismatchException;
 
 import javax.imageio.ImageIO;
@@ -159,6 +161,9 @@ public class Controller implements ActionListener {
 		vf.getVpt().getPep().getPah().getBtnCocina().setActionCommand("btnEliminarCocina");
 		vf.getVpt().getPep().getPah().getBtnBano().addActionListener(this);
 		vf.getVpt().getPep().getPah().getBtnBano().setActionCommand("btnEliminarBano");
+
+		vf.getVpt().getPep().getPec().getEliminar().addActionListener(this);
+		vf.getVpt().getPep().getPec().getEliminar().setActionCommand("elminiarCocina");
 		// TODO botones
 	}
 
@@ -425,8 +430,8 @@ public class Controller implements ActionListener {
 
 				if (tipo.contains("cliente")) {
 					int a = vf.getVemer().leerInt("¿Cual desea actualizar?");
-					ExceptionCheker.checkerNegativeNumber(a - 1);
 					a = a - 1;
+					ExceptionCheker.checkerNegativeNumber(a);
 					if (mf.getClienteDAO().encontrar(a)) {
 
 						String nombre = vf.getVemer().leerTexto("Nombre nuevo:");
@@ -476,8 +481,8 @@ public class Controller implements ActionListener {
 
 				if (tipo.contains("trabajador")) {
 					int a = vf.getVemer().leerInt("¿Cual desea actualizar?");
-					ExceptionCheker.checkerNegativeNumber(a - 1);
 					a = a - 1;
+					ExceptionCheker.checkerNegativeNumber(a);
 					if (mf.getTrabajadorDAO().encontrar(a)) {
 
 						String nombre = vf.getVemer().leerTexto("Nombre nuevo:");
@@ -529,7 +534,7 @@ public class Controller implements ActionListener {
 				if (tipo.contains("cliente")) {
 					int a = vf.getVemer().leerInt("¿Cual desea eliminar?");
 					a = a - 1;
-					ExceptionCheker.checkerNegativeNumber(a - 1);
+					ExceptionCheker.checkerNegativeNumber(a);
 					if (mf.getClienteDAO().encontrar(a)) {
 
 						mf.getClienteDAO().eliminar(a);
@@ -555,8 +560,8 @@ public class Controller implements ActionListener {
 				ExceptionCheker.checkerText(tipo);
 				if (tipo.contains("trabajador")) {
 					int a = vf.getVemer().leerInt("¿Cual desea eliminar?");
-					ExceptionCheker.checkerNegativeNumber(a - 1);
 					a = a - 1;
+					ExceptionCheker.checkerNegativeNumber(a);
 					if (mf.getTrabajadorDAO().encontrar(a)) {
 
 						mf.getTrabajadorDAO().eliminar(a);
@@ -605,7 +610,7 @@ public class Controller implements ActionListener {
 			String nombre = (String) vf.getVpt().getPap().getPaco().getNombre();
 			int precio = (int) vf.getVpt().getPap().getPaco().getPrecio();
 			int id = new Cocina().codigoAleatorio();
-			LocalDate fecha = LocalDate.now();
+			LocalDateTime fecha = LocalDateTime.now();
 			boolean esDecoracion = false;
 			boolean resisteAltaTemperatuta = false;
 			boolean esPeligroso = false;
@@ -698,7 +703,7 @@ public class Controller implements ActionListener {
 			String nombre = (String) vf.getVpt().getPap().getPaba().getNombre();
 			int precio = (int) vf.getVpt().getPap().getPaba().getPrecio();
 			int id = new Bano().codigoAleatorio();
-			LocalDate fecha = LocalDate.now();
+			LocalDateTime fecha = LocalDateTime.now();
 			boolean esDecoracion = false;
 			boolean esLimpieza = false;
 			String imagen = "../archivos/imagenes/bano/";
@@ -779,7 +784,7 @@ public class Controller implements ActionListener {
 			String nombre = (String) vf.getVpt().getPap().getPae().getNombre();
 			int precio = (int) vf.getVpt().getPap().getPae().getPrecio();
 			int id = new Electrodomestico().codigoAleatorio();
-			LocalDate fecha = LocalDate.now();
+			LocalDateTime fecha = LocalDateTime.now();
 			boolean esPortatil = false;
 			String fuenteEnergia = (String) vf.getVpt().getPap().getPae().getFuenteEnergia();
 			String imagen = "../archivos/imagenes/electro/";
@@ -850,7 +855,7 @@ public class Controller implements ActionListener {
 			String nombre = (String) vf.getVpt().getPap().getPapape().getNombre();
 			int precio = (int) vf.getVpt().getPap().getPapape().getPrecio();
 			int id = new Papeleria().codigoAleatorio();
-			LocalDate fecha = LocalDate.now();
+			LocalDateTime fecha = LocalDateTime.now();
 			boolean esPortatil = false;
 			int cantidadPaquete = (int) vf.getVpt().getPap().getPapape().getCantidadPorPaquete();
 			String imagen = "../archivos/imagenes/papeleria/";
@@ -923,7 +928,7 @@ public class Controller implements ActionListener {
 			String nombre = (String) vf.getVpt().getPap().getPavj().getNombre();
 			int precio = (int) vf.getVpt().getPap().getPavj().getPrecio();
 			int id = new VideoJuego().codigoAleatorio();
-			LocalDate fecha = LocalDate.now();
+			LocalDateTime fecha = LocalDateTime.now();
 			boolean esAccesorio = false;
 			String referenciaConsola = (String) vf.getVpt().getPap().getPavj().getReferenciaConsola();
 			String imagen = "../archivos/imagenes/videojuego/";
@@ -997,7 +1002,13 @@ public class Controller implements ActionListener {
 			System.out.println("Nombre:" + nombre);
 			int precio = (int) vf.getVpt().getPap().getPade().getPrecio();
 			int id = new Deporte().codigoAleatorio();
-			LocalDate fecha = LocalDate.now();
+			LocalDateTime a= LocalDateTime.now();
+
+	        // Definir el formato deseado con segundos
+	        DateTimeFormatter b= DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
+	        // Formatear la fecha y hora
+	        String fecha= a.format(b);
 			boolean esAccesorio = false;
 			String deporte = (String) vf.getVpt().getPap().getPade().getDeporte();
 			String imagen = "../archivos/imagenes/electro/";
@@ -1095,13 +1106,44 @@ public class Controller implements ActionListener {
 
 			vf.getVpt().getPep().getPah().setVisible(false);
 			vf.getVpt().getPep().getPec().setVisible(true);
+			vf.getVpt().getPep().getPeb().setVisible(false);
 			vf.getVpt().getPep().getPec().setTexto(mf.getCocinaDAO().mostrarTodo());
 
 			break;
 		}
 		case "btnEliminarBano": {
 
-			vf.getVpt().getPep().getPaoc().setVisible(false);
+			vf.getVpt().getPep().getPah().setVisible(false);
+			vf.getVpt().getPep().getPeb().setVisible(true);
+			vf.getVpt().getPep().getPec().setVisible(false);
+			vf.getVpt().getPep().getPeb().setTexto(mf.getBanoDAO().mostrarTodo());
+			
+
+			break;
+		}
+		case "elminiarCocina": {
+
+			try {
+
+				int a = vf.getVemer().leerInt("¿Digite la posicion del producto que desea Eliminar?");
+				a = a - 1;
+				ExceptionCheker.checkerNegativeNumber(a);
+				if (mf.getCocinaDAO().encontrar(a)) {
+
+					mf.getCocinaDAO().eliminar(a);
+					vf.getVpt().getPep().getPec().setTexto(mf.getCocinaDAO().mostrarTodo());
+					vf.getVpt().getPep().getPec().revalidate();
+					vf.getVpt().getPep().getPec().repaint();
+
+				} else {
+					vf.getVemer().mostrar("la posicion a eliminar no esta en la lista");
+
+				}
+
+			} catch (NegativeNumberException e1) {
+				vf.getVemer().mostrar("Numero no valido.");
+				e1.printStackTrace();
+			}
 
 			break;
 		}

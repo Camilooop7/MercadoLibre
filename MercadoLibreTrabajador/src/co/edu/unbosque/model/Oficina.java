@@ -2,6 +2,7 @@ package co.edu.unbosque.model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public abstract class Oficina extends Producto implements Serializable { // Declara la clase abstracta Oficina que
 																			// hereda de Producto
@@ -17,12 +18,12 @@ public abstract class Oficina extends Producto implements Serializable { // Decl
 		this.esPortatil = esPortatil; // Asigna el valor recibido
 	}
 
-	public Oficina(String nombre, int precio, int id, LocalDate fecha, String imagen, boolean esPortatil) {
+	public Oficina(String nombre, int precio, int id, LocalDateTime fecha, String imagen, boolean esPortatil) {
 		super(nombre, precio, id, fecha, imagen); // Llama al constructor de Producto
 		this.esPortatil = esPortatil; // Asigna el valor recibido
 	}
 
-	public Oficina(String nombre, int precio, int id, LocalDate fecha, String imagen) {
+	public Oficina(String nombre, int precio, int id, LocalDateTime fecha, String imagen) {
 		super(nombre, precio, id, fecha, imagen); // Llama al constructor de Producto
 		// TODO Auto-generated constructor stub
 	}

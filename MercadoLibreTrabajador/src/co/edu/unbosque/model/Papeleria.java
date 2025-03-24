@@ -2,6 +2,7 @@ package co.edu.unbosque.model;
 
 import java.io.Serializable; // Importa la interfaz Serializable
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Random;
 
@@ -18,13 +19,13 @@ public class Papeleria extends Oficina implements Serializable { // Declara la c
 		this.cantidadPorPaquete = cantidadPorPaquete; // Asigna el valor recibido
 	}
 
-	public Papeleria(String nombre, int precio, int id, LocalDate fecha, String imagen, boolean esPortatil,
+	public Papeleria(String nombre, int precio, int id, LocalDateTime fecha, String imagen, boolean esPortatil,
 			int cantidadPorPaquete) { // Constructor que recibe todos los atributos
 		super(nombre, precio, id, fecha, imagen, esPortatil); // Llama al constructor de la clase padre
 		this.cantidadPorPaquete = cantidadPorPaquete; // Asigna el valor recibido
 	}
 
-	public Papeleria(String nombre, int precio, int id, LocalDate fecha, String imagen, boolean esPortatil) {
+	public Papeleria(String nombre, int precio, int id, LocalDateTime fecha, String imagen, boolean esPortatil) {
 		super(nombre, precio, id, fecha, imagen, esPortatil); // Llama al constructor de la clase padre
 		// TODO Auto-generated constructor stub
 	}

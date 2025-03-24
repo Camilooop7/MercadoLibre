@@ -1,7 +1,8 @@
 package co.edu.unbosque.model; 
 
 import java.io.Serializable;
-import java.time.LocalDate; 
+import java.time.LocalDate;
+import java.time.LocalDateTime; 
 
 public abstract class Hogar extends Producto implements Serializable { // Clase abstracta Hogar que hereda de Producto e implementa Serializable
 
@@ -16,12 +17,12 @@ public abstract class Hogar extends Producto implements Serializable { // Clase 
 		this.esDecoracion = esDecoracion; // Asigna el valor al atributo esDecoracion
 	}
 
-	public Hogar(String nombre, int precio, int id, LocalDate fecha, String imagen, boolean esDecoracion) { 
+	public Hogar(String nombre, int precio, int id, LocalDateTime fecha, String imagen, boolean esDecoracion) { 
 		super(nombre, precio, id, fecha, imagen); // Llama al constructor de la clase padre con parámetros
 		this.esDecoracion = esDecoracion; // Asigna el valor al atributo esDecoracion
 	}
 
-	public Hogar(String nombre, int precio, int id, LocalDate fecha, String imagen) { 
+	public Hogar(String nombre, int precio, int id, LocalDateTime fecha, String imagen) { 
 		super(nombre, precio, id, fecha, imagen); // Llama al constructor de la clase padre sin esDecoracion
 		// Constructor sin inicializar el atributo esDecoracion
 	}

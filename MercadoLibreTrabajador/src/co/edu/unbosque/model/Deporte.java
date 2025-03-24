@@ -2,6 +2,7 @@ package co.edu.unbosque.model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Random;
 
@@ -19,14 +20,14 @@ public class Deporte extends Ocio implements Serializable { // Declara la clase 
 		this.deporte = deporte; // Asigna el valor al atributo deporte
 	}
 
-	public Deporte(String nombre, int precio, int id, LocalDate fecha, String imagen, boolean esAccesorio,
+	public Deporte(String nombre, int precio, int id, LocalDateTime fecha, String imagen, boolean esAccesorio,
 			String deporte) {
 		super(nombre, precio, id, fecha, imagen, esAccesorio); // Llama al constructor de la clase padre con los
 																// parámetros
 		this.deporte = deporte; // Asigna el valor al atributo deporte
 	}
 
-	public Deporte(String nombre, int precio, int id, LocalDate fecha, String imagen, boolean esAccesorio) {
+	public Deporte(String nombre, int precio, int id, LocalDateTime fecha, String imagen, boolean esAccesorio) {
 		super(nombre, precio, id, fecha, imagen, esAccesorio); // Llama al constructor de la clase padre sin deporte
 		// Constructor sin inicializar el atributo deporte
 	}

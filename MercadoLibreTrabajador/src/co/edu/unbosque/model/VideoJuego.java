@@ -2,6 +2,7 @@ package co.edu.unbosque.model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Random;
 
@@ -29,7 +30,7 @@ public class VideoJuego extends Ocio implements Serializable {
 	 * Constructor que recibe todos los atributos de Ocio y la referencia de la
 	 * consola
 	 */
-	public VideoJuego(String nombre, int precio, int id, LocalDate fecha, String imagen, boolean esAccesorio,
+	public VideoJuego(String nombre, int precio, int id, LocalDateTime fecha, String imagen, boolean esAccesorio,
 			String referenciaConsola) {
 		super(nombre, precio, id, fecha, imagen, esAccesorio);
 		this.referenciaConsola = referenciaConsola;
@@ -39,7 +40,7 @@ public class VideoJuego extends Ocio implements Serializable {
 	 * Constructor que recibe todos los atributos de Ocio sin la referencia de la
 	 * consola
 	 */
-	public VideoJuego(String nombre, int precio, int id, LocalDate fecha, String imagen, boolean esAccesorio) {
+	public VideoJuego(String nombre, int precio, int id, LocalDateTime fecha, String imagen, boolean esAccesorio) {
 		super(nombre, precio, id, fecha, imagen, esAccesorio);
 		// TODO Auto-generated constructor stub
 	}
