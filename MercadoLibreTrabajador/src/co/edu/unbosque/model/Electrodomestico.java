@@ -43,7 +43,7 @@ public class Electrodomestico extends Oficina implements Serializable { // Decla
 
 	@Override
 	public String toString() {
-		return super.toString() + " ¿Qué fuente de energía tiene? " + fuenteDeEnergia;
+		return super.toString() + "\n¿Qué fuente de energía tiene? " + fuenteDeEnergia;
 		// Sobrescribe toString para incluir el atributo fuenteDeEnergia
 	}
 	public int codigoAleatorio() {

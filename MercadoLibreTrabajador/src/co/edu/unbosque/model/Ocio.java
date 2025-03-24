@@ -37,6 +37,6 @@ public abstract class Ocio extends Producto implements Serializable { // Declara
 
 	@Override
 	public String toString() { // Método para representar el objeto como cadena
-		return super.toString() + "¿Es accesorio? " + esAccesorio; // Retorna la información del objeto
+		return super.toString() + "\n¿Es accesorio? " + esAccesorio; // Retorna la información del objeto
 	}
 }

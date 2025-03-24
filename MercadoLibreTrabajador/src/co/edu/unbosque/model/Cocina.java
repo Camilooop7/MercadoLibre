@@ -53,7 +53,7 @@ public class Cocina extends Hogar implements Serializable { // Declara la clase 
 
 	@Override
 	public String toString() {
-		return super.toString() + "¿Resiste altas temperaturas? " + resisteAltaTemperatuta + " ¿Es peligroso? "
+		return super.toString() + "\n¿Resiste altas temperaturas? " + resisteAltaTemperatuta + " ¿Es peligroso? "
 				+ esPeligroso;
 		// Sobrescribe toString para incluir los atributos resisteAltaTemperatuta y
 		// esPeligroso

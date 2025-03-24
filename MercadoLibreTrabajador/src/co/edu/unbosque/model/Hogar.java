@@ -36,7 +36,7 @@ public abstract class Hogar extends Producto implements Serializable { // Clase 
 
 	@Override
 	public String toString() { 
-		return super.toString() + " ¿Es decoración? " + esDecoracion; 
+		return super.toString() + "\n¿Es decoración? " + esDecoracion; 
 		// Sobrescribe toString para incluir el atributo esDecoracion
 	}
 
