@@ -140,5 +140,93 @@ public class PanelAgregarDeporte extends JPanel {
 		
 		add(fondo);
 	}
+	public JLabel getFondo() {
+		return fondo;
+	}
+
+	public void setFondo(JLabel fondo) {
+		this.fondo = fondo;
+	}
+
+	public JButton getBtnAgregar() {
+		return btnAgregar;
+	}
+
+	public void setBtnAgregar(JButton btnAgregar) {
+		this.btnAgregar = btnAgregar;
+	}
+
+	public JLabel getTextNombre() {
+		return textNombre;
+	}
+
+	public void setTextNombre(JLabel textNombre) {
+		this.textNombre = textNombre;
+	}
+
+	public JTextField getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(JTextField nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getTextPrecio() {
+		return (String) nombre.getText();
+	}
+
+	public void setTextPrecio(JLabel textPrecio) {
+		this.textPrecio = textPrecio;
+	}
+
+	public int getPrecio() {
+		return (int) precio.getValue();
+	}
+
+	public void setPrecio(JSpinner precio) {
+		this.precio = precio;
+	}
+
+	public JLabel getTextAccesorio() {
+		return textAccesorio;
+	}
+
+	public void setTextAccesorio(JLabel textAccesorio) {
+		this.textAccesorio = textAccesorio;
+	}
+
+	public JRadioButton getSiA() {
+		return siA;
+	}
+
+	public void setSiA(JRadioButton siA) {
+		this.siA = siA;
+	}
+
+	public JRadioButton getNoA() {
+		return noA;
+	}
+
+	public void setNoA(JRadioButton noA) {
+		this.noA = noA;
+	}
+
+	public JLabel getTextDeporte() {
+		return textDeporte;
+	}
+
+	public void setTextDeporte(JLabel textDeporte) {
+		this.textDeporte = textDeporte;
+	}
+
+	public String getDeporte() {
+		return (String) deporte.getText();
+	}
+
+	public void setDeporte(JTextField deporte) {
+		this.deporte = deporte;
+	}
+	
 
 }
