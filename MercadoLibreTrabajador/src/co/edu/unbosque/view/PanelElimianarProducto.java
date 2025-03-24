@@ -12,9 +12,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
 
-public class PanelAnadirProducto extends JPanel {
+public class PanelElimianarProducto extends JPanel {
 
 	private JLabel fondo;
 	private JButton btnVolver;
@@ -24,14 +23,14 @@ public class PanelAnadirProducto extends JPanel {
 	private PanelAgregarH pah;
 	private PanelAgregarOficina paof;
 	private PanelAgregarOcio paoc;
-	private PanelAgregarCocina paco;
-	private PanelAgregarBano paba;
-	private PanelAgregarElectro pae;
-	private PanelAgregarPapeleria papape;
-	private PanelAgregarVideoJuego pavj;
-	private PanelAgregarDeporte pade;
+	private PanelEliminarCocina pec;
+	private PanelEliminarBano peb;
+	private PanelEliminarElectro pee;
+	private PanelEliminarPapel pepap;
+	private PanelEliminarVJ pevj;
+	private PanelEliminarDeporte pedep;
 
-	public PanelAnadirProducto() throws IOException {
+	public PanelElimianarProducto() throws IOException {
 
 		setBounds(0, 0, 1290, 750);
 		setLayout(null);
@@ -83,23 +82,25 @@ public class PanelAnadirProducto extends JPanel {
 		pah = new PanelAgregarH();
 		paof = new PanelAgregarOficina();
 		paoc = new PanelAgregarOcio();
-		paco = new PanelAgregarCocina();
-		paba = new PanelAgregarBano();
-		pae = new PanelAgregarElectro();
-		papape = new PanelAgregarPapeleria();
-		pavj = new PanelAgregarVideoJuego();
-		pade = new PanelAgregarDeporte();
+		pec = new PanelEliminarCocina();
+		peb = new PanelEliminarBano();
+		pee = new PanelEliminarElectro();
+		pepap = new PanelEliminarPapel();
+		pevj = new PanelEliminarVJ();
+		pedep = new PanelEliminarDeporte();
 
-		add(pae).setVisible(false);
-		add(papape).setVisible(false);
-		add(pavj).setVisible(false);
-		add(pade).setVisible(false);
-		add(paco).setVisible(false);
-		add(paba).setVisible(false);
 		add(pah).setVisible(false);
 		add(paof).setVisible(false);
 		add(paoc).setVisible(false);
+		add(pec).setVisible(false);
+		add(peb).setVisible(false);
+		add(pee).setVisible(false);
+		add(pepap).setVisible(false);
+		add(pevj).setVisible(false);
+		add(pedep).setVisible(false);
+
 		add(fondo);
+
 	}
 
 	public JLabel getFondo() {
@@ -166,52 +167,52 @@ public class PanelAnadirProducto extends JPanel {
 		this.paoc = paoc;
 	}
 
-	public PanelAgregarCocina getPaco() {
-		return paco;
+	public PanelEliminarCocina getPec() {
+		return pec;
 	}
 
-	public void setPaco(PanelAgregarCocina paco) {
-		this.paco = paco;
+	public void setPec(PanelEliminarCocina pec) {
+		this.pec = pec;
 	}
 
-	public PanelAgregarBano getPaba() {
-		return paba;
+	public PanelEliminarBano getPeb() {
+		return peb;
 	}
 
-	public void setPaba(PanelAgregarBano paba) {
-		this.paba = paba;
+	public void setPeb(PanelEliminarBano peb) {
+		this.peb = peb;
 	}
 
-	public PanelAgregarElectro getPae() {
-		return pae;
+	public PanelEliminarElectro getPee() {
+		return pee;
 	}
 
-	public void setPae(PanelAgregarElectro pae) {
-		this.pae = pae;
+	public void setPee(PanelEliminarElectro pee) {
+		this.pee = pee;
 	}
 
-	public PanelAgregarPapeleria getPapape() {
-		return papape;
+	public PanelEliminarPapel getPepap() {
+		return pepap;
 	}
 
-	public void setPapape(PanelAgregarPapeleria papape) {
-		this.papape = papape;
+	public void setPepap(PanelEliminarPapel pepap) {
+		this.pepap = pepap;
 	}
 
-	public PanelAgregarVideoJuego getPavj() {
-		return pavj;
+	public PanelEliminarVJ getPevj() {
+		return pevj;
 	}
 
-	public void setPavj(PanelAgregarVideoJuego pavj) {
-		this.pavj = pavj;
+	public void setPevj(PanelEliminarVJ pevj) {
+		this.pevj = pevj;
 	}
 
-	public PanelAgregarDeporte getPade() {
-		return pade;
+	public PanelEliminarDeporte getPedep() {
+		return pedep;
 	}
 
-	public void setPade(PanelAgregarDeporte pade) {
-		this.pade = pade;
+	public void setPedep(PanelEliminarDeporte pedep) {
+		this.pedep = pedep;
 	}
 
 }

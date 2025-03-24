@@ -146,6 +146,19 @@ public class Controller implements ActionListener {
 		vf.getVpt().getPap().getPade().getBtnAgregar().addActionListener(this);
 		vf.getVpt().getPap().getPade().getBtnAgregar().setActionCommand("btnAgregarDeporte");
 
+		vf.getVpt().getPep().getBtnVolver().addActionListener(this);
+		vf.getVpt().getPep().getBtnVolver().setActionCommand("btnVolverEliminar");
+		vf.getVpt().getPep().getBtnHogar().addActionListener(this);
+		vf.getVpt().getPep().getBtnHogar().setActionCommand("btnEliminarHogar");
+		vf.getVpt().getPep().getBtnOficina().addActionListener(this);
+		vf.getVpt().getPep().getBtnOficina().setActionCommand("btnEliminarOficina");
+		vf.getVpt().getPep().getBtnOcio().addActionListener(this);
+		vf.getVpt().getPep().getBtnOcio().setActionCommand("btnEliminarOcio");
+
+		vf.getVpt().getPep().getPah().getBtnCocina().addActionListener(this);
+		vf.getVpt().getPep().getPah().getBtnCocina().setActionCommand("btnEliminarCocina");
+		vf.getVpt().getPep().getPah().getBtnBano().addActionListener(this);
+		vf.getVpt().getPep().getPah().getBtnBano().setActionCommand("btnEliminarBano");
 		// TODO botones
 	}
 
@@ -381,7 +394,8 @@ public class Controller implements ActionListener {
 			break;
 		}
 		case "btnEliminarP": {
-			// TODO
+			vf.getVpt().getPt().setVisible(false);
+			vf.getVpt().getPep().setVisible(true);
 			break;
 		}
 		case "btnModificarU": {
@@ -1048,6 +1062,47 @@ public class Controller implements ActionListener {
 			} catch (ImageException e2) {
 				vf.getVemer().mostrar("No seleciono una imagen");
 			}
+			break;
+		}
+		case "btnVolverEliminar": {
+			vf.getVpt().getPep().setVisible(false);
+			vf.getVpt().getPt().setVisible(true);
+			break;
+		}
+		case "btnEliminarHogar": {
+			vf.getVpt().getPep().getPaoc().setVisible(false);
+			vf.getVpt().getPep().getPaof().setVisible(false);
+			vf.getVpt().getPep().getPah().setVisible(true);
+
+			break;
+		}
+		case "btnEliminarOficina": {
+			vf.getVpt().getPep().getPaoc().setVisible(false);
+			vf.getVpt().getPep().getPah().setVisible(false);
+			vf.getVpt().getPep().getPaof().setVisible(true);
+
+			break;
+		}
+		case "btnEliminarOcio": {
+
+			vf.getVpt().getPep().getPah().setVisible(false);
+			vf.getVpt().getPep().getPaof().setVisible(false);
+			vf.getVpt().getPep().getPaoc().setVisible(true);
+
+			break;
+		}
+		case "btnEliminarCocina": {
+
+			vf.getVpt().getPep().getPah().setVisible(false);
+			vf.getVpt().getPep().getPec().setVisible(true);
+			vf.getVpt().getPep().getPec().setTexto(mf.getCocinaDAO().mostrarTodo());
+
+			break;
+		}
+		case "btnEliminarBano": {
+
+			vf.getVpt().getPep().getPaoc().setVisible(false);
+
 			break;
 		}
 

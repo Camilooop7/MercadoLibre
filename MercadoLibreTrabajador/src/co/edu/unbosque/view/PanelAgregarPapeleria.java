@@ -52,6 +52,7 @@ public class PanelAgregarPapeleria extends JPanel {
 		btnAgregar.setBorderPainted(false);
 		btnAgregar.setVisible(true);
 		add(btnAgregar);
+		
 		textNombre = new JLabel();
 		textNombre.setBounds(44, 40, 150, 60);
 		textNombre.setText("Nombre: ");

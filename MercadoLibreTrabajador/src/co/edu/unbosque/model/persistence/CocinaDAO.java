@@ -30,7 +30,7 @@ public class CocinaDAO implements OperacionDAO<Cocina> {
 		// TODO Auto-generated constructor stub
 		listaCocinas = new ArrayList<>();
 		cargarSerializado();
-	
+
 	}
 
 	/**
@@ -81,6 +81,7 @@ public class CocinaDAO implements OperacionDAO<Cocina> {
 			return 1;
 		}
 	}
+
 	public boolean encontrar(int index) {
 		// TODO Auto-generated method stub
 		return index >= 0 && index < listaCocinas.size();
@@ -95,19 +96,21 @@ public class CocinaDAO implements OperacionDAO<Cocina> {
 	@Override
 	public String mostrarTodo() {
 		String salida = "";
+		int a = 1;
 		for (Cocina cocina : listaCocinas) {
-			salida += cocina.toString()+"\n";
+			salida += a + ". " + cocina.toString() + "\n";
+			a++;
 		}
 		return salida;
 	}
-	
+
 	public boolean encontrarNombre(String nombre) {
-	    for (Cocina cocina : listaCocinas) {
-	        if (cocina.getNombre().equals(nombre)) {
-	            return true;
-	        }
-	    }
-	    return false;
+		for (Cocina cocina : listaCocinas) {
+			if (cocina.getNombre().equals(nombre)) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	/**
@@ -132,22 +135,21 @@ public class CocinaDAO implements OperacionDAO<Cocina> {
 			listaCocinas = new ArrayList<>();
 		}
 	}
+
 	public void escribirArchivor() {
-		String contenido ="";
+		String contenido = "";
 		for (int i = 0; i < listaCocinas.size(); i++) {
-			contenido += listaCocinas.get(i).getNombre()+";";
-			contenido += listaCocinas.get(i).getPrecio()+";";
-			contenido += listaCocinas.get(i).getId()+";";
-			contenido += listaCocinas.get(i).getFecha()+";";
-			contenido += listaCocinas.get(i).getImagen()+";";
-			contenido += listaCocinas.get(i).isEsDecoracion()+";";
-			contenido += listaCocinas.get(i).isResisteAltaTemperatuta()+";";
-			contenido += listaCocinas.get(i).isEsPeligroso()+"\n";
+			contenido += listaCocinas.get(i).getNombre() + ";";
+			contenido += listaCocinas.get(i).getPrecio() + ";";
+			contenido += listaCocinas.get(i).getId() + ";";
+			contenido += listaCocinas.get(i).getFecha() + ";";
+			contenido += listaCocinas.get(i).getImagen() + ";";
+			contenido += listaCocinas.get(i).isEsDecoracion() + ";";
+			contenido += listaCocinas.get(i).isResisteAltaTemperatuta() + ";";
+			contenido += listaCocinas.get(i).isEsPeligroso() + "\n";
 		}
 		FileManager.escribirArchivoTexto(TEXT_FILE_NAME, contenido);
 	}
-
-
 
 	public ArrayList<Cocina> getListaCocinas() {
 		return listaCocinas;
