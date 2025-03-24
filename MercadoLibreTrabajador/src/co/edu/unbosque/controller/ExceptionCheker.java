@@ -94,6 +94,7 @@ public class ExceptionCheker {
 	}
 
 	public static void checkerImage() throws ImageException {
+		
 		throw new ImageException();
 
 	}

@@ -101,10 +101,10 @@ public class BanoDAO implements OperacionDAO<Bano> {
 	public String mostrarTodo() {
 		// TODO Auto-generated method stub
         String salida = null;
-        for (Bano bebida : listaBanos) {
-            salida +=bebida.toString();
+        for (Bano bano : listaBanos) {
+            salida +=bano.toString() + "\n";
         }
-        return salida.toString();
+        return salida;
 	}
 	
 	
