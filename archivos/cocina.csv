@@ -1,34 +1,4 @@
-null;5000;1468;2025-03-23;hi;false;false;false
-null;9990;1043;2025-03-23;hi;false;false;false
-null;1210;1628;2025-03-23;hi;false;false;false
-null;8880;1863;2025-03-23;hi;false;false;false
-null;9990;1999;2025-03-23;hi;false;false;false
-null;1110;1482;2025-03-23;hi;true;false;false
-null;0;1452;2025-03-23;hi;true;false;false
-null;11121;1770;2025-03-23;hi;true;false;false
-null;0;1612;2025-03-23;hi;false;false;false
-null;0;1302;2025-03-23;hi;false;false;false
-null;0;1481;2025-03-23;hi;false;false;false
-null;2222;1984;2025-03-23;hi;false;false;false
-null;2222;1370;2025-03-23;hi;false;false;false
-null;0;1956;2025-03-23;hi;false;false;false
-a;5;1504;2025-03-23;hi;true;false;false
-ab;5;1230;2025-03-23;hi;false;false;false
-pp;770;1196;2025-03-23;hi;true;true;true
-pp;770;1798;2025-03-23;hi;true;false;true
-C;1;1452;2025-03-23;hi;false;false;false
-c;1;1992;2025-03-23;hi;true;false;true
-poi;550;1389;2025-03-23;../archivos/imagenes/cocina/poi;true;true;true
-poi;550;1389;2025-03-23;..\archivos\imagenes\cocina\FondoOficina.png;true;true;true
-tou;550;1015;2025-03-23;../archivos/imagenes/cocina/tou;true;true;true
-tou;550;1015;2025-03-23;../archivos/imagenes/cocina/tou;true;true;true
-jei;8000;1322;2025-03-23;..\archivos\imagenes\cocina\FondoTBack.png;true;true;true
-jei;8000;1486;2025-03-23;..\archivos\imagenes\cocina\FondoTBack.png;true;true;true
-a;4540;1822;2025-03-23;..\archivos\imagenes\cocina\FondoTBack.png;true;true;true
-camilo;770;1953;2025-03-23;..\archivos\imagenes\cocina\FondoTBack.png;true;true;false
-ser;2000;1881;2025-03-23;..\archivos\imagenes\cocina\1. covid 19.png;false;true;false
-sar;6000;1442;2025-03-23;..\archivos\imagenes\cocina\FondoOcio.png;false;false;false
-gred;5000;1139;2025-03-23;..\archivos\imagenes\cocina\compare y contraste eisen y truman.pdf;false;false;false
-asa;0;1481;2025-03-24;..\archivos\imagenes\cocina\FondoTBack.png;true;true;true
-cuchara;10000;1528;2025-03-24;..\archivos\imagenes\cocina\FondoTBack.png;false;false;true
+Cuchara;9000;1086;2025-03-24;..\archivos\imagenes\cocina\FondoHogar.png;false;false;true
+Tenedor;8000;1989;2025-03-24;..\archivos\imagenes\cocina\FondoTBack.png;false;true;true
+Cuchillo;8000;1057;2025-03-24;..\archivos\imagenes\cocina\FondoPT.png;false;true;true
 

@@ -42,7 +42,7 @@ public class PanelEliminarPapel extends JPanel {
 		eliminar.setBackground(new Color(0, 0, 0));
 		eliminar.setContentAreaFilled(false);
 		eliminar.setOpaque(false);
-		eliminar.setBorderPainted(true);
+		eliminar.setBorderPainted(false);
 		eliminar.setVisible(true);
 		add(eliminar);
 
