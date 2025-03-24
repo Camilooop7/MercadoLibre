@@ -15,6 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 public class PanelAnadirProducto extends JPanel {
+
 	private JLabel fondo;
 	private JButton btnVolver;
 	private JButton btnHogar;
@@ -28,7 +29,7 @@ public class PanelAnadirProducto extends JPanel {
 	private PanelAgregarElectro pae;
 	private PanelAgregarPapeleria papape;
 	private PanelAgregarVideoJuego pavj;
-	private PanelAgregarDeporte padepor;
+	private PanelAgregarDeporte pade;
 
 	public PanelAnadirProducto() throws IOException {
 
@@ -87,12 +88,12 @@ public class PanelAnadirProducto extends JPanel {
 		pae = new PanelAgregarElectro();
 		papape = new PanelAgregarPapeleria();
 		pavj = new PanelAgregarVideoJuego();
-		padepor = new PanelAgregarDeporte();
+		pade = new PanelAgregarDeporte();
 
 		add(pae).setVisible(false);
 		add(papape).setVisible(false);
 		add(pavj).setVisible(false);
-		add(padepor).setVisible(false);
+		add(pade).setVisible(false);
 		add(paco).setVisible(false);
 		add(paba).setVisible(false);
 		add(pah).setVisible(false);
@@ -205,12 +206,12 @@ public class PanelAnadirProducto extends JPanel {
 		this.pavj = pavj;
 	}
 
-	public PanelAgregarDeporte getPadepor() {
-		return padepor;
+	public PanelAgregarDeporte getPade() {
+		return pade;
 	}
 
-	public void setPadepor(PanelAgregarDeporte padepor) {
-		this.padepor = padepor;
+	public void setPade(PanelAgregarDeporte pade) {
+		this.pade = pade;
 	}
 
 }

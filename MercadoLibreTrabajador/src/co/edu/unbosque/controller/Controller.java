@@ -125,31 +125,26 @@ public class Controller implements ActionListener {
 		// cocina
 		vf.getVpt().getPap().getPaco().getBtnAgregar().addActionListener(this);
 		vf.getVpt().getPap().getPaco().getBtnAgregar().setActionCommand("btnAgregaProCocina");
-		
+
 		// bano
 		vf.getVpt().getPap().getPaba().getBtnAgregar().addActionListener(this);
 		vf.getVpt().getPap().getPaba().getBtnAgregar().setActionCommand("btnAgregaProBano");
-		
-		
-		//electrodomestico
+
+		// electrodomestico
 		vf.getVpt().getPap().getPae().getBtnAgregar().addActionListener(this);
 		vf.getVpt().getPap().getPae().getBtnAgregar().setActionCommand("btnAgregaProElectro");
-		
-		//papeleria
+
+		// papeleria
 		vf.getVpt().getPap().getPapape().getBtnAgregar().addActionListener(this);
 		vf.getVpt().getPap().getPapape().getBtnAgregar().setActionCommand("btnAgregaProPapeleria");
-		
-		//videojuego
+
+		// videojuego
 		vf.getVpt().getPap().getPavj().getBtnAgregar().addActionListener(this);
 		vf.getVpt().getPap().getPavj().getBtnAgregar().setActionCommand("btnAgregaProVideoJuego");
-		
-		//deporte
-		vf.getVpt().getPap().getPadepor().getBtnAgregar().addActionListener(this);
-		vf.getVpt().getPap().getPadepor().getBtnAgregar().setActionCommand("btnAgregaProDeporte");
-		
-		
-		
-		
+
+		// deporte
+		vf.getVpt().getPap().getPade().getBtnAgregar().addActionListener(this);
+		vf.getVpt().getPap().getPade().getBtnAgregar().setActionCommand("btnAgregarDeporte");
 
 		// TODO botones
 	}
@@ -296,7 +291,7 @@ public class Controller implements ActionListener {
 
 			vf.getVpt().getPap().getPaoc().setVisible(false);
 			vf.getVpt().getPap().getPavj().setVisible(false);
-			vf.getVpt().getPap().getPadepor().setVisible(false);
+			vf.getVpt().getPap().getPade().setVisible(false);
 
 			vf.getVpt().getPap().getPaco().setVisible(false);
 			vf.getVpt().getPap().getPaba().setVisible(false);
@@ -311,7 +306,7 @@ public class Controller implements ActionListener {
 
 			vf.getVpt().getPap().getPaoc().setVisible(false);
 			vf.getVpt().getPap().getPavj().setVisible(false);
-			vf.getVpt().getPap().getPadepor().setVisible(false);
+			vf.getVpt().getPap().getPade().setVisible(false);
 
 			vf.getVpt().getPap().getPae().setVisible(false);
 			vf.getVpt().getPap().getPapape().setVisible(false);
@@ -329,7 +324,7 @@ public class Controller implements ActionListener {
 			vf.getVpt().getPap().getPapape().setVisible(false);
 
 			vf.getVpt().getPap().getPavj().setVisible(false);
-			vf.getVpt().getPap().getPadepor().setVisible(false);
+			vf.getVpt().getPap().getPade().setVisible(false);
 			vf.getVpt().getPap().getPaoc().setVisible(true);
 
 			break;
@@ -366,7 +361,7 @@ public class Controller implements ActionListener {
 		}
 		case "btnAgregarVJ": {
 			vf.getVpt().getPap().getPaoc().setVisible(false);
-			vf.getVpt().getPap().getPadepor().setVisible(false);
+			vf.getVpt().getPap().getPade().setVisible(false);
 			vf.getVpt().getPap().getPavj().setVisible(true);
 
 			break;
@@ -375,7 +370,7 @@ public class Controller implements ActionListener {
 		case "btnAgregarDepor": {
 			vf.getVpt().getPap().getPaoc().setVisible(false);
 			vf.getVpt().getPap().getPavj().setVisible(false);
-			vf.getVpt().getPap().getPadepor().setVisible(true);
+			vf.getVpt().getPap().getPade().setVisible(true);
 
 			break;
 
@@ -604,9 +599,8 @@ public class Controller implements ActionListener {
 
 			try {
 				ExceptionCheker.checkerNegativeNumber(precio);
-				
+
 				ExceptionCheker.checkerIsBlank(nombre);
-				
 
 				if (vf.getVpt().getPap().getPaco().getSiD().isSelected()) {
 					esDecoracion = true;
@@ -642,10 +636,12 @@ public class Controller implements ActionListener {
 				File selectedFile = vf.getVemer().seleccionarArchivo();
 				if (selectedFile != null) {
 					String fileName = selectedFile.getName().toLowerCase();
-		            if (!fileName.endsWith(".jpg") && !fileName.endsWith(".jpeg") && !fileName.endsWith(".png") && !fileName.endsWith(".gif")) {
-		                vf.getVemer().mostrarError("El archivo seleccionado no es una imagen válida. Por favor, seleccione un archivo con extensión .jpg, .jpeg, .png o .gif.");
-		                break;
-		            }
+					if (!fileName.endsWith(".jpg") && !fileName.endsWith(".jpeg") && !fileName.endsWith(".png")
+							&& !fileName.endsWith(".gif")) {
+						vf.getVemer().mostrarError(
+								"El archivo seleccionado no es una imagen válida. Por favor, seleccione un archivo con extensión .jpg, .jpeg, .png o .gif.");
+						break;
+					}
 					try {
 						// Cargar la imagen seleccionada
 						Image image = ImageIO.read(selectedFile);
@@ -680,10 +676,10 @@ public class Controller implements ActionListener {
 				e2.printStackTrace();
 			} catch (ImageException e2) {
 				vf.getVemer().mostrar("No seleciono una imagen");
-			} 
+			}
 			break;
 		}
-		
+
 		case "btnAgregaProBano": {
 			String nombre = (String) vf.getVpt().getPap().getPaba().getNombre();
 			int precio = (int) vf.getVpt().getPap().getPaba().getPrecio();
@@ -692,25 +688,23 @@ public class Controller implements ActionListener {
 			boolean esDecoracion = false;
 			boolean esLimpieza = false;
 			String imagen = "../archivos/imagenes/bano/";
-			
+
 			try {
 				ExceptionCheker.checkerNegativeNumber(precio);
-				
+
 				ExceptionCheker.checkerIsBlank(nombre);
-				
+
 				if (vf.getVpt().getPap().getPaba().getSiD().isSelected()) {
 					esDecoracion = true;
 				} else if (vf.getVpt().getPap().getPaba().getNoD().isSelected()) {
 					esDecoracion = false;
 				}
 
-				if (vf.getVpt().getPap().getPaba().getSiL().isSelected()){
+				if (vf.getVpt().getPap().getPaba().getSiL().isSelected()) {
 					esLimpieza = true;
 				} else if (vf.getVpt().getPap().getPaba().getNoL().isSelected()) {
 					esLimpieza = false;
 				}
-
-
 
 				if (!vf.getVpt().getPap().getPaba().getSiD().isSelected()
 						&& !vf.getVpt().getPap().getPaba().getNoD().isSelected()) {
@@ -720,14 +714,16 @@ public class Controller implements ActionListener {
 						&& !vf.getVpt().getPap().getPaba().getNoL().isSelected()) {
 					ExceptionCheker.checkerIsEmpty();
 				}
-				
+
 				File selectedFile = vf.getVemer().seleccionarArchivo();
 				if (selectedFile != null) {
 					String fileName = selectedFile.getName().toLowerCase();
-		            if (!fileName.endsWith(".jpg") && !fileName.endsWith(".jpeg") && !fileName.endsWith(".png") && !fileName.endsWith(".gif")) {
-		                vf.getVemer().mostrarError("El archivo seleccionado no es una imagen válida. Por favor, seleccione un archivo con extensión .jpg, .jpeg, .png o .gif.");
-		                break;
-		            }
+					if (!fileName.endsWith(".jpg") && !fileName.endsWith(".jpeg") && !fileName.endsWith(".png")
+							&& !fileName.endsWith(".gif")) {
+						vf.getVemer().mostrarError(
+								"El archivo seleccionado no es una imagen válida. Por favor, seleccione un archivo con extensión .jpg, .jpeg, .png o .gif.");
+						break;
+					}
 					try {
 						// Cargar la imagen seleccionada
 						Image image = ImageIO.read(selectedFile);
@@ -752,8 +748,7 @@ public class Controller implements ActionListener {
 				mf.getBanoDAO().crear(new Bano(nombre, precio, id, fecha, imagen, esDecoracion, esLimpieza));
 
 				System.out.println(mf.getBanoDAO().mostrarTodo());
-				
-				
+
 			} catch (NegativeNumberException e2) {
 				vf.getVemer().mostrar("Número no válido.");
 				e2.printStackTrace();
@@ -762,10 +757,10 @@ public class Controller implements ActionListener {
 				e2.printStackTrace();
 			} catch (ImageException e2) {
 				vf.getVemer().mostrar("No seleciono una imagen");
-			} 
+			}
 			break;
 		}
-		
+
 		case "btnAgregaProElectro": {
 			String nombre = (String) vf.getVpt().getPap().getPae().getNombre();
 			int precio = (int) vf.getVpt().getPap().getPae().getPrecio();
@@ -774,33 +769,32 @@ public class Controller implements ActionListener {
 			boolean esPortatil = false;
 			String fuenteEnergia = (String) vf.getVpt().getPap().getPae().getFuenteEnergia();
 			String imagen = "../archivos/imagenes/electro/";
-			
+
 			try {
 				ExceptionCheker.checkerNegativeNumber(precio);
-				
+
 				ExceptionCheker.checkerIsBlank(nombre);
-				
+
 				if (vf.getVpt().getPap().getPae().getSiD().isSelected()) {
 					esPortatil = true;
 				} else if (vf.getVpt().getPap().getPae().getNoD().isSelected()) {
 					esPortatil = false;
 				}
 
-
-
 				if (!vf.getVpt().getPap().getPae().getSiD().isSelected()
 						&& !vf.getVpt().getPap().getPae().getNoD().isSelected()) {
 					ExceptionCheker.checkerIsEmpty();
 				}
-				
-				
+
 				File selectedFile = vf.getVemer().seleccionarArchivo();
 				if (selectedFile != null) {
 					String fileName = selectedFile.getName().toLowerCase();
-		            if (!fileName.endsWith(".jpg") && !fileName.endsWith(".jpeg") && !fileName.endsWith(".png") && !fileName.endsWith(".gif")) {
-		                vf.getVemer().mostrarError("El archivo seleccionado no es una imagen válida. Por favor, seleccione un archivo con extensión .jpg, .jpeg, .png o .gif.");
-		                break;
-		            }
+					if (!fileName.endsWith(".jpg") && !fileName.endsWith(".jpeg") && !fileName.endsWith(".png")
+							&& !fileName.endsWith(".gif")) {
+						vf.getVemer().mostrarError(
+								"El archivo seleccionado no es una imagen válida. Por favor, seleccione un archivo con extensión .jpg, .jpeg, .png o .gif.");
+						break;
+					}
 					try {
 						// Cargar la imagen seleccionada
 						Image image = ImageIO.read(selectedFile);
@@ -822,11 +816,11 @@ public class Controller implements ActionListener {
 				}
 
 				// Crear el objeto Cocina con la URL de la imagen
-				mf.getElectrodomesticoDAO().crear(new Electrodomestico(nombre, precio, id, fecha, imagen, esPortatil, fuenteEnergia));
+				mf.getElectrodomesticoDAO()
+						.crear(new Electrodomestico(nombre, precio, id, fecha, imagen, esPortatil, fuenteEnergia));
 
 				System.out.println(mf.getElectrodomesticoDAO().mostrarTodo());
-				
-				
+
 			} catch (NegativeNumberException e2) {
 				vf.getVemer().mostrar("Número no válido.");
 				e2.printStackTrace();
@@ -835,9 +829,9 @@ public class Controller implements ActionListener {
 				e2.printStackTrace();
 			} catch (ImageException e2) {
 				vf.getVemer().mostrar("No seleciono una imagen");
-			} 
+			}
 			break;
-		} 
+		}
 		case "btnAgregaProPapeleria": {
 			String nombre = (String) vf.getVpt().getPap().getPapape().getNombre();
 			int precio = (int) vf.getVpt().getPap().getPapape().getPrecio();
@@ -846,34 +840,33 @@ public class Controller implements ActionListener {
 			boolean esPortatil = false;
 			int cantidadPaquete = (int) vf.getVpt().getPap().getPapape().getCantidadPorPaquete();
 			String imagen = "../archivos/imagenes/papeleria/";
-			
+
 			try {
 				ExceptionCheker.checkerNegativeNumber(precio);
 				ExceptionCheker.checkerNegativeNumber(cantidadPaquete);
-				
+
 				ExceptionCheker.checkerIsBlank(nombre);
-				
+
 				if (vf.getVpt().getPap().getPapape().getSiD().isSelected()) {
 					esPortatil = true;
 				} else if (vf.getVpt().getPap().getPapape().getNoD().isSelected()) {
 					esPortatil = false;
 				}
 
-
-
 				if (!vf.getVpt().getPap().getPapape().getSiD().isSelected()
 						&& !vf.getVpt().getPap().getPapape().getNoD().isSelected()) {
 					ExceptionCheker.checkerIsEmpty();
 				}
-				
-				
+
 				File selectedFile = vf.getVemer().seleccionarArchivo();
 				if (selectedFile != null) {
 					String fileName = selectedFile.getName().toLowerCase();
-		            if (!fileName.endsWith(".jpg") && !fileName.endsWith(".jpeg") && !fileName.endsWith(".png") && !fileName.endsWith(".gif")) {
-		                vf.getVemer().mostrarError("El archivo seleccionado no es una imagen válida. Por favor, seleccione un archivo con extensión .jpg, .jpeg, .png o .gif.");
-		                break;
-		            }
+					if (!fileName.endsWith(".jpg") && !fileName.endsWith(".jpeg") && !fileName.endsWith(".png")
+							&& !fileName.endsWith(".gif")) {
+						vf.getVemer().mostrarError(
+								"El archivo seleccionado no es una imagen válida. Por favor, seleccione un archivo con extensión .jpg, .jpeg, .png o .gif.");
+						break;
+					}
 					try {
 						// Cargar la imagen seleccionada
 						Image image = ImageIO.read(selectedFile);
@@ -895,11 +888,11 @@ public class Controller implements ActionListener {
 				}
 
 				// Crear el objeto Cocina con la URL de la imagen
-				mf.getPapeleriaDAO().crear(new Papeleria(nombre, precio, id, fecha, imagen, esPortatil, cantidadPaquete));
+				mf.getPapeleriaDAO()
+						.crear(new Papeleria(nombre, precio, id, fecha, imagen, esPortatil, cantidadPaquete));
 
 				System.out.println(mf.getPapeleriaDAO().mostrarTodo());
-				
-				
+
 			} catch (NegativeNumberException e2) {
 				vf.getVemer().mostrar("Número no válido.");
 				e2.printStackTrace();
@@ -908,12 +901,10 @@ public class Controller implements ActionListener {
 				e2.printStackTrace();
 			} catch (ImageException e2) {
 				vf.getVemer().mostrar("No seleciono una imagen");
-			} 
+			}
 			break;
-		} 
-		
-		
-		
+		}
+
 		case "btnAgregaProVideoJuego": {
 			String nombre = (String) vf.getVpt().getPap().getPavj().getNombre();
 			int precio = (int) vf.getVpt().getPap().getPavj().getPrecio();
@@ -922,34 +913,33 @@ public class Controller implements ActionListener {
 			boolean esAccesorio = false;
 			String referenciaConsola = (String) vf.getVpt().getPap().getPavj().getReferenciaConsola();
 			String imagen = "../archivos/imagenes/videojuego/";
-			
+
 			try {
 				ExceptionCheker.checkerNegativeNumber(precio);
-				
+
 				ExceptionCheker.checkerIsBlank(referenciaConsola);
 				ExceptionCheker.checkerIsBlank(nombre);
-				
+
 				if (vf.getVpt().getPap().getPavj().getSiA().isSelected()) {
 					esAccesorio = true;
 				} else if (vf.getVpt().getPap().getPavj().getNoA().isSelected()) {
 					esAccesorio = false;
 				}
 
-
-
 				if (!vf.getVpt().getPap().getPavj().getSiA().isSelected()
 						&& !vf.getVpt().getPap().getPavj().getNoA().isSelected()) {
 					ExceptionCheker.checkerIsEmpty();
 				}
-				
-				
+
 				File selectedFile = vf.getVemer().seleccionarArchivo();
 				if (selectedFile != null) {
 					String fileName = selectedFile.getName().toLowerCase();
-		            if (!fileName.endsWith(".jpg") && !fileName.endsWith(".jpeg") && !fileName.endsWith(".png") && !fileName.endsWith(".gif")) {
-		                vf.getVemer().mostrarError("El archivo seleccionado no es una imagen válida. Por favor, seleccione un archivo con extensión .jpg, .jpeg, .png o .gif.");
-		                break;
-		            }
+					if (!fileName.endsWith(".jpg") && !fileName.endsWith(".jpeg") && !fileName.endsWith(".png")
+							&& !fileName.endsWith(".gif")) {
+						vf.getVemer().mostrarError(
+								"El archivo seleccionado no es una imagen válida. Por favor, seleccione un archivo con extensión .jpg, .jpeg, .png o .gif.");
+						break;
+					}
 					try {
 						// Cargar la imagen seleccionada
 						Image image = ImageIO.read(selectedFile);
@@ -971,11 +961,11 @@ public class Controller implements ActionListener {
 				}
 
 				// Crear el objeto Cocina con la URL de la imagen
-				mf.getVideoJuegoDAO().crear(new VideoJuego(nombre, precio, id, fecha, imagen, esAccesorio, referenciaConsola));
+				mf.getVideoJuegoDAO()
+						.crear(new VideoJuego(nombre, precio, id, fecha, imagen, esAccesorio, referenciaConsola));
 
 				System.out.println(mf.getVideoJuegoDAO().mostrarTodo());
-				
-				
+
 			} catch (NegativeNumberException e2) {
 				vf.getVemer().mostrar("Número no válido.");
 				e2.printStackTrace();
@@ -984,89 +974,82 @@ public class Controller implements ActionListener {
 				e2.printStackTrace();
 			} catch (ImageException e2) {
 				vf.getVemer().mostrar("No seleciono una imagen");
-			} 
+			}
 			break;
-		} 
-		
-		case "btnAgregaProDeporte": {
-			
-			String nombre1 = (String)vf.getVpt().getPap().getPadepor().getNombre();
-		    int precio = (int) vf.getVpt().getPap().getPadepor().getPrecio();
-		    int id = new Deporte().codigoAleatorio();
-		    LocalDate fecha = LocalDate.now();
-		    boolean esAccesorio = false;
-		    String deporte = (String) vf.getVpt().getPap().getPadepor().getDeporte();
-		    System.out.println(nombre1);
-		    System.out.println(deporte);
-		    String imagen = "../archivos/imagenes/deporte/";
-
-		    try {
-		        ExceptionCheker.checkerNegativeNumber(precio);
-		        ExceptionCheker.checkerIsBlank(nombre1);
-		        ExceptionCheker.checkerIsBlank(deporte); // Validación adicional
-
-		        if (vf.getVpt().getPap().getPadepor().getSiA().isSelected()) {
-		            esAccesorio = true;
-		        } else if (vf.getVpt().getPap().getPadepor().getNoA().isSelected()) {
-		            esAccesorio = false;
-		        }
-
-		        if (!vf.getVpt().getPap().getPadepor().getSiA().isSelected()
-		                && !vf.getVpt().getPap().getPadepor().getNoA().isSelected()) {
-		            ExceptionCheker.checkerIsEmpty();
-		        }
-
-		        File selectedFile = vf.getVemer().seleccionarArchivo();
-		        if (selectedFile != null) {
-		            String fileName = selectedFile.getName().toLowerCase();
-		            if (!fileName.endsWith(".jpg") && !fileName.endsWith(".jpeg") && !fileName.endsWith(".png") && !fileName.endsWith(".gif")) {
-		                vf.getVemer().mostrarError("El archivo seleccionado no es una imagen válida. Por favor, seleccione un archivo con extensión .jpg, .jpeg, .png o .gif.");
-		                break;
-		            }
-		            try {
-		                // Cargar la imagen seleccionada
-		                Image image = ImageIO.read(selectedFile);
-
-		                // Copiar el archivo seleccionado al directorio 'resources/images'
-		                File destino = new File("../archivos/imagenes/deporte/" + selectedFile.getName());
-		                FileManager.guardarImagen(selectedFile, destino);
-
-		                // Guardar la URL de la imagen
-		                imagen = destino.getPath();
-
-		            } catch (IOException ex) {
-		                vf.getVemer().mostrarError("No se pudo cargar la imagen.");
-		            } catch (IllegalArgumentException ex) {
-		                vf.getVemer().mostrarError("El archivo seleccionado no es una imagen válida.");
-		            }
-		        } else {
-		            ExceptionCheker.checkerImage();
-		        }
-
-		        // Crear el objeto Deporte con la URL de la imagen
-		        mf.getDeporteDAO().crear(new Deporte(nombre1, precio, id, fecha, imagen, esAccesorio, deporte));
-
-		        System.out.println(mf.getDeporteDAO().mostrarTodo());
-
-		    } catch (NegativeNumberException e2) {
-		        vf.getVemer().mostrar("Número no válido.");
-		        e2.printStackTrace();
-		    } catch (IsBlackException e2) {
-		        vf.getVemer().mostrar("Completar toda la información.");
-		        e2.printStackTrace();
-		    } catch (ImageException e2) {
-		        vf.getVemer().mostrar("No seleccionó una imagen.");
-		    }
-		    break;
 		}
 
-		
-		
-		
-		 
-		
-		
-		
+		case "btnAgregarDeporte": {
+			String nombre = (String) vf.getVpt().getPap().getPade().getNombre();
+			System.out.println("Nombre:" + nombre);
+			int precio = (int) vf.getVpt().getPap().getPade().getPrecio();
+			int id = new Deporte().codigoAleatorio();
+			LocalDate fecha = LocalDate.now();
+			boolean esAccesorio = false;
+			String deporte = (String) vf.getVpt().getPap().getPade().getDeporte();
+			String imagen = "../archivos/imagenes/electro/";
+
+			try {
+				ExceptionCheker.checkerNegativeNumber(precio);
+
+				ExceptionCheker.checkerIsBlank(nombre);
+				ExceptionCheker.checkerIsBlank(deporte);
+
+				if (vf.getVpt().getPap().getPade().getSiA().isSelected()) {
+					esAccesorio = true;
+				} else if (vf.getVpt().getPap().getPade().getNoA().isSelected()) {
+					esAccesorio = false;
+				}
+
+				if (!vf.getVpt().getPap().getPade().getSiA().isSelected()
+						&& !vf.getVpt().getPap().getPade().getNoA().isSelected()) {
+					ExceptionCheker.checkerIsEmpty();
+				}
+
+				File selectedFile = vf.getVemer().seleccionarArchivo();
+				if (selectedFile != null) {
+					String fileName = selectedFile.getName().toLowerCase();
+					if (!fileName.endsWith(".jpg") && !fileName.endsWith(".jpeg") && !fileName.endsWith(".png")
+							&& !fileName.endsWith(".gif")) {
+						vf.getVemer().mostrarError(
+								"El archivo seleccionado no es una imagen válida. Por favor, seleccione un archivo con extensión .jpg, .jpeg, .png o .gif.");
+						break;
+					}
+					try {
+						// Cargar la imagen seleccionada
+						Image image = ImageIO.read(selectedFile);
+
+						// Copiar el archivo seleccionado al directorio 'resources/images'
+						File destino = new File("../archivos/imagenes/electro/" + selectedFile.getName());
+						FileManager.guardarImagen(selectedFile, destino);
+
+						// Guardar la URL de la imagen
+						imagen = destino.getPath();
+
+					} catch (IOException ex) {
+						vf.getVemer().mostrarError("No se pudo cargar la imagen.");
+					} catch (IllegalArgumentException ex) {
+						vf.getVemer().mostrarError("El archivo seleccionado no es una imagen válida.");
+					}
+				} else {
+					ExceptionCheker.checkerImage();
+				}
+
+				// Crear el objeto Cocina con la URL de la imagen
+				mf.getDeporteDAO().crear(new Deporte(nombre, precio, id, fecha, imagen, esAccesorio, deporte));
+
+				System.out.println(mf.getDeporteDAO().mostrarTodo());
+
+			} catch (NegativeNumberException e2) {
+				vf.getVemer().mostrar("Número no válido.");
+				e2.printStackTrace();
+			} catch (IsBlackException e2) {
+				vf.getVemer().mostrar("Completar toda la información.");
+				e2.printStackTrace();
+			} catch (ImageException e2) {
+				vf.getVemer().mostrar("No seleciono una imagen");
+			}
+			break;
+		}
 
 		}
 

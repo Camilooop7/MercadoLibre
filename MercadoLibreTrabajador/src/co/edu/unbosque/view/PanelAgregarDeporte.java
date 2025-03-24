@@ -17,6 +17,8 @@ import javax.swing.JRadioButton;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
 
+import co.edu.unbosque.controller.Controller;
+
 public class PanelAgregarDeporte extends JPanel {
 
 	private JLabel fondo;
@@ -52,29 +54,7 @@ public class PanelAgregarDeporte extends JPanel {
 		btnAgregar.setBorderPainted(false);
 		btnAgregar.setVisible(true);
 		add(btnAgregar);
-
-		textNombre = new JLabel();
-		textNombre.setBounds(44, 40, 150, 60);
-		textNombre.setText("Nombre: ");
-		textNombre.setFont(new Font("Baloo", Font.BOLD, 24));
-		add(textNombre);
-
-		nombre = new JTextField();
-		nombre.setBounds(140, 40, 490, 50);
-		nombre.setFont(new Font("Baloo", Font.BOLD, 24));
-		add(nombre);
-
-		textPrecio = new JLabel();
-		textPrecio.setBounds(50, 130, 150, 60);
-		textPrecio.setText("Precio: ");
-		textPrecio.setFont(new Font("Baloo", Font.BOLD, 24));
-		add(textPrecio);
-
-		precio = new JSpinner();
-		precio.setBounds(140, 130, 490, 50);
-		precio.setFont(new Font("Baloo", Font.BOLD, 24));
-		add(precio);
-
+		
 		textNombre = new JLabel();
 		textNombre.setBounds(44, 40, 150, 60);
 		textNombre.setText("Nombre: ");
@@ -164,7 +144,7 @@ public class PanelAgregarDeporte extends JPanel {
 	}
 
 	public String getNombre() {
-		return  (String)nombre.getText();
+		return (String) nombre.getText();
 	}
 
 	public void setNombre(JTextField nombre) {
@@ -210,6 +190,7 @@ public class PanelAgregarDeporte extends JPanel {
 	public void setNoA(JRadioButton noA) {
 		this.noA = noA;
 	}
+
 	public JLabel getTextDeporte() {
 		return textDeporte;
 	}
