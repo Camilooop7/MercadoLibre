@@ -208,7 +208,7 @@ public class PanelAgregarCocina extends JPanel {
 	}
 
 	public String getNombre() {
-		return (String) nombre.getName();
+		return (String) nombre.getText();
 	}
 
 	public void setNombre(JTextField nombre) {

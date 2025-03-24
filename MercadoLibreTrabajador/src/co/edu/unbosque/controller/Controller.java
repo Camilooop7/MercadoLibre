@@ -3,9 +3,14 @@ package co.edu.unbosque.controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.lang.classfile.instruction.NewMultiArrayInstruction;
+import java.time.LocalDate;
+
+import javax.swing.JRadioButton;
 
 import co.edu.unbosque.model.Bano;
 import co.edu.unbosque.model.Cliente;
+import co.edu.unbosque.model.Cocina;
 import co.edu.unbosque.model.ModelFacade;
 import co.edu.unbosque.model.Trabajador;
 import co.edu.unbosque.model.persistence.FileManager;
@@ -112,14 +117,18 @@ public class Controller implements ActionListener {
 		// cocina
 		vf.getVpt().getPap().getPaco().getBtnAgregar().addActionListener(this);
 		vf.getVpt().getPap().getPaco().getBtnAgregar().setActionCommand("btnAgregaProCocina");
+		vf.getVpt().getPap().getPaco().getSiD().addActionListener(this);
+		vf.getVpt().getPap().getPaco().getSiD().setActionCommand("btnSiD");
+		vf.getVpt().getPap().getPaco().getNoD().addActionListener(this);
+		vf.getVpt().getPap().getPaco().getNoD().setActionCommand("btNoD");
 		vf.getVpt().getPap().getPaco().getSiP().addActionListener(this);
-		vf.getVpt().getPap().getPaco().getSiP().setActionCommand("btnSiPeligo");
+		vf.getVpt().getPap().getPaco().getSiP().setActionCommand("btnSiP");
 		vf.getVpt().getPap().getPaco().getNoP().addActionListener(this);
-		vf.getVpt().getPap().getPaco().getNoP().setActionCommand("btNoPeligo");
+		vf.getVpt().getPap().getPaco().getNoP().setActionCommand("btNoP");
 		vf.getVpt().getPap().getPaco().getSiR().addActionListener(this);
-		vf.getVpt().getPap().getPaco().getSiR().setActionCommand("btnSiPeligo");
+		vf.getVpt().getPap().getPaco().getSiR().setActionCommand("btnSiR");
 		vf.getVpt().getPap().getPaco().getNoR().addActionListener(this);
-		vf.getVpt().getPap().getPaco().getNoR().setActionCommand("btNoPeligo");
+		vf.getVpt().getPap().getPaco().getNoR().setActionCommand("btNoR");
 
 		// TODO botones
 	}
@@ -352,7 +361,7 @@ public class Controller implements ActionListener {
 		}
 
 		case "btnModificarP": {
-			//TODO 
+			// TODO
 			break;
 		}
 		case "btnEliminarP": {
@@ -561,45 +570,77 @@ public class Controller implements ActionListener {
 			break;
 
 		}
-		
-		
-		case "btnAgregaProCocina": {
-			String nombre = vf.getVpt().getPap().getPaco().getName();
-			int precio = (int) vf.getVpt().getPap().getPaco().getPrecio();
-			
-			
-			
-			
-			
-			boolean esDecoracion = false;
-			if (esDecoracion) {
-				vf.getVpt().getPap().getPaco();
-			} else {
 
-			}
-			
+		case "btnAgregaProCocina": {
+			String nombre = (String) vf.getVpt().getPap().getPaco().getNombre();
+			int precio = (int) vf.getVpt().getPap().getPaco().getPrecio();
+			int id = new Cocina().codigoAleatorio();
+			LocalDate fecha = LocalDate.now();
+
+			String imagen = "hi";
+
+			boolean esDecoracion = false;
 			boolean resisteAltaTemperatuta = false;
-			if (resisteAltaTemperatuta) {
-				vf.getVpt().getPap().getPaco().getSiP();
-				resisteAltaTemperatuta = true;
-			} else if (resisteAltaTemperatuta) {
-				vf.getVpt().getPap().getPaco().getNoP();
-				resisteAltaTemperatuta = false;
-			} 
-			boolean esPeligroso= false;
-			if (esPeligroso) {
-				vf.getVpt().getPap().getPaco().getSiR();
-				esPeligroso = true;
-			} else if (esPeligroso) {
-				vf.getVpt().getPap().getPaco().getNoR();
-				esPeligroso = false;
-			} 
+			boolean esPeligroso = false;
+			try {
+
+				if ( vf.getVpt().getPap().getPaco().getSiD().isSelected()) {
+					esDecoracion = true;
+				} else if ( vf.getVpt().getPap().getPaco().getNoD().isSelected()) {
+					esDecoracion = false;
+				}
+				
+				if (vf.getVpt().getPap().getPaco().getSiP().isSelected()) {
+
+					resisteAltaTemperatuta = true;
+				} else if (vf.getVpt().getPap().getPaco().getNoP().isSelected()) {
+					
+					resisteAltaTemperatuta = false;
+				}
+				if (vf.getVpt().getPap().getPaco().getSiR().isSelected()) {
+					
+					esPeligroso = true;
+				} else if (vf.getVpt().getPap().getPaco().getNoR().isSelected()) {
+					
+					esPeligroso = false;
+				}
+
+				if (!vf.getVpt().getPap().getPaco().getSiD().isSelected()
+						&& !vf.getVpt().getPap().getPaco().getNoD().isSelected()) {
+					throw new Exception("Ningún botón seleccionado");
+				}
+				if (!vf.getVpt().getPap().getPaco().getSiP().isSelected()
+						&& !vf.getVpt().getPap().getPaco().getNoP().isSelected()) {
+					throw new Exception("Ningún botón seleccionado");
+				}
+				if (!vf.getVpt().getPap().getPaco().getSiR().isSelected()
+						&& !vf.getVpt().getPap().getPaco().getNoR().isSelected()) {
+					throw new Exception("Ningún botón seleccionado");
+				}
+
+				mf.getCocinaDAO().crear(new Cocina(nombre, precio, id, fecha, imagen, esDecoracion,
+						resisteAltaTemperatuta, esPeligroso));
+				System.out.println(mf.getCocinaDAO().mostrarTodo());
+			} catch (Exception e2) {
+				// TODO: handle exception
+				vf.getVemer().mostrar("Llenar toda la informacion");
+			}
+
 			
+
 			
-			
-			
+
 			break;
-			
+
+		}
+		case "btnSiD": {
+
+			break;
+
+		}
+		case "btnNoD": {
+
+			break;
 		}
 
 		}

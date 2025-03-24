@@ -95,7 +95,7 @@ public class CocinaDAO implements OperacionDAO<Cocina> {
 	public String mostrarTodo() {
 		String salida = "";
 		for (Cocina cocina : listaCocinas) {
-			salida += cocina.toString();
+			salida += cocina.toString()+"\n";
 		}
 		return salida;
 	}

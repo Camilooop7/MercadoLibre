@@ -8,7 +8,7 @@ public abstract class Producto implements Serializable { // Declara la clase abs
 	private String nombre; // Atributo que almacena el nombre del producto
 	private int precio; // Atributo que almacena el precio del producto
 	private int id; // Atributo que almacena el identificador del producto
-	private LocalDate fecha = LocalDate.now(); // Atributo que almacena la cantidad disponible del producto
+	private LocalDate fecha; // Atributo que almacena la cantidad disponible del producto
 	private String imagen; // Atributo que almacena la ruta de la imagen del producto
 
 	public Producto() { // Constructor vacío
