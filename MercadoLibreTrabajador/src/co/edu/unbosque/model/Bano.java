@@ -41,7 +41,7 @@ public class Bano extends Hogar implements Serializable { // Declara la clase Ba
 
 	@Override
 	public String toString() {
-		return super.toString() + "\n¿Es de limpieza? " + esLimpieza; // Sobrescribe toString para incluir el atributo
+		return super.toString() + "\n¿Es de limpieza? " + esLimpieza+"\n"; // Sobrescribe toString para incluir el atributo
 																	// esLimpieza
 	}
 	public int codigoAleatorio() {

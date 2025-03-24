@@ -39,7 +39,7 @@ public class Papeleria extends Oficina implements Serializable { // Declara la c
 
 	@Override
 	public String toString() { // Método para representar el objeto como cadena
-		return super.toString() + "\nCuantos vienen en el paquete: " + cantidadPorPaquete; // Retorna la información del
+		return super.toString() + "\nCuantos vienen en el paquete: " + cantidadPorPaquete+"\n"; // Retorna la información del
 																							// objeto
 	}
 	public int codigoAleatorio() {
