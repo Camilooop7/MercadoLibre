@@ -94,7 +94,7 @@ public class DeporteDAO implements OperacionDAO<Deporte> {
 	public String mostrarTodo() {
 		String salida = "";
 		for (Deporte deporte : listaDeportes) {
-			salida += deporte.toString();
+			salida += deporte.toString() + "\n";
 		}
 		return salida;
 	}

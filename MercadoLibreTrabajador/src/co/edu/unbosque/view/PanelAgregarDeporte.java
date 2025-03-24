@@ -30,7 +30,7 @@ public class PanelAgregarDeporte extends JPanel {
 	private JRadioButton noA;
 	private JLabel textDeporte;
 	private JTextField deporte;
-	
+
 	public PanelAgregarDeporte() throws IOException {
 
 		setBounds(412, 250, 780, 433);
@@ -52,7 +52,7 @@ public class PanelAgregarDeporte extends JPanel {
 		btnAgregar.setBorderPainted(false);
 		btnAgregar.setVisible(true);
 		add(btnAgregar);
-		
+
 		textNombre = new JLabel();
 		textNombre.setBounds(44, 40, 150, 60);
 		textNombre.setText("Nombre: ");
@@ -124,7 +124,7 @@ public class PanelAgregarDeporte extends JPanel {
 		ButtonGroup grupo = new ButtonGroup();
 		grupo.add(siA);
 		grupo.add(noA);
-		
+
 		textDeporte = new JLabel();
 		textDeporte.setBounds(40, 270, 150, 60);
 		textDeporte.setText("Deporte:");
@@ -136,10 +136,9 @@ public class PanelAgregarDeporte extends JPanel {
 		deporte.setFont(new Font("Baloo", Font.BOLD, 24));
 		add(deporte);
 
-		
-		
 		add(fondo);
 	}
+
 	public JLabel getFondo() {
 		return fondo;
 	}
@@ -164,16 +163,16 @@ public class PanelAgregarDeporte extends JPanel {
 		this.textNombre = textNombre;
 	}
 
-	public JTextField getNombre() {
-		return nombre;
+	public String getNombre() {
+		return  (String)nombre.getText();
 	}
 
 	public void setNombre(JTextField nombre) {
 		this.nombre = nombre;
 	}
 
-	public String getTextPrecio() {
-		return (String) nombre.getText();
+	public JLabel getTextPrecio() {
+		return textPrecio;
 	}
 
 	public void setTextPrecio(JLabel textPrecio) {
@@ -211,7 +210,6 @@ public class PanelAgregarDeporte extends JPanel {
 	public void setNoA(JRadioButton noA) {
 		this.noA = noA;
 	}
-
 	public JLabel getTextDeporte() {
 		return textDeporte;
 	}
@@ -227,6 +225,5 @@ public class PanelAgregarDeporte extends JPanel {
 	public void setDeporte(JTextField deporte) {
 		this.deporte = deporte;
 	}
-	
 
 }

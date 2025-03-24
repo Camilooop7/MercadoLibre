@@ -97,7 +97,7 @@ public class PapeleriaDAO implements OperacionDAO<Papeleria> {
         String salida = "";
         for (Papeleria papeleria : listaPapeleria) {
             // Concatenación de la representación en cadena de cada objeto Papeleria.
-            salida += papeleria.toString();
+            salida += papeleria.toString() + "\n";
         }
         return salida;
     }

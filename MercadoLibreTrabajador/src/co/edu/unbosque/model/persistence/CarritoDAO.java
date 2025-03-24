@@ -91,7 +91,7 @@ public class CarritoDAO implements OperacionDAO<Carrito> {
 	public String mostrarTodo() {
 		String salida = "";
 		for (Carrito carrito : listaCarritos) {
-			salida += carrito.toString();
+			salida += carrito.toString() + "\n";
 		}
 		return salida;
 	}

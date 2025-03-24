@@ -95,7 +95,7 @@ public class ElectrodomesticoDAO implements OperacionDAO<Electrodomestico> {
     public String mostrarTodo() {
         String salida = "";
         for (Electrodomestico electrodomestico : listaElectrodomesticos) {
-            salida += electrodomestico.toString();
+            salida += electrodomestico.toString() + "\n";
         }
         return salida;
     }

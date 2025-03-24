@@ -143,16 +143,16 @@ public class PanelAgregarVideoJuego extends JPanel {
 		this.textNombre = textNombre;
 	}
 
-	public JTextField getNombre() {
-		return nombre;
+	public String getNombre() {
+		return (String) nombre.getText();
 	}
 
 	public void setNombre(JTextField nombre) {
 		this.nombre = nombre;
 	}
 
-	public String getTextPrecio() {
-		return (String) nombre.getText();
+	public JLabel getTextPrecio() {
+		return textPrecio;
 	}
 
 	public void setTextPrecio(JLabel textPrecio) {

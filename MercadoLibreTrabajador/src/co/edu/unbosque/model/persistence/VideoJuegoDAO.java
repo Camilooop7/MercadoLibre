@@ -95,7 +95,7 @@ public class VideoJuegoDAO implements OperacionDAO<VideoJuego> {
     public String mostrarTodo() {
         String salida = "";
         for (VideoJuego videoJuego : listaVideoJuegos) {
-            salida += videoJuego.toString();
+            salida += videoJuego.toString() + "\n";
         }
         return salida;
     }
