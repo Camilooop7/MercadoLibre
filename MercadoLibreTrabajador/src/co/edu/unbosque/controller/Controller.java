@@ -610,7 +610,9 @@ public class Controller implements ActionListener {
 			String nombre = (String) vf.getVpt().getPap().getPaco().getNombre();
 			int precio = (int) vf.getVpt().getPap().getPaco().getPrecio();
 			int id = new Cocina().codigoAleatorio();
-			LocalDateTime fecha = LocalDateTime.now();
+			LocalDateTime a= LocalDateTime.now();
+	        DateTimeFormatter b= DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");  
+	       String fecha= a.format(b);
 			boolean esDecoracion = false;
 			boolean resisteAltaTemperatuta = false;
 			boolean esPeligroso = false;
@@ -703,7 +705,9 @@ public class Controller implements ActionListener {
 			String nombre = (String) vf.getVpt().getPap().getPaba().getNombre();
 			int precio = (int) vf.getVpt().getPap().getPaba().getPrecio();
 			int id = new Bano().codigoAleatorio();
-			LocalDateTime fecha = LocalDateTime.now();
+			LocalDateTime a= LocalDateTime.now();
+	        DateTimeFormatter b= DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");  
+	       String fecha= a.format(b);
 			boolean esDecoracion = false;
 			boolean esLimpieza = false;
 			String imagen = "../archivos/imagenes/bano/";
@@ -784,7 +788,9 @@ public class Controller implements ActionListener {
 			String nombre = (String) vf.getVpt().getPap().getPae().getNombre();
 			int precio = (int) vf.getVpt().getPap().getPae().getPrecio();
 			int id = new Electrodomestico().codigoAleatorio();
-			LocalDateTime fecha = LocalDateTime.now();
+			LocalDateTime a= LocalDateTime.now();
+	        DateTimeFormatter b= DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");  
+	       String fecha= a.format(b);
 			boolean esPortatil = false;
 			String fuenteEnergia = (String) vf.getVpt().getPap().getPae().getFuenteEnergia();
 			String imagen = "../archivos/imagenes/electro/";
@@ -855,7 +861,9 @@ public class Controller implements ActionListener {
 			String nombre = (String) vf.getVpt().getPap().getPapape().getNombre();
 			int precio = (int) vf.getVpt().getPap().getPapape().getPrecio();
 			int id = new Papeleria().codigoAleatorio();
-			LocalDateTime fecha = LocalDateTime.now();
+			LocalDateTime a= LocalDateTime.now();
+	        DateTimeFormatter b= DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");  
+	       String fecha= a.format(b);
 			boolean esPortatil = false;
 			int cantidadPaquete = (int) vf.getVpt().getPap().getPapape().getCantidadPorPaquete();
 			String imagen = "../archivos/imagenes/papeleria/";
@@ -928,7 +936,9 @@ public class Controller implements ActionListener {
 			String nombre = (String) vf.getVpt().getPap().getPavj().getNombre();
 			int precio = (int) vf.getVpt().getPap().getPavj().getPrecio();
 			int id = new VideoJuego().codigoAleatorio();
-			LocalDateTime fecha = LocalDateTime.now();
+			LocalDateTime a= LocalDateTime.now();
+	        DateTimeFormatter b= DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");  
+	       String fecha= a.format(b);
 			boolean esAccesorio = false;
 			String referenciaConsola = (String) vf.getVpt().getPap().getPavj().getReferenciaConsola();
 			String imagen = "../archivos/imagenes/videojuego/";
@@ -1003,12 +1013,9 @@ public class Controller implements ActionListener {
 			int precio = (int) vf.getVpt().getPap().getPade().getPrecio();
 			int id = new Deporte().codigoAleatorio();
 			LocalDateTime a= LocalDateTime.now();
-
-	        // Definir el formato deseado con segundos
-	        DateTimeFormatter b= DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-
-	        // Formatear la fecha y hora
-	        String fecha= a.format(b);
+	        DateTimeFormatter b= DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");  
+	       String fecha= a.format(b);
+	        
 			boolean esAccesorio = false;
 			String deporte = (String) vf.getVpt().getPap().getPade().getDeporte();
 			String imagen = "../archivos/imagenes/electro/";
