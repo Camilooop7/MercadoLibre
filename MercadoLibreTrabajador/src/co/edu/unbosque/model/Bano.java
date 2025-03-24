@@ -19,14 +19,14 @@ public class Bano extends Hogar implements Serializable { // Declara la clase Ba
 		this.esLimpieza = esLimpieza; // Asigna el valor al atributo esLimpieza
 	}
 
-	public Bano(String nombre, int precio, int id, LocalDateTime fecha, String imagen, boolean esDecoracion,
+	public Bano(String nombre, int precio, int id, String fecha, String imagen, boolean esDecoracion,
 			boolean esLimpieza) {
 		super(nombre, precio, id, fecha, imagen, esDecoracion); // Llama al constructor de la clase padre con los
 																// parámetros
 		this.esLimpieza = esLimpieza; // Asigna el valor al atributo esLimpieza
 	}
 
-	public Bano(String nombre, int precio, int id, LocalDateTime fecha, String imagen, boolean esDecoracion) {
+	public Bano(String nombre, int precio, int id, String fecha, String imagen, boolean esDecoracion) {
 		super(nombre, precio, id, fecha, imagen, esDecoracion); // Llama al constructor de la clase padre sin
 																	// esLimpieza
 		// Constructor sin asignar esLimpieza

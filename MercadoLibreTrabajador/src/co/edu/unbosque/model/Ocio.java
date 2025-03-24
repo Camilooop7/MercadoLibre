@@ -18,12 +18,12 @@ public abstract class Ocio extends Producto implements Serializable { // Declara
 		this.esAccesorio = esAccesorio; // Asigna el valor recibido
 	}
 
-	public Ocio(String nombre, int precio, int id, LocalDateTime fecha, String imagen, boolean esAccesorio) {
+	public Ocio(String nombre, int precio, int id, String fecha, String imagen, boolean esAccesorio) {
 		super(nombre, precio, id, fecha, imagen); // Llama al constructor de Producto
 		this.esAccesorio = esAccesorio; // Asigna el valor recibido
 	}
 
-	public Ocio(String nombre, int precio, int id, LocalDateTime fecha, String imagen) {
+	public Ocio(String nombre, int precio, int id, String fecha, String imagen) {
 		super(nombre, precio, id, fecha, imagen); // Llama al constructor de Producto
 		// TODO Auto-generated constructor stub
 	}

@@ -19,13 +19,13 @@ public class Papeleria extends Oficina implements Serializable { // Declara la c
 		this.cantidadPorPaquete = cantidadPorPaquete; // Asigna el valor recibido
 	}
 
-	public Papeleria(String nombre, int precio, int id, LocalDateTime fecha, String imagen, boolean esPortatil,
+	public Papeleria(String nombre, int precio, int id, String fecha, String imagen, boolean esPortatil,
 			int cantidadPorPaquete) { // Constructor que recibe todos los atributos
 		super(nombre, precio, id, fecha, imagen, esPortatil); // Llama al constructor de la clase padre
 		this.cantidadPorPaquete = cantidadPorPaquete; // Asigna el valor recibido
 	}
 
-	public Papeleria(String nombre, int precio, int id, LocalDateTime fecha, String imagen, boolean esPortatil) {
+	public Papeleria(String nombre, int precio, int id, String fecha, String imagen, boolean esPortatil) {
 		super(nombre, precio, id, fecha, imagen, esPortatil); // Llama al constructor de la clase padre
 		// TODO Auto-generated constructor stub
 	}

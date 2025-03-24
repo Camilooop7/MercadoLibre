@@ -17,12 +17,12 @@ public abstract class Hogar extends Producto implements Serializable { // Clase 
 		this.esDecoracion = esDecoracion; // Asigna el valor al atributo esDecoracion
 	}
 
-	public Hogar(String nombre, int precio, int id, LocalDateTime fecha, String imagen, boolean esDecoracion) { 
+	public Hogar(String nombre, int precio, int id, String fecha, String imagen, boolean esDecoracion) { 
 		super(nombre, precio, id, fecha, imagen); // Llama al constructor de la clase padre con parámetros
 		this.esDecoracion = esDecoracion; // Asigna el valor al atributo esDecoracion
 	}
 
-	public Hogar(String nombre, int precio, int id, LocalDateTime fecha, String imagen) { 
+	public Hogar(String nombre, int precio, int id, String fecha, String imagen) { 
 		super(nombre, precio, id, fecha, imagen); // Llama al constructor de la clase padre sin esDecoracion
 		// Constructor sin inicializar el atributo esDecoracion
 	}

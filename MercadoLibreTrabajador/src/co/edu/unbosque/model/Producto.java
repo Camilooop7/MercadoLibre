@@ -9,14 +9,14 @@ public abstract class Producto implements Serializable { // Declara la clase abs
 	private String nombre; // Atributo que almacena el nombre del producto
 	private int precio; // Atributo que almacena el precio del producto
 	private int id; // Atributo que almacena el identificador del producto
-	private LocalDateTime fecha; // Atributo que almacena la cantidad disponible del producto
+	private String fecha; // Atributo que almacena la cantidad disponible del producto
 	private String imagen; // Atributo que almacena la ruta de la imagen del producto
 
 	public Producto() { // Constructor vacío
 		// TODO Auto-generated constructor stub
 	}
 
-	public Producto(String nombre, int precio, int id, LocalDateTime fecha, String imagen) { // Constructor con parámetros
+	public Producto(String nombre, int precio, int id, String fecha, String imagen) { // Constructor con parámetros
 		super(); // Llama al constructor de la clase padre
 		this.nombre = nombre; // Asigna el valor del nombre
 		this.precio = precio; // Asigna el valor del precio
@@ -57,16 +57,17 @@ public abstract class Producto implements Serializable { // Declara la clase abs
 		this.imagen = imagen; // Asigna la nueva imagen
 	}
 
-	public LocalDateTime getFecha() {
+	public String getFecha() {
 		return fecha;
 	}
 
-	public void setFecha(LocalDateTime fecha) {
+	public void setFecha(String fecha) {
 		this.fecha = fecha;
 	}
 
 	@Override
 	public String toString() { // Método para representar el objeto como cadena
-		return "Nombre: " + nombre + "\nPrecio: $" + precio + "\nID: " + id + "\nFecha: " + fecha + "\nImagen: " + imagen;
+		return "Nombre: " + nombre + "\nPrecio: $" + precio + "\nID: " + id + "\nFecha: " + fecha + "\nImagen: "
+				+ imagen;
 	}
 }

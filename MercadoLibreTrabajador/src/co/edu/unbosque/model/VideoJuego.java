@@ -30,7 +30,7 @@ public class VideoJuego extends Ocio implements Serializable {
 	 * Constructor que recibe todos los atributos de Ocio y la referencia de la
 	 * consola
 	 */
-	public VideoJuego(String nombre, int precio, int id, LocalDateTime fecha, String imagen, boolean esAccesorio,
+	public VideoJuego(String nombre, int precio, int id, String fecha, String imagen, boolean esAccesorio,
 			String referenciaConsola) {
 		super(nombre, precio, id, fecha, imagen, esAccesorio);
 		this.referenciaConsola = referenciaConsola;
@@ -40,7 +40,7 @@ public class VideoJuego extends Ocio implements Serializable {
 	 * Constructor que recibe todos los atributos de Ocio sin la referencia de la
 	 * consola
 	 */
-	public VideoJuego(String nombre, int precio, int id, LocalDateTime fecha, String imagen, boolean esAccesorio) {
+	public VideoJuego(String nombre, int precio, int id, String fecha, String imagen, boolean esAccesorio) {
 		super(nombre, precio, id, fecha, imagen, esAccesorio);
 		// TODO Auto-generated constructor stub
 	}
@@ -58,18 +58,18 @@ public class VideoJuego extends Ocio implements Serializable {
 	/** Representación en cadena del objeto VideoJuego */
 	@Override
 	public String toString() {
-		return super.toString() + "\n¿Que consola es? " + referenciaConsola+"\n";
+		return super.toString() + "\n¿Que consola es? " + referenciaConsola + "\n";
 	}
 
 	public int codigoAleatorio() {
 		int codigo;
 		Random random = new Random();
-		
-		 do {
-	            codigo = random.nextInt((5999 - 5000 + 1)) + 5000;
-	        } while (generatedCodes.contains(codigo));
 
-	        generatedCodes.add(codigo);
-	        return codigo;
+		do {
+			codigo = random.nextInt((5999 - 5000 + 1)) + 5000;
+		} while (generatedCodes.contains(codigo));
+
+		generatedCodes.add(codigo);
+		return codigo;
 	}
 }
