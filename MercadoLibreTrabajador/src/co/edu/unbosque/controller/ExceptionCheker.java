@@ -3,6 +3,7 @@ package co.edu.unbosque.controller;
 import co.edu.unbosque.util.exception.CapitalException;
 import co.edu.unbosque.util.exception.CharacterException;
 import co.edu.unbosque.util.exception.EqualPasswordException;
+import co.edu.unbosque.util.exception.ImageException;
 import co.edu.unbosque.util.exception.IsBlackException;
 import co.edu.unbosque.util.exception.NegativeNumberException;
 import co.edu.unbosque.util.exception.NumberException;
@@ -61,12 +62,10 @@ public class ExceptionCheker {
 		}
 	}
 
-	public static void checkerUsername(String b) throws UsernameException {
-
-		if (b.matches("ok")) {
-			throw new UsernameException();
-		}
-
+	public static void checkerUsername(boolean existe) throws UsernameException {
+	    if (existe) {
+	        throw new UsernameException();
+	    }
 	}
 
 	public static void checkerNegativeNumber(int a) throws NegativeNumberException {
@@ -90,5 +89,9 @@ public class ExceptionCheker {
 	public static void checkerIsEmpty() throws IsBlackException {
 		throw new IsBlackException();
 
+	}
+	public static void checkerImage() throws ImageException {
+		throw new ImageException();
+		
 	}
 }

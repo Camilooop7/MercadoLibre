@@ -23,6 +23,7 @@ import co.edu.unbosque.model.persistence.FileManager;
 import co.edu.unbosque.util.exception.CapitalException;
 import co.edu.unbosque.util.exception.CharacterException;
 import co.edu.unbosque.util.exception.EqualPasswordException;
+import co.edu.unbosque.util.exception.ImageException;
 import co.edu.unbosque.util.exception.IsBlackException;
 import co.edu.unbosque.util.exception.NegativeNumberException;
 import co.edu.unbosque.util.exception.NumberException;
@@ -124,10 +125,10 @@ public class Controller implements ActionListener {
 		// cocina
 		vf.getVpt().getPap().getPaco().getBtnAgregar().addActionListener(this);
 		vf.getVpt().getPap().getPaco().getBtnAgregar().setActionCommand("btnAgregaProCocina");
-		
+
 		vf.getVpt().getPap().getPaco().getImagen().addActionListener(this);
 		vf.getVpt().getPap().getPaco().getImagen().setActionCommand("imagenCocina");
-		
+
 		// TODO botones
 	}
 
@@ -219,7 +220,7 @@ public class Controller implements ActionListener {
 			String usuario = (String) vf.getVpt().getPcu().getNombreUsuario();
 			String contrasena1 = (String) vf.getVpt().getPcu().getContrasena1();
 			String contrasena2 = (String) vf.getVpt().getPcu().getContrasena2();
-			String verificar = mf.getTrabajadorDAO().econtrarNombre(usuario);
+			boolean verificar = mf.getTrabajadorDAO().encontrarNombre(usuario);
 
 			try {
 				ExceptionCheker.checkerCharacter(usuario);
@@ -398,7 +399,7 @@ public class Controller implements ActionListener {
 					if (mf.getClienteDAO().encontrar(a)) {
 
 						String nombre = vf.getVemer().leerTexto("Nombre nuevo:");
-						String verificar = mf.getTrabajadorDAO().econtrarNombre(nombre);
+						boolean verificar = mf.getTrabajadorDAO().encontrarNombre(nombre);
 						ExceptionCheker.checkerCharacter(nombre);
 						ExceptionCheker.checkerUsername(verificar);
 						String contra = vf.getVemer().leerTexto("Contraseña nueva:");
@@ -449,7 +450,7 @@ public class Controller implements ActionListener {
 					if (mf.getTrabajadorDAO().encontrar(a)) {
 
 						String nombre = vf.getVemer().leerTexto("Nombre nuevo:");
-						String verificar = mf.getTrabajadorDAO().econtrarNombre(nombre);
+						boolean verificar = mf.getTrabajadorDAO().encontrarNombre(nombre);
 						ExceptionCheker.checkerCharacter(nombre);
 						ExceptionCheker.checkerUsername(verificar);
 						String contra = vf.getVemer().leerTexto("Contraseña nueva:");
@@ -570,20 +571,16 @@ public class Controller implements ActionListener {
 		}
 
 		case "btnAgregaProCocina": {
+			String nombre = (String) vf.getVpt().getPap().getPaco().getNombre();
+			int precio = (int) vf.getVpt().getPap().getPaco().getPrecio();
+			int id = new Cocina().codigoAleatorio();
+			LocalDate fecha = LocalDate.now();
+			boolean esDecoracion = false;
+			boolean resisteAltaTemperatuta = false;
+			boolean esPeligroso = false;
+			String imagen = "../archivos/imagenes/cocina/";
+
 			try {
-				String nombre = (String) vf.getVpt().getPap().getPaco().getNombre();
-				int precio = (int) vf.getVpt().getPap().getPaco().getPrecio();
-				int id = new Cocina().codigoAleatorio();
-				LocalDate fecha = LocalDate.now();
-				String imagen = "../archivos/imagenes/cocina/"+nombre;
-				
-
-				ExceptionCheker.checkerNegativeNumber(precio);
-				ExceptionCheker.checkerIsBlank(nombre);
-
-				boolean esDecoracion = false;
-				boolean resisteAltaTemperatuta = false;
-				boolean esPeligroso = false;
 
 				if (vf.getVpt().getPap().getPaco().getSiD().isSelected()) {
 					esDecoracion = true;
@@ -592,17 +589,14 @@ public class Controller implements ActionListener {
 				}
 
 				if (vf.getVpt().getPap().getPaco().getSiP().isSelected()) {
-
 					resisteAltaTemperatuta = true;
 				} else if (vf.getVpt().getPap().getPaco().getNoP().isSelected()) {
-
 					resisteAltaTemperatuta = false;
 				}
-				if (vf.getVpt().getPap().getPaco().getSiR().isSelected()) {
 
+				if (vf.getVpt().getPap().getPaco().getSiR().isSelected()) {
 					esPeligroso = true;
 				} else if (vf.getVpt().getPap().getPaco().getNoR().isSelected()) {
-
 					esPeligroso = false;
 				}
 
@@ -619,43 +613,51 @@ public class Controller implements ActionListener {
 					ExceptionCheker.checkerIsEmpty();
 				}
 
+				File selectedFile = vf.getVemer().seleccionarArchivo();
+				if (selectedFile != null) {
+					try {
+						// Cargar la imagen seleccionada
+						Image image = ImageIO.read(selectedFile);
+
+						// Copiar el archivo seleccionado al directorio 'resources/images'
+						File destino = new File("../archivos/imagenes/cocina/" + selectedFile.getName());
+						FileManager.guardarImagen(selectedFile, destino);
+
+						// Guardar la URL de la imagen
+						imagen = destino.getPath();
+
+					} catch (IOException ex) {
+						vf.getVemer().mostrarError("No se pudo cargar la imagen.");
+					} catch (IllegalArgumentException ex) {
+						vf.getVemer().mostrarError("El archivo seleccionado no es una imagen válida.");
+					}
+				} else {
+					ExceptionCheker.checkerImage();
+				}
+
+				ExceptionCheker.checkerNegativeNumber(precio);
+				ExceptionCheker.checkerIsBlank(nombre);
+
+				// Crear el objeto Cocina con la URL de la imagen
 				mf.getCocinaDAO().crear(new Cocina(nombre, precio, id, fecha, imagen, esDecoracion,
 						resisteAltaTemperatuta, esPeligroso));
+
 				System.out.println(mf.getCocinaDAO().mostrarTodo());
+
 			} catch (NegativeNumberException e2) {
-				vf.getVemer().mostrar("Numero no valido.");
+				vf.getVemer().mostrar("Número no válido.");
 				e2.printStackTrace();
 			} catch (IsBlackException e2) {
-				vf.getVemer().mostrar("Completar toda la informacion");
+				vf.getVemer().mostrar("Completar toda la información.");
 				e2.printStackTrace();
+			} catch (ImageException e2) {
+				vf.getVemer().mostrar("No seleciono una imagen" );
 			}
-
 			break;
-
 		}
-		case "imagenCocina": {
-			File selectedFile = vf.getVemer().seleccionarArchivo();
-	        if (selectedFile != null) {
-	            try {
-	                // Cargar la imagen seleccionada
-	                Image image = ImageIO.read(selectedFile);
-
-	                // Copiar el archivo seleccionado al directorio 'resources/images'
-	                File destino = new File("../archivos/imagenes/cocina/" + selectedFile.getName());
-					FileManager.guardarImagen(selectedFile, destino);
-
-	            } catch (IOException ex) {
-	                vf.getVemer().mostrarError("No se pudo cargar la imagen.");
-	            } catch (IllegalArgumentException ex) {
-	                vf.getVemer().mostrarError("El archivo seleccionado no es una imagen válida.");
-	            }
-		    break;
-		}
-
-		
 
 		}
 
 	}
-}
+
 }

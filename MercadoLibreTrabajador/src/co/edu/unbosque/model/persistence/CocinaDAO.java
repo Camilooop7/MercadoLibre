@@ -2,6 +2,7 @@ package co.edu.unbosque.model.persistence;
 
 import java.util.ArrayList;
 import co.edu.unbosque.model.Cocina;
+import co.edu.unbosque.model.Trabajador;
 
 /**
  * Clase en la cual se implementa la interfaz OperacionDAO
@@ -98,6 +99,15 @@ public class CocinaDAO implements OperacionDAO<Cocina> {
 			salida += cocina.toString()+"\n";
 		}
 		return salida;
+	}
+	
+	public boolean encontrarNombre(String nombre) {
+	    for (Cocina cocina : listaCocinas) {
+	        if (cocina.getNombre().equals(nombre)) {
+	            return true;
+	        }
+	    }
+	    return false;
 	}
 
 	/**

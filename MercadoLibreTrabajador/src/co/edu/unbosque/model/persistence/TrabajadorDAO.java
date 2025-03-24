@@ -146,15 +146,13 @@ public class TrabajadorDAO implements OperacionDAO<Trabajador> {
 	 * @param a como parametro un String
 	 * @return
 	 */
-	public String econtrarNombre(String a) {
-
-		String salida = "";
-		for (Trabajador trabajador : listaTrabajadores) {
-			if (trabajador.getNombre().equals(a)) {
-				salida= "ok";
-			}
-		}
-		return salida;
+	public boolean encontrarNombre(String nombre) {
+	    for (Trabajador trabajador : listaTrabajadores) {
+	        if (trabajador.getNombre().equals(nombre)) {
+	            return true;
+	        }
+	    }
+	    return false;
 	}
 
 	public ArrayList<Trabajador> getListaTrabajadores() {
