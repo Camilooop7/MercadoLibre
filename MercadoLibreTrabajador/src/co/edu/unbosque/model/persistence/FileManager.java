@@ -4,8 +4,10 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.util.Scanner;
 
@@ -162,4 +164,15 @@ public class FileManager {
 		 */
 		return contenido;  
 	}
+	 public static void guardarImagen(File origen, File destino) throws IOException {
+	        try (InputStream input = new FileInputStream(origen);
+	             OutputStream output = new FileOutputStream(destino)) {
+
+	            byte[] buf = new byte[1024];
+	            int a;
+	            while ((a = input.read(buf)) > 0) {
+	                output.write(buf, 0, a);
+	            }
+	        }
+	    }
 }

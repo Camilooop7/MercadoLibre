@@ -1,5 +1,8 @@
 package co.edu.unbosque.view;
 
+import java.io.File;
+
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 public class VentanaEmergente {
@@ -42,20 +45,23 @@ public class VentanaEmergente {
 	 * con la palabra si.
 	 */
 
-	
-	  public  boolean leerBoleano(String mensaje) {
-	        Object[] opciones = {"Sí", "No"};
-	        int respuesta = JOptionPane.showOptionDialog(
-	                null,
-	                mensaje,
-	                "Verdadero o falso",
-	                JOptionPane.YES_NO_OPTION,
-	                JOptionPane.QUESTION_MESSAGE,
-	                null,
-	                opciones,
-	                opciones[0]
-	        );
-	        return respuesta == 0;
-	    } 
+	public boolean leerBoleano(String mensaje) {
+		Object[] opciones = { "Sí", "No" };
+		int respuesta = JOptionPane.showOptionDialog(null, mensaje, "Verdadero o falso", JOptionPane.YES_NO_OPTION,
+				JOptionPane.QUESTION_MESSAGE, null, opciones, opciones[0]);
+		return respuesta == 0;
+	}
 
+	public File seleccionarArchivo() {
+		JFileChooser fileChooser = new JFileChooser();
+		int result = fileChooser.showOpenDialog(null);
+		if (result == JFileChooser.APPROVE_OPTION) {
+			return fileChooser.getSelectedFile();
+		}
+		return null;
+	}
+
+	public void mostrarError(String mensaje) {
+		JOptionPane.showMessageDialog(null, mensaje, "Error", JOptionPane.ERROR_MESSAGE);
+	}
 }

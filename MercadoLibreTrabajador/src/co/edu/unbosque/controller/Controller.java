@@ -1,14 +1,20 @@
 package co.edu.unbosque.controller;
 
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
-import java.lang.classfile.instruction.NewMultiArrayInstruction;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.time.LocalDate;
 
-import javax.swing.JRadioButton;
+import javax.imageio.ImageIO;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 
-import co.edu.unbosque.model.Bano;
 import co.edu.unbosque.model.Cliente;
 import co.edu.unbosque.model.Cocina;
 import co.edu.unbosque.model.ModelFacade;
@@ -17,6 +23,7 @@ import co.edu.unbosque.model.persistence.FileManager;
 import co.edu.unbosque.util.exception.CapitalException;
 import co.edu.unbosque.util.exception.CharacterException;
 import co.edu.unbosque.util.exception.EqualPasswordException;
+import co.edu.unbosque.util.exception.IsBlackException;
 import co.edu.unbosque.util.exception.NegativeNumberException;
 import co.edu.unbosque.util.exception.NumberException;
 import co.edu.unbosque.util.exception.SymbolException;
@@ -117,19 +124,10 @@ public class Controller implements ActionListener {
 		// cocina
 		vf.getVpt().getPap().getPaco().getBtnAgregar().addActionListener(this);
 		vf.getVpt().getPap().getPaco().getBtnAgregar().setActionCommand("btnAgregaProCocina");
-		vf.getVpt().getPap().getPaco().getSiD().addActionListener(this);
-		vf.getVpt().getPap().getPaco().getSiD().setActionCommand("btnSiD");
-		vf.getVpt().getPap().getPaco().getNoD().addActionListener(this);
-		vf.getVpt().getPap().getPaco().getNoD().setActionCommand("btNoD");
-		vf.getVpt().getPap().getPaco().getSiP().addActionListener(this);
-		vf.getVpt().getPap().getPaco().getSiP().setActionCommand("btnSiP");
-		vf.getVpt().getPap().getPaco().getNoP().addActionListener(this);
-		vf.getVpt().getPap().getPaco().getNoP().setActionCommand("btNoP");
-		vf.getVpt().getPap().getPaco().getSiR().addActionListener(this);
-		vf.getVpt().getPap().getPaco().getSiR().setActionCommand("btnSiR");
-		vf.getVpt().getPap().getPaco().getNoR().addActionListener(this);
-		vf.getVpt().getPap().getPaco().getNoR().setActionCommand("btNoR");
-
+		
+		vf.getVpt().getPap().getPaco().getImagen().addActionListener(this);
+		vf.getVpt().getPap().getPaco().getImagen().setActionCommand("imagenCocina");
+		
 		// TODO botones
 	}
 
@@ -572,78 +570,92 @@ public class Controller implements ActionListener {
 		}
 
 		case "btnAgregaProCocina": {
-			String nombre = (String) vf.getVpt().getPap().getPaco().getNombre();
-			int precio = (int) vf.getVpt().getPap().getPaco().getPrecio();
-			int id = new Cocina().codigoAleatorio();
-			LocalDate fecha = LocalDate.now();
-
-			String imagen = "hi";
-
-			boolean esDecoracion = false;
-			boolean resisteAltaTemperatuta = false;
-			boolean esPeligroso = false;
 			try {
+				String nombre = (String) vf.getVpt().getPap().getPaco().getNombre();
+				int precio = (int) vf.getVpt().getPap().getPaco().getPrecio();
+				int id = new Cocina().codigoAleatorio();
+				LocalDate fecha = LocalDate.now();
+				String imagen = "../archivos/imagenes/cocina/"+nombre;
+				
 
-				if ( vf.getVpt().getPap().getPaco().getSiD().isSelected()) {
+				ExceptionCheker.checkerNegativeNumber(precio);
+				ExceptionCheker.checkerIsBlank(nombre);
+
+				boolean esDecoracion = false;
+				boolean resisteAltaTemperatuta = false;
+				boolean esPeligroso = false;
+
+				if (vf.getVpt().getPap().getPaco().getSiD().isSelected()) {
 					esDecoracion = true;
-				} else if ( vf.getVpt().getPap().getPaco().getNoD().isSelected()) {
+				} else if (vf.getVpt().getPap().getPaco().getNoD().isSelected()) {
 					esDecoracion = false;
 				}
-				
+
 				if (vf.getVpt().getPap().getPaco().getSiP().isSelected()) {
 
 					resisteAltaTemperatuta = true;
 				} else if (vf.getVpt().getPap().getPaco().getNoP().isSelected()) {
-					
+
 					resisteAltaTemperatuta = false;
 				}
 				if (vf.getVpt().getPap().getPaco().getSiR().isSelected()) {
-					
+
 					esPeligroso = true;
 				} else if (vf.getVpt().getPap().getPaco().getNoR().isSelected()) {
-					
+
 					esPeligroso = false;
 				}
 
 				if (!vf.getVpt().getPap().getPaco().getSiD().isSelected()
 						&& !vf.getVpt().getPap().getPaco().getNoD().isSelected()) {
-					throw new Exception("Ningún botón seleccionado");
+					ExceptionCheker.checkerIsEmpty();
 				}
 				if (!vf.getVpt().getPap().getPaco().getSiP().isSelected()
 						&& !vf.getVpt().getPap().getPaco().getNoP().isSelected()) {
-					throw new Exception("Ningún botón seleccionado");
+					ExceptionCheker.checkerIsEmpty();
 				}
 				if (!vf.getVpt().getPap().getPaco().getSiR().isSelected()
 						&& !vf.getVpt().getPap().getPaco().getNoR().isSelected()) {
-					throw new Exception("Ningún botón seleccionado");
+					ExceptionCheker.checkerIsEmpty();
 				}
 
 				mf.getCocinaDAO().crear(new Cocina(nombre, precio, id, fecha, imagen, esDecoracion,
 						resisteAltaTemperatuta, esPeligroso));
 				System.out.println(mf.getCocinaDAO().mostrarTodo());
-			} catch (Exception e2) {
-				// TODO: handle exception
-				vf.getVemer().mostrar("Llenar toda la informacion");
+			} catch (NegativeNumberException e2) {
+				vf.getVemer().mostrar("Numero no valido.");
+				e2.printStackTrace();
+			} catch (IsBlackException e2) {
+				vf.getVemer().mostrar("Completar toda la informacion");
+				e2.printStackTrace();
 			}
 
-			
-
-			
-
 			break;
 
 		}
-		case "btnSiD": {
+		case "imagenCocina": {
+			File selectedFile = vf.getVemer().seleccionarArchivo();
+	        if (selectedFile != null) {
+	            try {
+	                // Cargar la imagen seleccionada
+	                Image image = ImageIO.read(selectedFile);
 
-			break;
+	                // Copiar el archivo seleccionado al directorio 'resources/images'
+	                File destino = new File("../archivos/imagenes/cocina/" + selectedFile.getName());
+					FileManager.guardarImagen(selectedFile, destino);
 
+	            } catch (IOException ex) {
+	                vf.getVemer().mostrarError("No se pudo cargar la imagen.");
+	            } catch (IllegalArgumentException ex) {
+	                vf.getVemer().mostrarError("El archivo seleccionado no es una imagen válida.");
+	            }
+		    break;
 		}
-		case "btnNoD": {
 
-			break;
-		}
+		
 
 		}
 
 	}
+}
 }
