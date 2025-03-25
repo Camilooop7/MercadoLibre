@@ -95,9 +95,11 @@ public class PapeleriaDAO implements OperacionDAO<Papeleria> {
     @Override
     public String mostrarTodo() {
         String salida = "";
+        int a =1;
         for (Papeleria papeleria : listaPapeleria) {
             // Concatenación de la representación en cadena de cada objeto Papeleria.
-            salida += papeleria.toString() + "\n";
+            salida += a+ ". "+papeleria.toString() + "\n";
+            a++;
         }
         return salida;
     }

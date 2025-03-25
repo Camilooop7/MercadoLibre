@@ -100,9 +100,11 @@ public class BanoDAO implements OperacionDAO<Bano> {
 	@Override
 	public String mostrarTodo() {
 		// TODO Auto-generated method stub
-        String salida = null;
+        String salida = "";
+        int a = 1;
         for (Bano bano : listaBanos) {
-            salida +=bano.toString() + "\n";
+            salida +=a+". "+bano.toString() + "\n";
+            a++;
         }
         return salida;
 	}
