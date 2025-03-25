@@ -93,8 +93,10 @@ public class DeporteDAO implements OperacionDAO<Deporte> {
 	@Override
 	public String mostrarTodo() {
 		String salida = "";
+		int a =1;
 		for (Deporte deporte : listaDeportes) {
-			salida += deporte.toString() + "\n";
+			salida += a+". "+ deporte.toString() + "\n";
+			a++;
 		}
 		return salida;
 	}

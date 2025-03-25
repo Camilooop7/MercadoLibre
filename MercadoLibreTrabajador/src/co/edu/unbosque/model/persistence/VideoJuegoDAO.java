@@ -94,8 +94,10 @@ public class VideoJuegoDAO implements OperacionDAO<VideoJuego> {
     @Override
     public String mostrarTodo() {
         String salida = "";
+        int a = 1;
         for (VideoJuego videoJuego : listaVideoJuegos) {
-            salida += videoJuego.toString() + "\n";
+            salida +=a + ". "+ videoJuego.toString() + "\n";
+            a++;
         }
         return salida;
     }

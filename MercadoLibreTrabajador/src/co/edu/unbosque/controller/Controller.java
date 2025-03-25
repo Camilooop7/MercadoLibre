@@ -162,8 +162,30 @@ public class Controller implements ActionListener {
 		vf.getVpt().getPep().getPah().getBtnBano().addActionListener(this);
 		vf.getVpt().getPep().getPah().getBtnBano().setActionCommand("btnEliminarBano");
 
+		vf.getVpt().getPep().getPaof().getBtnElectrodomestico().addActionListener(this);
+		vf.getVpt().getPep().getPaof().getBtnElectrodomestico().setActionCommand("btnEliminarElect");
+		vf.getVpt().getPep().getPaof().getBtnPapeleria().addActionListener(this);
+		vf.getVpt().getPep().getPaof().getBtnPapeleria().setActionCommand("btnEliminarPape");
+
+		vf.getVpt().getPep().getPaoc().getBtnVideoJuego().addActionListener(this);
+		vf.getVpt().getPep().getPaoc().getBtnVideoJuego().setActionCommand("btnEliminarVideo");
+		vf.getVpt().getPep().getPaoc().getBtnDeporte().addActionListener(this);
+		vf.getVpt().getPep().getPaoc().getBtnDeporte().setActionCommand("btnEliminarDepor");
+
 		vf.getVpt().getPep().getPec().getEliminar().addActionListener(this);
 		vf.getVpt().getPep().getPec().getEliminar().setActionCommand("elminiarCocina");
+		vf.getVpt().getPep().getPeb().getEliminar().addActionListener(this);
+		vf.getVpt().getPep().getPeb().getEliminar().setActionCommand("elminiarBano");
+
+		vf.getVpt().getPep().getPee().getEliminar().addActionListener(this);
+		vf.getVpt().getPep().getPee().getEliminar().setActionCommand("elminiaElectr");
+		vf.getVpt().getPep().getPepap().getEliminar().addActionListener(this);
+		vf.getVpt().getPep().getPepap().getEliminar().setActionCommand("elminiarPape");
+
+		vf.getVpt().getPep().getPevj().getEliminar().addActionListener(this);
+		vf.getVpt().getPep().getPevj().getEliminar().setActionCommand("elminiarVideo");
+		vf.getVpt().getPep().getPedep().getEliminar().addActionListener(this);
+		vf.getVpt().getPep().getPedep().getEliminar().setActionCommand("elminiarDepor");
 		// TODO botones
 	}
 
@@ -610,9 +632,9 @@ public class Controller implements ActionListener {
 			String nombre = (String) vf.getVpt().getPap().getPaco().getNombre();
 			int precio = (int) vf.getVpt().getPap().getPaco().getPrecio();
 			int id = new Cocina().codigoAleatorio();
-			LocalDateTime a= LocalDateTime.now();
-	        DateTimeFormatter b= DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");  
-	       String fecha= a.format(b);
+			LocalDateTime a = LocalDateTime.now();
+			DateTimeFormatter b = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+			String fecha = a.format(b);
 			boolean esDecoracion = false;
 			boolean resisteAltaTemperatuta = false;
 			boolean esPeligroso = false;
@@ -686,6 +708,7 @@ public class Controller implements ActionListener {
 				// Crear el objeto Cocina con la URL de la imagen
 				mf.getCocinaDAO().crear(new Cocina(nombre, precio, id, fecha, imagen, esDecoracion,
 						resisteAltaTemperatuta, esPeligroso));
+				vf.getVemer().mostrar("El producto fue añadido con exito");
 
 				System.out.println(mf.getCocinaDAO().mostrarTodo());
 
@@ -705,9 +728,9 @@ public class Controller implements ActionListener {
 			String nombre = (String) vf.getVpt().getPap().getPaba().getNombre();
 			int precio = (int) vf.getVpt().getPap().getPaba().getPrecio();
 			int id = new Bano().codigoAleatorio();
-			LocalDateTime a= LocalDateTime.now();
-	        DateTimeFormatter b= DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");  
-	       String fecha= a.format(b);
+			LocalDateTime a = LocalDateTime.now();
+			DateTimeFormatter b = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+			String fecha = a.format(b);
 			boolean esDecoracion = false;
 			boolean esLimpieza = false;
 			String imagen = "../archivos/imagenes/bano/";
@@ -769,6 +792,7 @@ public class Controller implements ActionListener {
 
 				// Crear el objeto Cocina con la URL de la imagen
 				mf.getBanoDAO().crear(new Bano(nombre, precio, id, fecha, imagen, esDecoracion, esLimpieza));
+				vf.getVemer().mostrar("El producto fue añadido con exito");
 
 				System.out.println(mf.getBanoDAO().mostrarTodo());
 
@@ -788,9 +812,9 @@ public class Controller implements ActionListener {
 			String nombre = (String) vf.getVpt().getPap().getPae().getNombre();
 			int precio = (int) vf.getVpt().getPap().getPae().getPrecio();
 			int id = new Electrodomestico().codigoAleatorio();
-			LocalDateTime a= LocalDateTime.now();
-	        DateTimeFormatter b= DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");  
-	       String fecha= a.format(b);
+			LocalDateTime a = LocalDateTime.now();
+			DateTimeFormatter b = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+			String fecha = a.format(b);
 			boolean esPortatil = false;
 			String fuenteEnergia = (String) vf.getVpt().getPap().getPae().getFuenteEnergia();
 			String imagen = "../archivos/imagenes/electro/";
@@ -843,6 +867,7 @@ public class Controller implements ActionListener {
 				// Crear el objeto Cocina con la URL de la imagen
 				mf.getElectrodomesticoDAO()
 						.crear(new Electrodomestico(nombre, precio, id, fecha, imagen, esPortatil, fuenteEnergia));
+				vf.getVemer().mostrar("El producto fue añadido con exito");
 
 				System.out.println(mf.getElectrodomesticoDAO().mostrarTodo());
 
@@ -861,9 +886,9 @@ public class Controller implements ActionListener {
 			String nombre = (String) vf.getVpt().getPap().getPapape().getNombre();
 			int precio = (int) vf.getVpt().getPap().getPapape().getPrecio();
 			int id = new Papeleria().codigoAleatorio();
-			LocalDateTime a= LocalDateTime.now();
-	        DateTimeFormatter b= DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");  
-	       String fecha= a.format(b);
+			LocalDateTime a = LocalDateTime.now();
+			DateTimeFormatter b = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+			String fecha = a.format(b);
 			boolean esPortatil = false;
 			int cantidadPaquete = (int) vf.getVpt().getPap().getPapape().getCantidadPorPaquete();
 			String imagen = "../archivos/imagenes/papeleria/";
@@ -917,6 +942,7 @@ public class Controller implements ActionListener {
 				// Crear el objeto Cocina con la URL de la imagen
 				mf.getPapeleriaDAO()
 						.crear(new Papeleria(nombre, precio, id, fecha, imagen, esPortatil, cantidadPaquete));
+				vf.getVemer().mostrar("El producto fue añadido con exito");
 
 				System.out.println(mf.getPapeleriaDAO().mostrarTodo());
 
@@ -936,9 +962,9 @@ public class Controller implements ActionListener {
 			String nombre = (String) vf.getVpt().getPap().getPavj().getNombre();
 			int precio = (int) vf.getVpt().getPap().getPavj().getPrecio();
 			int id = new VideoJuego().codigoAleatorio();
-			LocalDateTime a= LocalDateTime.now();
-	        DateTimeFormatter b= DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");  
-	       String fecha= a.format(b);
+			LocalDateTime a = LocalDateTime.now();
+			DateTimeFormatter b = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+			String fecha = a.format(b);
 			boolean esAccesorio = false;
 			String referenciaConsola = (String) vf.getVpt().getPap().getPavj().getReferenciaConsola();
 			String imagen = "../archivos/imagenes/videojuego/";
@@ -992,6 +1018,7 @@ public class Controller implements ActionListener {
 				// Crear el objeto Cocina con la URL de la imagen
 				mf.getVideoJuegoDAO()
 						.crear(new VideoJuego(nombre, precio, id, fecha, imagen, esAccesorio, referenciaConsola));
+				vf.getVemer().mostrar("El producto fue añadido con exito");
 
 				System.out.println(mf.getVideoJuegoDAO().mostrarTodo());
 
@@ -1012,10 +1039,10 @@ public class Controller implements ActionListener {
 			System.out.println("Nombre:" + nombre);
 			int precio = (int) vf.getVpt().getPap().getPade().getPrecio();
 			int id = new Deporte().codigoAleatorio();
-			LocalDateTime a= LocalDateTime.now();
-	        DateTimeFormatter b= DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");  
-	       String fecha= a.format(b);
-	        
+			LocalDateTime a = LocalDateTime.now();
+			DateTimeFormatter b = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+			String fecha = a.format(b);
+
 			boolean esAccesorio = false;
 			String deporte = (String) vf.getVpt().getPap().getPade().getDeporte();
 			String imagen = "../archivos/imagenes/electro/";
@@ -1068,6 +1095,7 @@ public class Controller implements ActionListener {
 
 				// Crear el objeto Cocina con la URL de la imagen
 				mf.getDeporteDAO().crear(new Deporte(nombre, precio, id, fecha, imagen, esAccesorio, deporte));
+				vf.getVemer().mostrar("El producto fue añadido con exito");
 
 				System.out.println(mf.getDeporteDAO().mostrarTodo());
 
@@ -1090,6 +1118,12 @@ public class Controller implements ActionListener {
 		case "btnEliminarHogar": {
 			vf.getVpt().getPep().getPaoc().setVisible(false);
 			vf.getVpt().getPep().getPaof().setVisible(false);
+			vf.getVpt().getPep().getPeb().setVisible(false);
+			vf.getVpt().getPep().getPec().setVisible(false);
+			vf.getVpt().getPep().getPedep().setVisible(false);
+			vf.getVpt().getPep().getPee().setVisible(false);
+			vf.getVpt().getPep().getPepap().setVisible(false);
+			vf.getVpt().getPep().getPevj().setVisible(false);
 			vf.getVpt().getPep().getPah().setVisible(true);
 
 			break;
@@ -1097,6 +1131,12 @@ public class Controller implements ActionListener {
 		case "btnEliminarOficina": {
 			vf.getVpt().getPep().getPaoc().setVisible(false);
 			vf.getVpt().getPep().getPah().setVisible(false);
+			vf.getVpt().getPep().getPeb().setVisible(false);
+			vf.getVpt().getPep().getPec().setVisible(false);
+			vf.getVpt().getPep().getPedep().setVisible(false);
+			vf.getVpt().getPep().getPee().setVisible(false);
+			vf.getVpt().getPep().getPepap().setVisible(false);
+			vf.getVpt().getPep().getPevj().setVisible(false);
 			vf.getVpt().getPep().getPaof().setVisible(true);
 
 			break;
@@ -1105,6 +1145,12 @@ public class Controller implements ActionListener {
 
 			vf.getVpt().getPep().getPah().setVisible(false);
 			vf.getVpt().getPep().getPaof().setVisible(false);
+			vf.getVpt().getPep().getPeb().setVisible(false);
+			vf.getVpt().getPep().getPec().setVisible(false);
+			vf.getVpt().getPep().getPedep().setVisible(false);
+			vf.getVpt().getPep().getPee().setVisible(false);
+			vf.getVpt().getPep().getPepap().setVisible(false);
+			vf.getVpt().getPep().getPevj().setVisible(false);
 			vf.getVpt().getPep().getPaoc().setVisible(true);
 
 			break;
@@ -1124,7 +1170,42 @@ public class Controller implements ActionListener {
 			vf.getVpt().getPep().getPeb().setVisible(true);
 			vf.getVpt().getPep().getPec().setVisible(false);
 			vf.getVpt().getPep().getPeb().setTexto(mf.getBanoDAO().mostrarTodo());
-			
+
+			break;
+		}
+		case "btnEliminarElect": {
+
+			vf.getVpt().getPep().getPaof().setVisible(false);
+			vf.getVpt().getPep().getPee().setVisible(true);
+			vf.getVpt().getPep().getPepap().setVisible(false);
+			vf.getVpt().getPep().getPee().setTexto(mf.getElectrodomesticoDAO().mostrarTodo());
+
+			break;
+		}
+		case "btnEliminarPape": {
+
+			vf.getVpt().getPep().getPaof().setVisible(false);
+			vf.getVpt().getPep().getPepap().setVisible(true);
+			vf.getVpt().getPep().getPee().setVisible(false);
+			vf.getVpt().getPep().getPepap().setTexto(mf.getPapeleriaDAO().mostrarTodo());
+
+			break;
+		}
+		case "btnEliminarVideo": {
+
+			vf.getVpt().getPep().getPaoc().setVisible(false);
+			vf.getVpt().getPep().getPevj().setVisible(true);
+			vf.getVpt().getPep().getPedep().setVisible(false);
+			vf.getVpt().getPep().getPevj().setTexto(mf.getVideoJuegoDAO().mostrarTodo());
+
+			break;
+		}
+		case "btnEliminarDepor": {
+
+			vf.getVpt().getPep().getPaoc().setVisible(false);
+			vf.getVpt().getPep().getPedep().setVisible(true);
+			vf.getVpt().getPep().getPevj().setVisible(false);
+			vf.getVpt().getPep().getPedep().setTexto(mf.getDeporteDAO().mostrarTodo());
 
 			break;
 		}
@@ -1139,8 +1220,145 @@ public class Controller implements ActionListener {
 
 					mf.getCocinaDAO().eliminar(a);
 					vf.getVpt().getPep().getPec().setTexto(mf.getCocinaDAO().mostrarTodo());
+					vf.getVemer().mostrar("El producto fue añadido con exito");
 					vf.getVpt().getPep().getPec().revalidate();
 					vf.getVpt().getPep().getPec().repaint();
+					
+
+				} else {
+					vf.getVemer().mostrar("la posicion a eliminar no esta en la lista");
+
+				}
+
+			} catch (NegativeNumberException e1) {
+				vf.getVemer().mostrar("Numero no valido.");
+				e1.printStackTrace();
+			}
+
+			break;
+		}
+		case "elminiarBano": {
+
+			try {
+
+				int a = vf.getVemer().leerInt("¿Digite la posicion del producto que desea Eliminar?");
+				a = a - 1;
+				ExceptionCheker.checkerNegativeNumber(a);
+				if (mf.getBanoDAO().encontrar(a)) {
+
+					mf.getBanoDAO().eliminar(a);
+					vf.getVpt().getPep().getPeb().setTexto(mf.getBanoDAO().mostrarTodo());
+					vf.getVemer().mostrar("El producto fue añadido con exito");
+					vf.getVpt().getPep().getPeb().revalidate();
+					vf.getVpt().getPep().getPeb().repaint();
+
+				} else {
+					vf.getVemer().mostrar("la posicion a eliminar no esta en la lista");
+
+				}
+
+			} catch (NegativeNumberException e1) {
+				vf.getVemer().mostrar("Numero no valido.");
+				e1.printStackTrace();
+			}
+
+			break;
+		}
+		case "elminiaElectr": {
+
+			try {
+
+				int a = vf.getVemer().leerInt("¿Digite la posicion del producto que desea Eliminar?");
+				a = a - 1;
+				ExceptionCheker.checkerNegativeNumber(a);
+				if (mf.getElectrodomesticoDAO().encontrar(a)) {
+
+					mf.getElectrodomesticoDAO().eliminar(a);
+					vf.getVpt().getPep().getPee().setTexto(mf.getElectrodomesticoDAO().mostrarTodo());
+					vf.getVemer().mostrar("El producto fue añadido con exito");
+					vf.getVpt().getPep().getPee().revalidate();
+					vf.getVpt().getPep().getPee().repaint();
+
+				} else {
+					vf.getVemer().mostrar("la posicion a eliminar no esta en la lista");
+
+				}
+
+			} catch (NegativeNumberException e1) {
+				vf.getVemer().mostrar("Numero no valido.");
+				e1.printStackTrace();
+			}
+
+			break;
+		}
+		case "elminiarPape": {
+
+			try {
+
+				int a = vf.getVemer().leerInt("¿Digite la posicion del producto que desea Eliminar?");
+				a = a - 1;
+				ExceptionCheker.checkerNegativeNumber(a);
+				if (mf.getPapeleriaDAO().encontrar(a)) {
+
+					mf.getPapeleriaDAO().eliminar(a);
+					vf.getVpt().getPep().getPepap().setTexto(mf.getPapeleriaDAO().mostrarTodo());
+					vf.getVemer().mostrar("El producto fue añadido con exito");
+					vf.getVpt().getPep().getPepap().revalidate();
+					vf.getVpt().getPep().getPepap().repaint();
+
+				} else {
+					vf.getVemer().mostrar("la posicion a eliminar no esta en la lista");
+
+				}
+
+			} catch (NegativeNumberException e1) {
+				vf.getVemer().mostrar("Numero no valido.");
+				e1.printStackTrace();
+			}
+
+			break;
+		}
+		case "elminiarVideo": {
+
+			try {
+
+				int a = vf.getVemer().leerInt("¿Digite la posicion del producto que desea Eliminar?");
+				a = a - 1;
+				ExceptionCheker.checkerNegativeNumber(a);
+				if (mf.getVideoJuegoDAO().encontrar(a)) {
+
+					mf.getVideoJuegoDAO().eliminar(a);
+					vf.getVpt().getPep().getPevj().setTexto(mf.getVideoJuegoDAO().mostrarTodo());
+					vf.getVemer().mostrar("El producto fue añadido con exito");
+					vf.getVpt().getPep().getPevj().revalidate();
+					vf.getVpt().getPep().getPevj().repaint();
+
+				} else {
+					vf.getVemer().mostrar("la posicion a eliminar no esta en la lista");
+
+				}
+
+			} catch (NegativeNumberException e1) {
+				vf.getVemer().mostrar("Numero no valido.");
+				e1.printStackTrace();
+			}
+
+			break;
+		}
+		case "elminiarDepor": {
+
+			try {
+
+				int a = vf.getVemer().leerInt("¿Digite la posicion del producto que desea Eliminar?");
+				a = a - 1;
+				ExceptionCheker.checkerNegativeNumber(a);
+				if (mf.getDeporteDAO().encontrar(a)) {
+
+					mf.getDeporteDAO().eliminar(a);
+					vf.getVpt().getPep().getPedep().setTexto(mf.getDeporteDAO().mostrarTodo());
+					vf.getVemer().mostrar("El producto fue añadido con exito");
+					vf.getVpt().getPep().getPedep().revalidate();
+					vf.getVpt().getPep().getPedep().repaint();
 
 				} else {
 					vf.getVemer().mostrar("la posicion a eliminar no esta en la lista");
