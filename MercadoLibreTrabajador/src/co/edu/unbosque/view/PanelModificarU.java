@@ -54,4 +54,28 @@ public class PanelModificarU extends JPanel {
 
 	}
 
+	public JLabel getFondo() {
+		return fondo;
+	}
+
+	public void setFondo(JLabel fondo) {
+		this.fondo = fondo;
+	}
+
+	public JButton getBtnTrabajador() {
+		return btnTrabajador;
+	}
+
+	public void setBtnTrabajador(JButton btnTrabajador) {
+		this.btnTrabajador = btnTrabajador;
+	}
+
+	public JButton getBtnCliente() {
+		return btnCliente;
+	}
+
+	public void setBtnCliente(JButton btnCliente) {
+		this.btnCliente = btnCliente;
+	}
+
 }

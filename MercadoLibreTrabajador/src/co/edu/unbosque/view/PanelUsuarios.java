@@ -18,14 +18,10 @@ public class PanelUsuarios extends JPanel {
 
 	private JLabel fondo;
 	private JButton btnVolver;
-	private JButton btnTrabajador;
-	private JButton btnCliente;
-	private JButton btnModificar;
-	private JButton btnEliminar;
-	private JTextArea espacioLista;
 	private String texto;
 	private PanelModificarU pmu;
 	private PanelModificarT pmt;
+	private PanelModificarC pmc;
 
 	public PanelUsuarios() throws IOException {
 		setBounds(0, 0, 1290, 750);
@@ -48,59 +44,13 @@ public class PanelUsuarios extends JPanel {
 		btnVolver.setVisible(true);
 		add(btnVolver);
 
-		btnTrabajador = new JButton();
-		btnTrabajador.setBounds(100, 250, 252, 70);
-		btnTrabajador.setText("Trabajadores");
-		btnTrabajador.setFocusable(false);
-		btnTrabajador.setForeground(Color.black);
-		btnTrabajador.setBackground(new Color(235, 219, 79));
-		btnTrabajador.setFont(new Font("Baloo", Font.BOLD, 35));
-		// add(btnTrabajador);
-
-		btnCliente = new JButton();
-		btnCliente.setBounds(100, 370, 252, 70);
-		btnCliente.setText("Clientes");
-		btnCliente.setFocusable(false);
-		btnCliente.setForeground(Color.black);
-		btnCliente.setBackground(new Color(235, 219, 79));
-		btnCliente.setFont(new Font("Baloo", Font.BOLD, 35));
-		// add(btnCliente);
-
-		btnModificar = new JButton();
-		btnModificar.setBounds(100, 490, 252, 70);
-		btnModificar.setText("Modificar");
-		btnModificar.setFocusable(false);
-		btnModificar.setForeground(Color.black);
-		btnModificar.setBackground(new Color(235, 219, 79));
-		btnModificar.setFont(new Font("Baloo", Font.BOLD, 35));
-		// add(btnModificar);
-
-		btnEliminar = new JButton();
-		btnEliminar.setBounds(100, 610, 252, 70);
-		btnEliminar.setText("Eliminar");
-		btnEliminar.setFocusable(false);
-		btnEliminar.setBackground(Color.WHITE);
-		btnEliminar.setForeground(Color.black);
-		btnEliminar.setBackground(new Color(246, 86, 86));
-		btnEliminar.setFont(new Font("Baloo", Font.BOLD, 35));
-		// add(btnEliminar);
-
-		espacioLista = new JTextArea();
-		espacioLista.setBounds(412, 250, 780, 433);
-		espacioLista.setFocusable(false);
-		espacioLista.setText(texto);
-		espacioLista.setBackground(Color.WHITE);
-		espacioLista.setFont(new Font("Baloo", Font.BOLD, 20));
-		espacioLista.setLineWrap(true);
-		espacioLista.setWrapStyleWord(true);
-		espacioLista.setEditable(false);
-		// add(espacioLista);
-
 		pmu = new PanelModificarU();
 		pmt = new PanelModificarT();
+		pmc = new PanelModificarC();
 
-		add(pmt);
-		add(pmu).setVisible(false);
+		add(pmc).setVisible(false);
+		add(pmt).setVisible(false);
+		add(pmu).setVisible(true);
 
 		add(fondo);
 	}
@@ -121,53 +71,28 @@ public class PanelUsuarios extends JPanel {
 		this.btnVolver = btnVolver;
 	}
 
-	public JButton getBtnModificar() {
-		return btnModificar;
+	public PanelModificarU getPmu() {
+		return pmu;
 	}
 
-	public void setBtnModificar(JButton btnModificar) {
-		this.btnModificar = btnModificar;
+	public void setPmu(PanelModificarU pmu) {
+		this.pmu = pmu;
 	}
 
-	public JButton getBtnEliminar() {
-		return btnEliminar;
+	public PanelModificarT getPmt() {
+		return pmt;
 	}
 
-	public void setBtnEliminar(JButton btnEliminar) {
-		this.btnEliminar = btnEliminar;
+	public void setPmt(PanelModificarT pmt) {
+		this.pmt = pmt;
 	}
 
-	public JButton getBtnTrabajador() {
-		return btnTrabajador;
+	public PanelModificarC getPmc() {
+		return pmc;
 	}
 
-	public void setBtnTrabajador(JButton btnTrabajador) {
-		this.btnTrabajador = btnTrabajador;
-	}
-
-	public JButton getBtnCliente() {
-		return btnCliente;
-	}
-
-	public void setBtnCliente(JButton btnCliente) {
-		this.btnCliente = btnCliente;
-	}
-
-	public JTextArea getEspacioLista() {
-		return espacioLista;
-	}
-
-	public void setEspacioLista(JTextArea espacioLista) {
-		this.espacioLista = espacioLista;
-	}
-
-	public String getTexto() {
-		return texto;
-	}
-
-	public void setTexto(String texto) {
-		this.texto = texto;
-		espacioLista.setText(texto);
+	public void setPmc(PanelModificarC pmc) {
+		this.pmc = pmc;
 	}
 
 }

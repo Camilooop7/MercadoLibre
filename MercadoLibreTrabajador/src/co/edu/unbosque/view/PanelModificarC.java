@@ -17,7 +17,7 @@ import javax.swing.JTextArea;
 import javax.swing.UIManager;
 import javax.swing.plaf.ColorUIResource;
 
-public class PanelModificarT extends JPanel {
+public class PanelModificarC extends JPanel {
 
 	private JLabel fondo;
 	private JButton btnModificar;
@@ -26,7 +26,7 @@ public class PanelModificarT extends JPanel {
 	private String texto;
 	private JScrollPane barraV;
 
-	public PanelModificarT() throws IOException {
+	public PanelModificarC() throws IOException {
 		setBounds(166, 245, 950, 433);
 		setLayout(null);
 
