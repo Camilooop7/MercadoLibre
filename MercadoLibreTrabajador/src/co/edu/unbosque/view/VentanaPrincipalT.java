@@ -12,7 +12,7 @@ public class VentanaPrincipalT extends JFrame {
 	private PanelCrearU pcu;
 	private PanelTrabajador pt;
 	private PanelAnadirProducto pap;
-	private PanelModificarU pmu;
+	private PanelUsuarios pmu;
 	private PanelElimianarProducto pep;
 
 	public VentanaPrincipalT() throws IOException {
@@ -28,7 +28,7 @@ public class VentanaPrincipalT extends JFrame {
 		pcu = new PanelCrearU();
 		pt = new PanelTrabajador();
 		pap = new PanelAnadirProducto();
-		pmu = new PanelModificarU();
+		pmu = new PanelUsuarios();
 		pep = new PanelElimianarProducto();
 
 		add(ppt).setVisible(true);
@@ -81,11 +81,11 @@ public class VentanaPrincipalT extends JFrame {
 		this.pap = pap;
 	}
 
-	public PanelModificarU getPmu() {
+	public PanelUsuarios getPmu() {
 		return pmu;
 	}
 
-	public void setPmu(PanelModificarU pmu) {
+	public void setPmu(PanelUsuarios pmu) {
 		this.pmu = pmu;
 	}
 
