@@ -5,9 +5,11 @@ import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.Image;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.ArrayList;
 
+import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -68,13 +70,14 @@ public class PanelOcio extends JPanel{
             lblImagen.setHorizontalAlignment(SwingConstants.CENTER);
             panelProducto.add(lblImagen, BorderLayout.EAST);
 
-            JTextArea txtAreaInfo = new JTextArea(listaDatos.get(i).toString());
+            JTextArea txtAreaInfo = new JTextArea(listaDatos.get(i).toString() + 
+            		"\n                                                                                                       ");
             txtAreaInfo.setEditable(false);
             panelProducto.add(txtAreaInfo, BorderLayout.WEST);
 
             JPanel panelBotones = new JPanel(new FlowLayout(FlowLayout.CENTER));
             JButton btnAgregar = new JButton("Añadir al Carrito");
-            JButton btnFavoritos = new JButton("Eliminar");
+            JButton btnFavoritos = new JButton("Favoritos");
             
             botonesAnadir.add(btnAgregar);
             botonesFav.add(btnFavoritos);
@@ -88,24 +91,6 @@ public class PanelOcio extends JPanel{
         }
     }
 
-    /**
-     * Asigna las rutas de las imágenes a iconos para después asignarlos a los labels.
-     * 
-     * @return Icono para los labels.
-     */
-//    private ImageIcon asignarImagen(Ocio obj) {
-//        try {
-//            String ruta = obj.getImagen();
-//            ruta = ruta.replace("\\", "/");
-//            System.out.println(ruta);
-//            ImageIcon icono = new ImageIcon(PanelOcio.class.getResource(ruta));
-//            Image imagen = icono.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
-//            return new ImageIcon(imagen);
-//        } catch (NullPointerException e) {
-//        	System.out.println("a");
-//            return null;
-//        }
-//    }
     private ImageIcon asignarImagen(Ocio obj) {
         try {
             String ruta = obj.getImagen();
@@ -113,9 +98,11 @@ public class PanelOcio extends JPanel{
             // Convertir rutas Windows a formato válido
             ruta = ruta.replace("\\", "/");
          
-            ImageIcon icono = new ImageIcon(new File(ruta).getAbsolutePath());
-            Image imagen = icono.getImage().getScaledInstance(560, 440, Image.SCALE_SMOOTH);
-            return new ImageIcon(imagen);
+    		BufferedImage fd = ImageIO.read(new File(ruta));
+
+    		ImageIcon imagen = new ImageIcon(fd);
+    		Image fdRedim = fd.getScaledInstance(575, 325, Image.SCALE_SMOOTH);
+            return new ImageIcon(fdRedim);
             
         } catch (Exception e) {
             System.err.println("Error cargando imagen: " + e.getMessage());

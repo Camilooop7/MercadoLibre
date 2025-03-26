@@ -38,6 +38,6 @@ public abstract class Oficina extends Producto implements Serializable { // Decl
 
 	@Override
 	public String toString() { // Método para representar el objeto como cadena
-		return super.toString() + "\n¿Es portatil? " + esPortatil; // Retorna la información del objeto
+		return super.toString() + "\n¿Es portatil? " + (esPortatil?"Si" : "No"); // Retorna la información del objeto
 	}
 }

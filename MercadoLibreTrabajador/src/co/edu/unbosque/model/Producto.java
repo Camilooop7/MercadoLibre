@@ -67,7 +67,6 @@ public abstract class Producto implements Serializable { // Declara la clase abs
 
 	@Override
 	public String toString() { // Método para representar el objeto como cadena
-		return "Nombre: " + nombre + "\nPrecio: $" + precio + "\nID: " + id + "\nFecha: " + fecha + "\nImagen: "
-				+ imagen;
+		return "Nombre: " + nombre + "\nPrecio: $" + precio + "\nID: " + id + "\nFecha: " + fecha;
 	}
 }
