@@ -215,7 +215,7 @@ public class Controller implements ActionListener {
 
 			break;
 		}
-		case "btnIngresarI": {
+		case "btnIngresarI":{
 
 			String usuario = (String) vf.getVpt().getPis().getNombreUsuario();
 			String contrasena = (String) vf.getVpt().getPis().getContrasena();
@@ -519,7 +519,7 @@ public class Controller implements ActionListener {
 		case "btnCliente": {
 			vf.getVpt().getPmu().getPmc().setVisible(true);
 			vf.getVpt().getPmu().getPmu().setVisible(false);
-			vf.getVpt().getPmu().getPmt().setTexto(mf.getClienteDAO().mostrarTodo());
+			vf.getVpt().getPmu().getPmc().setTexto(mf.getClienteDAO().mostrarTodo());
 
 			break;
 		}
@@ -532,8 +532,9 @@ public class Controller implements ActionListener {
 
 					mf.getClienteDAO().eliminar(a);
 					vf.getVemer().mostrar("Eliminado con exito");
-					vf.getVpt().getPmu().getPmc().setTexto(mf.getTrabajadorDAO().mostrarTodo());
+					vf.getVpt().getPmu().getPmc().setTexto(mf.getClienteDAO().mostrarTodo());
 
+					
 				} else {
 					vf.getVemer().mostrarError("la posicion a eliminar no esta en la lista");
 				}
@@ -560,7 +561,7 @@ public class Controller implements ActionListener {
 					mf.getClienteDAO().actulizar(a, new Cliente(nombre, contra));
 
 					vf.getVemer().mostrar("Actualizado con exito");
-					vf.getVpt().getPmu().getPmt().setTexto(mf.getClienteDAO().mostrarTodo());
+					vf.getVpt().getPmu().getPmc().setTexto(mf.getClienteDAO().mostrarTodo());
 
 				} else {
 					vf.getVemer().mostrarError("la posicion que desea actualizar no esta en la lista");
