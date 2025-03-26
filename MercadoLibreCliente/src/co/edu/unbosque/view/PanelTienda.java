@@ -3,6 +3,7 @@ package co.edu.unbosque.view;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
@@ -39,10 +40,19 @@ public class PanelTienda extends JPanel {
 			panelOcio.setVisible(false);
 			
 	        panelBotones = new JPanel(new GridLayout(3, 1));
-	        panelBotones.setBounds(50, 250, 300, 400);
+	        panelBotones.setBounds(50, 250, 300, 350);
 	        btnHogar = new JButton("Hogar");
+	        btnHogar.setBackground(new Color(235, 219, 79));
+			btnHogar.setFont(new Font("Baloo", Font.BOLD, 30));
+	        btnHogar.setForeground(Color.black);
 	        btnOficina = new JButton("Oficina");
+	        btnOficina.setBackground(new Color(235, 219, 79));
+			btnOficina.setFont(new Font("Baloo", Font.BOLD, 30));
+	        btnOficina.setForeground(Color.black);
 	        btnOcio = new JButton("Ocio");
+	        btnOcio.setBackground(new Color(235, 219, 79));
+	        btnOcio.setFont(new Font("Baloo", Font.BOLD, 30));
+	        btnOcio.setForeground(Color.black);
 	        
 	        panelBotones.add(btnHogar);
 	        panelBotones.add(btnOficina);

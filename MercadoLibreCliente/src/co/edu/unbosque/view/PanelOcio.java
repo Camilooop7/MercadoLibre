@@ -3,6 +3,7 @@ package co.edu.unbosque.view;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
@@ -35,7 +36,7 @@ public class PanelOcio extends JPanel{
      * Constructor que configura el panel con desplazamiento vertical.
      */
     public PanelOcio() {
-    	setBounds(380, 240, 880, 470);
+    	setBounds(380, 240, 870, 470);
         botonesAnadir = new ArrayList<>();
         botonesFav = new ArrayList<>();
         setLayout(new BorderLayout());
@@ -65,26 +66,32 @@ public class PanelOcio extends JPanel{
             JPanel panelProducto = new JPanel();
             panelProducto.setLayout(new BorderLayout());
             panelProducto.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-
+            panelProducto.setBackground(new Color(198,195,195));
+            
             JLabel lblImagen = new JLabel(asignarImagen(listaDatos.get(i)));
             lblImagen.setHorizontalAlignment(SwingConstants.CENTER);
             panelProducto.add(lblImagen, BorderLayout.EAST);
 
-            JTextArea txtAreaInfo = new JTextArea(listaDatos.get(i).toString() + 
-            		"\n                                                                                                       ");
+            JTextArea txtAreaInfo = new JTextArea(listaDatos.get(i).toString());
             txtAreaInfo.setEditable(false);
+            txtAreaInfo.setFont(new Font("Baloo", Font.BOLD, 25));
+            txtAreaInfo.setBackground(new Color(198,195,195));
             panelProducto.add(txtAreaInfo, BorderLayout.WEST);
 
             JPanel panelBotones = new JPanel(new FlowLayout(FlowLayout.CENTER));
             JButton btnAgregar = new JButton("Añadir al Carrito");
-            JButton btnFavoritos = new JButton("Favoritos");
+            btnAgregar.setBackground(new Color(235, 219, 79));
+            btnAgregar.setFont(new Font("Baloo", Font.BOLD, 15));
+            JButton btnFavoritos = new JButton("Añadir a Favoritos");
+            btnFavoritos.setBackground(new Color(235, 219, 79));
+            btnFavoritos.setFont(new Font("Baloo", Font.BOLD, 15));
             
             botonesAnadir.add(btnAgregar);
             botonesFav.add(btnFavoritos);
             
             panelBotones.add(btnAgregar);
             panelBotones.add(btnFavoritos);
-            panelBotones.setBackground(Color.yellow);
+            panelBotones.setBackground(new Color(198,195,195));
 
             panelProducto.add(panelBotones, BorderLayout.SOUTH);
             panelContenido.add(panelProducto);
@@ -101,7 +108,8 @@ public class PanelOcio extends JPanel{
     		BufferedImage fd = ImageIO.read(new File(ruta));
 
     		ImageIcon imagen = new ImageIcon(fd);
-    		Image fdRedim = fd.getScaledInstance(575, 325, Image.SCALE_SMOOTH);
+    		
+    		Image fdRedim = fd.getScaledInstance(500, 325, Image.SCALE_SMOOTH);
             return new ImageIcon(fdRedim);
             
         } catch (Exception e) {

@@ -42,7 +42,7 @@ public class Deporte extends Ocio implements Serializable { // Declara la clase 
 
 	@Override
 	public String toString() {
-		return super.toString() + "\nDeporte: " + deporte+"\n"; // Sobrescribe toString para incluir el atributo deporte
+		return super.toString() + "\n" + "\nDeporte: " + deporte+"\n"; // Sobrescribe toString para incluir el atributo deporte
 	}
 	public int codigoAleatorio() {
 		int codigo;

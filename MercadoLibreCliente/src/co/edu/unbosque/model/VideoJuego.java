@@ -58,7 +58,7 @@ public class VideoJuego extends Ocio implements Serializable {
 	/** Representación en cadena del objeto VideoJuego */
 	@Override
 	public String toString() {
-		return super.toString() + "\n¿Que consola es? " + referenciaConsola + "\n";
+		return super.toString() + "\n" + "\nConsola: " + referenciaConsola + "\n";
 	}
 
 	public int codigoAleatorio() {
