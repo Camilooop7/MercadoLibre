@@ -61,23 +61,18 @@ public class Controller implements ActionListener {
 		vf.getVpc().getPis().getMostrarContrasena().setActionCommand("checkMostrarIni");
 		vf.getVpc().getPcm().getBtnVolver().setActionCommand("btnVolverCL");
 		vf.getVpc().getPcm().getBtnCarrito().addActionListener(this);
-		vf.getVpc().getPcm().getBtnCarrito().setActionCommand("btnCarritoCL");
+		vf.getVpc().getPcm().getBtnCarrito().setActionCommand("btnCarrito");
 		vf.getVpc().getPcm().getBtnHistorial().addActionListener(this);
-		vf.getVpc().getPcm().getBtnHistorial().setActionCommand("btnHistorialCL");
+		vf.getVpc().getPcm().getBtnHistorial().setActionCommand("btnHistorial");
 		vf.getVpc().getPcm().getBtnTienda().addActionListener(this);
-		vf.getVpc().getPcm().getBtnTienda().setActionCommand("btnTiendaCL");
-		vf.getVpc().getPcm().getBtnFavoritos().addActionListener(this);
-		vf.getVpc().getPcm().getBtnFavoritos().setActionCommand("btnFavoritoCL");
-		vf.getVpc().getPc().getBtnVolver().addActionListener(this);
-		vf.getVpc().getPc().getBtnVolver().setActionCommand("btnVolverCA");
-		vf.getVpc().getPc().getBtnVolver().addActionListener(this);
-		vf.getVpc().getPc().getBtnVolver().setActionCommand("btnVolverH");
-		vf.getVpc().getPh().getBtnVolver().addActionListener(this);
-		vf.getVpc().getPh().getBtnVolver().setActionCommand("btnVolverH");
+		vf.getVpc().getPcm().getBtnTienda().setActionCommand("btnTienda");
+		vf.getVpc().getPt().getBtnOcio().addActionListener(this);
+		vf.getVpc().getPt().getBtnOcio().setActionCommand("btnOcio");
+		
 		vf.getVpc().getPt().getBtnVolver().addActionListener(this);
-		vf.getVpc().getPt().getBtnVolver().setActionCommand("btnVolverT");
-		vf.getVpc().getPf().getBtnVolver().addActionListener(this);
-		vf.getVpc().getPf().getBtnVolver().setActionCommand("btnVolverF");
+		vf.getVpc().getPt().getBtnVolver().setActionCommand("btnTiendaVolver");
+		vf.getVpc().getPcm().getBtnFavoritos().addActionListener(this);
+		vf.getVpc().getPcm().getBtnFavoritos().setActionCommand("btnFavorito");
 
 	}
 
@@ -198,44 +193,21 @@ public class Controller implements ActionListener {
 			vf.getVpc().getPpc().setVisible(true);
 			break;
 		}
-		case "btnCarritoCL": {
-			vf.getVpc().getPcm().setVisible(false);
-			vf.getVpc().getPc().setVisible(true);
-			break;
-		}
-		case "btnHistorialCL": {
-			vf.getVpc().getPcm().setVisible(false);
-			vf.getVpc().getPh().setVisible(true);
-			break;
-		}
-		case "btnTiendaCL": {
+		case "btnTienda":{
 			vf.getVpc().getPcm().setVisible(false);
 			vf.getVpc().getPt().setVisible(true);
 			break;
 		}
-		case "btnFavoritoCL": {
-			vf.getVpc().getPcm().setVisible(false);
-			vf.getVpc().getPf().setVisible(true);
+		case "btnOcio":{
+			vf.getVpc().getPt().getPanelOcio().setVisible(true);
+			vf.getVpc().getPt().getPanelOcio().actualizarInfo(mf.generarProductosOcio());
 			break;
-
 		}
-		case "btnVolverCA": {
-			vf.getVpc().getPc().setVisible(false);
+		case "btnTiendaVolver":{
 			vf.getVpc().getPcm().setVisible(true);
-		}
-		case "btnVolverH": {
-			vf.getVpc().getPh().setVisible(false);
-			vf.getVpc().getPcm().setVisible(true);
-		}
-		case "btnVolverT": {
 			vf.getVpc().getPt().setVisible(false);
-			vf.getVpc().getPcm().setVisible(true);
+			break;
 		}
-		case "btnVolverF": {
-			vf.getVpc().getPf().setVisible(false);
-			vf.getVpc().getPcm().setVisible(true);
-		}
-
 		}
 
 	}

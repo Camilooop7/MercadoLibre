@@ -12,31 +12,54 @@ import co.edu.unbosque.model.persistence.PapeleriaDAO;
 import co.edu.unbosque.model.persistence.TrabajadorDAO;
 import co.edu.unbosque.model.persistence.VideoJuegoDAO;
 
-public class ModelFacade {
+public class ModelFacade { // Clase que actúa como fachada para manejar los DAOs
 
-	private BanoDAO banoDAO;
-	private CarritoDAO carritoDAO;
-	private ClienteDAO clienteDAO;
-	private CocinaDAO cocinaDAO;
-	private DeporteDAO deporteDAO;
-	private ElectrodomesticoDAO electrodomesticoDAO;
-	private PapeleriaDAO papeleriaDAO;
-	private TrabajadorDAO trabajadorDAO;
-	private VideoJuegoDAO videoJuegoDAO;
-	private ArrayList<Producto> listaProducto;
+	private BanoDAO banoDAO; // DAO para gestionar productos de baño
+	private CarritoDAO carritoDAO; // DAO para gestionar el carrito de compras
+	private ClienteDAO clienteDAO; // DAO para gestionar clientes
+	private CocinaDAO cocinaDAO; // DAO para gestionar productos de cocina
+	private DeporteDAO deporteDAO; // DAO para gestionar productos deportivos
+	private ElectrodomesticoDAO electrodomesticoDAO; // DAO para gestionar electrodomésticos
+	private PapeleriaDAO papeleriaDAO; // DAO para gestionar productos de papelería
+	private TrabajadorDAO trabajadorDAO; // DAO para gestionar trabajadores
+	private VideoJuegoDAO videoJuegoDAO; // DAO para gestionar videojuegos
+	private ArrayList<Producto> listaProducto; // Lista para almacenar productos
+	private ArrayList<Ocio> pOcio;
 
-	public ModelFacade() {
+	public ModelFacade() { // Constructor de la clase
 
-		banoDAO = new BanoDAO();
-		carritoDAO = new CarritoDAO();
-		clienteDAO = new ClienteDAO();
-		cocinaDAO = new CocinaDAO();
-		deporteDAO = new DeporteDAO();
-		electrodomesticoDAO = new ElectrodomesticoDAO();
-		papeleriaDAO = new PapeleriaDAO();
-		trabajadorDAO = new TrabajadorDAO();
-		videoJuegoDAO = new VideoJuegoDAO();
-		listaProducto = new ArrayList<>();
+		banoDAO = new BanoDAO(); // Inicializa el DAO de baño
+		carritoDAO = new CarritoDAO(); // Inicializa el DAO del carrito
+		clienteDAO = new ClienteDAO(); // Inicializa el DAO de cliente
+		cocinaDAO = new CocinaDAO(); // Inicializa el DAO de cocina
+		deporteDAO = new DeporteDAO(); // Inicializa el DAO de deporte
+		electrodomesticoDAO = new ElectrodomesticoDAO(); // Inicializa el DAO de electrodoméstico
+		papeleriaDAO = new PapeleriaDAO(); // Inicializa el DAO de papelería
+		trabajadorDAO = new TrabajadorDAO(); // Inicializa el DAO de trabajador
+		videoJuegoDAO = new VideoJuegoDAO(); // Inicializa el DAO de videojuegos
+		listaProducto = new ArrayList<>(); // Inicializa la lista de productos
+	}
+			
+	public ArrayList<Ocio> generarProductosOcio(){
+		pOcio = new ArrayList<>();
+		pOcio.addAll(videoJuegoDAO.getListaVideoJuegos());
+		pOcio.addAll(deporteDAO.getListaDeportes());
+		return pOcio;
+	}
+	
+	public void anadirTodoProducto() {
+		listaProducto.addAll(banoDAO.getListaBanos());
+		listaProducto.addAll(cocinaDAO.getListaCocinas());
+		listaProducto.addAll(deporteDAO.getListaDeportes());
+		listaProducto.addAll(electrodomesticoDAO.getListaElectrodomesticos());
+		listaProducto.addAll(papeleriaDAO.getListaPapeleria());
+		listaProducto.addAll(videoJuegoDAO.getListaVideoJuegos());
+	}
+	
+	public String convertirAHtml(String texto) {
+		String cadena = texto.replace("\n", "<br>");
+		return "<html><p>" + cadena + "</p></html>";
+
 	}
 
 	public BanoDAO getBanoDAO() {

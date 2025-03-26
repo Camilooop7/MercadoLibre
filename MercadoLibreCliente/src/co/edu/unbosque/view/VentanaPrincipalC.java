@@ -21,7 +21,7 @@ public class VentanaPrincipalC extends JFrame {
 		setBounds(10, 10, 1290, 750);
 		setTitle("Mercado Libre");
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setResizable(false);
+		setResizable(true);
 		setLayout(null);
 		
 		ppc = new PanelPrincipalC();
@@ -37,10 +37,10 @@ public class VentanaPrincipalC extends JFrame {
 		add(pis).setVisible(false);
 		add(pcu).setVisible(false);
 		add(pcm).setVisible(false);
-		add(pc).setVisible(true);
-		add(ph).setVisible(true);
-		add(pt).setVisible(true);
-		add(pf).setVisible(true);
+		add(pc).setVisible(false);
+		add(ph).setVisible(false);
+		add(pt).setVisible(false);
+		add(pf).setVisible(false);
 		
 
 	}
@@ -107,6 +107,10 @@ public class VentanaPrincipalC extends JFrame {
 
 	public void setPf(PanelFavorito pf) {
 		this.pf = pf;
+	}
+
+	public void setPcm(PanelClienteMenu pcm) {
+		this.pcm = pcm;
 	}
 	
 	
