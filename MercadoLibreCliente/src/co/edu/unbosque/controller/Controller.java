@@ -3,7 +3,11 @@ package co.edu.unbosque.controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.ArrayList;
 
+import javax.swing.JButton;
+
+import co.edu.unbosque.model.Carrito;
 import co.edu.unbosque.model.Cliente;
 import co.edu.unbosque.model.ModelFacade;
 import co.edu.unbosque.model.Trabajador;
@@ -21,8 +25,6 @@ import co.edu.unbosque.view.ViewFacade;
 public class Controller implements ActionListener {
 	private ModelFacade mf;
 	private ViewFacade vf;
-
-	private Cliente clienteActual;
 
 	public Controller() throws IOException {
 		FileManager.crearCarpeta();
@@ -44,33 +46,45 @@ public class Controller implements ActionListener {
 		vf.getVpc().getPpc().getBtnCrearU().setActionCommand("btnCrearU");
 		vf.getVpc().getPpc().getBtnSalir().addActionListener(this);
 		vf.getVpc().getPpc().getBtnSalir().setActionCommand("btnSalir");
+		
 		vf.getVpc().getPis().getBtnIngresar().addActionListener(this);
 		vf.getVpc().getPis().getBtnIngresar().setActionCommand("btnIngresarI");
+		vf.getVpc().getPis().getMostrarContrasena().addActionListener(this);
+		vf.getVpc().getPis().getMostrarContrasena().setActionCommand("checkMostrarIni");
 		vf.getVpc().getPis().getBtnVolver().addActionListener(this);
 		vf.getVpc().getPis().getBtnVolver().setActionCommand("btnVolverI");
+		
 		vf.getVpc().getPcu().getBtnIngresar().addActionListener(this);
 		vf.getVpc().getPcu().getBtnIngresar().setActionCommand("btnIngresarC");
 		vf.getVpc().getPcu().getBtnVolver().addActionListener(this);
 		vf.getVpc().getPcu().getBtnVolver().setActionCommand("btnVolverC");
-		vf.getVpc().getPcm().getBtnVolver().addActionListener(this);
+		
 		vf.getVpc().getPcu().getMostrarContrasena().addActionListener(this);
 		vf.getVpc().getPcu().getMostrarContrasena().setActionCommand("checkMostrar");
 		vf.getVpc().getPcu().getMostrarContrasena2().addActionListener(this);
 		vf.getVpc().getPcu().getMostrarContrasena2().setActionCommand("checkMostrar2");
-		vf.getVpc().getPis().getMostrarContrasena().addActionListener(this);
-		vf.getVpc().getPis().getMostrarContrasena().setActionCommand("checkMostrarIni");
-		vf.getVpc().getPcm().getBtnVolver().setActionCommand("btnVolverCL");
+		
 		vf.getVpc().getPcm().getBtnCarrito().addActionListener(this);
 		vf.getVpc().getPcm().getBtnCarrito().setActionCommand("btnCarrito");
+		
 		vf.getVpc().getPcm().getBtnHistorial().addActionListener(this);
 		vf.getVpc().getPcm().getBtnHistorial().setActionCommand("btnHistorial");
+		
 		vf.getVpc().getPcm().getBtnTienda().addActionListener(this);
 		vf.getVpc().getPcm().getBtnTienda().setActionCommand("btnTienda");
+		
+		vf.getVpc().getPcm().getBtnVolver().addActionListener(this);
+		vf.getVpc().getPcm().getBtnVolver().setActionCommand("btnVolverCL");
+		
 		vf.getVpc().getPt().getBtnOcio().addActionListener(this);
 		vf.getVpc().getPt().getBtnOcio().setActionCommand("btnOcio");
-		
+		vf.getVpc().getPt().getBtnOficina().addActionListener(this);
+		vf.getVpc().getPt().getBtnOficina().setActionCommand("btnOficina");
+		vf.getVpc().getPt().getBtnHogar().addActionListener(this);
+		vf.getVpc().getPt().getBtnHogar().setActionCommand("btnHogar");
 		vf.getVpc().getPt().getBtnVolver().addActionListener(this);
 		vf.getVpc().getPt().getBtnVolver().setActionCommand("btnTiendaVolver");
+		
 		vf.getVpc().getPcm().getBtnFavoritos().addActionListener(this);
 		vf.getVpc().getPcm().getBtnFavoritos().setActionCommand("btnFavorito");
 
@@ -105,7 +119,7 @@ public class Controller implements ActionListener {
 
 				vf.getVpc().getPis().setVisible(false);
 				vf.getVpc().getPcm().setVisible(true);
-				clienteActual = mf.getClienteDAO().encontrarUsuario(usuario, contrasena);
+				mf.setClienteActual(mf.getClienteDAO().encontrarUsuario(usuario, contrasena));
 
 			} else {
 				vf.getVemer().mostrar("Problema en el usuario o contraseña.");
@@ -200,7 +214,26 @@ public class Controller implements ActionListener {
 		}
 		case "btnOcio":{
 			vf.getVpc().getPt().getPanelOcio().setVisible(true);
+			vf.getVpc().getPt().getPanelOficina().setVisible(false);
+			vf.getVpc().getPt().getPanelHogar().setVisible(false);
 			vf.getVpc().getPt().getPanelOcio().actualizarInfo(mf.generarProductosOcio());
+			asignarFuncionesComponentesAlimentos("Ocio");
+			break;
+		}
+		case "btnOficina":{
+			vf.getVpc().getPt().getPanelOcio().setVisible(false);
+			vf.getVpc().getPt().getPanelOficina().setVisible(true);
+			vf.getVpc().getPt().getPanelHogar().setVisible(false);
+			vf.getVpc().getPt().getPanelOficina().actualizarInfo(mf.generarProductosOficina());
+			asignarFuncionesComponentesAlimentos("Oficina");
+			break;
+		}
+		case "btnHogar":{
+			vf.getVpc().getPt().getPanelHogar().actualizarInfo(mf.generarProductosHogar());
+			vf.getVpc().getPt().getPanelHogar().setVisible(true);
+			vf.getVpc().getPt().getPanelOcio().setVisible(false);
+			vf.getVpc().getPt().getPanelOficina().setVisible(false);
+			asignarFuncionesComponentesAlimentos("Hogar");
 			break;
 		}
 		case "btnTiendaVolver":{
@@ -210,5 +243,123 @@ public class Controller implements ActionListener {
 		}
 		}
 
+	}
+	
+	public void asignarFuncionesComponentesAlimentos(String producto) {
+		switch (producto) {
+		case "Ocio": {
+			for (JButton btn : vf.getVpc().getPt().getPanelOcio().getBotonesAnadir()) {
+				btn.setActionCommand(String.valueOf(vf.getVpc().getPt().getPanelOcio().getBotonesAnadir().indexOf(btn)));
+				btn.addActionListener(e -> {
+					int indice = Integer.parseInt(e.getActionCommand());
+
+					if(mf.getClienteActual().getCarrito() == null) {
+						mf.getClienteActual().setCarrito(new Carrito());
+						mf.getClienteActual().getCarrito().getListaCarrito().add(mf.generarProductosOcio().get(indice));
+					}else {
+						mf.getClienteActual().getCarrito().getListaCarrito().add(mf.generarProductosOcio().get(indice));
+					}
+					System.out.println("andadidoc " + mf.getClienteActual().getCarrito().getListaCarrito().getLast().getNombre());
+					actualizarInfo("Ocio");
+					asignarFuncionesComponentesAlimentos("Ocio");
+				});
+			}
+			
+			for (JButton btn : vf.getVpc().getPt().getPanelOcio().getBotonesFav()) {
+				btn.setActionCommand(String.valueOf (vf.getVpc().getPt().getPanelOcio().getBotonesFav().indexOf(btn)));
+				btn.addActionListener(e -> {
+					int indice = Integer.parseInt(e.getActionCommand());
+					mf.getClienteActual().getListaProductoFavorito().add(mf.generarProductosOcio().get(indice));
+					System.out.println("andadidof " + mf.getClienteActual().getListaProductoFavorito().getLast().getNombre());
+					actualizarInfo("Ocio");
+					asignarFuncionesComponentesAlimentos("Ocio");
+				});
+			}
+			break;
+		}
+		
+		case "Hogar": {
+			for (JButton btn : vf.getVpc().getPt().getPanelHogar().getBotonesAnadir()) {
+				btn.setActionCommand(String.valueOf(vf.getVpc().getPt().getPanelHogar().getBotonesAnadir().indexOf(btn)));
+				btn.addActionListener(e -> {
+					int indice = Integer.parseInt(e.getActionCommand());
+
+					if(mf.getClienteActual().getCarrito() == null) {
+						mf.getClienteActual().setCarrito(new Carrito());
+						mf.getClienteActual().getCarrito().getListaCarrito().add(mf.generarProductosHogar().get(indice));
+					}else {
+						mf.getClienteActual().getCarrito().getListaCarrito().add(mf.generarProductosHogar().get(indice));
+					}
+					System.out.println("andadidoc " + mf.getClienteActual().getCarrito().getListaCarrito().getLast().getNombre());
+					actualizarInfo("Hogar");
+					asignarFuncionesComponentesAlimentos("Hogar");
+				});
+			}
+			
+			for (JButton btn : vf.getVpc().getPt().getPanelHogar().getBotonesFav()) {
+				btn.setActionCommand(String.valueOf (vf.getVpc().getPt().getPanelHogar().getBotonesFav().indexOf(btn)));
+				btn.addActionListener(e -> {
+					int indice = Integer.parseInt(e.getActionCommand());
+					mf.getClienteActual().getListaProductoFavorito().add(mf.generarProductosHogar().get(indice));
+					System.out.println("andadidof " + mf.getClienteActual().getListaProductoFavorito().getLast().getNombre());
+					actualizarInfo("Hogar");
+					asignarFuncionesComponentesAlimentos("Hogar");
+				});
+			}
+			break;
+		}
+		
+		case "Oficina": {
+			for (JButton btn : vf.getVpc().getPt().getPanelOficina().getBotonesAnadir()) {
+				btn.setActionCommand(String.valueOf(vf.getVpc().getPt().getPanelOficina().getBotonesAnadir().indexOf(btn)));
+				btn.addActionListener(e -> {
+					int indice = Integer.parseInt(e.getActionCommand());
+
+					if(mf.getClienteActual().getCarrito() == null) {
+						mf.getClienteActual().setCarrito(new Carrito());
+						mf.getClienteActual().getCarrito().getListaCarrito().add(mf.generarProductosOficina().get(indice));
+					}else {
+						mf.getClienteActual().getCarrito().getListaCarrito().add(mf.generarProductosOficina().get(indice));
+					}
+					System.out.println("andadidoc " + mf.getClienteActual().getCarrito().getListaCarrito().getLast().getNombre());
+					actualizarInfo("Oficina");
+					asignarFuncionesComponentesAlimentos("Oficina");
+				});
+			}
+			
+			for (JButton btn : vf.getVpc().getPt().getPanelOficina().getBotonesFav()) {
+				btn.setActionCommand(String.valueOf (vf.getVpc().getPt().getPanelOficina().getBotonesFav().indexOf(btn)));
+				btn.addActionListener(e -> {
+					int indice = Integer.parseInt(e.getActionCommand());
+					mf.getClienteActual().getListaProductoFavorito().add(mf.generarProductosOficina().get(indice));
+					System.out.println("andadidof " + mf.getClienteActual().getListaProductoFavorito().getLast().getNombre());
+					actualizarInfo("Oficina");
+					asignarFuncionesComponentesAlimentos("Oficina");
+				});
+			}
+			break;
+		}
+		default:
+			break;
+		}
+	}
+	
+	public void actualizarInfo(String producto) {
+		switch (producto) {
+		case "Ocio": {
+			vf.getVpc().getPt().getPanelOcio().actualizarInfo(mf.generarProductosOcio());
+			break;
+		}
+		case "Hogar": {
+			vf.getVpc().getPt().getPanelHogar().actualizarInfo(mf.generarProductosHogar());
+			break;
+		}
+		case "Oficina": {
+			vf.getVpc().getPt().getPanelOficina().actualizarInfo(mf.generarProductosOficina());
+			break;
+		}
+		default:
+			break;
+		}
 	}
 }

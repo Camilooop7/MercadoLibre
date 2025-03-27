@@ -22,6 +22,8 @@ public class PanelTienda extends JPanel {
 	
     private JPanel panelBotones;
     private PanelOcio panelOcio; 
+    private PanelOficina panelOficina;
+    private PanelHogar panelHogar;
 	
 	 public PanelTienda() throws IOException {
 		 	
@@ -34,8 +36,10 @@ public class PanelTienda extends JPanel {
 			fondo.setIcon(new ImageIcon(fdRedim));
 			fondo.setBounds(0, 0, 1290, 750);
 			
-			/*panelHogar = new PanelHogar();
-			panelOficina = new PanelOficina();*/
+			panelHogar = new PanelHogar();
+			panelHogar.setVisible(false);
+			panelOficina = new PanelOficina();
+			panelOficina.setVisible(false);
 			panelOcio = new PanelOcio();
 			panelOcio.setVisible(false);
 			
@@ -70,10 +74,22 @@ public class PanelTienda extends JPanel {
 			add(btnVolver);
 	        add(panelBotones);
 	        add(panelOcio);
+	        add(panelOficina);
+	        add(panelHogar);
 			add(fondo); 
 	}
 	 
 	 
+	public PanelHogar getPanelHogar() {
+		return panelHogar;
+	}
+
+
+	public void setPanelHogar(PanelHogar panelHogar) {
+		this.panelHogar = panelHogar;
+	}
+
+
 	public JButton getBtnVolver() {
 		return btnVolver;
 	}
@@ -139,6 +155,16 @@ public class PanelTienda extends JPanel {
 
 	public void setPanelOcio(PanelOcio panelOcio) {
 		this.panelOcio = panelOcio;
+	}
+
+
+	public PanelOficina getPanelOficina() {
+		return panelOficina;
+	}
+
+
+	public void setPanelOficina(PanelOficina panelOficina) {
+		this.panelOficina = panelOficina;
 	}
 	 
 	

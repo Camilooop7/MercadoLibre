@@ -25,6 +25,10 @@ public class ModelFacade { // Clase que actúa como fachada para manejar los DAO
 	private VideoJuegoDAO videoJuegoDAO; // DAO para gestionar videojuegos
 	private ArrayList<Producto> listaProducto; // Lista para almacenar productos
 	private ArrayList<Ocio> pOcio;
+	private ArrayList<Oficina> pOficina;
+	private ArrayList<Hogar> pHogar;
+
+	private Cliente clienteActual;
 
 	public ModelFacade() { // Constructor de la clase
 
@@ -45,6 +49,20 @@ public class ModelFacade { // Clase que actúa como fachada para manejar los DAO
 		pOcio.addAll(videoJuegoDAO.getListaVideoJuegos());
 		pOcio.addAll(deporteDAO.getListaDeportes());
 		return pOcio;
+	}
+	
+	public ArrayList<Hogar> generarProductosHogar(){
+		pHogar = new ArrayList<>();
+		pHogar.addAll(cocinaDAO.getListaCocinas());
+		pHogar.addAll(banoDAO.getListaBanos());
+		return pHogar;
+	}
+	
+	public ArrayList<Oficina> generarProductosOficina(){
+		pOficina = new ArrayList<>();
+		pOficina.addAll(papeleriaDAO.getListaPapeleria());
+		pOficina.addAll(electrodomesticoDAO.getListaElectrodomesticos());
+		return pOficina;
 	}
 	
 	public void anadirTodoProducto() {
@@ -140,6 +158,38 @@ public class ModelFacade { // Clase que actúa como fachada para manejar los DAO
 
 	public void setListaProducto(ArrayList<Producto> listaProducto) {
 		this.listaProducto = listaProducto;
+	}
+
+	public ArrayList<Ocio> getpOcio() {
+		return pOcio;
+	}
+
+	public void setpOcio(ArrayList<Ocio> pOcio) {
+		this.pOcio = pOcio;
+	}
+
+	public ArrayList<Oficina> getpOficina() {
+		return pOficina;
+	}
+
+	public void setpOficina(ArrayList<Oficina> pOficina) {
+		this.pOficina = pOficina;
+	}
+
+	public ArrayList<Hogar> getpHogar() {
+		return pHogar;
+	}
+
+	public void setpHogar(ArrayList<Hogar> pHogar) {
+		this.pHogar = pHogar;
+	}
+
+	public Cliente getClienteActual() {
+		return clienteActual;
+	}
+
+	public void setClienteActual(Cliente clienteActual) {
+		this.clienteActual = clienteActual;
 	}
 
 }

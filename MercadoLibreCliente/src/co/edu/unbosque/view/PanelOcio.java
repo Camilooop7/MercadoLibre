@@ -132,4 +132,38 @@ public class PanelOcio extends JPanel{
         revalidate();
         repaint();
     }
+
+	public JScrollPane getScrollPane() {
+		return scrollPane;
+	}
+
+	public void setScrollPane(JScrollPane scrollPane) {
+		this.scrollPane = scrollPane;
+	}
+
+	public JPanel getPanelContenido() {
+		return panelContenido;
+	}
+
+	public void setPanelContenido(JPanel panelContenido) {
+		this.panelContenido = panelContenido;
+	}
+
+	public ArrayList<JButton> getBotonesAnadir() {
+		return botonesAnadir;
+	}
+
+	public void setBotonesAnadir(ArrayList<JButton> botonesAnadir) {
+		this.botonesAnadir = botonesAnadir;
+	}
+
+	public ArrayList<JButton> getBotonesFav() {
+		return botonesFav;
+	}
+
+	public void setBotonesFav(ArrayList<JButton> botonesFav) {
+		this.botonesFav = botonesFav;
+	}
+    
+    
 }
