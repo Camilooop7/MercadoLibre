@@ -31,6 +31,7 @@ public class PanelAgregarBano extends JPanel {
 	private JLabel textLimpieza;
 	private JRadioButton siL;
 	private JRadioButton noL;
+	private int a = 0;
 
 	public PanelAgregarBano() throws IOException {
 
@@ -230,5 +231,14 @@ public class PanelAgregarBano extends JPanel {
 	public void setNoL(JRadioButton noL) {
 		this.noL = noL;
 	}
+
+	public int getA() {
+		return a;
+	}
+
+	public void setA(int a) {
+		this.a = a;
+	}
+	
 
 }

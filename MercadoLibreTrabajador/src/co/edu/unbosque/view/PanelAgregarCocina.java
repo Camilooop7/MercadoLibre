@@ -34,6 +34,7 @@ public class PanelAgregarCocina extends JPanel {
 	private JLabel textResistecia;
 	private JRadioButton siR;
 	private JRadioButton noR;
+	private int a=0;
 
 	public PanelAgregarCocina() throws IOException {
 
@@ -285,5 +286,14 @@ public class PanelAgregarCocina extends JPanel {
 	public void setNoD(JRadioButton noD) {
 		this.noD = noD;
 	}
+
+	public int getA() {
+		return a;
+	}
+
+	public void setA(int a) {
+		this.a = a;
+	}
+	
 
 }

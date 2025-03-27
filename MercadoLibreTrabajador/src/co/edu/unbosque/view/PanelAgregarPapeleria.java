@@ -30,6 +30,7 @@ public class PanelAgregarPapeleria extends JPanel {
 	private JRadioButton noD;
 	private JLabel textCantidadPorPaquete;
 	private JSpinner cantidadPorPaquete;
+	private int a = 0;
 	
 	public PanelAgregarPapeleria() throws IOException {
 
@@ -202,6 +203,15 @@ public class PanelAgregarPapeleria extends JPanel {
 	}
 
 	public void setFuenteEnergia(JSpinner cantidadPorPaquete) {
+		this.cantidadPorPaquete = cantidadPorPaquete;
+	}
+	public int getA() {
+		return a;
+	}
+	public void setA(int a) {
+		this.a = a;
+	}
+	public void setCantidadPorPaquete(JSpinner cantidadPorPaquete) {
 		this.cantidadPorPaquete = cantidadPorPaquete;
 	}
 

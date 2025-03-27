@@ -227,6 +227,9 @@ public class Controller implements ActionListener {
 		vf.getVpt().getPapro().getPavj().getActualizar().setActionCommand("ActualizarVideo");
 		vf.getVpt().getPapro().getPadep().getActualizar().addActionListener(this);
 		vf.getVpt().getPapro().getPadep().getActualizar().setActionCommand("ActualizarDepor");
+
+		vf.getVpt().getPapro().getPaco().getBtnAgregar().addActionListener(this);
+		vf.getVpt().getPapro().getPaco().getBtnAgregar().setActionCommand("ActualizarProCocina");
 		// TODO botones
 	}
 
@@ -1484,107 +1487,15 @@ public class Controller implements ActionListener {
 
 				int ac = vf.getVemer().leerInt("¿Digite la posicion del producto que desea Actualizar?");
 				ac = ac - 1;
+				vf.getVpt().getPapro().getPaco().setA(ac);
 				ExceptionCheker.checkerNegativeNumber(ac);
 				if (mf.getCocinaDAO().encontrar(ac)) {
 
 					vf.getVpt().getPapro().getPac().setVisible(false);
+					
 					vf.getVpt().getPapro().getPaco().setVisible(true);
 
-					String nombre = (String) vf.getVpt().getPap().getPaco().getNombre();
-					int precio = (int) vf.getVpt().getPap().getPaco().getPrecio();
-					int id = new Cocina().codigoAleatorio();
-					LocalDateTime a = LocalDateTime.now();
-					DateTimeFormatter b = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-					String fecha = a.format(b);
-					boolean esDecoracion = false;
-					boolean resisteAltaTemperatuta = false;
-					boolean esPeligroso = false;
-					String imagen = "../archivos/imagenes/cocina/";
-
-					try {
-						ExceptionCheker.checkerNegativeNumber(precio);
-
-						ExceptionCheker.checkerIsBlank(nombre);
-
-						if (vf.getVpt().getPap().getPaco().getSiD().isSelected()) {
-							esDecoracion = true;
-						} else if (vf.getVpt().getPap().getPaco().getNoD().isSelected()) {
-							esDecoracion = false;
-						}
-
-						if (vf.getVpt().getPap().getPaco().getSiP().isSelected()) {
-							resisteAltaTemperatuta = true;
-						} else if (vf.getVpt().getPap().getPaco().getNoP().isSelected()) {
-							resisteAltaTemperatuta = false;
-						}
-
-						if (vf.getVpt().getPap().getPaco().getSiR().isSelected()) {
-							esPeligroso = true;
-						} else if (vf.getVpt().getPap().getPaco().getNoR().isSelected()) {
-							esPeligroso = false;
-						}
-
-						if (!vf.getVpt().getPap().getPaco().getSiD().isSelected()
-								&& !vf.getVpt().getPap().getPaco().getNoD().isSelected()) {
-							ExceptionCheker.checkerIsEmpty();
-						}
-						if (!vf.getVpt().getPap().getPaco().getSiP().isSelected()
-								&& !vf.getVpt().getPap().getPaco().getNoP().isSelected()) {
-							ExceptionCheker.checkerIsEmpty();
-						}
-						if (!vf.getVpt().getPap().getPaco().getSiR().isSelected()
-								&& !vf.getVpt().getPap().getPaco().getNoR().isSelected()) {
-							ExceptionCheker.checkerIsEmpty();
-						}
-
-						File selectedFile = vf.getVemer().seleccionarArchivo();
-						if (selectedFile != null) {
-							String fileName = selectedFile.getName().toLowerCase();
-							if (!fileName.endsWith(".jpg") && !fileName.endsWith(".jpeg") && !fileName.endsWith(".png")
-									&& !fileName.endsWith(".gif")) {
-								vf.getVemer().mostrarError(
-										"El archivo seleccionado no es una imagen válida. Por favor, seleccione un archivo con extensión .jpg, .jpeg, .png o .gif.");
-								break;
-							}
-							try {
-								// Cargar la imagen seleccionada
-								Image image = ImageIO.read(selectedFile);
-
-								// Copiar el archivo seleccionado al directorio 'resources/images'
-								File destino = new File("../archivos/imagenes/cocina/" + selectedFile.getName());
-								FileManager.guardarImagen(selectedFile, destino);
-
-								// Guardar la URL de la imagen
-								imagen = destino.getPath();
-
-							} catch (IOException ex) {
-								vf.getVemer().mostrarError("No se pudo cargar la imagen.");
-							} catch (IllegalArgumentException ex) {
-								vf.getVemer().mostrarError("El archivo seleccionado no es una imagen válida.");
-							}
-						} else {
-							ExceptionCheker.checkerImage();
-						}
-
-						// Crear el objeto Cocina con la URL de la imagen
-						mf.getCocinaDAO().actulizar(ac, new Cocina(nombre, precio, id, fecha, imagen, esDecoracion,
-								resisteAltaTemperatuta, esPeligroso));
-						vf.getVemer().mostrar("El producto fue actualizado con exito");
-						vf.getVpt().getPap().getPaco().setVisible(false);
-						vf.getVpt().getPapro().getPac().setVisible(true);
-						vf.getVpt().getPapro().getPac().setTexto(mf.getCocinaDAO().mostrarTodo());
-						vf.getVpt().getPapro().getPac().revalidate();
-						vf.getVpt().getPapro().getPac().repaint();
-
-					} catch (NegativeNumberException e2) {
-						vf.getVemer().mostrarError("Número no válido.");
-						e2.printStackTrace();
-					} catch (IsBlackException e2) {
-						vf.getVemer().mostrarError("Completar toda la información.");
-						e2.printStackTrace();
-					} catch (ImageException e2) {
-						vf.getVemer().mostrarError("No seleciono una imagen");
-					}
+					
 
 				} else {
 					vf.getVemer().mostrarError("la posicion a eliminar no esta en la lista");
@@ -1598,6 +1509,110 @@ public class Controller implements ActionListener {
 
 			break;
 		}
+		
+		case "ActualizarProCocina": {
+			
+			int ac = vf.getVpt().getPapro().getPaco().getA();
+
+			String nombre = (String) vf.getVpt().getPapro().getPaco().getNombre();
+			int precio = (int) vf.getVpt().getPapro().getPaco().getPrecio();
+			int id = new Cocina().codigoAleatorio();
+			LocalDateTime a = LocalDateTime.now();
+			DateTimeFormatter b = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+			String fecha = a.format(b);
+			boolean esDecoracion = false;
+			boolean resisteAltaTemperatuta = false;
+			boolean esPeligroso = false;
+			String imagen = "../archivos/imagenes/cocina/";
+
+			try {
+				ExceptionCheker.checkerNegativeNumber(precio);
+
+				ExceptionCheker.checkerIsBlank(nombre);
+
+				if (vf.getVpt().getPapro().getPaco().getSiD().isSelected()) {
+					esDecoracion = true;
+				} else if (vf.getVpt().getPapro().getPaco().getNoD().isSelected()) {
+					esDecoracion = false;
+				}
+
+				if (vf.getVpt().getPapro().getPaco().getSiP().isSelected()) {
+					resisteAltaTemperatuta = true;
+				} else if (vf.getVpt().getPapro().getPaco().getNoP().isSelected()) {
+					resisteAltaTemperatuta = false;
+				}
+
+				if (vf.getVpt().getPapro().getPaco().getSiR().isSelected()) {
+					esPeligroso = true;
+				} else if (vf.getVpt().getPapro().getPaco().getNoR().isSelected()) {
+					esPeligroso = false;
+				}
+
+				if (!vf.getVpt().getPapro().getPaco().getSiD().isSelected()
+						&& !vf.getVpt().getPapro().getPaco().getNoD().isSelected()) {
+					ExceptionCheker.checkerIsEmpty();
+				}
+				if (!vf.getVpt().getPapro().getPaco().getSiP().isSelected()
+						&& !vf.getVpt().getPapro().getPaco().getNoP().isSelected()) {
+					ExceptionCheker.checkerIsEmpty();
+				}
+				if (!vf.getVpt().getPapro().getPaco().getSiR().isSelected()
+						&& !vf.getVpt().getPapro().getPaco().getNoR().isSelected()) {
+					ExceptionCheker.checkerIsEmpty();
+				}
+
+				File selectedFile = vf.getVemer().seleccionarArchivo();
+				if (selectedFile != null) {
+					String fileName = selectedFile.getName().toLowerCase();
+					if (!fileName.endsWith(".jpg") && !fileName.endsWith(".jpeg")
+							&& !fileName.endsWith(".png") && !fileName.endsWith(".gif")) {
+						vf.getVemer().mostrarError(
+								"El archivo seleccionado no es una imagen válida. Por favor, seleccione un archivo con extensión .jpg, .jpeg, .png o .gif.");
+						break;
+					}
+					try {
+						// Cargar la imagen seleccionada
+						Image image = ImageIO.read(selectedFile);
+
+						// Copiar el archivo seleccionado al directorio 'resources/images'
+						File destino = new File("../archivos/imagenes/cocina/" + selectedFile.getName());
+						FileManager.guardarImagen(selectedFile, destino);
+
+						// Guardar la URL de la imagen
+						imagen = destino.getPath();
+
+					} catch (IOException ex) {
+						vf.getVemer().mostrarError("No se pudo cargar la imagen.");
+					} catch (IllegalArgumentException ex) {
+						vf.getVemer().mostrarError("El archivo seleccionado no es una imagen válida.");
+					}
+				} else {
+					ExceptionCheker.checkerImage();
+				}
+
+				// Crear el objeto Cocina con la URL de la imagen
+				mf.getCocinaDAO().actulizar(ac,new Cocina(nombre, precio, id, fecha, imagen, esDecoracion,
+						resisteAltaTemperatuta, esPeligroso));
+
+				vf.getVemer().mostrar("El producto fue actualizado con exito");
+				vf.getVpt().getPap().getPaco().setVisible(false);
+				vf.getVpt().getPapro().getPac().setVisible(true);
+				vf.getVpt().getPapro().getPac().setTexto(mf.getCocinaDAO().mostrarTodo());
+				vf.getVpt().getPapro().getPac().revalidate();
+				vf.getVpt().getPapro().getPac().repaint();
+
+			} catch (NegativeNumberException e2) {
+				vf.getVemer().mostrarError("Número no válido.");
+				e2.printStackTrace();
+			} catch (IsBlackException e2) {
+				vf.getVemer().mostrarError("Completar toda la información.");
+				e2.printStackTrace();
+			} catch (ImageException e2) {
+				vf.getVemer().mostrarError("No seleciono una imagen");
+			}
+			break;
+		}
+		
 
 		}
 

@@ -30,6 +30,7 @@ public class PanelAgregarElectro extends JPanel {
 	private JRadioButton noD;
 	private JLabel textFuenteEnergia;
 	private JTextField fuenteEnergia;
+	private int a = 0;
 
 	public PanelAgregarElectro() throws IOException {
 
@@ -204,5 +205,14 @@ public class PanelAgregarElectro extends JPanel {
 	public void setFuenteEnergia(JTextField fuenteEnergia) {
 		this.fuenteEnergia = fuenteEnergia;
 	}
+
+	public int getA() {
+		return a;
+	}
+
+	public void setA(int a) {
+		this.a = a;
+	}
+	
 
 }

@@ -30,6 +30,7 @@ public class PanelAgregarVideoJuego extends JPanel {
 	private JRadioButton noA;
 	private JLabel textRefeciaConsola;
 	private JTextField referenciaConsola;
+	int a = 0;
 
 	public PanelAgregarVideoJuego() throws IOException {
 
@@ -205,6 +206,14 @@ public class PanelAgregarVideoJuego extends JPanel {
 
 	public void setReferenciaConsola(JTextField referenciaConsola) {
 		this.referenciaConsola = referenciaConsola;
+	}
+
+	public int getA() {
+		return a;
+	}
+
+	public void setA(int a) {
+		this.a = a;
 	}
 	
 	

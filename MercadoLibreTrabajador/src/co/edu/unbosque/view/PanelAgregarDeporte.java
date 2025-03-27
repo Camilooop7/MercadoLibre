@@ -32,6 +32,7 @@ public class PanelAgregarDeporte extends JPanel {
 	private JRadioButton noA;
 	private JLabel textDeporte;
 	private JTextField deporte;
+	private int a = 0;
 
 	public PanelAgregarDeporte() throws IOException {
 
@@ -205,6 +206,14 @@ public class PanelAgregarDeporte extends JPanel {
 
 	public void setDeporte(JTextField deporte) {
 		this.deporte = deporte;
+	}
+
+	public int getA() {
+		return a;
+	}
+
+	public void setA(int a) {
+		this.a = a;
 	}
 
 }
