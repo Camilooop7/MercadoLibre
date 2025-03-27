@@ -190,7 +190,7 @@ public class Controller implements ActionListener {
 		vf.getVpt().getPep().getPevj().getEliminar().setActionCommand("elminiarVideo");
 		vf.getVpt().getPep().getPedep().getEliminar().addActionListener(this);
 		vf.getVpt().getPep().getPedep().getEliminar().setActionCommand("elminiarDepor");
-		
+
 		vf.getVpt().getPapro().getBtnVolver().addActionListener(this);
 		vf.getVpt().getPapro().getBtnVolver().setActionCommand("btnVolverActualizar");
 		vf.getVpt().getPapro().getBtnHogar().addActionListener(this);
@@ -199,7 +199,7 @@ public class Controller implements ActionListener {
 		vf.getVpt().getPapro().getBtnOficina().setActionCommand("btnActualizarOficina");
 		vf.getVpt().getPapro().getBtnOcio().addActionListener(this);
 		vf.getVpt().getPapro().getBtnOcio().setActionCommand("btnActualizarOcio");
-		
+
 		vf.getVpt().getPapro().getPah().getBtnCocina().addActionListener(this);
 		vf.getVpt().getPapro().getPah().getBtnCocina().setActionCommand("btnActualizarCocina");
 		vf.getVpt().getPapro().getPah().getBtnBano().addActionListener(this);
@@ -213,6 +213,20 @@ public class Controller implements ActionListener {
 		vf.getVpt().getPapro().getPaoc().getBtnDeporte().addActionListener(this);
 		vf.getVpt().getPapro().getPaoc().getBtnDeporte().setActionCommand("btnActualizarDepor");
 
+		vf.getVpt().getPapro().getPac().getActualizar().addActionListener(this);
+		vf.getVpt().getPapro().getPac().getActualizar().setActionCommand("ActualizarCocina");
+		vf.getVpt().getPapro().getPab().getActualizar().addActionListener(this);
+		vf.getVpt().getPapro().getPab().getActualizar().setActionCommand("ActualizarBano");
+
+		vf.getVpt().getPapro().getPae().getActualizar().addActionListener(this);
+		vf.getVpt().getPapro().getPae().getActualizar().setActionCommand("ActualizarElectr");
+		vf.getVpt().getPapro().getPapap().getActualizar().addActionListener(this);
+		vf.getVpt().getPapro().getPapap().getActualizar().setActionCommand("ActualizarPape");
+
+		vf.getVpt().getPapro().getPavj().getActualizar().addActionListener(this);
+		vf.getVpt().getPapro().getPavj().getActualizar().setActionCommand("ActualizarVideo");
+		vf.getVpt().getPapro().getPadep().getActualizar().addActionListener(this);
+		vf.getVpt().getPapro().getPadep().getActualizar().setActionCommand("ActualizarDepor");
 		// TODO botones
 	}
 
@@ -237,7 +251,7 @@ public class Controller implements ActionListener {
 
 			break;
 		}
-		case "btnIngresarI":{
+		case "btnIngresarI": {
 
 			String usuario = (String) vf.getVpt().getPis().getNombreUsuario();
 			String contrasena = (String) vf.getVpt().getPis().getContrasena();
@@ -557,7 +571,6 @@ public class Controller implements ActionListener {
 					vf.getVemer().mostrar("Eliminado con exito");
 					vf.getVpt().getPmu().getPmc().setTexto(mf.getClienteDAO().mostrarTodo());
 
-					
 				} else {
 					vf.getVemer().mostrarError("la posicion a eliminar no esta en la lista");
 				}
@@ -1362,8 +1375,9 @@ public class Controller implements ActionListener {
 			} catch (NegativeNumberException e1) {
 				vf.getVemer().mostrarError("Numero no valido.");
 				e1.printStackTrace();
-			}}
-		
+			}
+		}
+
 		case "btnVolverActualizar": {
 			vf.getVpt().getPapro().setVisible(false);
 			vf.getVpt().getPt().setVisible(true);
@@ -1408,7 +1422,6 @@ public class Controller implements ActionListener {
 			vf.getVpt().getPapro().getPaoc().setVisible(true);
 
 			break;
-		
 
 		}
 		case "btnActualizarCocina": {
@@ -1462,6 +1475,126 @@ public class Controller implements ActionListener {
 			vf.getVpt().getPapro().getPadep().setVisible(true);
 			vf.getVpt().getPapro().getPavj().setVisible(false);
 			vf.getVpt().getPapro().getPadep().setTexto(mf.getDeporteDAO().mostrarTodo());
+
+			break;
+		}
+		case "ActualizarCocina": {
+
+			try {
+
+				int ac = vf.getVemer().leerInt("¿Digite la posicion del producto que desea Actualizar?");
+				ac = ac - 1;
+				ExceptionCheker.checkerNegativeNumber(ac);
+				if (mf.getCocinaDAO().encontrar(ac)) {
+
+					vf.getVpt().getPapro().getPac().setVisible(false);
+					vf.getVpt().getPapro().getPaco().setVisible(true);
+
+					String nombre = (String) vf.getVpt().getPap().getPaco().getNombre();
+					int precio = (int) vf.getVpt().getPap().getPaco().getPrecio();
+					int id = new Cocina().codigoAleatorio();
+					LocalDateTime a = LocalDateTime.now();
+					DateTimeFormatter b = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+					String fecha = a.format(b);
+					boolean esDecoracion = false;
+					boolean resisteAltaTemperatuta = false;
+					boolean esPeligroso = false;
+					String imagen = "../archivos/imagenes/cocina/";
+
+					try {
+						ExceptionCheker.checkerNegativeNumber(precio);
+
+						ExceptionCheker.checkerIsBlank(nombre);
+
+						if (vf.getVpt().getPap().getPaco().getSiD().isSelected()) {
+							esDecoracion = true;
+						} else if (vf.getVpt().getPap().getPaco().getNoD().isSelected()) {
+							esDecoracion = false;
+						}
+
+						if (vf.getVpt().getPap().getPaco().getSiP().isSelected()) {
+							resisteAltaTemperatuta = true;
+						} else if (vf.getVpt().getPap().getPaco().getNoP().isSelected()) {
+							resisteAltaTemperatuta = false;
+						}
+
+						if (vf.getVpt().getPap().getPaco().getSiR().isSelected()) {
+							esPeligroso = true;
+						} else if (vf.getVpt().getPap().getPaco().getNoR().isSelected()) {
+							esPeligroso = false;
+						}
+
+						if (!vf.getVpt().getPap().getPaco().getSiD().isSelected()
+								&& !vf.getVpt().getPap().getPaco().getNoD().isSelected()) {
+							ExceptionCheker.checkerIsEmpty();
+						}
+						if (!vf.getVpt().getPap().getPaco().getSiP().isSelected()
+								&& !vf.getVpt().getPap().getPaco().getNoP().isSelected()) {
+							ExceptionCheker.checkerIsEmpty();
+						}
+						if (!vf.getVpt().getPap().getPaco().getSiR().isSelected()
+								&& !vf.getVpt().getPap().getPaco().getNoR().isSelected()) {
+							ExceptionCheker.checkerIsEmpty();
+						}
+
+						File selectedFile = vf.getVemer().seleccionarArchivo();
+						if (selectedFile != null) {
+							String fileName = selectedFile.getName().toLowerCase();
+							if (!fileName.endsWith(".jpg") && !fileName.endsWith(".jpeg") && !fileName.endsWith(".png")
+									&& !fileName.endsWith(".gif")) {
+								vf.getVemer().mostrarError(
+										"El archivo seleccionado no es una imagen válida. Por favor, seleccione un archivo con extensión .jpg, .jpeg, .png o .gif.");
+								break;
+							}
+							try {
+								// Cargar la imagen seleccionada
+								Image image = ImageIO.read(selectedFile);
+
+								// Copiar el archivo seleccionado al directorio 'resources/images'
+								File destino = new File("../archivos/imagenes/cocina/" + selectedFile.getName());
+								FileManager.guardarImagen(selectedFile, destino);
+
+								// Guardar la URL de la imagen
+								imagen = destino.getPath();
+
+							} catch (IOException ex) {
+								vf.getVemer().mostrarError("No se pudo cargar la imagen.");
+							} catch (IllegalArgumentException ex) {
+								vf.getVemer().mostrarError("El archivo seleccionado no es una imagen válida.");
+							}
+						} else {
+							ExceptionCheker.checkerImage();
+						}
+
+						// Crear el objeto Cocina con la URL de la imagen
+						mf.getCocinaDAO().actulizar(ac, new Cocina(nombre, precio, id, fecha, imagen, esDecoracion,
+								resisteAltaTemperatuta, esPeligroso));
+						vf.getVemer().mostrar("El producto fue actualizado con exito");
+						vf.getVpt().getPap().getPaco().setVisible(false);
+						vf.getVpt().getPapro().getPac().setVisible(true);
+						vf.getVpt().getPapro().getPac().setTexto(mf.getCocinaDAO().mostrarTodo());
+						vf.getVpt().getPapro().getPac().revalidate();
+						vf.getVpt().getPapro().getPac().repaint();
+
+					} catch (NegativeNumberException e2) {
+						vf.getVemer().mostrarError("Número no válido.");
+						e2.printStackTrace();
+					} catch (IsBlackException e2) {
+						vf.getVemer().mostrarError("Completar toda la información.");
+						e2.printStackTrace();
+					} catch (ImageException e2) {
+						vf.getVemer().mostrarError("No seleciono una imagen");
+					}
+
+				} else {
+					vf.getVemer().mostrarError("la posicion a eliminar no esta en la lista");
+
+				}
+
+			} catch (NegativeNumberException e1) {
+				vf.getVemer().mostrarError("Numero no valido.");
+				e1.printStackTrace();
+			}
 
 			break;
 		}

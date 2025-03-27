@@ -86,12 +86,21 @@ public class PanelActualizarVJ extends JPanel {
 		this.fondo = fondo;
 	}
 
-	public JButton getEliminar() {
+	
+	public JButton getActualizar() {
 		return actualizar;
 	}
 
-	public void setEliminar(JButton eliminar) {
-		this.actualizar = eliminar;
+	public void setActualizar(JButton actualizar) {
+		this.actualizar = actualizar;
+	}
+
+	public JScrollPane getBarraV() {
+		return barraV;
+	}
+
+	public void setBarraV(JScrollPane barraV) {
+		this.barraV = barraV;
 	}
 
 	public JTextArea getText() {

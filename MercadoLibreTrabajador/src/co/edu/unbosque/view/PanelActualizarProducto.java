@@ -29,6 +29,7 @@ public class PanelActualizarProducto extends JPanel {
 	private PanelActualizarPapel papap;
 	private PanelActualizarVJ pavj;
 	private PanelActualizarDeporte padep;
+	private PanelAgregarCocina paco;
 
 	public PanelActualizarProducto() throws IOException {
 
@@ -88,6 +89,7 @@ public class PanelActualizarProducto extends JPanel {
 		papap = new PanelActualizarPapel();
 		pavj = new PanelActualizarVJ();
 		padep = new PanelActualizarDeporte();
+		paco = new PanelAgregarCocina();
 
 		add(pah).setVisible(false);
 		add(paof).setVisible(false);
@@ -98,6 +100,7 @@ public class PanelActualizarProducto extends JPanel {
 		add(papap).setVisible(false);
 		add(pavj).setVisible(false);
 		add(padep).setVisible(false);
+		add(paco).setVisible(false);
 
 		add(fondo);
 
@@ -213,6 +216,14 @@ public class PanelActualizarProducto extends JPanel {
 
 	public void setPadep(PanelActualizarDeporte padep) {
 		this.padep = padep;
+	}
+
+	public PanelAgregarCocina getPaco() {
+		return paco;
+	}
+
+	public void setPaco(PanelAgregarCocina paco) {
+		this.paco = paco;
 	}
 
 	

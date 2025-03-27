@@ -18,6 +18,7 @@ import javax.swing.UIManager;
 import javax.swing.plaf.ColorUIResource;
 
 public class PanelActualizarCocina extends JPanel {
+	
 	private JLabel fondo;
 	private JButton actualizar;
 	private JTextArea text;
@@ -86,14 +87,6 @@ public class PanelActualizarCocina extends JPanel {
 		this.fondo = fondo;
 	}
 
-	public JButton getEliminar() {
-		return actualizar;
-	}
-
-	public void setEliminar(JButton eliminar) {
-		this.actualizar = eliminar;
-	}
-
 	public JTextArea getText() {
 		return text;
 	}
@@ -110,5 +103,23 @@ public class PanelActualizarCocina extends JPanel {
 		this.texto = texto;
 		text.setText(texto);
 	}
+
+	public JButton getActualizar() {
+		return actualizar;
+	}
+
+	public void setActualizar(JButton actualizar) {
+		this.actualizar = actualizar;
+	}
+
+	public JScrollPane getBarraV() {
+		return barraV;
+	}
+
+	public void setBarraV(JScrollPane barraV) {
+		this.barraV = barraV;
+	}
+
+	
 
 }
