@@ -201,7 +201,7 @@ public class PanelAgregarVideoJuego extends JPanel {
 	}
 
 	public String getReferenciaConsola() {
-		return (String) nombre.getText();
+		return (String) referenciaConsola.getText();
 	}
 
 	public void setReferenciaConsola(JTextField referenciaConsola) {
