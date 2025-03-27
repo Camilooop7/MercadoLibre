@@ -30,6 +30,11 @@ public class PanelActualizarProducto extends JPanel {
 	private PanelActualizarVJ pavj;
 	private PanelActualizarDeporte padep;
 	private PanelAgregarCocina paco;
+	private PanelAgregarBano paba;
+	private PanelAgregarElectro paelec;
+	private PanelAgregarPapeleria papape;
+	private PanelAgregarVideoJuego pagvj;
+	private PanelAgregarDeporte padepor;
 
 	public PanelActualizarProducto() throws IOException {
 
@@ -90,6 +95,11 @@ public class PanelActualizarProducto extends JPanel {
 		pavj = new PanelActualizarVJ();
 		padep = new PanelActualizarDeporte();
 		paco = new PanelAgregarCocina();
+		paba = new PanelAgregarBano();
+		paelec = new PanelAgregarElectro();
+		papape = new PanelAgregarPapeleria();
+		pagvj = new PanelAgregarVideoJuego();
+		padepor = new PanelAgregarDeporte();
 
 		add(pah).setVisible(false);
 		add(paof).setVisible(false);
@@ -101,6 +111,11 @@ public class PanelActualizarProducto extends JPanel {
 		add(pavj).setVisible(false);
 		add(padep).setVisible(false);
 		add(paco).setVisible(false);
+		add(paba).setVisible(false);
+		add(paelec).setVisible(false);
+		add(papape).setVisible(false);
+		add(pagvj).setVisible(false);
+		add(padepor).setVisible(false);
 
 		add(fondo);
 
@@ -225,6 +240,47 @@ public class PanelActualizarProducto extends JPanel {
 	public void setPaco(PanelAgregarCocina paco) {
 		this.paco = paco;
 	}
+
+	public PanelAgregarBano getPaba() {
+		return paba;
+	}
+
+	public void setPaba(PanelAgregarBano paba) {
+		this.paba = paba;
+	}
+
+	public PanelAgregarElectro getPaelec() {
+		return paelec;
+	}
+
+	public void setPaelec(PanelAgregarElectro paelec) {
+		this.paelec = paelec;
+	}
+
+	public PanelAgregarPapeleria getPapape() {
+		return papape;
+	}
+
+	public void setPapape(PanelAgregarPapeleria papape) {
+		this.papape = papape;
+	}
+
+	public PanelAgregarVideoJuego getPagvj() {
+		return pagvj;
+	}
+
+	public void setPagvj(PanelAgregarVideoJuego pagvj) {
+		this.pagvj = pagvj;
+	}
+
+	public PanelAgregarDeporte getPadepor() {
+		return padepor;
+	}
+
+	public void setPadepor(PanelAgregarDeporte padepor) {
+		this.padepor = padepor;
+	}
+	
 
 	
 
