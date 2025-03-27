@@ -211,9 +211,7 @@ public class PanelAgregarPapeleria extends JPanel {
 	public void setA(int a) {
 		this.a = a;
 	}
-	public void setCantidadPorPaquete(JSpinner cantidadPorPaquete) {
-		this.cantidadPorPaquete = cantidadPorPaquete;
-	}
+
 
 
 }
