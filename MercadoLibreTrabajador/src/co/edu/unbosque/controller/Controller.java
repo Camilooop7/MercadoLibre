@@ -377,6 +377,15 @@ public class Controller implements ActionListener {
 		}
 		case "btnAnadir": {
 			vf.getVpt().getPt().setVisible(false);
+			vf.getVpt().getPap().getPah().setVisible(false);
+			vf.getVpt().getPap().getPaoc().setVisible(false);
+			vf.getVpt().getPap().getPaof().setVisible(false);
+			vf.getVpt().getPap().getPae().setVisible(false);
+			vf.getVpt().getPap().getPapape().setVisible(false);
+			vf.getVpt().getPap().getPavj().setVisible(false);
+			vf.getVpt().getPap().getPade().setVisible(false);
+			vf.getVpt().getPap().getPaco().setVisible(false);
+			vf.getVpt().getPap().getPaba().setVisible(false);
 			vf.getVpt().getPap().setVisible(true);
 
 			break;
@@ -476,11 +485,36 @@ public class Controller implements ActionListener {
 		case "btnModificarP": {
 			vf.getVpt().getPt().setVisible(false);
 			vf.getVpt().getPapro().setVisible(true);
+			vf.getVpt().getPapro().getPaof().setVisible(false);
+			vf.getVpt().getPapro().getPah().setVisible(false);
+			vf.getVpt().getPapro().getPaoc().setVisible(false);
+			vf.getVpt().getPapro().getPaco().setVisible(false);
+			vf.getVpt().getPapro().getPac().setVisible(false);
+			vf.getVpt().getPapro().getPab().setVisible(false);
+			vf.getVpt().getPapro().getPaba().setVisible(false);
+			vf.getVpt().getPapro().getPae().setVisible(false);
+			vf.getVpt().getPapro().getPaelec().setVisible(false);
+			vf.getVpt().getPapro().getPapape().setVisible(false);
+			vf.getVpt().getPapro().getPapap().setVisible(false);
+			vf.getVpt().getPapro().getPavj().setVisible(false);
+			vf.getVpt().getPapro().getPagvj().setVisible(false);
+			vf.getVpt().getPapro().getPadep().setVisible(false);
+			vf.getVpt().getPapro().getPadepor().setVisible(false);
 			break;
 		}
 		case "btnEliminarP": {
 			vf.getVpt().getPt().setVisible(false);
 			vf.getVpt().getPep().setVisible(true);
+			vf.getVpt().getPep().getPaoc().setVisible(false);
+			vf.getVpt().getPep().getPaof().setVisible(false);
+			vf.getVpt().getPep().getPeb().setVisible(false);
+			vf.getVpt().getPep().getPec().setVisible(false);
+			vf.getVpt().getPep().getPedep().setVisible(false);
+			vf.getVpt().getPep().getPee().setVisible(false);
+			vf.getVpt().getPep().getPepap().setVisible(false);
+			vf.getVpt().getPep().getPevj().setVisible(false);
+			vf.getVpt().getPep().getPah().setVisible(false);
+
 			break;
 		}
 		case "btnModificarU": {
@@ -1058,7 +1092,7 @@ public class Controller implements ActionListener {
 		}
 
 		case "btnAgregarDeporte": {
-			
+
 			String nombre = (String) vf.getVpt().getPap().getPade().getNombre();
 			System.out.println("Nombre:" + nombre);
 			int precio = (int) vf.getVpt().getPap().getPade().getPrecio();
@@ -1503,10 +1537,8 @@ public class Controller implements ActionListener {
 				if (mf.getCocinaDAO().encontrar(ac)) {
 
 					vf.getVpt().getPapro().getPac().setVisible(false);
-					
-					vf.getVpt().getPapro().getPaco().setVisible(true);
 
-					
+					vf.getVpt().getPapro().getPaco().setVisible(true);
 
 				} else {
 					vf.getVemer().mostrarError("la posicion a eliminar no esta en la lista");
@@ -1520,9 +1552,9 @@ public class Controller implements ActionListener {
 
 			break;
 		}
-		
+
 		case "ActualizarProCocina": {
-			
+
 			int ac = vf.getVpt().getPapro().getPaco().getA();
 
 			String nombre = (String) vf.getVpt().getPapro().getPaco().getNombre();
@@ -1575,8 +1607,8 @@ public class Controller implements ActionListener {
 				File selectedFile = vf.getVemer().seleccionarArchivo();
 				if (selectedFile != null) {
 					String fileName = selectedFile.getName().toLowerCase();
-					if (!fileName.endsWith(".jpg") && !fileName.endsWith(".jpeg")
-							&& !fileName.endsWith(".png") && !fileName.endsWith(".gif")) {
+					if (!fileName.endsWith(".jpg") && !fileName.endsWith(".jpeg") && !fileName.endsWith(".png")
+							&& !fileName.endsWith(".gif")) {
 						vf.getVemer().mostrarError(
 								"El archivo seleccionado no es una imagen válida. Por favor, seleccione un archivo con extensión .jpg, .jpeg, .png o .gif.");
 						break;
@@ -1602,7 +1634,7 @@ public class Controller implements ActionListener {
 				}
 
 				// Crear el objeto Cocina con la URL de la imagen
-				mf.getCocinaDAO().actulizar(ac,new Cocina(nombre, precio, id, fecha, imagen, esDecoracion,
+				mf.getCocinaDAO().actulizar(ac, new Cocina(nombre, precio, id, fecha, imagen, esDecoracion,
 						resisteAltaTemperatuta, esPeligroso));
 
 				vf.getVemer().mostrar("El producto fue actualizado con exito");
@@ -1624,38 +1656,36 @@ public class Controller implements ActionListener {
 			break;
 		}
 		case "ActualizarBano": {
-			
+
 			try {
-				
+
 				int ac = vf.getVemer().leerInt("¿Digite la posicion del producto que desea Actualizar?");
 				ac = ac - 1;
 				vf.getVpt().getPapro().getPaba().setA(ac);
 				ExceptionCheker.checkerNegativeNumber(ac);
 				if (mf.getBanoDAO().encontrar(ac)) {
-					
+
 					vf.getVpt().getPapro().getPab().setVisible(false);
-					
+
 					vf.getVpt().getPapro().getPaba().setVisible(true);
-					
-					
-					
+
 				} else {
 					vf.getVemer().mostrarError("la posicion a eliminar no esta en la lista");
-					
+
 				}
-				
+
 			} catch (NegativeNumberException e1) {
 				vf.getVemer().mostrarError("Numero no valido.");
 				e1.printStackTrace();
 			}
-			
+
 			break;
 		}
-		
+
 		case "ActualizarProBano": {
-			
+
 			int ac = vf.getVpt().getPapro().getPaba().getA();
-			
+
 			String nombre = (String) vf.getVpt().getPapro().getPaba().getNombre();
 			int precio = (int) vf.getVpt().getPapro().getPaba().getPrecio();
 			int id = new Cocina().codigoAleatorio();
@@ -1665,12 +1695,12 @@ public class Controller implements ActionListener {
 			boolean esDecoracion = false;
 			boolean esLimpieza = false;
 			String imagen = "../archivos/imagenes/cocina/";
-			
+
 			try {
 				ExceptionCheker.checkerNegativeNumber(precio);
-				
+
 				ExceptionCheker.checkerIsBlank(nombre);
-				
+
 				if (vf.getVpt().getPapro().getPaba().getSiD().isSelected()) {
 					esDecoracion = true;
 				} else if (vf.getVpt().getPap().getPaba().getNoD().isSelected()) {
@@ -1691,12 +1721,12 @@ public class Controller implements ActionListener {
 						&& !vf.getVpt().getPapro().getPaba().getNoL().isSelected()) {
 					ExceptionCheker.checkerIsEmpty();
 				}
-				
+
 				File selectedFile = vf.getVemer().seleccionarArchivo();
 				if (selectedFile != null) {
 					String fileName = selectedFile.getName().toLowerCase();
-					if (!fileName.endsWith(".jpg") && !fileName.endsWith(".jpeg")
-							&& !fileName.endsWith(".png") && !fileName.endsWith(".gif")) {
+					if (!fileName.endsWith(".jpg") && !fileName.endsWith(".jpeg") && !fileName.endsWith(".png")
+							&& !fileName.endsWith(".gif")) {
 						vf.getVemer().mostrarError(
 								"El archivo seleccionado no es una imagen válida. Por favor, seleccione un archivo con extensión .jpg, .jpeg, .png o .gif.");
 						break;
@@ -1704,14 +1734,14 @@ public class Controller implements ActionListener {
 					try {
 						// Cargar la imagen seleccionada
 						Image image = ImageIO.read(selectedFile);
-						
+
 						// Copiar el archivo seleccionado al directorio 'resources/images'
 						File destino = new File("../archivos/imagenes/cocina/" + selectedFile.getName());
 						FileManager.guardarImagen(selectedFile, destino);
-						
+
 						// Guardar la URL de la imagen
 						imagen = destino.getPath();
-						
+
 					} catch (IOException ex) {
 						vf.getVemer().mostrarError("No se pudo cargar la imagen.");
 					} catch (IllegalArgumentException ex) {
@@ -1720,18 +1750,17 @@ public class Controller implements ActionListener {
 				} else {
 					ExceptionCheker.checkerImage();
 				}
-				
+
 				// Crear el objeto Cocina con la URL de la imagen
-				mf.getBanoDAO().actulizar(ac,new Bano(nombre, precio, id, fecha, imagen, esDecoracion,
-						esLimpieza));
-				
+				mf.getBanoDAO().actulizar(ac, new Bano(nombre, precio, id, fecha, imagen, esDecoracion, esLimpieza));
+
 				vf.getVemer().mostrar("El producto fue actualizado con exito");
 				vf.getVpt().getPapro().getPaba().setVisible(false);
 				vf.getVpt().getPapro().getPab().setVisible(true);
 				vf.getVpt().getPapro().getPab().setTexto(mf.getBanoDAO().mostrarTodo());
 				vf.getVpt().getPapro().getPab().revalidate();
 				vf.getVpt().getPapro().getPab().repaint();
-				
+
 			} catch (NegativeNumberException e2) {
 				vf.getVemer().mostrarError("Número no válido.");
 				e2.printStackTrace();
@@ -1744,38 +1773,36 @@ public class Controller implements ActionListener {
 			break;
 		}
 		case "ActualizarElec": {
-			
+
 			try {
-				
+
 				int ac = vf.getVemer().leerInt("¿Digite la posicion del producto que desea Actualizar?");
 				ac = ac - 1;
 				vf.getVpt().getPapro().getPaelec().setA(ac);
 				ExceptionCheker.checkerNegativeNumber(ac);
 				if (mf.getElectrodomesticoDAO().encontrar(ac)) {
-					
+
 					vf.getVpt().getPapro().getPae().setVisible(false);
-					
+
 					vf.getVpt().getPapro().getPaelec().setVisible(true);
-					
-					
-					
+
 				} else {
 					vf.getVemer().mostrarError("la posicion a eliminar no esta en la lista");
-					
+
 				}
-				
+
 			} catch (NegativeNumberException e1) {
 				vf.getVemer().mostrarError("Numero no valido.");
 				e1.printStackTrace();
 			}
-			
+
 			break;
 		}
-		
+
 		case "ActualizarProElec": {
-			
+
 			int ac = vf.getVpt().getPapro().getPaelec().getA();
-			
+
 			String nombre = (String) vf.getVpt().getPapro().getPaelec().getNombre();
 			int precio = (int) vf.getVpt().getPapro().getPaelec().getPrecio();
 			int id = new Electrodomestico().codigoAleatorio();
@@ -1801,12 +1828,12 @@ public class Controller implements ActionListener {
 						&& !vf.getVpt().getPapro().getPaelec().getNoD().isSelected()) {
 					ExceptionCheker.checkerIsEmpty();
 				}
-				
+
 				File selectedFile = vf.getVemer().seleccionarArchivo();
 				if (selectedFile != null) {
 					String fileName = selectedFile.getName().toLowerCase();
-					if (!fileName.endsWith(".jpg") && !fileName.endsWith(".jpeg")
-							&& !fileName.endsWith(".png") && !fileName.endsWith(".gif")) {
+					if (!fileName.endsWith(".jpg") && !fileName.endsWith(".jpeg") && !fileName.endsWith(".png")
+							&& !fileName.endsWith(".gif")) {
 						vf.getVemer().mostrarError(
 								"El archivo seleccionado no es una imagen válida. Por favor, seleccione un archivo con extensión .jpg, .jpeg, .png o .gif.");
 						break;
@@ -1814,14 +1841,14 @@ public class Controller implements ActionListener {
 					try {
 						// Cargar la imagen seleccionada
 						Image image = ImageIO.read(selectedFile);
-						
+
 						// Copiar el archivo seleccionado al directorio 'resources/images'
 						File destino = new File("../archivos/imagenes/cocina/" + selectedFile.getName());
 						FileManager.guardarImagen(selectedFile, destino);
-						
+
 						// Guardar la URL de la imagen
 						imagen = destino.getPath();
-						
+
 					} catch (IOException ex) {
 						vf.getVemer().mostrarError("No se pudo cargar la imagen.");
 					} catch (IllegalArgumentException ex) {
@@ -1830,17 +1857,18 @@ public class Controller implements ActionListener {
 				} else {
 					ExceptionCheker.checkerImage();
 				}
-				
+
 				// Crear el objeto Cocina con la URL de la imagen
-				mf.getElectrodomesticoDAO().actulizar(ac,new Electrodomestico(nombre, precio, id, fecha, imagen, esPortatil, fuenteEnergia));
-				
+				mf.getElectrodomesticoDAO().actulizar(ac,
+						new Electrodomestico(nombre, precio, id, fecha, imagen, esPortatil, fuenteEnergia));
+
 				vf.getVemer().mostrar("El producto fue actualizado con exito");
 				vf.getVpt().getPapro().getPaelec().setVisible(false);
 				vf.getVpt().getPapro().getPae().setVisible(true);
 				vf.getVpt().getPapro().getPae().setTexto(mf.getElectrodomesticoDAO().mostrarTodo());
 				vf.getVpt().getPapro().getPae().revalidate();
 				vf.getVpt().getPapro().getPae().repaint();
-				
+
 			} catch (NegativeNumberException e2) {
 				vf.getVemer().mostrarError("Número no válido.");
 				e2.printStackTrace();
@@ -1853,38 +1881,36 @@ public class Controller implements ActionListener {
 			break;
 		}
 		case "ActualizarPape": {
-			
+
 			try {
-				
+
 				int ac = vf.getVemer().leerInt("¿Digite la posicion del producto que desea Actualizar?");
 				ac = ac - 1;
 				vf.getVpt().getPapro().getPapape().setA(ac);
 				ExceptionCheker.checkerNegativeNumber(ac);
 				if (mf.getPapeleriaDAO().encontrar(ac)) {
-					
+
 					vf.getVpt().getPapro().getPapap().setVisible(false);
-					
+
 					vf.getVpt().getPapro().getPapape().setVisible(true);
-					
-					
-					
+
 				} else {
 					vf.getVemer().mostrarError("la posicion a eliminar no esta en la lista");
-					
+
 				}
-				
+
 			} catch (NegativeNumberException e1) {
 				vf.getVemer().mostrarError("Numero no valido.");
 				e1.printStackTrace();
 			}
-			
+
 			break;
 		}
-		
+
 		case "ActualizarProPape": {
-			
+
 			int ac = vf.getVpt().getPapro().getPapape().getA();
-			
+
 			String nombre = (String) vf.getVpt().getPapro().getPapape().getNombre();
 			int precio = (int) vf.getVpt().getPapro().getPapape().getPrecio();
 			int id = new Papeleria().codigoAleatorio();
@@ -1912,12 +1938,11 @@ public class Controller implements ActionListener {
 					ExceptionCheker.checkerIsEmpty();
 				}
 
-				
 				File selectedFile = vf.getVemer().seleccionarArchivo();
 				if (selectedFile != null) {
 					String fileName = selectedFile.getName().toLowerCase();
-					if (!fileName.endsWith(".jpg") && !fileName.endsWith(".jpeg")
-							&& !fileName.endsWith(".png") && !fileName.endsWith(".gif")) {
+					if (!fileName.endsWith(".jpg") && !fileName.endsWith(".jpeg") && !fileName.endsWith(".png")
+							&& !fileName.endsWith(".gif")) {
 						vf.getVemer().mostrarError(
 								"El archivo seleccionado no es una imagen válida. Por favor, seleccione un archivo con extensión .jpg, .jpeg, .png o .gif.");
 						break;
@@ -1925,14 +1950,14 @@ public class Controller implements ActionListener {
 					try {
 						// Cargar la imagen seleccionada
 						Image image = ImageIO.read(selectedFile);
-						
+
 						// Copiar el archivo seleccionado al directorio 'resources/images'
 						File destino = new File("../archivos/imagenes/cocina/" + selectedFile.getName());
 						FileManager.guardarImagen(selectedFile, destino);
-						
+
 						// Guardar la URL de la imagen
 						imagen = destino.getPath();
-						
+
 					} catch (IOException ex) {
 						vf.getVemer().mostrarError("No se pudo cargar la imagen.");
 					} catch (IllegalArgumentException ex) {
@@ -1941,17 +1966,18 @@ public class Controller implements ActionListener {
 				} else {
 					ExceptionCheker.checkerImage();
 				}
-				
+
 				// Crear el objeto Cocina con la URL de la imagen
-				mf.getPapeleriaDAO().actulizar(ac,new Papeleria(nombre, precio, id, fecha, imagen, esPortatil, cantidadPaquete));
-				
+				mf.getPapeleriaDAO().actulizar(ac,
+						new Papeleria(nombre, precio, id, fecha, imagen, esPortatil, cantidadPaquete));
+
 				vf.getVemer().mostrar("El producto fue actualizado con exito");
 				vf.getVpt().getPapro().getPapape().setVisible(false);
 				vf.getVpt().getPapro().getPapap().setVisible(true);
 				vf.getVpt().getPapro().getPapap().setTexto(mf.getPapeleriaDAO().mostrarTodo());
 				vf.getVpt().getPapro().getPapap().revalidate();
 				vf.getVpt().getPapro().getPapap().repaint();
-				
+
 			} catch (NegativeNumberException e2) {
 				vf.getVemer().mostrarError("Número no válido.");
 				e2.printStackTrace();
@@ -1964,38 +1990,36 @@ public class Controller implements ActionListener {
 			break;
 		}
 		case "ActualizarVideo": {
-			
+
 			try {
-				
+
 				int ac = vf.getVemer().leerInt("¿Digite la posicion del producto que desea Actualizar?");
 				ac = ac - 1;
 				vf.getVpt().getPapro().getPagvj().setA(ac);
 				ExceptionCheker.checkerNegativeNumber(ac);
 				if (mf.getVideoJuegoDAO().encontrar(ac)) {
-					
+
 					vf.getVpt().getPapro().getPavj().setVisible(false);
-					
+
 					vf.getVpt().getPapro().getPagvj().setVisible(true);
-					
-					
-					
+
 				} else {
 					vf.getVemer().mostrarError("la posicion a eliminar no esta en la lista");
-					
+
 				}
-				
+
 			} catch (NegativeNumberException e1) {
 				vf.getVemer().mostrarError("Numero no valido.");
 				e1.printStackTrace();
 			}
-			
+
 			break;
 		}
-		
+
 		case "ActualizarProVideo": {
-			
+
 			int ac = vf.getVpt().getPapro().getPagvj().getA();
-			
+
 			String nombre = (String) vf.getVpt().getPapro().getPagvj().getNombre();
 			int precio = (int) vf.getVpt().getPapro().getPagvj().getPrecio();
 			int id = new VideoJuego().codigoAleatorio();
@@ -2022,12 +2046,12 @@ public class Controller implements ActionListener {
 						&& !vf.getVpt().getPap().getPavj().getNoA().isSelected()) {
 					ExceptionCheker.checkerIsEmpty();
 				}
-				
+
 				File selectedFile = vf.getVemer().seleccionarArchivo();
 				if (selectedFile != null) {
 					String fileName = selectedFile.getName().toLowerCase();
-					if (!fileName.endsWith(".jpg") && !fileName.endsWith(".jpeg")
-							&& !fileName.endsWith(".png") && !fileName.endsWith(".gif")) {
+					if (!fileName.endsWith(".jpg") && !fileName.endsWith(".jpeg") && !fileName.endsWith(".png")
+							&& !fileName.endsWith(".gif")) {
 						vf.getVemer().mostrarError(
 								"El archivo seleccionado no es una imagen válida. Por favor, seleccione un archivo con extensión .jpg, .jpeg, .png o .gif.");
 						break;
@@ -2035,14 +2059,14 @@ public class Controller implements ActionListener {
 					try {
 						// Cargar la imagen seleccionada
 						Image image = ImageIO.read(selectedFile);
-						
+
 						// Copiar el archivo seleccionado al directorio 'resources/images'
 						File destino = new File("../archivos/imagenes/cocina/" + selectedFile.getName());
 						FileManager.guardarImagen(selectedFile, destino);
-						
+
 						// Guardar la URL de la imagen
 						imagen = destino.getPath();
-						
+
 					} catch (IOException ex) {
 						vf.getVemer().mostrarError("No se pudo cargar la imagen.");
 					} catch (IllegalArgumentException ex) {
@@ -2051,17 +2075,18 @@ public class Controller implements ActionListener {
 				} else {
 					ExceptionCheker.checkerImage();
 				}
-				
+
 				// Crear el objeto Cocina con la URL de la imagen
-				mf.getVideoJuegoDAO().actulizar(ac,new VideoJuego(nombre, precio, id, fecha, imagen, esAccesorio, referenciaConsola));
-				
+				mf.getVideoJuegoDAO().actulizar(ac,
+						new VideoJuego(nombre, precio, id, fecha, imagen, esAccesorio, referenciaConsola));
+
 				vf.getVemer().mostrar("El producto fue actualizado con exito");
 				vf.getVpt().getPapro().getPagvj().setVisible(false);
 				vf.getVpt().getPapro().getPavj().setVisible(true);
 				vf.getVpt().getPapro().getPavj().setTexto(mf.getVideoJuegoDAO().mostrarTodo());
 				vf.getVpt().getPapro().getPavj().revalidate();
 				vf.getVpt().getPapro().getPavj().repaint();
-				
+
 			} catch (NegativeNumberException e2) {
 				vf.getVemer().mostrarError("Número no válido.");
 				e2.printStackTrace();
@@ -2074,38 +2099,36 @@ public class Controller implements ActionListener {
 			break;
 		}
 		case "ActualizarDepor": {
-			
+
 			try {
-				
+
 				int ac = vf.getVemer().leerInt("¿Digite la posicion del producto que desea Actualizar?");
 				ac = ac - 1;
 				vf.getVpt().getPapro().getPadepor().setA(ac);
 				ExceptionCheker.checkerNegativeNumber(ac);
 				if (mf.getDeporteDAO().encontrar(ac)) {
-					
+
 					vf.getVpt().getPapro().getPadep().setVisible(false);
-					
+
 					vf.getVpt().getPapro().getPadepor().setVisible(true);
-					
-					
-					
+
 				} else {
 					vf.getVemer().mostrarError("la posicion a eliminar no esta en la lista");
-					
+
 				}
-				
+
 			} catch (NegativeNumberException e1) {
 				vf.getVemer().mostrarError("Numero no valido.");
 				e1.printStackTrace();
 			}
-			
+
 			break;
 		}
-		
+
 		case "ActualizarProDepor": {
-			
+
 			int ac = vf.getVpt().getPapro().getPadepor().getA();
-			
+
 			String nombre = (String) vf.getVpt().getPapro().getPadepor().getNombre();
 			int precio = (int) vf.getVpt().getPapro().getPadepor().getPrecio();
 			int id = new Deporte().codigoAleatorio();
@@ -2133,12 +2156,11 @@ public class Controller implements ActionListener {
 					ExceptionCheker.checkerIsEmpty();
 				}
 
-				
 				File selectedFile = vf.getVemer().seleccionarArchivo();
 				if (selectedFile != null) {
 					String fileName = selectedFile.getName().toLowerCase();
-					if (!fileName.endsWith(".jpg") && !fileName.endsWith(".jpeg")
-							&& !fileName.endsWith(".png") && !fileName.endsWith(".gif")) {
+					if (!fileName.endsWith(".jpg") && !fileName.endsWith(".jpeg") && !fileName.endsWith(".png")
+							&& !fileName.endsWith(".gif")) {
 						vf.getVemer().mostrarError(
 								"El archivo seleccionado no es una imagen válida. Por favor, seleccione un archivo con extensión .jpg, .jpeg, .png o .gif.");
 						break;
@@ -2146,14 +2168,14 @@ public class Controller implements ActionListener {
 					try {
 						// Cargar la imagen seleccionada
 						Image image = ImageIO.read(selectedFile);
-						
+
 						// Copiar el archivo seleccionado al directorio 'resources/images'
 						File destino = new File("../archivos/imagenes/cocina/" + selectedFile.getName());
 						FileManager.guardarImagen(selectedFile, destino);
-						
+
 						// Guardar la URL de la imagen
 						imagen = destino.getPath();
-						
+
 					} catch (IOException ex) {
 						vf.getVemer().mostrarError("No se pudo cargar la imagen.");
 					} catch (IllegalArgumentException ex) {
@@ -2162,17 +2184,17 @@ public class Controller implements ActionListener {
 				} else {
 					ExceptionCheker.checkerImage();
 				}
-				
+
 				// Crear el objeto Cocina con la URL de la imagen
-				mf.getDeporteDAO().actulizar(ac,new Deporte(nombre, precio, id, fecha, imagen, esAccesorio, deporte));
-				
+				mf.getDeporteDAO().actulizar(ac, new Deporte(nombre, precio, id, fecha, imagen, esAccesorio, deporte));
+
 				vf.getVemer().mostrar("El producto fue actualizado con exito");
 				vf.getVpt().getPapro().getPadepor().setVisible(false);
 				vf.getVpt().getPapro().getPadep().setVisible(true);
 				vf.getVpt().getPapro().getPadep().setTexto(mf.getDeporteDAO().mostrarTodo());
 				vf.getVpt().getPapro().getPadep().revalidate();
 				vf.getVpt().getPapro().getPadep().repaint();
-				
+
 			} catch (NegativeNumberException e2) {
 				vf.getVemer().mostrarError("Número no válido.");
 				e2.printStackTrace();
@@ -2184,7 +2206,6 @@ public class Controller implements ActionListener {
 			}
 			break;
 		}
-		
 
 		}
 
