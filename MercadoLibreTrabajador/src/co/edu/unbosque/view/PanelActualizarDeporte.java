@@ -1,5 +1,9 @@
 package co.edu.unbosque.view;
 
+/**
+ * 
+ * Importanción de las librerias para el uso de imagenes, texto, botones, colores, paneles.
+ */
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
@@ -17,6 +21,11 @@ import javax.swing.JTextArea;
 import javax.swing.UIManager;
 import javax.swing.plaf.ColorUIResource;
 
+/**
+ * Clase la cual es llamada como Ventana y extiende JPanel 
+ * lo que permite agregar botones y o componentes de interfaz grafica.
+ * y creación de las variables con su nombre privadas.
+ */
 public class PanelActualizarDeporte extends JPanel {
 	private JLabel fondo;
 	private JButton actualizar;
@@ -24,10 +33,24 @@ public class PanelActualizarDeporte extends JPanel {
 	private String texto;
 	private JScrollPane barraV;
 
+	/**
+	 * Constructor del panel donde se ejecuta la logica en general de cada parametro
+	 * que se encuentra en la ventana. además se declara la excepción de
+	 * IOexception.
+	 */
 	public PanelActualizarDeporte() throws IOException {
+		/**
+		 * Uso del setBounds para fijar la posción del panel setLayaout permite
+		 * modificar manualmente los elementos.
+		 */
 		setBounds(412, 250, 780, 433);
 		setLayout(null);
 
+		/**
+		 * Inicialización del JLabel BufferedImage con el objetivo de establecer la
+		 * ubicación del archivo de la imagen dentro de los archivos. Image Redim
+		 * redimenzionar las medidas establecidas de la imagen.
+		 */
 		fondo = new JLabel();
 		BufferedImage fd = ImageIO.read(new File("src/co/edu/unbosque/view/PanelActualizar.png"));
 		ImageIcon imagenFondo = new ImageIcon(fd);
@@ -35,6 +58,13 @@ public class PanelActualizarDeporte extends JPanel {
 		fondo.setIcon(new ImageIcon(fdRedim));
 		fondo.setBounds(0, 0, 780, 433);
 
+		/**
+		 * Inicialización del boton .setBounds su ubicación definida dentro del panel.
+		 * .setFocusable con el objetivo de mantener desactivada su función.
+		 * .setBackground establcer el color que se encuentra en el fondo del boton.
+		 * .setBorderPainted para que el fondo predeterminaod de java no aparezca y el boton no tenga fondo.
+		 * .setOpaque vizualización detras del boton.
+		 */
 		actualizar = new JButton();
 		actualizar.setBounds(618, 295, 120, 118);
 		actualizar.setFocusable(false);
@@ -45,6 +75,12 @@ public class PanelActualizarDeporte extends JPanel {
 		actualizar.setVisible(true);
 		add(actualizar);
 
+		/**
+		 * Inicialización del texto con JLabel. .set text para agregar la opción de
+		 * establcer un texto. .set Bounds establecer la ubicación. .setFont establecer
+		 * el tamaño y tipo de letra del texto. .setOpaque vizualización detras del texto.
+		 * .setLineWrap se utiliza para que el texto cuando llegue al limite tenga un retorno y no continue de largo.
+		 */
 		text = new JTextArea();
 		text.setBounds(10, 10, 400, 420);
 		text.setFocusable(false);
@@ -57,6 +93,13 @@ public class PanelActualizarDeporte extends JPanel {
 		text.setEditable(false);
 		add(text);
 
+		/**
+		 * UIManager import tiene como objetivo modificar simultaneamente cada panel.
+		 * En este caso .background para cambiar el color 
+		 * .thumb cambia el color de la barra la cual selecciona el usuario.
+		 * .thumbshadow establece la sombra del thumb elemento el cual es seleccionado por el usuario.
+		 * .trackForeground cambia el color del riel de la barra.
+		 */
 		UIManager.put("ScrollBar.background", new ColorUIResource(198, 195, 195));
 		UIManager.put("ScrollBar.foreground", new ColorUIResource(217, 217, 217));
 		UIManager.put("ScrollBar.thumb", new ColorUIResource(217, 217, 217));
@@ -67,6 +110,12 @@ public class PanelActualizarDeporte extends JPanel {
 		UIManager.put("ScrollBar.trackForeground", new ColorUIResource(217, 217, 217));
 		
 
+		/**
+		 * Inicialización del scrollpane en el cual se determina la dimensión de los componentes fijados 
+		 * que se encuentra dentro de la barra de movimiento
+		 * .bounds establecer el tamaño del sector 
+		 * .viewport para hacer transparente.
+		 */
 		barraV = new JScrollPane(text);
 		barraV.setBounds(10, 10, 750, 420);
 		barraV.setBackground(new Color(198, 195, 195));
@@ -78,6 +127,9 @@ public class PanelActualizarDeporte extends JPanel {
 		add(fondo);
 	}
 
+	/**
+	 * GETTERS & SETTERS
+	 */
 	public JLabel getFondo() {
 		return fondo;
 	}

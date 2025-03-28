@@ -1,9 +1,4 @@
 
-/**
- * Este paquete contiene las clases relacionadas con la interfaz gráfica de usuario
- * para la aplicación de gestión de baños. Incluye paneles, botones, y otros componentes
- * visuales necesarios para la interacción del usuario.
- */
 package co.edu.unbosque.view;
 /**
  * 
@@ -124,7 +119,7 @@ public class PanelActualizarBano extends JPanel {
 		 * Inicialización del scrollpane en el cual se determina la dimensión de los componentes fijados 
 		 * que se encuentra dentro de la barra de movimiento
 		 * .bounds establecer el tamaño del sector 
-		 * .
+		 * .viewport para hacer transparente.
 		 */
 		barraV = new JScrollPane(text);
 		barraV.setBounds(10, 10, 750, 420);
@@ -138,7 +133,9 @@ public class PanelActualizarBano extends JPanel {
 	}
 
 	
-	// GETTERS & SETTERS
+	/**
+	 * GETTERS & SETTERS
+	 */
 	public JLabel getFondo() {
 		return fondo;
 	}
