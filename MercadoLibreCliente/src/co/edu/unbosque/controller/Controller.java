@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import co.edu.unbosque.model.Carrito;
 import co.edu.unbosque.model.Cliente;
 import co.edu.unbosque.model.ModelFacade;
+import co.edu.unbosque.model.Producto;
 import co.edu.unbosque.model.Trabajador;
 import co.edu.unbosque.model.persistence.FileManager;
 import co.edu.unbosque.util.exception.CapitalException;
@@ -87,6 +88,8 @@ public class Controller implements ActionListener {
 		
 		vf.getVpc().getPcm().getBtnFavoritos().addActionListener(this);
 		vf.getVpc().getPcm().getBtnFavoritos().setActionCommand("btnFavorito");
+		vf.getVpc().getPf().getBtnVolver().addActionListener(this);
+		vf.getVpc().getPf().getBtnVolver().setActionCommand("btnVolverF");
 
 	}
 
@@ -217,7 +220,7 @@ public class Controller implements ActionListener {
 			vf.getVpc().getPt().getPanelOficina().setVisible(false);
 			vf.getVpc().getPt().getPanelHogar().setVisible(false);
 			vf.getVpc().getPt().getPanelOcio().actualizarInfo(mf.generarProductosOcio());
-			asignarFuncionesComponentesAlimentos("Ocio");
+			asignarFuncionesComponentesProducto("Ocio");
 			break;
 		}
 		case "btnOficina":{
@@ -225,7 +228,7 @@ public class Controller implements ActionListener {
 			vf.getVpc().getPt().getPanelOficina().setVisible(true);
 			vf.getVpc().getPt().getPanelHogar().setVisible(false);
 			vf.getVpc().getPt().getPanelOficina().actualizarInfo(mf.generarProductosOficina());
-			asignarFuncionesComponentesAlimentos("Oficina");
+			asignarFuncionesComponentesProducto("Oficina");
 			break;
 		}
 		case "btnHogar":{
@@ -233,7 +236,7 @@ public class Controller implements ActionListener {
 			vf.getVpc().getPt().getPanelHogar().setVisible(true);
 			vf.getVpc().getPt().getPanelOcio().setVisible(false);
 			vf.getVpc().getPt().getPanelOficina().setVisible(false);
-			asignarFuncionesComponentesAlimentos("Hogar");
+			asignarFuncionesComponentesProducto("Hogar");
 			break;
 		}
 		case "btnTiendaVolver":{
@@ -241,11 +244,26 @@ public class Controller implements ActionListener {
 			vf.getVpc().getPt().setVisible(false);
 			break;
 		}
+		case "btnFavorito":{
+			vf.getVpc().getPf().actualizarInfo(mf.getClienteActual().getListaProductoFavorito());
+			for (Producto p : mf.getClienteActual().getListaProductoFavorito()) {
+				System.out.println(p.getNombre());
+			}
+			vf.getVpc().getPcm().setVisible(false);
+			vf.getVpc().getPf().setVisible(true);
+			asignarFuncionesComponentesProducto("Favorito");
+			break;
+		}
+		case "btnVolverF":{
+			vf.getVpc().getPcm().setVisible(true);
+			vf.getVpc().getPf().setVisible(false);
+			break;
+		}
 		}
 
 	}
 	
-	public void asignarFuncionesComponentesAlimentos(String producto) {
+	public void asignarFuncionesComponentesProducto(String producto) {
 		switch (producto) {
 		case "Ocio": {
 			for (JButton btn : vf.getVpc().getPt().getPanelOcio().getBotonesAnadir()) {
@@ -261,7 +279,7 @@ public class Controller implements ActionListener {
 					}
 					System.out.println("andadidoc " + mf.getClienteActual().getCarrito().getListaCarrito().getLast().getNombre());
 					actualizarInfo("Ocio");
-					asignarFuncionesComponentesAlimentos("Ocio");
+					asignarFuncionesComponentesProducto("Ocio");
 				});
 			}
 			
@@ -272,7 +290,7 @@ public class Controller implements ActionListener {
 					mf.getClienteActual().getListaProductoFavorito().add(mf.generarProductosOcio().get(indice));
 					System.out.println("andadidof " + mf.getClienteActual().getListaProductoFavorito().getLast().getNombre());
 					actualizarInfo("Ocio");
-					asignarFuncionesComponentesAlimentos("Ocio");
+					asignarFuncionesComponentesProducto("Ocio");
 				});
 			}
 			break;
@@ -292,7 +310,7 @@ public class Controller implements ActionListener {
 					}
 					System.out.println("andadidoc " + mf.getClienteActual().getCarrito().getListaCarrito().getLast().getNombre());
 					actualizarInfo("Hogar");
-					asignarFuncionesComponentesAlimentos("Hogar");
+					asignarFuncionesComponentesProducto("Hogar");
 				});
 			}
 			
@@ -303,7 +321,7 @@ public class Controller implements ActionListener {
 					mf.getClienteActual().getListaProductoFavorito().add(mf.generarProductosHogar().get(indice));
 					System.out.println("andadidof " + mf.getClienteActual().getListaProductoFavorito().getLast().getNombre());
 					actualizarInfo("Hogar");
-					asignarFuncionesComponentesAlimentos("Hogar");
+					asignarFuncionesComponentesProducto("Hogar");
 				});
 			}
 			break;
@@ -323,7 +341,7 @@ public class Controller implements ActionListener {
 					}
 					System.out.println("andadidoc " + mf.getClienteActual().getCarrito().getListaCarrito().getLast().getNombre());
 					actualizarInfo("Oficina");
-					asignarFuncionesComponentesAlimentos("Oficina");
+					asignarFuncionesComponentesProducto("Oficina");
 				});
 			}
 			
@@ -334,7 +352,37 @@ public class Controller implements ActionListener {
 					mf.getClienteActual().getListaProductoFavorito().add(mf.generarProductosOficina().get(indice));
 					System.out.println("andadidof " + mf.getClienteActual().getListaProductoFavorito().getLast().getNombre());
 					actualizarInfo("Oficina");
-					asignarFuncionesComponentesAlimentos("Oficina");
+					asignarFuncionesComponentesProducto("Oficina");
+				});
+			}
+			break;
+		}
+		case "Favorito": {
+			for (JButton btn : vf.getVpc().getPf().getBotonesAnadir()) {
+				btn.setActionCommand(String.valueOf(vf.getVpc().getPf().getBotonesAnadir().indexOf(btn)));
+				btn.addActionListener(e -> {
+					int indice = Integer.parseInt(e.getActionCommand());
+
+					if(mf.getClienteActual().getCarrito() == null) {
+						mf.getClienteActual().setCarrito(new Carrito());
+						mf.getClienteActual().getCarrito().getListaCarrito().add(mf.generarProductosOficina().get(indice));
+					}else {
+						mf.getClienteActual().getCarrito().getListaCarrito().add(mf.generarProductosOficina().get(indice));
+					}
+					System.out.println("andadidoc " + mf.getClienteActual().getCarrito().getListaCarrito().getLast().getNombre());
+					actualizarInfo("Favoritos");
+					asignarFuncionesComponentesProducto("Favoritos");
+				});
+			}
+			
+			for (JButton btn : vf.getVpc().getPf().getBotonesFav()) {
+				btn.setActionCommand(String.valueOf (vf.getVpc().getPf().getBotonesFav().indexOf(btn)));
+				btn.addActionListener(e -> {
+					int indice = Integer.parseInt(e.getActionCommand());
+					mf.getClienteActual().getListaProductoFavorito().remove(indice);
+					System.out.println("eliminadosf ");
+					actualizarInfo("Favoritos");
+					asignarFuncionesComponentesProducto("Favoritos");
 				});
 			}
 			break;
@@ -356,6 +404,10 @@ public class Controller implements ActionListener {
 		}
 		case "Oficina": {
 			vf.getVpc().getPt().getPanelOficina().actualizarInfo(mf.generarProductosOficina());
+			break;
+		}
+		case "Favoritos": {
+			vf.getVpc().getPf().actualizarInfo(mf.getClienteActual().getListaProductoFavorito());
 			break;
 		}
 		default:
