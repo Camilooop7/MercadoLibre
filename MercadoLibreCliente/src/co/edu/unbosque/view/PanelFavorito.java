@@ -71,7 +71,7 @@ public class PanelFavorito extends JPanel{
         scrollPane = new JScrollPane(panelContenido);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         scrollPane.setBackground(Color.green);
-        scrollPane.setBounds(150, 230, 1000, 500);
+        scrollPane.setBounds(150, 230, 1000, 480);
         
         JPanel pP = new JPanel();
         pP.setBounds(150, 230, 1000, 500);

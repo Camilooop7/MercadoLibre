@@ -67,6 +67,8 @@ public class Controller implements ActionListener {
 		
 		vf.getVpc().getPcm().getBtnCarrito().addActionListener(this);
 		vf.getVpc().getPcm().getBtnCarrito().setActionCommand("btnCarrito");
+		vf.getVpc().getPc().getBtnVolver().addActionListener(this);
+		vf.getVpc().getPc().getBtnVolver().setActionCommand("btnCarritoVolver");
 		
 		vf.getVpc().getPcm().getBtnHistorial().addActionListener(this);
 		vf.getVpc().getPcm().getBtnHistorial().setActionCommand("btnHistorial");
@@ -90,7 +92,7 @@ public class Controller implements ActionListener {
 		vf.getVpc().getPcm().getBtnFavoritos().setActionCommand("btnFavorito");
 		vf.getVpc().getPf().getBtnVolver().addActionListener(this);
 		vf.getVpc().getPf().getBtnVolver().setActionCommand("btnVolverF");
-
+		
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -246,21 +248,29 @@ public class Controller implements ActionListener {
 		}
 		case "btnFavorito":{
 			vf.getVpc().getPf().actualizarInfo(mf.getClienteActual().getListaProductoFavorito());
-			for (Producto p : mf.getClienteActual().getListaProductoFavorito()) {
-				System.out.println(p.getNombre());
-			}
 			vf.getVpc().getPcm().setVisible(false);
 			vf.getVpc().getPf().setVisible(true);
-			asignarFuncionesComponentesProducto("Favorito");
+			asignarFuncionesComponentesProducto("Favoritos");
 			break;
 		}
 		case "btnVolverF":{
 			vf.getVpc().getPcm().setVisible(true);
 			vf.getVpc().getPf().setVisible(false);
 			break;
+		} 
+		case"btnCarrito":{
+			vf.getVpc().getPc().actualizarInfo(mf.getClienteActual().getCarrito().getListaCarrito());
+			vf.getVpc().getPcm().setVisible(false);
+			vf.getVpc().getPc().setVisible(true);
+			asignarFuncionesComponentesProducto("Carrito");
+			break;
+		}
+		case"btnCarritoVolver":{
+			vf.getVpc().getPcm().setVisible(true);
+			vf.getVpc().getPc().setVisible(false);
+			break;
 		}
 		}
-
 	}
 	
 	public void asignarFuncionesComponentesProducto(String producto) {
@@ -274,10 +284,11 @@ public class Controller implements ActionListener {
 					if(mf.getClienteActual().getCarrito() == null) {
 						mf.getClienteActual().setCarrito(new Carrito());
 						mf.getClienteActual().getCarrito().getListaCarrito().add(mf.generarProductosOcio().get(indice));
+						mf.getClienteDAO().escribirSerializado();
 					}else {
 						mf.getClienteActual().getCarrito().getListaCarrito().add(mf.generarProductosOcio().get(indice));
+						mf.getClienteDAO().escribirSerializado();
 					}
-					System.out.println("andadidoc " + mf.getClienteActual().getCarrito().getListaCarrito().getLast().getNombre());
 					actualizarInfo("Ocio");
 					asignarFuncionesComponentesProducto("Ocio");
 				});
@@ -288,7 +299,7 @@ public class Controller implements ActionListener {
 				btn.addActionListener(e -> {
 					int indice = Integer.parseInt(e.getActionCommand());
 					mf.getClienteActual().getListaProductoFavorito().add(mf.generarProductosOcio().get(indice));
-					System.out.println("andadidof " + mf.getClienteActual().getListaProductoFavorito().getLast().getNombre());
+					mf.getClienteDAO().escribirSerializado();
 					actualizarInfo("Ocio");
 					asignarFuncionesComponentesProducto("Ocio");
 				});
@@ -305,10 +316,11 @@ public class Controller implements ActionListener {
 					if(mf.getClienteActual().getCarrito() == null) {
 						mf.getClienteActual().setCarrito(new Carrito());
 						mf.getClienteActual().getCarrito().getListaCarrito().add(mf.generarProductosHogar().get(indice));
+						mf.getClienteDAO().escribirSerializado();
 					}else {
 						mf.getClienteActual().getCarrito().getListaCarrito().add(mf.generarProductosHogar().get(indice));
+						mf.getClienteDAO().escribirSerializado();
 					}
-					System.out.println("andadidoc " + mf.getClienteActual().getCarrito().getListaCarrito().getLast().getNombre());
 					actualizarInfo("Hogar");
 					asignarFuncionesComponentesProducto("Hogar");
 				});
@@ -319,9 +331,9 @@ public class Controller implements ActionListener {
 				btn.addActionListener(e -> {
 					int indice = Integer.parseInt(e.getActionCommand());
 					mf.getClienteActual().getListaProductoFavorito().add(mf.generarProductosHogar().get(indice));
-					System.out.println("andadidof " + mf.getClienteActual().getListaProductoFavorito().getLast().getNombre());
 					actualizarInfo("Hogar");
 					asignarFuncionesComponentesProducto("Hogar");
+					mf.getClienteDAO().escribirSerializado();
 				});
 			}
 			break;
@@ -336,10 +348,11 @@ public class Controller implements ActionListener {
 					if(mf.getClienteActual().getCarrito() == null) {
 						mf.getClienteActual().setCarrito(new Carrito());
 						mf.getClienteActual().getCarrito().getListaCarrito().add(mf.generarProductosOficina().get(indice));
+						mf.getClienteDAO().escribirSerializado();
 					}else {
 						mf.getClienteActual().getCarrito().getListaCarrito().add(mf.generarProductosOficina().get(indice));
+						mf.getClienteDAO().escribirSerializado();
 					}
-					System.out.println("andadidoc " + mf.getClienteActual().getCarrito().getListaCarrito().getLast().getNombre());
 					actualizarInfo("Oficina");
 					asignarFuncionesComponentesProducto("Oficina");
 				});
@@ -350,26 +363,27 @@ public class Controller implements ActionListener {
 				btn.addActionListener(e -> {
 					int indice = Integer.parseInt(e.getActionCommand());
 					mf.getClienteActual().getListaProductoFavorito().add(mf.generarProductosOficina().get(indice));
-					System.out.println("andadidof " + mf.getClienteActual().getListaProductoFavorito().getLast().getNombre());
+					mf.getClienteDAO().escribirSerializado();
 					actualizarInfo("Oficina");
 					asignarFuncionesComponentesProducto("Oficina");
 				});
 			}
 			break;
 		}
-		case "Favorito": {
+		case "Favoritos": {
 			for (JButton btn : vf.getVpc().getPf().getBotonesAnadir()) {
 				btn.setActionCommand(String.valueOf(vf.getVpc().getPf().getBotonesAnadir().indexOf(btn)));
 				btn.addActionListener(e -> {
 					int indice = Integer.parseInt(e.getActionCommand());
-
+					System.out.println(indice);
 					if(mf.getClienteActual().getCarrito() == null) {
 						mf.getClienteActual().setCarrito(new Carrito());
-						mf.getClienteActual().getCarrito().getListaCarrito().add(mf.generarProductosOficina().get(indice));
+						mf.getClienteActual().getCarrito().getListaCarrito().add(mf.getClienteActual().getListaProductoFavorito().get(indice));
+						mf.getClienteDAO().escribirSerializado();
 					}else {
-						mf.getClienteActual().getCarrito().getListaCarrito().add(mf.generarProductosOficina().get(indice));
+						mf.getClienteActual().getCarrito().getListaCarrito().add(mf.getClienteActual().getListaProductoFavorito().get(indice));
+						mf.getClienteDAO().escribirSerializado();
 					}
-					System.out.println("andadidoc " + mf.getClienteActual().getCarrito().getListaCarrito().getLast().getNombre());
 					actualizarInfo("Favoritos");
 					asignarFuncionesComponentesProducto("Favoritos");
 				});
@@ -379,13 +393,27 @@ public class Controller implements ActionListener {
 				btn.setActionCommand(String.valueOf (vf.getVpc().getPf().getBotonesFav().indexOf(btn)));
 				btn.addActionListener(e -> {
 					int indice = Integer.parseInt(e.getActionCommand());
+					System.out.println(indice);
 					mf.getClienteActual().getListaProductoFavorito().remove(indice);
-					System.out.println("eliminadosf ");
+					mf.getClienteDAO().escribirSerializado();
 					actualizarInfo("Favoritos");
 					asignarFuncionesComponentesProducto("Favoritos");
 				});
 			}
 			break;
+		}
+		case "Carrito": {
+			for (JButton btn : vf.getVpc().getPc().getBotonesAnadir()) {
+				btn.setActionCommand(String.valueOf(vf.getVpc().getPc().getBotonesAnadir().indexOf(btn)));
+				btn.addActionListener(e -> {
+					int indice = Integer.parseInt(e.getActionCommand());
+					System.out.println(indice);
+					mf.getClienteActual().getCarrito().getListaCarrito().add(mf.getClienteActual().getListaProductoFavorito().remove(indice));
+					mf.getClienteDAO().escribirSerializado();
+					actualizarInfo("Carrito");
+					asignarFuncionesComponentesProducto("Carrito");
+				});
+			}
 		}
 		default:
 			break;
@@ -408,6 +436,10 @@ public class Controller implements ActionListener {
 		}
 		case "Favoritos": {
 			vf.getVpc().getPf().actualizarInfo(mf.getClienteActual().getListaProductoFavorito());
+			break;
+		}
+		case "Carrito": {
+			vf.getVpc().getPf().actualizarInfo(mf.getClienteActual().getCarrito().getListaCarrito());
 			break;
 		}
 		default:
