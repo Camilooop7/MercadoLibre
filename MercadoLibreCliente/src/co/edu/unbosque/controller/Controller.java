@@ -47,38 +47,40 @@ public class Controller implements ActionListener {
 		vf.getVpc().getPpc().getBtnCrearU().setActionCommand("btnCrearU");
 		vf.getVpc().getPpc().getBtnSalir().addActionListener(this);
 		vf.getVpc().getPpc().getBtnSalir().setActionCommand("btnSalir");
-		
+
 		vf.getVpc().getPis().getBtnIngresar().addActionListener(this);
 		vf.getVpc().getPis().getBtnIngresar().setActionCommand("btnIngresarI");
 		vf.getVpc().getPis().getMostrarContrasena().addActionListener(this);
 		vf.getVpc().getPis().getMostrarContrasena().setActionCommand("checkMostrarIni");
 		vf.getVpc().getPis().getBtnVolver().addActionListener(this);
 		vf.getVpc().getPis().getBtnVolver().setActionCommand("btnVolverI");
-		
+
 		vf.getVpc().getPcu().getBtnIngresar().addActionListener(this);
 		vf.getVpc().getPcu().getBtnIngresar().setActionCommand("btnIngresarC");
 		vf.getVpc().getPcu().getBtnVolver().addActionListener(this);
 		vf.getVpc().getPcu().getBtnVolver().setActionCommand("btnVolverC");
-		
+
 		vf.getVpc().getPcu().getMostrarContrasena().addActionListener(this);
 		vf.getVpc().getPcu().getMostrarContrasena().setActionCommand("checkMostrar");
 		vf.getVpc().getPcu().getMostrarContrasena2().addActionListener(this);
 		vf.getVpc().getPcu().getMostrarContrasena2().setActionCommand("checkMostrar2");
-		
+
 		vf.getVpc().getPcm().getBtnCarrito().addActionListener(this);
 		vf.getVpc().getPcm().getBtnCarrito().setActionCommand("btnCarrito");
 		vf.getVpc().getPc().getBtnVolver().addActionListener(this);
 		vf.getVpc().getPc().getBtnVolver().setActionCommand("btnCarritoVolver");
-		
+		vf.getVpc().getPc().getBtnComprar().addActionListener(this);
+		vf.getVpc().getPc().getBtnComprar().setActionCommand("btnCarritoComprar");
+
 		vf.getVpc().getPcm().getBtnHistorial().addActionListener(this);
 		vf.getVpc().getPcm().getBtnHistorial().setActionCommand("btnHistorial");
-		
+
 		vf.getVpc().getPcm().getBtnTienda().addActionListener(this);
 		vf.getVpc().getPcm().getBtnTienda().setActionCommand("btnTienda");
-		
+
 		vf.getVpc().getPcm().getBtnVolver().addActionListener(this);
 		vf.getVpc().getPcm().getBtnVolver().setActionCommand("btnVolverCL");
-		
+
 		vf.getVpc().getPt().getBtnOcio().addActionListener(this);
 		vf.getVpc().getPt().getBtnOcio().setActionCommand("btnOcio");
 		vf.getVpc().getPt().getBtnOficina().addActionListener(this);
@@ -87,12 +89,12 @@ public class Controller implements ActionListener {
 		vf.getVpc().getPt().getBtnHogar().setActionCommand("btnHogar");
 		vf.getVpc().getPt().getBtnVolver().addActionListener(this);
 		vf.getVpc().getPt().getBtnVolver().setActionCommand("btnTiendaVolver");
-		
+
 		vf.getVpc().getPcm().getBtnFavoritos().addActionListener(this);
 		vf.getVpc().getPcm().getBtnFavoritos().setActionCommand("btnFavorito");
 		vf.getVpc().getPf().getBtnVolver().addActionListener(this);
 		vf.getVpc().getPf().getBtnVolver().setActionCommand("btnVolverF");
-		
+
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -200,7 +202,7 @@ public class Controller implements ActionListener {
 				vf.getVpc().getPis().getContrasenaF().setEchoChar('*');
 			}
 
-			break; 
+			break;
 		}
 		case "btnVolverC": {
 			vf.getVpc().getPcu().setVisible(false);
@@ -212,12 +214,12 @@ public class Controller implements ActionListener {
 			vf.getVpc().getPpc().setVisible(true);
 			break;
 		}
-		case "btnTienda":{
+		case "btnTienda": {
 			vf.getVpc().getPcm().setVisible(false);
 			vf.getVpc().getPt().setVisible(true);
 			break;
 		}
-		case "btnOcio":{
+		case "btnOcio": {
 			vf.getVpc().getPt().getPanelOcio().setVisible(true);
 			vf.getVpc().getPt().getPanelOficina().setVisible(false);
 			vf.getVpc().getPt().getPanelHogar().setVisible(false);
@@ -225,7 +227,7 @@ public class Controller implements ActionListener {
 			asignarFuncionesComponentesProducto("Ocio");
 			break;
 		}
-		case "btnOficina":{
+		case "btnOficina": {
 			vf.getVpc().getPt().getPanelOcio().setVisible(false);
 			vf.getVpc().getPt().getPanelOficina().setVisible(true);
 			vf.getVpc().getPt().getPanelHogar().setVisible(false);
@@ -233,7 +235,7 @@ public class Controller implements ActionListener {
 			asignarFuncionesComponentesProducto("Oficina");
 			break;
 		}
-		case "btnHogar":{
+		case "btnHogar": {
 			vf.getVpc().getPt().getPanelHogar().actualizarInfo(mf.generarProductosHogar());
 			vf.getVpc().getPt().getPanelHogar().setVisible(true);
 			vf.getVpc().getPt().getPanelOcio().setVisible(false);
@@ -241,51 +243,67 @@ public class Controller implements ActionListener {
 			asignarFuncionesComponentesProducto("Hogar");
 			break;
 		}
-		case "btnTiendaVolver":{
+		case "btnTiendaVolver": {
 			vf.getVpc().getPcm().setVisible(true);
 			vf.getVpc().getPt().setVisible(false);
 			break;
 		}
-		case "btnFavorito":{
+		case "btnFavorito": {
 			vf.getVpc().getPf().actualizarInfo(mf.getClienteActual().getListaProductoFavorito());
 			vf.getVpc().getPcm().setVisible(false);
 			vf.getVpc().getPf().setVisible(true);
 			asignarFuncionesComponentesProducto("Favoritos");
 			break;
 		}
-		case "btnVolverF":{
+		case "btnVolverF": {
 			vf.getVpc().getPcm().setVisible(true);
 			vf.getVpc().getPf().setVisible(false);
 			break;
-		} 
-		case"btnCarrito":{
-			vf.getVpc().getPc().actualizarInfo(mf.getClienteActual().getCarrito().getListaCarrito());
-			vf.getVpc().getPcm().setVisible(false);
-			vf.getVpc().getPc().setVisible(true);
-			asignarFuncionesComponentesProducto("Carrito");
+		}
+		case "btnCarrito": {
+			if (mf.getClienteActual().getCarrito() == null) {
+				vf.getVemer().mostrar("Todavia no tiene ningun carrito creado.");
+			} else {
+				vf.getVpc().getPc().actualizarInfo(mf.getClienteActual().getCarrito().getListaCarrito());
+				vf.getVpc().getPcm().setVisible(false);
+				vf.getVpc().getPc().setVisible(true);
+			}
 			break;
 		}
-		case"btnCarritoVolver":{
+		case "btnCarritoVolver": {
 			vf.getVpc().getPcm().setVisible(true);
 			vf.getVpc().getPc().setVisible(false);
 			break;
 		}
+		case "btnCarritoComprar": {
+			mf.getClienteActual().getListaCarritos().add(mf.getClienteActual().getCarrito());
+			mf.setClienteActual(null);
+			vf.getVpc().getPc().actualizarInfo(mf.getClienteActual().getCarrito().getListaCarrito());
+			break;
+		}
+		case "btnHistorial": {
+			vf.getVpc().getPh().actualizarInfo(mf.getClienteActual().getListaCarritos());
+			vf.getVpc().getPcm().setVisible(false);
+			vf.getVpc().getPh().setVisible(true);
+			break;
+		}
 		}
 	}
-	
+
 	public void asignarFuncionesComponentesProducto(String producto) {
 		switch (producto) {
 		case "Ocio": {
 			for (JButton btn : vf.getVpc().getPt().getPanelOcio().getBotonesAnadir()) {
-				btn.setActionCommand(String.valueOf(vf.getVpc().getPt().getPanelOcio().getBotonesAnadir().indexOf(btn)));
+				btn.setActionCommand(
+						String.valueOf(vf.getVpc().getPt().getPanelOcio().getBotonesAnadir().indexOf(btn)));
 				btn.addActionListener(e -> {
 					int indice = Integer.parseInt(e.getActionCommand());
 
-					if(mf.getClienteActual().getCarrito() == null) {
+					if (mf.getClienteActual().getCarrito() == null) {
 						mf.getClienteActual().setCarrito(new Carrito());
 						mf.getClienteActual().getCarrito().getListaCarrito().add(mf.generarProductosOcio().get(indice));
 						mf.getClienteDAO().escribirSerializado();
-					}else {
+					} else {
 						mf.getClienteActual().getCarrito().getListaCarrito().add(mf.generarProductosOcio().get(indice));
 						mf.getClienteDAO().escribirSerializado();
 					}
@@ -293,9 +311,9 @@ public class Controller implements ActionListener {
 					asignarFuncionesComponentesProducto("Ocio");
 				});
 			}
-			
+
 			for (JButton btn : vf.getVpc().getPt().getPanelOcio().getBotonesFav()) {
-				btn.setActionCommand(String.valueOf (vf.getVpc().getPt().getPanelOcio().getBotonesFav().indexOf(btn)));
+				btn.setActionCommand(String.valueOf(vf.getVpc().getPt().getPanelOcio().getBotonesFav().indexOf(btn)));
 				btn.addActionListener(e -> {
 					int indice = Integer.parseInt(e.getActionCommand());
 					mf.getClienteActual().getListaProductoFavorito().add(mf.generarProductosOcio().get(indice));
@@ -306,28 +324,31 @@ public class Controller implements ActionListener {
 			}
 			break;
 		}
-		
+
 		case "Hogar": {
 			for (JButton btn : vf.getVpc().getPt().getPanelHogar().getBotonesAnadir()) {
-				btn.setActionCommand(String.valueOf(vf.getVpc().getPt().getPanelHogar().getBotonesAnadir().indexOf(btn)));
+				btn.setActionCommand(
+						String.valueOf(vf.getVpc().getPt().getPanelHogar().getBotonesAnadir().indexOf(btn)));
 				btn.addActionListener(e -> {
 					int indice = Integer.parseInt(e.getActionCommand());
 
-					if(mf.getClienteActual().getCarrito() == null) {
+					if (mf.getClienteActual().getCarrito() == null) {
 						mf.getClienteActual().setCarrito(new Carrito());
-						mf.getClienteActual().getCarrito().getListaCarrito().add(mf.generarProductosHogar().get(indice));
+						mf.getClienteActual().getCarrito().getListaCarrito()
+								.add(mf.generarProductosHogar().get(indice));
 						mf.getClienteDAO().escribirSerializado();
-					}else {
-						mf.getClienteActual().getCarrito().getListaCarrito().add(mf.generarProductosHogar().get(indice));
+					} else {
+						mf.getClienteActual().getCarrito().getListaCarrito()
+								.add(mf.generarProductosHogar().get(indice));
 						mf.getClienteDAO().escribirSerializado();
 					}
 					actualizarInfo("Hogar");
 					asignarFuncionesComponentesProducto("Hogar");
 				});
 			}
-			
+
 			for (JButton btn : vf.getVpc().getPt().getPanelHogar().getBotonesFav()) {
-				btn.setActionCommand(String.valueOf (vf.getVpc().getPt().getPanelHogar().getBotonesFav().indexOf(btn)));
+				btn.setActionCommand(String.valueOf(vf.getVpc().getPt().getPanelHogar().getBotonesFav().indexOf(btn)));
 				btn.addActionListener(e -> {
 					int indice = Integer.parseInt(e.getActionCommand());
 					mf.getClienteActual().getListaProductoFavorito().add(mf.generarProductosHogar().get(indice));
@@ -338,28 +359,32 @@ public class Controller implements ActionListener {
 			}
 			break;
 		}
-		
+
 		case "Oficina": {
 			for (JButton btn : vf.getVpc().getPt().getPanelOficina().getBotonesAnadir()) {
-				btn.setActionCommand(String.valueOf(vf.getVpc().getPt().getPanelOficina().getBotonesAnadir().indexOf(btn)));
+				btn.setActionCommand(
+						String.valueOf(vf.getVpc().getPt().getPanelOficina().getBotonesAnadir().indexOf(btn)));
 				btn.addActionListener(e -> {
 					int indice = Integer.parseInt(e.getActionCommand());
 
-					if(mf.getClienteActual().getCarrito() == null) {
+					if (mf.getClienteActual().getCarrito() == null) {
 						mf.getClienteActual().setCarrito(new Carrito());
-						mf.getClienteActual().getCarrito().getListaCarrito().add(mf.generarProductosOficina().get(indice));
+						mf.getClienteActual().getCarrito().getListaCarrito()
+								.add(mf.generarProductosOficina().get(indice));
 						mf.getClienteDAO().escribirSerializado();
-					}else {
-						mf.getClienteActual().getCarrito().getListaCarrito().add(mf.generarProductosOficina().get(indice));
+					} else {
+						mf.getClienteActual().getCarrito().getListaCarrito()
+								.add(mf.generarProductosOficina().get(indice));
 						mf.getClienteDAO().escribirSerializado();
 					}
 					actualizarInfo("Oficina");
 					asignarFuncionesComponentesProducto("Oficina");
 				});
 			}
-			
+
 			for (JButton btn : vf.getVpc().getPt().getPanelOficina().getBotonesFav()) {
-				btn.setActionCommand(String.valueOf (vf.getVpc().getPt().getPanelOficina().getBotonesFav().indexOf(btn)));
+				btn.setActionCommand(
+						String.valueOf(vf.getVpc().getPt().getPanelOficina().getBotonesFav().indexOf(btn)));
 				btn.addActionListener(e -> {
 					int indice = Integer.parseInt(e.getActionCommand());
 					mf.getClienteActual().getListaProductoFavorito().add(mf.generarProductosOficina().get(indice));
@@ -375,25 +400,25 @@ public class Controller implements ActionListener {
 				btn.setActionCommand(String.valueOf(vf.getVpc().getPf().getBotonesAnadir().indexOf(btn)));
 				btn.addActionListener(e -> {
 					int indice = Integer.parseInt(e.getActionCommand());
-					System.out.println(indice);
-					if(mf.getClienteActual().getCarrito() == null) {
+					if (mf.getClienteActual().getCarrito() == null) {
 						mf.getClienteActual().setCarrito(new Carrito());
-						mf.getClienteActual().getCarrito().getListaCarrito().add(mf.getClienteActual().getListaProductoFavorito().get(indice));
+						mf.getClienteActual().getCarrito().getListaCarrito()
+								.add(mf.getClienteActual().getListaProductoFavorito().get(indice));
 						mf.getClienteDAO().escribirSerializado();
-					}else {
-						mf.getClienteActual().getCarrito().getListaCarrito().add(mf.getClienteActual().getListaProductoFavorito().get(indice));
+					} else {
+						mf.getClienteActual().getCarrito().getListaCarrito()
+								.add(mf.getClienteActual().getListaProductoFavorito().get(indice));
 						mf.getClienteDAO().escribirSerializado();
 					}
 					actualizarInfo("Favoritos");
 					asignarFuncionesComponentesProducto("Favoritos");
 				});
 			}
-			
+
 			for (JButton btn : vf.getVpc().getPf().getBotonesFav()) {
-				btn.setActionCommand(String.valueOf (vf.getVpc().getPf().getBotonesFav().indexOf(btn)));
+				btn.setActionCommand(String.valueOf(vf.getVpc().getPf().getBotonesFav().indexOf(btn)));
 				btn.addActionListener(e -> {
 					int indice = Integer.parseInt(e.getActionCommand());
-					System.out.println(indice);
 					mf.getClienteActual().getListaProductoFavorito().remove(indice);
 					mf.getClienteDAO().escribirSerializado();
 					actualizarInfo("Favoritos");
@@ -407,19 +432,19 @@ public class Controller implements ActionListener {
 				btn.setActionCommand(String.valueOf(vf.getVpc().getPc().getBotonesAnadir().indexOf(btn)));
 				btn.addActionListener(e -> {
 					int indice = Integer.parseInt(e.getActionCommand());
-					System.out.println(indice);
-					mf.getClienteActual().getCarrito().getListaCarrito().add(mf.getClienteActual().getListaProductoFavorito().remove(indice));
+					mf.getClienteActual().getCarrito().getListaCarrito().remove(indice);
 					mf.getClienteDAO().escribirSerializado();
 					actualizarInfo("Carrito");
 					asignarFuncionesComponentesProducto("Carrito");
 				});
 			}
+			break;
 		}
 		default:
 			break;
 		}
 	}
-	
+
 	public void actualizarInfo(String producto) {
 		switch (producto) {
 		case "Ocio": {
@@ -439,7 +464,11 @@ public class Controller implements ActionListener {
 			break;
 		}
 		case "Carrito": {
-			vf.getVpc().getPf().actualizarInfo(mf.getClienteActual().getCarrito().getListaCarrito());
+			vf.getVpc().getPc().actualizarInfo(mf.getClienteActual().getCarrito().getListaCarrito());
+			break;
+		}
+		case "Historial": {
+			vf.getVpc().getPh().actualizarInfo(mf.getClienteActual().getListaCarritos());
 			break;
 		}
 		default:

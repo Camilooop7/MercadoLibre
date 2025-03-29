@@ -27,7 +27,7 @@ import co.edu.unbosque.model.Producto;
 public class PanelCarrito extends JPanel {
 	private JLabel fondo;
 	private JButton btnVolver, btnComprar;
-	private JTextField precioTexto;
+	private JTextArea precioTexto;
 	
 	/** Scroll que es usado para navegar en los productos del almacen. */
     private JScrollPane scrollPane;
@@ -52,8 +52,22 @@ public class PanelCarrito extends JPanel {
 		Image fdRedim = fd.getScaledInstance(1290, 750, Image.SCALE_SMOOTH);
 		fondo.setIcon(new ImageIcon(fdRedim));
 		fondo.setBounds(0, 0, 1290, 750);
-
+		
+		btnComprar = new JButton();
+		btnComprar.setBounds(750, 600, 400, 100);
+		btnComprar.setText("Realizar compra");
+		btnComprar.setFocusable(false);
+		btnComprar.setBackground(Color.WHITE);
+		btnComprar.setForeground(Color.black);
+		btnComprar.setBackground(new Color(235, 219, 79));
+		btnComprar.setFont(new Font("Baloo", Font.BOLD, 35));
         
+		precioTexto = new JTextArea();
+		precioTexto.setBounds(750, 230, 400, 350);
+		precioTexto.setEditable(false);
+		precioTexto.setFont(new Font("Baloo", Font.BOLD, 10));
+		precioTexto.setBackground(new Color(198,195,195));
+		
         btnVolver = new JButton();
 		btnVolver.setBounds(1120, 70, 120, 70);
 		btnVolver.setFocusable(false);
@@ -74,8 +88,9 @@ public class PanelCarrito extends JPanel {
         pP.setBounds(150, 230, 1000, 500);
         pP.setBackground(Color.GREEN);
         
-        
+        add(precioTexto);
         add(btnVolver);
+        add(btnComprar);
         //add(pP);
         add(scrollPane);
         add(fondo);
@@ -91,8 +106,10 @@ public class PanelCarrito extends JPanel {
         if (cantidad == -1) {
             return;
         }
-        
+        String salidaPrecio = "";
+        int precioTotal = 0;
         for (int i = 0; i < cantidad; i++) {
+        	
             JPanel panelProducto = new JPanel();
             panelProducto.setLayout(new BorderLayout());
             panelProducto.setBorder(BorderFactory.createLineBorder(Color.BLACK));
@@ -120,7 +137,13 @@ public class PanelCarrito extends JPanel {
 
             panelProducto.add(panelBotones, BorderLayout.SOUTH);
             panelContenido.add(panelProducto);
+            
+            salidaPrecio += "\n" + listaDatos.get(i).getNombre() + ": $" + listaDatos.get(i).getPrecio();
+            precioTotal += listaDatos.get(i).getPrecio();
         }
+        salidaPrecio += "\nTotal a pagar: $" + precioTotal;
+        
+        precioTexto.setText(salidaPrecio);
     }
 
     private ImageIcon asignarImagen(Producto obj) {
@@ -195,6 +218,30 @@ public class PanelCarrito extends JPanel {
 
 	public void setBotonesAnadir(ArrayList<JButton> botonesAnadir) {
 		this.botonesEliminar = botonesAnadir;
+	}
+
+	public JButton getBtnComprar() {
+		return btnComprar;
+	}
+
+	public void setBtnComprar(JButton btnComprar) {
+		this.btnComprar = btnComprar;
+	}
+
+	public JTextArea getPrecioTexto() {
+		return precioTexto;
+	}
+
+	public void setPrecioTexto(JTextArea precioTexto) {
+		this.precioTexto = precioTexto;
+	}
+
+	public ArrayList<JButton> getBotonesEliminar() {
+		return botonesEliminar;
+	}
+
+	public void setBotonesEliminar(ArrayList<JButton> botonesEliminar) {
+		this.botonesEliminar = botonesEliminar;
 	}
     
     
