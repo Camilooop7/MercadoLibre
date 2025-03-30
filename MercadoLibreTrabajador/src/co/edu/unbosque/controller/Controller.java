@@ -1264,10 +1264,8 @@ public class Controller implements ActionListener {
 				if (mf.getCocinaDAO().encontrar(a)) {
 
 					mf.getCocinaDAO().eliminar(a);
-					vf.getVemer().mostrar("El producto fue añadido con exito");
+					vf.getVemer().mostrar("El producto fue eliminado con exito");
 					vf.getVpt().getPep().getPec().setTexto(mf.getCocinaDAO().mostrarTodo());
-					vf.getVpt().getPep().getPec().revalidate();
-					vf.getVpt().getPep().getPec().repaint();
 
 				} else {
 					vf.getVemer().mostrarError("la posicion a eliminar no esta en la lista");
@@ -1293,8 +1291,6 @@ public class Controller implements ActionListener {
 					mf.getBanoDAO().eliminar(a);
 					vf.getVemer().mostrar("El producto fue eliminado con exito");
 					vf.getVpt().getPep().getPeb().setTexto(mf.getBanoDAO().mostrarTodo());
-					vf.getVpt().getPep().getPeb().revalidate();
-					vf.getVpt().getPep().getPeb().repaint();
 
 				} else {
 					vf.getVemer().mostrarError("la posicion a eliminar no esta en la lista");
@@ -1320,8 +1316,6 @@ public class Controller implements ActionListener {
 					mf.getElectrodomesticoDAO().eliminar(a);
 					vf.getVemer().mostrar("El producto fue eliminado con exito");
 					vf.getVpt().getPep().getPee().setTexto(mf.getElectrodomesticoDAO().mostrarTodo());
-					vf.getVpt().getPep().getPee().revalidate();
-					vf.getVpt().getPep().getPee().repaint();
 
 				} else {
 					vf.getVemer().mostrarError("la posicion a eliminar no esta en la lista");
@@ -1347,9 +1341,7 @@ public class Controller implements ActionListener {
 					mf.getPapeleriaDAO().eliminar(a);
 					vf.getVemer().mostrar("El producto fue eliminado con exito");
 					vf.getVpt().getPep().getPepap().setTexto(mf.getPapeleriaDAO().mostrarTodo());
-					vf.getVpt().getPep().getPepap().revalidate();
-					vf.getVpt().getPep().getPepap().repaint();
-
+			
 				} else {
 					vf.getVemer().mostrarError("la posicion a eliminar no esta en la lista");
 
@@ -1374,8 +1366,7 @@ public class Controller implements ActionListener {
 					mf.getVideoJuegoDAO().eliminar(a);
 					vf.getVemer().mostrar("El producto fue eliminado con exito");
 					vf.getVpt().getPep().getPevj().setTexto(mf.getVideoJuegoDAO().mostrarTodo());
-					vf.getVpt().getPep().getPevj().revalidate();
-					vf.getVpt().getPep().getPevj().repaint();
+				
 
 				} else {
 					vf.getVemer().mostrarError("la posicion a eliminar no esta en la lista");
@@ -1401,8 +1392,6 @@ public class Controller implements ActionListener {
 					mf.getDeporteDAO().eliminar(a);
 					vf.getVemer().mostrar("El producto fue eliminado con exito");
 					vf.getVpt().getPep().getPedep().setTexto(mf.getDeporteDAO().mostrarTodo());
-					vf.getVpt().getPep().getPedep().revalidate();
-					vf.getVpt().getPep().getPedep().repaint();
 
 				} else {
 					vf.getVemer().mostrarError("la posicion a eliminar no esta en la lista");
