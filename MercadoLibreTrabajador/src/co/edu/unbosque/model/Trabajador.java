@@ -1,7 +1,7 @@
 package co.edu.unbosque.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.time.LocalDateTime;
 
 /** 
  * Clase Trabajador que extiende de Usuario e implementa Serializable.
@@ -9,39 +9,45 @@ import java.util.ArrayList;
 public class Trabajador extends Usuario implements Serializable{
 
     /** Lista de productos añadidos por el trabajador */
-    private ArrayList<Producto> listaProductoAnadido;
-
+   
+    private LocalDateTime fecha;
+    private String producto; 
     /** Constructor por defecto */
     public Trabajador() {
-        listaProductoAnadido = new ArrayList<>();
+      
     }
 
-    /** Constructor que recibe una lista de productos añadidos. */
-    public Trabajador(ArrayList<Producto> listaProductoAnadido) {
-        super();
-        this.listaProductoAnadido = listaProductoAnadido;
+    public Trabajador(LocalDateTime fecha, String producto) {
+    	super();
+    	this.fecha = fecha;
+    	this.producto = producto;
     }
 
-    /** Constructor que recibe nombre, contraseña y lista de productos añadidos. */
-    public Trabajador(String nombre, String contrasena, ArrayList<Producto> listaProductoAnadido) {
-        super(nombre, contrasena);
-        this.listaProductoAnadido = listaProductoAnadido;
-    }
+	public Trabajador(String nombre, String contrasena, LocalDateTime fecha, String producto) {
+		super(nombre, contrasena);
+		this.fecha = fecha;
+		this.producto = producto;
+	}
 
-    /** Constructor que recibe nombre y contraseña. */
-    public Trabajador(String nombre, String contrasena) {
-        super(nombre, contrasena);
-        // TODO Auto-generated constructor stub
-    }
+	public Trabajador(String nombre, String contrasena) {
+		super(nombre, contrasena);
+	}
 
-    /** Obtiene la lista de productos añadidos. */
-    public ArrayList<Producto> getListaProductoAnadido() {
-        return listaProductoAnadido;
-    }
+	public LocalDateTime getFecha() {
+		return fecha;
+	}
 
-    /** Establece la lista de productos añadidos. */
-    public void setListaProductoAnadido(ArrayList<Producto> listaProductoAnadido) {
-        this.listaProductoAnadido = listaProductoAnadido;
-    }
+	public void setFecha(LocalDateTime fecha) {
+		this.fecha = fecha;
+	}
+
+	public String getProducto() {
+		return producto;
+	}
+
+	public void setProducto(String producto) {
+		this.producto = producto;
+	}
+	
 }
 

@@ -35,7 +35,7 @@ import co.edu.unbosque.view.ViewFacade;
 public class Controller implements ActionListener {
 	private ModelFacade mf;
 	private ViewFacade vf;
-	private Trabajador trabajadorActual;
+	private Trabajador tActual;
 
 	public Controller() throws IOException {
 		FileManager.crearCarpeta();
@@ -244,7 +244,7 @@ public class Controller implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 
 		switch (e.getActionCommand()) {
-
+			
 		case "btnIniciarS": {
 			vf.getVpt().getPpt().setVisible(false);
 			vf.getVpt().getPis().setVisible(true);
@@ -266,6 +266,7 @@ public class Controller implements ActionListener {
 
 			String usuario = (String) vf.getVpt().getPis().getNombreUsuario();
 			String contrasena = (String) vf.getVpt().getPis().getContrasena();
+			LocalDateTime a = LocalDateTime.now();
 			try {
 				ExceptionCheker.checkerCharacter(usuario);
 				ExceptionCheker.checkerPasword(contrasena);
@@ -273,10 +274,10 @@ public class Controller implements ActionListener {
 				if (mf.getTrabajadorDAO().encontrarUsuario(usuario, contrasena) != null) {
 
 					vf.getVemer().mostrar("Inicio Exitoso");
+					
 					vf.getVpt().getPis().setVisible(false);
 					vf.getVpt().getPt().setVisible(true);
-					trabajadorActual = mf.getTrabajadorDAO().encontrarUsuario(usuario, contrasena);
-
+					mf.getTrabajadorDAO().crear(new Trabajador((String) vf.getVpt().getPis().getNombreUsuario(),"",a,""));
 				} else {
 					vf.getVemer().mostrarError("Contraseña o Nombre incorrecto, verifiquelos o cree una cuenta");
 				}
@@ -755,6 +756,7 @@ public class Controller implements ActionListener {
 				// Crear el objeto Cocina con la URL de la imagen
 				mf.getCocinaDAO().crear(new Cocina(nombre, precio, id, fecha, imagen, esDecoracion,
 						resisteAltaTemperatuta, esPeligroso));
+				mf.getTrabajadorDAO().crear(new Trabajador((String) vf.getVpt().getPis().getNombreUsuario(), "", a, nombre)); 
 				vf.getVemer().mostrar("El producto fue añadido con exito");
 
 			} catch (NegativeNumberException e2) {
@@ -838,6 +840,7 @@ public class Controller implements ActionListener {
 				// Crear el objeto Cocina con la URL de la imagen
 				mf.getBanoDAO().crear(new Bano(nombre, precio, id, fecha, imagen, esDecoracion, esLimpieza));
 				vf.getVemer().mostrar("El producto fue añadido con exito");
+				mf.getTrabajadorDAO().crear(new Trabajador((String) vf.getVpt().getPis().getNombreUsuario(), "", a, nombre)); 
 
 			} catch (NegativeNumberException e2) {
 				vf.getVemer().mostrarError("Número no válido.");
@@ -911,6 +914,7 @@ public class Controller implements ActionListener {
 				mf.getElectrodomesticoDAO()
 						.crear(new Electrodomestico(nombre, precio, id, fecha, imagen, esPortatil, fuenteEnergia));
 				vf.getVemer().mostrar("El producto fue añadido con exito");
+				mf.getTrabajadorDAO().crear(new Trabajador((String) vf.getVpt().getPis().getNombreUsuario(), "", a, nombre)); 
 
 			} catch (NegativeNumberException e2) {
 				vf.getVemer().mostrarError("Número no válido.");
@@ -984,6 +988,7 @@ public class Controller implements ActionListener {
 				mf.getPapeleriaDAO()
 						.crear(new Papeleria(nombre, precio, id, fecha, imagen, esPortatil, cantidadPaquete));
 				vf.getVemer().mostrar("El producto fue añadido con exito");
+				mf.getTrabajadorDAO().crear(new Trabajador((String) vf.getVpt().getPis().getNombreUsuario(), "", a, nombre)); 
 
 			} catch (NegativeNumberException e2) {
 				vf.getVemer().mostrarError("Número no válido.");
@@ -1058,6 +1063,7 @@ public class Controller implements ActionListener {
 				mf.getVideoJuegoDAO()
 						.crear(new VideoJuego(nombre, precio, id, fecha, imagen, esAccesorio, referenciaConsola));
 				vf.getVemer().mostrar("El producto fue añadido con exito");
+				mf.getTrabajadorDAO().crear(new Trabajador((String) vf.getVpt().getPis().getNombreUsuario(), "", a, nombre)); 
 
 			} catch (NegativeNumberException e2) {
 				vf.getVemer().mostrarError("Número no válido.");
@@ -1134,6 +1140,7 @@ public class Controller implements ActionListener {
 				// Crear el objeto Cocina con la URL de la imagen
 				mf.getDeporteDAO().crear(new Deporte(nombre, precio, id, fecha, imagen, esAccesorio, deporte));
 				vf.getVemer().mostrar("El producto fue añadido con exito");
+				mf.getTrabajadorDAO().crear(new Trabajador((String) vf.getVpt().getPis().getNombreUsuario(), "", a, nombre)); 
 
 			} catch (NegativeNumberException e2) {
 				vf.getVemer().mostrarError("Número no válido.");
