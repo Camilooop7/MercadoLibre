@@ -55,8 +55,6 @@ public class Controller implements ActionListener {
 		vf.getVpt().getPpt().getBtnIniciarS().setActionCommand("btnIniciarS");
 		vf.getVpt().getPpt().getBtnCrearU().addActionListener(this);
 		vf.getVpt().getPpt().getBtnCrearU().setActionCommand("btnCrearU");
-		vf.getVpt().getPpt().getBtnCrearU().addActionListener(this);
-		vf.getVpt().getPpt().getBtnCrearU().setActionCommand("btnCrearU");
 		vf.getVpt().getPpt().getBtnSalir().addActionListener(this);
 		vf.getVpt().getPpt().getBtnSalir().setActionCommand("btnSalir");
 
@@ -377,15 +375,6 @@ public class Controller implements ActionListener {
 		}
 		case "btnAnadir": {
 			vf.getVpt().getPt().setVisible(false);
-			vf.getVpt().getPap().getPah().setVisible(false);
-			vf.getVpt().getPap().getPaoc().setVisible(false);
-			vf.getVpt().getPap().getPaof().setVisible(false);
-			vf.getVpt().getPap().getPae().setVisible(false);
-			vf.getVpt().getPap().getPapape().setVisible(false);
-			vf.getVpt().getPap().getPavj().setVisible(false);
-			vf.getVpt().getPap().getPade().setVisible(false);
-			vf.getVpt().getPap().getPaco().setVisible(false);
-			vf.getVpt().getPap().getPaba().setVisible(false);
 			vf.getVpt().getPap().setVisible(true);
 
 			break;
@@ -485,35 +474,13 @@ public class Controller implements ActionListener {
 		case "btnModificarP": {
 			vf.getVpt().getPt().setVisible(false);
 			vf.getVpt().getPapro().setVisible(true);
-			vf.getVpt().getPapro().getPaof().setVisible(false);
-			vf.getVpt().getPapro().getPah().setVisible(false);
-			vf.getVpt().getPapro().getPaoc().setVisible(false);
-			vf.getVpt().getPapro().getPaco().setVisible(false);
-			vf.getVpt().getPapro().getPac().setVisible(false);
-			vf.getVpt().getPapro().getPab().setVisible(false);
-			vf.getVpt().getPapro().getPaba().setVisible(false);
-			vf.getVpt().getPapro().getPae().setVisible(false);
-			vf.getVpt().getPapro().getPaelec().setVisible(false);
-			vf.getVpt().getPapro().getPapape().setVisible(false);
-			vf.getVpt().getPapro().getPapap().setVisible(false);
-			vf.getVpt().getPapro().getPavj().setVisible(false);
-			vf.getVpt().getPapro().getPagvj().setVisible(false);
-			vf.getVpt().getPapro().getPadep().setVisible(false);
-			vf.getVpt().getPapro().getPadepor().setVisible(false);
+			
 			break;
 		}
 		case "btnEliminarP": {
 			vf.getVpt().getPt().setVisible(false);
 			vf.getVpt().getPep().setVisible(true);
-			vf.getVpt().getPep().getPaoc().setVisible(false);
-			vf.getVpt().getPep().getPaof().setVisible(false);
-			vf.getVpt().getPep().getPeb().setVisible(false);
-			vf.getVpt().getPep().getPec().setVisible(false);
-			vf.getVpt().getPep().getPedep().setVisible(false);
-			vf.getVpt().getPep().getPee().setVisible(false);
-			vf.getVpt().getPep().getPepap().setVisible(false);
-			vf.getVpt().getPep().getPevj().setVisible(false);
-			vf.getVpt().getPep().getPah().setVisible(false);
+			
 
 			break;
 		}
@@ -685,12 +652,25 @@ public class Controller implements ActionListener {
 
 			vf.getVpt().getPmu().setVisible(false);
 			vf.getVpt().getPt().setVisible(true);
+			vf.getVpt().getPmu().getPmt().setVisible(false);
+			vf.getVpt().getPmu().getPmc().setVisible(false);
+			vf.getVpt().getPmu().getPmu().setVisible(false);
+
 			break;
 
 		}
 		case "btnVolverAna": {
 
 			vf.getVpt().getPap().setVisible(false);
+			vf.getVpt().getPap().getPah().setVisible(false);
+			vf.getVpt().getPap().getPaoc().setVisible(false);
+			vf.getVpt().getPap().getPaof().setVisible(false);
+			vf.getVpt().getPap().getPae().setVisible(false);
+			vf.getVpt().getPap().getPapape().setVisible(false);
+			vf.getVpt().getPap().getPavj().setVisible(false);
+			vf.getVpt().getPap().getPade().setVisible(false);
+			vf.getVpt().getPap().getPaco().setVisible(false);
+			vf.getVpt().getPap().getPaba().setVisible(false);
 			vf.getVpt().getPt().setVisible(true);
 			break;
 
@@ -1169,9 +1149,6 @@ public class Controller implements ActionListener {
 		case "btnVolverEliminar": {
 			vf.getVpt().getPep().setVisible(false);
 			vf.getVpt().getPt().setVisible(true);
-			break;
-		}
-		case "btnEliminarHogar": {
 			vf.getVpt().getPep().getPaoc().setVisible(false);
 			vf.getVpt().getPep().getPaof().setVisible(false);
 			vf.getVpt().getPep().getPeb().setVisible(false);
@@ -1180,19 +1157,31 @@ public class Controller implements ActionListener {
 			vf.getVpt().getPep().getPee().setVisible(false);
 			vf.getVpt().getPep().getPepap().setVisible(false);
 			vf.getVpt().getPep().getPevj().setVisible(false);
+			vf.getVpt().getPep().getPah().setVisible(false);
+			break;
+		}
+		case "btnEliminarHogar": {
+			vf.getVpt().getPep().getPaoc().setVisible(false);
+			vf.getVpt().getPep().getPevj().setVisible(false);
+			vf.getVpt().getPep().getPedep().setVisible(false);
+			vf.getVpt().getPep().getPaof().setVisible(false);
+			vf.getVpt().getPep().getPepap().setVisible(false);
+			vf.getVpt().getPep().getPee().setVisible(false);
+			vf.getVpt().getPep().getPeb().setVisible(false);
+			vf.getVpt().getPep().getPec().setVisible(false);
 			vf.getVpt().getPep().getPah().setVisible(true);
 
 			break;
 		}
 		case "btnEliminarOficina": {
-			vf.getVpt().getPep().getPaoc().setVisible(false);
 			vf.getVpt().getPep().getPah().setVisible(false);
 			vf.getVpt().getPep().getPeb().setVisible(false);
 			vf.getVpt().getPep().getPec().setVisible(false);
+			vf.getVpt().getPep().getPaoc().setVisible(false);
 			vf.getVpt().getPep().getPedep().setVisible(false);
-			vf.getVpt().getPep().getPee().setVisible(false);
-			vf.getVpt().getPep().getPepap().setVisible(false);
 			vf.getVpt().getPep().getPevj().setVisible(false);
+			vf.getVpt().getPep().getPepap().setVisible(false);
+			vf.getVpt().getPep().getPee().setVisible(false);
 			vf.getVpt().getPep().getPaof().setVisible(true);
 
 			break;
@@ -1424,11 +1413,27 @@ public class Controller implements ActionListener {
 				vf.getVemer().mostrarError("Numero no valido.");
 				e1.printStackTrace();
 			}
+			break;
 		}
 
 		case "btnVolverActualizar": {
 			vf.getVpt().getPapro().setVisible(false);
 			vf.getVpt().getPt().setVisible(true);
+			vf.getVpt().getPapro().getPaof().setVisible(false);
+			vf.getVpt().getPapro().getPah().setVisible(false);
+			vf.getVpt().getPapro().getPaoc().setVisible(false);
+			vf.getVpt().getPapro().getPaco().setVisible(false);
+			vf.getVpt().getPapro().getPac().setVisible(false);
+			vf.getVpt().getPapro().getPab().setVisible(false);
+			vf.getVpt().getPapro().getPaba().setVisible(false);
+			vf.getVpt().getPapro().getPae().setVisible(false);
+			vf.getVpt().getPapro().getPaelec().setVisible(false);
+			vf.getVpt().getPapro().getPapape().setVisible(false);
+			vf.getVpt().getPapro().getPapap().setVisible(false);
+			vf.getVpt().getPapro().getPavj().setVisible(false);
+			vf.getVpt().getPapro().getPagvj().setVisible(false);
+			vf.getVpt().getPapro().getPadep().setVisible(false);
+			vf.getVpt().getPapro().getPadepor().setVisible(false);
 			break;
 		}
 		case "btnActualizarHogar": {
