@@ -2,8 +2,12 @@ package co.edu.unbosque.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Properties;
 
 import javax.swing.JButton;
 
@@ -26,11 +30,22 @@ import co.edu.unbosque.view.ViewFacade;
 public class Controller implements ActionListener {
 	private ModelFacade mf;
 	private ViewFacade vf;
-
+	private Properties prop;
+	
 	public Controller() throws IOException {
+		prop = new Properties();
+		
+		try {
+			prop.load(new FileInputStream(new File("src/archivos/english.properties")));
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
 		FileManager.crearCarpeta();
 		mf = new ModelFacade();
-		vf = new ViewFacade();
+		vf = new ViewFacade(prop);
 		asignarLectores();
 	}
 
@@ -47,6 +62,10 @@ public class Controller implements ActionListener {
 		vf.getVpc().getPpc().getBtnCrearU().setActionCommand("btnCrearU");
 		vf.getVpc().getPpc().getBtnSalir().addActionListener(this);
 		vf.getVpc().getPpc().getBtnSalir().setActionCommand("btnSalir");
+		vf.getVpc().getPpc().getBtnEspanol().addActionListener(this);
+		vf.getVpc().getPpc().getBtnEspanol().setActionCommand("espanol");
+		vf.getVpc().getPpc().getBtnIngles().addActionListener(this);
+		vf.getVpc().getPpc().getBtnIngles().setActionCommand("ingles");
 
 		vf.getVpc().getPis().getBtnIngresar().addActionListener(this);
 		vf.getVpc().getPis().getBtnIngresar().setActionCommand("btnIngresarI");
@@ -119,7 +138,7 @@ public class Controller implements ActionListener {
 		}
 		case "btnSalir": {
 			vf.getVpc().setVisible(false);
-
+			System.exit(0);
 			break;
 		}
 		case "btnIngresarI": {
@@ -138,7 +157,7 @@ public class Controller implements ActionListener {
 				
 				
 			} else {
-				vf.getVemer().mostrar("Problema en el usuario o contraseña.");
+				vf.getVemer().mostrar(prop.getProperty("archivospropiedad.emergente.errorsesion"));
 			}
 
 			break;
@@ -184,22 +203,22 @@ public class Controller implements ActionListener {
 				}
 
 				mf.getClienteDAO().crear(new Cliente(usuario, contrasena1));
-				vf.getVemer().mostrar("Usuario creado con exito, Regrese al menu para iniciar sesión.");
+				vf.getVemer().mostrar(prop.getProperty("archivospropiedad.emergente.correctosesion"));
 
 			} catch (CharacterException e1) {
-				vf.getVemer().mostrar("No cumple los requisitos de caracteres.");
+				vf.getVemer().mostrar(prop.getProperty("archivospropiedad.emergente.caracteres"));
 			} catch (EqualPasswordException e1) {
-				vf.getVemer().mostrar("Las contraseñas no son iguales.");
+				vf.getVemer().mostrar(prop.getProperty("archivospropiedad.emergente.contrasenasdiferentes"));
 			} catch (CapitalException e1) {
-				vf.getVemer().mostrar("Debe contener al menos una mayuscula.");
+				vf.getVemer().mostrar(prop.getProperty("archivospropiedad.emergente.mayus"));
 			} catch (SmallException e1) {
-				vf.getVemer().mostrar("Debe contener al menos una minuscula.");
+				vf.getVemer().mostrar(prop.getProperty("archivospropiedad.emergente.minus"));
 			} catch (NumberException e1) {
-				vf.getVemer().mostrar("Debe contener al menos un número.");
+				vf.getVemer().mostrar(prop.getProperty("archivospropiedad.emergente.numero"));
 			} catch (SymbolException e1) {
-				vf.getVemer().mostrar("Debe contener al menos un simbolo.");
+				vf.getVemer().mostrar(prop.getProperty("archivospropiedad.emergente.simbolo"));
 			} catch (UsernameException e1) {
-				vf.getVemer().mostrar("Ya existe otro usuario con ese nombre.");
+				vf.getVemer().mostrar(prop.getProperty("archivospropiedad.emergente.usuariorepetido"));
 			}
 
 			break;
@@ -271,7 +290,7 @@ public class Controller implements ActionListener {
 		}
 		case "btnCarrito": {
 			if (mf.getClienteActual().getCarrito() == null) {
-				vf.getVemer().mostrar("Todavia no tiene ningun carrito creado.");
+				vf.getVemer().mostrar(prop.getProperty("archivospropiedad.emergente.nocarrito"));
 			} else {
 				vf.getVpc().getPc().actualizarInfo(mf.getClienteActual().getCarrito().getListaCarrito());
 				vf.getVpc().getPcm().setVisible(false);
@@ -287,14 +306,14 @@ public class Controller implements ActionListener {
 		}
 		case "btnCarritoComprar": {
 			if(mf.getClienteActual().getCarrito().getListaCarrito().size() <= 0) {
-				vf.getVemer().mostrar("El carrito está vacio");
+				vf.getVemer().mostrar(prop.getProperty("archivospropiedad.emergente.carrovacio"));
 				break;
 			}
 			mf.getClienteActual().getListaCarritos().add(mf.getClienteActual().getCarrito());
 			mf.getClienteActual().setCarrito(null);
 			vf.getVpc().getPcm().setVisible(true);
 			vf.getVpc().getPc().setVisible(false);
-			vf.getVemer().mostrar("Compra realizada");
+			vf.getVemer().mostrar(prop.getProperty("archivospropiedad.emergente.comprahecha"));
 			break;
 		}
 		case "btnHistorial": {
@@ -312,6 +331,38 @@ public class Controller implements ActionListener {
 			mf.getClienteActual().getListaCarritos().removeAll(mf.getClienteActual().getListaCarritos());
 			vf.getVpc().getPh().actualizarInfo(mf.getClienteActual().getListaCarritos());
 			mf.getClienteDAO().escribirSerializado();
+			break;
+		}
+		case "espanol":{
+			try {
+				prop.load(new FileInputStream(new File("src/archivos/espanol.properties")));
+			} catch (FileNotFoundException o) {
+				o.printStackTrace();
+			} catch (IOException o) {
+				o.printStackTrace();
+			}
+			try {
+				vf.getVpc().refrescarUI(prop);
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			break;
+		}
+		case "ingles":{
+			try {
+				prop.load(new FileInputStream(new File("src/archivos/english.properties")));
+			} catch (FileNotFoundException o) {
+				o.printStackTrace();
+			} catch (IOException o) {
+				o.printStackTrace();
+			}
+			try {
+				vf.getVpc().refrescarUI(prop);
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			break;
 		}
 		}
@@ -336,6 +387,7 @@ public class Controller implements ActionListener {
 					}
 					actualizarInfo("Ocio");
 					asignarFuncionesComponentesProducto("Ocio");
+		            vf.getVemer().mostrar(prop.getProperty("archivospropiedad.emergente.anadidoc"));
 				});
 			}
 
@@ -347,6 +399,7 @@ public class Controller implements ActionListener {
 					mf.getClienteDAO().escribirSerializado();
 					actualizarInfo("Ocio");
 					asignarFuncionesComponentesProducto("Ocio");
+		            vf.getVemer().mostrar(prop.getProperty("archivospropiedad.emergente.anadidof"));
 				});
 			}
 			break;
@@ -369,6 +422,7 @@ public class Controller implements ActionListener {
 								.add(mf.generarProductosHogar().get(indice));
 						mf.getClienteDAO().escribirSerializado();
 					}
+		            vf.getVemer().mostrar(prop.getProperty("archivospropiedad.emergente.anadidoc"));
 					actualizarInfo("Hogar");
 					asignarFuncionesComponentesProducto("Hogar");
 				});
@@ -380,6 +434,7 @@ public class Controller implements ActionListener {
 					int indice = Integer.parseInt(e.getActionCommand());
 					mf.getClienteActual().getListaProductoFavorito().add(mf.generarProductosHogar().get(indice));
 					actualizarInfo("Hogar");
+		            vf.getVemer().mostrar(prop.getProperty("archivospropiedad.emergente.anadidof"));
 					asignarFuncionesComponentesProducto("Hogar");
 					mf.getClienteDAO().escribirSerializado();
 				});
@@ -404,6 +459,7 @@ public class Controller implements ActionListener {
 								.add(mf.generarProductosOficina().get(indice));
 						mf.getClienteDAO().escribirSerializado();
 					}
+		            vf.getVemer().mostrar(prop.getProperty("archivospropiedad.emergente.anadidoc"));
 					actualizarInfo("Oficina");
 					asignarFuncionesComponentesProducto("Oficina");
 				});
@@ -417,6 +473,7 @@ public class Controller implements ActionListener {
 					mf.getClienteActual().getListaProductoFavorito().add(mf.generarProductosOficina().get(indice));
 					mf.getClienteDAO().escribirSerializado();
 					actualizarInfo("Oficina");
+		            vf.getVemer().mostrar(prop.getProperty("archivospropiedad.emergente.anadidof"));
 					asignarFuncionesComponentesProducto("Oficina");
 				});
 			}
@@ -437,6 +494,7 @@ public class Controller implements ActionListener {
 								.add(mf.getClienteActual().getListaProductoFavorito().get(indice));
 						mf.getClienteDAO().escribirSerializado();
 					}
+		            vf.getVemer().mostrar(prop.getProperty("archivospropiedad.emergente.anadidoc"));
 					actualizarInfo("Favoritos");
 					asignarFuncionesComponentesProducto("Favoritos");
 				});
@@ -482,6 +540,7 @@ public class Controller implements ActionListener {
 		            }
 		            mf.getClienteActual().getCarrito().getListaCarrito().add(recomendados.get(indice));
 		            mf.getClienteDAO().escribirSerializado();
+		            vf.getVemer().mostrar(prop.getProperty("archivospropiedad.emergente.anadidoc"));
 		        });
 		    }
 		    
@@ -493,6 +552,7 @@ public class Controller implements ActionListener {
 		            
 		            mf.getClienteActual().getListaProductoFavorito().add(recomendados.get(indice));
 		            mf.getClienteDAO().escribirSerializado();
+		            vf.getVemer().mostrar(prop.getProperty("archivospropiedad.emergente.anadidof"));
 		        });
 		    }
 		    break;

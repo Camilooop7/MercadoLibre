@@ -10,6 +10,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Properties;
 
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
@@ -35,12 +36,14 @@ public class PanelFavorito extends JPanel{
     private ArrayList<JButton> botonesAnadir;
     /** Botón para eliminar un producto del almacen. */
     private ArrayList<JButton> botonesFav;
+	private Properties prop;
 
     /**
      * Constructor que configura el panel con desplazamiento vertical.
      * @throws IOException 
      */
-    public PanelFavorito() throws IOException {
+    public PanelFavorito(Properties prop) throws IOException {
+    	this.prop = prop;
     	setBounds(0, 0, 1290, 750);
         botonesAnadir = new ArrayList<>();
         botonesFav = new ArrayList<>();
@@ -50,7 +53,7 @@ public class PanelFavorito extends JPanel{
         panelContenido.setLayout(new GridLayout(0, 1, 10, 10));
         
 		fondo = new JLabel();
-		BufferedImage fd = ImageIO.read(new File("src/co/edu/unbosque/view/Fondoa.png"));
+		BufferedImage fd = ImageIO.read(new File(prop.getProperty("archivospropiedad.fondo.fondovolver")));
 		ImageIcon imagenFondo = new ImageIcon(fd);
 		Image fdRedim = fd.getScaledInstance(1290, 750, Image.SCALE_SMOOTH);
 		fondo.setIcon(new ImageIcon(fdRedim));
@@ -63,6 +66,7 @@ public class PanelFavorito extends JPanel{
 		btnVolver.setBackground(new Color(0, 0, 0));
 		btnVolver.setContentAreaFilled(false);
 		btnVolver.setOpaque(false);
+		btnVolver.setBorderPainted(false);
 		btnVolver.setVisible(true);
 
         agregarProductos(-1, new ArrayList<>());
@@ -83,7 +87,14 @@ public class PanelFavorito extends JPanel{
         add(scrollPane);
         add(fondo);
     }
-
+    
+    public void actualizarComps() throws IOException {
+    	BufferedImage fd = ImageIO.read(new File(prop.getProperty("archivospropiedad.fondo.fondovolver")));
+		ImageIcon imagenFondo = new ImageIcon(fd);
+		Image fdRedim = fd.getScaledInstance(1290, 750, Image.SCALE_SMOOTH);
+		fondo.setIcon(new ImageIcon(fdRedim));
+    }
+    
     /**
      * Agrega productos con sus botones correspondientes.
      * 
@@ -112,10 +123,10 @@ public class PanelFavorito extends JPanel{
             panelProducto.add(txtAreaInfo, BorderLayout.WEST);
 
             JPanel panelBotones = new JPanel(new FlowLayout(FlowLayout.CENTER));
-            JButton btnAgregar = new JButton("Añadir al Carrito");
+            JButton btnAgregar = new JButton(prop.getProperty("archivospropiedad.boton.carritomas"));
             btnAgregar.setBackground(new Color(235, 219, 79));
             btnAgregar.setFont(new Font("Baloo", Font.BOLD, 15));
-            JButton btnFavoritos = new JButton("Eliminar de Favoritos");
+            JButton btnFavoritos = new JButton(prop.getProperty("archivospropiedad.boton.favoritomenos"));
             btnFavoritos.setBackground(new Color(235, 219, 79));
             btnFavoritos.setFont(new Font("Baloo", Font.BOLD, 15));
             
@@ -188,6 +199,14 @@ public class PanelFavorito extends JPanel{
 
 	public void setScrollPane(JScrollPane scrollPane) {
 		this.scrollPane = scrollPane;
+	}
+
+	public Properties getProp() {
+		return prop;
+	}
+
+	public void setProp(Properties prop) {
+		this.prop = prop;
 	}
 
 	public JPanel getPanelContenido() {

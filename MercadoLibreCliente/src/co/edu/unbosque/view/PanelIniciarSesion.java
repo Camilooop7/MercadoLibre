@@ -6,6 +6,7 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Properties;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -27,13 +28,15 @@ public class PanelIniciarSesion extends JPanel {
 	private JLabel textContra;
 	private JLabel textEstandar;
 	private JCheckBox mostrarContrasena;
+	private Properties prop;
 
-	public PanelIniciarSesion() throws IOException {
+	public PanelIniciarSesion(Properties prop) throws IOException {
+    	this.prop = prop;
 		setBounds(0, 0, 1290, 750);
 		setLayout(null);
 
 		fondo = new JLabel();
-		BufferedImage fd = ImageIO.read(new File("src/co/edu/unbosque/view/FondoC.png"));
+		BufferedImage fd = ImageIO.read(new File(prop.getProperty("archivospropiedad.fondo.fondovacio")));
 		ImageIcon imagenFondo = new ImageIcon(fd);
 		Image fdRedim = fd.getScaledInstance(1290, 750, Image.SCALE_SMOOTH);
 		fondo.setIcon(new ImageIcon(fdRedim));
@@ -41,7 +44,7 @@ public class PanelIniciarSesion extends JPanel {
 
 		btnVolver = new JButton();
 		btnVolver.setBounds(800, 530, 170, 50);
-		btnVolver.setText("Volver");
+		btnVolver.setText(prop.getProperty("archivospropiedad.boton.volver"));
 		btnVolver.setFocusable(false);
 		btnVolver.setForeground(Color.black);
 		btnVolver.setBackground(new Color(246, 86, 86));
@@ -50,7 +53,7 @@ public class PanelIniciarSesion extends JPanel {
 
 		btnIngresar = new JButton();
 		btnIngresar.setBounds(480, 530, 320, 50);
-		btnIngresar.setText("Ingresar");
+		btnIngresar.setText(prop.getProperty("archivospropiedad.boton.ingresar"));
 		btnIngresar.setFocusable(false);
 		btnIngresar.setForeground(Color.black);
 		btnIngresar.setBackground(new Color(235, 219, 79));
@@ -67,23 +70,34 @@ public class PanelIniciarSesion extends JPanel {
 		contrasena.setFont(new Font("Baloo", Font.BOLD, 26));
 		mostrarContrasena= new JCheckBox();
 		mostrarContrasena.setBounds(980, 420, 20, 20);
+		mostrarContrasena.setOpaque(false);
+		mostrarContrasena.setContentAreaFilled(false);
+		mostrarContrasena.setBorderPainted(false);
+		mostrarContrasena.setFocusPainted(false);
 		add(mostrarContrasena);
 		add(contrasena);
 
 		textNombre = new JLabel();
-		textNombre.setBounds(230, 300, 400, 60);
-		textNombre.setText("Nombre de usuario:");
+		textNombre.setBounds(340, 300, 400, 60);
+		textNombre.setText(prop.getProperty("archivospropiedad.texto.usuario"));
 		textNombre.setFont(new Font("Baloo", Font.BOLD, 26));
 		add(textNombre);
 
 		textContra = new JLabel();
 		textContra.setBounds(324, 400, 400, 60);
-		textContra.setText("Contraseña: ");
+		textContra.setText(prop.getProperty("archivospropiedad.texto.contrasena"));
 		textContra.setFont(new Font("Baloo", Font.BOLD, 26));
 		add(textContra);
 
 		add(fondo);
 
+	}
+	
+	public void actualizarComps() {
+		btnVolver.setText(prop.getProperty("archivospropiedad.boton.volver"));
+		btnIngresar.setText(prop.getProperty("archivospropiedad.boton.ingresar"));
+		textNombre.setText(prop.getProperty("archivospropiedad.texto.usuario"));
+		textContra.setText(prop.getProperty("archivospropiedad.texto.contrasena"));
 	}
 
 	public JLabel getFondo() {
@@ -162,6 +176,14 @@ public class PanelIniciarSesion extends JPanel {
 
 	public void setMostrarContrasena(JCheckBox mostrarContrasena) {
 		this.mostrarContrasena = mostrarContrasena;
+	}
+
+	public Properties getProp() {
+		return prop;
+	}
+
+	public void setProp(Properties prop) {
+		this.prop = prop;
 	}
 
 }

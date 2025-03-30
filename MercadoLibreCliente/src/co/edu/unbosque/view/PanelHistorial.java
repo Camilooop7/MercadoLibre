@@ -11,6 +11,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Properties;
 
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
@@ -37,8 +38,10 @@ public class PanelHistorial extends JPanel {
     private ArrayList<JButton> botonesAnadir;
     /** Botón para eliminar un producto del almacen. */
     private ArrayList<JButton> botonesFav;
+	private Properties prop;
 	
-    public PanelHistorial() throws IOException {
+    public PanelHistorial(Properties prop) throws IOException {
+    	this.prop = prop;
         setBounds(0, 0, 1290, 750);
         botonesAnadir = new ArrayList<>();
         botonesFav = new ArrayList<>();
@@ -48,7 +51,7 @@ public class PanelHistorial extends JPanel {
         panelContenido.setLayout(new GridLayout(0, 1, 10, 10));
 
         fondo = new JLabel();
-        BufferedImage fd = ImageIO.read(new File("src/co/edu/unbosque/view/Fondoa.png"));
+        BufferedImage fd = ImageIO.read(new File(prop.getProperty("archivospropiedad.fondo.fondovolver")));
         ImageIcon imagenFondo = new ImageIcon(fd.getScaledInstance(1290, 750, Image.SCALE_SMOOTH));
         fondo.setIcon(imagenFondo);
         fondo.setBounds(0, 0, 1290, 750);
@@ -56,7 +59,7 @@ public class PanelHistorial extends JPanel {
 
         btnLimpiar = new JButton();
         btnLimpiar.setBounds(1050, 600, 200, 100);
-        btnLimpiar.setText("Limpiar historial");
+        btnLimpiar.setText(prop.getProperty("archivospropiedad.boton.limpiar"));
         btnLimpiar.setFocusable(false);
 		btnLimpiar.setBackground(Color.WHITE);
 		btnLimpiar.setForeground(Color.black);
@@ -67,6 +70,7 @@ public class PanelHistorial extends JPanel {
         btnVolver.setBounds(1120, 70, 120, 70);
         btnVolver.setFocusable(false);
         btnVolver.setBackground(new Color(0, 0, 0));
+		btnVolver.setBorderPainted(false);
         btnVolver.setContentAreaFilled(false);
         btnVolver.setOpaque(false);
 
@@ -80,7 +84,14 @@ public class PanelHistorial extends JPanel {
         add(scrollPrincipal);
         add(fondo);
     }
-
+    
+    public void actualizarComps() throws IOException {
+        BufferedImage fd = ImageIO.read(new File(prop.getProperty("archivospropiedad.fondo.fondovolver")));
+        ImageIcon imagenFondo = new ImageIcon(fd.getScaledInstance(1290, 750, Image.SCALE_SMOOTH));
+        fondo.setIcon(imagenFondo);
+        btnLimpiar.setText(prop.getProperty("archivospropiedad.boton.limpiar"));
+    }
+    
     public void agregarProductos(int cantidad, ArrayList<Carrito> listaDatos) {
         if (cantidad == -1) {
             return;
@@ -214,6 +225,14 @@ public class PanelHistorial extends JPanel {
 
 	public void setBtnLimpiar(JButton btnLimpiar) {
 		this.btnLimpiar = btnLimpiar;
+	}
+
+	public Properties getProp() {
+		return prop;
+	}
+
+	public void setProp(Properties prop) {
+		this.prop = prop;
 	}
     
 }

@@ -10,6 +10,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Properties;
 
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
@@ -38,14 +39,16 @@ public class PanelClienteMenu extends JPanel {
     private ArrayList<JButton> botonesAnadir;
     /** Botón para eliminar un producto del almacen. */
     private ArrayList<JButton> botonesFav;
+	private Properties prop;
 	
-	public PanelClienteMenu() throws IOException {
+	public PanelClienteMenu(Properties prop) throws IOException {
+    	this.prop = prop;
 		
 		setBounds(0, 0, 1290, 750);
 		setLayout(null);
 
 		fondo = new JLabel();
-		BufferedImage fd = ImageIO.read(new File("src/co/edu/unbosque/view/FondoCMenu.png"));
+		BufferedImage fd = ImageIO.read(new File(prop.getProperty("archivospropiedad.fondo.fondomenu")));
 		ImageIcon imagenFondo = new ImageIcon(fd);
 		Image fdRedim = fd.getScaledInstance(1290, 750, Image.SCALE_SMOOTH);
 		fondo.setIcon(new ImageIcon(fdRedim));
@@ -57,7 +60,7 @@ public class PanelClienteMenu extends JPanel {
 		btnVolver.setBackground(new Color(0, 0, 0));
 		btnVolver.setContentAreaFilled(false);
 		btnVolver.setOpaque(false);
-		//btnVolver.setBorderPainted(false);
+		btnVolver.setBorderPainted(false);
 		btnVolver.setVisible(true);
 		add(btnVolver);
 		
@@ -67,6 +70,7 @@ public class PanelClienteMenu extends JPanel {
 		btnCarrito.setBackground(new Color(0, 0, 0));
 		btnCarrito.setContentAreaFilled(false);
 		btnCarrito.setOpaque(false);
+		btnCarrito.setBorderPainted(false);
 		btnCarrito.setVisible(true);
 		add(btnCarrito);
 
@@ -76,6 +80,7 @@ public class PanelClienteMenu extends JPanel {
 		btnHistorial.setBackground(new Color(0, 0, 0));
 		btnHistorial.setContentAreaFilled(false);
 		btnHistorial.setOpaque(false);
+		btnHistorial.setBorderPainted(false);
 		btnHistorial.setVisible(true);
 		add(btnHistorial);
 		
@@ -86,6 +91,7 @@ public class PanelClienteMenu extends JPanel {
 		btnTienda.setContentAreaFilled(false);
 		btnTienda.setOpaque(false);
 		btnTienda.setVisible(true);
+		btnTienda.setBorderPainted(false);
 		add(btnTienda);
 		
 		btnFavoritos = new JButton();
@@ -95,6 +101,7 @@ public class PanelClienteMenu extends JPanel {
 		btnFavoritos.setContentAreaFilled(false);
 		btnFavoritos.setOpaque(false);
 		btnFavoritos.setVisible(true);
+		btnFavoritos.setBorderPainted(false);
 		add(btnFavoritos);
 		
 
@@ -112,6 +119,13 @@ public class PanelClienteMenu extends JPanel {
 
         add(scrollPane, BorderLayout.CENTER);
 		add(fondo); 
+	}
+	
+	public void actualizarComps() throws IOException {
+		BufferedImage fd = ImageIO.read(new File(prop.getProperty("archivospropiedad.fondo.fondomenu")));
+		ImageIcon imagenFondo = new ImageIcon(fd);
+		Image fdRedim = fd.getScaledInstance(1290, 750, Image.SCALE_SMOOTH);
+		fondo.setIcon(new ImageIcon(fdRedim));
 	}
 	
 	public void agregarProductos(int cantidad, ArrayList<Producto> listaDatos) {
@@ -136,10 +150,10 @@ public class PanelClienteMenu extends JPanel {
             panelProducto.add(txtAreaInfo, BorderLayout.WEST);
 
             JPanel panelBotones = new JPanel(new FlowLayout(FlowLayout.CENTER));
-            JButton btnAgregar = new JButton("Añadir al Carrito");
+            JButton btnAgregar = new JButton(prop.getProperty("archivospropiedad.boton.carritomas"));
             btnAgregar.setBackground(new Color(235, 219, 79));
             btnAgregar.setFont(new Font("Baloo", Font.BOLD, 15));
-            JButton btnFavoritos = new JButton("Añadir a Favoritos");
+            JButton btnFavoritos = new JButton(prop.getProperty("archivospropiedad.boton.favoritomas"));
             btnFavoritos.setBackground(new Color(235, 219, 79));
             btnFavoritos.setFont(new Font("Baloo", Font.BOLD, 15));
             
@@ -268,6 +282,14 @@ public class PanelClienteMenu extends JPanel {
 
 	public void setBotonesFav(ArrayList<JButton> botonesFav) {
 		this.botonesFav = botonesFav;
+	}
+
+	public Properties getProp() {
+		return prop;
+	}
+
+	public void setProp(Properties prop) {
+		this.prop = prop;
 	}
 
 	

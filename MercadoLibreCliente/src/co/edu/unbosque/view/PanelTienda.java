@@ -9,6 +9,7 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Properties;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -24,36 +25,38 @@ public class PanelTienda extends JPanel {
     private PanelOcio panelOcio; 
     private PanelOficina panelOficina;
     private PanelHogar panelHogar;
+	private Properties prop;
 	
-	 public PanelTienda() throws IOException {
+	 public PanelTienda(Properties prop) throws IOException {
+	    	this.prop = prop;
 		 	
 		 	setLayout(null);
 		 	setBounds(0, 0, 1290, 750);
 			fondo = new JLabel();
-			BufferedImage fd = ImageIO.read(new File("src/co/edu/unbosque/view/FondoVerTienda.png"));
+			BufferedImage fd = ImageIO.read(new File(prop.getProperty("archivospropiedad.fondo.fondotienda")));
 			ImageIcon imagenFondo = new ImageIcon(fd);
 			Image fdRedim = fd.getScaledInstance(1290, 750, Image.SCALE_SMOOTH);
 			fondo.setIcon(new ImageIcon(fdRedim));
 			fondo.setBounds(0, 0, 1290, 750);
 			
-			panelHogar = new PanelHogar();
+			panelHogar = new PanelHogar(prop);
 			panelHogar.setVisible(false);
-			panelOficina = new PanelOficina();
+			panelOficina = new PanelOficina(prop);
 			panelOficina.setVisible(false);
-			panelOcio = new PanelOcio();
+			panelOcio = new PanelOcio(prop);
 			panelOcio.setVisible(false);
 			
 	        panelBotones = new JPanel(new GridLayout(3, 1));
 	        panelBotones.setBounds(50, 250, 300, 350);
-	        btnHogar = new JButton("Hogar");
+	        btnHogar = new JButton(prop.getProperty("archivospropiedad.boton.hogar"));
 	        btnHogar.setBackground(new Color(235, 219, 79));
 			btnHogar.setFont(new Font("Baloo", Font.BOLD, 30));
 	        btnHogar.setForeground(Color.black);
-	        btnOficina = new JButton("Oficina");
+	        btnOficina = new JButton(prop.getProperty("archivospropiedad.boton.oficina"));
 	        btnOficina.setBackground(new Color(235, 219, 79));
 			btnOficina.setFont(new Font("Baloo", Font.BOLD, 30));
 	        btnOficina.setForeground(Color.black);
-	        btnOcio = new JButton("Ocio");
+	        btnOcio = new JButton(prop.getProperty("archivospropiedad.boton.ocio"));
 	        btnOcio.setBackground(new Color(235, 219, 79));
 	        btnOcio.setFont(new Font("Baloo", Font.BOLD, 30));
 	        btnOcio.setForeground(Color.black);
@@ -68,6 +71,7 @@ public class PanelTienda extends JPanel {
 			btnVolver.setBackground(new Color(0, 0, 0));
 			btnVolver.setContentAreaFilled(false);
 			btnVolver.setOpaque(false);
+			btnVolver.setBorderPainted(false);
 			btnVolver.setVisible(true);
 
 			
@@ -78,7 +82,17 @@ public class PanelTienda extends JPanel {
 	        add(panelHogar);
 			add(fondo); 
 	}
-	 
+	
+	public void actualizarComps() throws IOException {
+		BufferedImage fd = ImageIO.read(new File(prop.getProperty("archivospropiedad.fondo.fondotienda")));
+		ImageIcon imagenFondo = new ImageIcon(fd);
+		Image fdRedim = fd.getScaledInstance(1290, 750, Image.SCALE_SMOOTH);
+		fondo.setIcon(new ImageIcon(fdRedim));
+        btnHogar = new JButton(prop.getProperty("archivospropiedad.boton.hogar"));
+        btnOficina = new JButton(prop.getProperty("archivospropiedad.boton.oficina"));
+        btnOcio = new JButton(prop.getProperty("archivospropiedad.boton.ocio"));
+		
+	}
 	 
 	public PanelHogar getPanelHogar() {
 		return panelHogar;
@@ -165,6 +179,16 @@ public class PanelTienda extends JPanel {
 
 	public void setPanelOficina(PanelOficina panelOficina) {
 		this.panelOficina = panelOficina;
+	}
+
+
+	public Properties getProp() {
+		return prop;
+	}
+
+
+	public void setProp(Properties prop) {
+		this.prop = prop;
 	}
 	 
 	

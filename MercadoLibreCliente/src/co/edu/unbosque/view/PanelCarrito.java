@@ -10,6 +10,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Properties;
 
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
@@ -35,10 +36,13 @@ public class PanelCarrito extends JPanel {
     private JPanel panelContenido;
     /** Botón para anadir un producto al carrito. */
     private ArrayList<JButton> botonesEliminar;
+	private Properties prop;
 
 	
 	
-	public PanelCarrito() throws IOException{
+	public PanelCarrito(Properties prop) throws IOException{
+    	this.prop = prop;
+
 		setBounds(0, 0, 1290, 750);
         botonesEliminar = new ArrayList<>();
         setLayout(new BorderLayout());
@@ -48,7 +52,7 @@ public class PanelCarrito extends JPanel {
         panelContenido.setLayout(new GridLayout(0, 1, 10, 10));
         
 		fondo = new JLabel();
-		BufferedImage fd = ImageIO.read(new File("src/co/edu/unbosque/view/Fondoa.png"));
+		BufferedImage fd = ImageIO.read(new File(prop.getProperty("archivospropiedad.fondo.fondovolver")));
 		ImageIcon imagenFondo = new ImageIcon(fd);
 		Image fdRedim = fd.getScaledInstance(1290, 750, Image.SCALE_SMOOTH);
 		fondo.setIcon(new ImageIcon(fdRedim));
@@ -56,7 +60,7 @@ public class PanelCarrito extends JPanel {
 		
 		btnComprar = new JButton();
 		btnComprar.setBounds(750, 600, 400, 100);
-		btnComprar.setText("Realizar compra");
+		btnComprar.setText(prop.getProperty("archivospropiedad.boton.comprar"));
 		btnComprar.setFocusable(false);
 		btnComprar.setBackground(Color.WHITE);
 		btnComprar.setForeground(Color.black);
@@ -74,6 +78,7 @@ public class PanelCarrito extends JPanel {
 		btnVolver.setFocusable(false);
 		btnVolver.setBackground(new Color(0, 0, 0));
 		btnVolver.setContentAreaFilled(false);
+		btnVolver.setBorderPainted(false);
 		btnVolver.setOpaque(false);
 		btnVolver.setVisible(true);
 
@@ -96,6 +101,15 @@ public class PanelCarrito extends JPanel {
         add(scrollPane);
         add(fondo);
     }
+	
+	public void actualizarComps() throws IOException {
+		BufferedImage fd = ImageIO.read(new File(prop.getProperty("archivospropiedad.fondo.fondovolver")));
+		ImageIcon imagenFondo = new ImageIcon(fd);
+		Image fdRedim = fd.getScaledInstance(1290, 750, Image.SCALE_SMOOTH);
+		fondo.setIcon(new ImageIcon(fdRedim));
+		btnComprar.setText(prop.getProperty("archivospropiedad.boton.comprar"));
+		
+	}
 
     /**
      * Agrega productos con sus botones correspondientes.
@@ -127,7 +141,7 @@ public class PanelCarrito extends JPanel {
             panelProducto.add(txtAreaInfo, BorderLayout.WEST);
 
             JPanel panelBotones = new JPanel(new FlowLayout(FlowLayout.CENTER));
-            JButton btnAgregar = new JButton("Eliminar del Carrito");
+            JButton btnAgregar = new JButton(prop.getProperty("archivospropiedad.boton.carritomenos"));
             btnAgregar.setBackground(new Color(235, 219, 79));
             btnAgregar.setFont(new Font("Baloo", Font.BOLD, 10));
             
@@ -142,7 +156,7 @@ public class PanelCarrito extends JPanel {
             salidaPrecio += "\n" + listaDatos.get(i).getNombre() + ": $" + listaDatos.get(i).getPrecio();
             precioTotal += listaDatos.get(i).getPrecio();
         }
-        salidaPrecio += "\nTotal a pagar: $" + precioTotal;
+        salidaPrecio += "\n" + prop.getProperty("archivospropiedad.texto.pagototal") + precioTotal;
         
         precioTexto.setText(salidaPrecio);
     }
@@ -235,6 +249,14 @@ public class PanelCarrito extends JPanel {
 
 	public void setBotonesEliminar(ArrayList<JButton> botonesEliminar) {
 		this.botonesEliminar = botonesEliminar;
+	}
+
+	public Properties getProp() {
+		return prop;
+	}
+
+	public void setProp(Properties prop) {
+		this.prop = prop;
 	}
     
     

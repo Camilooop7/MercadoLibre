@@ -1,7 +1,7 @@
 package co.edu.unbosque.view;
 
-import java.awt.GridLayout;
 import java.io.IOException;
+import java.util.Properties;
 
 import javax.swing.JFrame;
 
@@ -15,23 +15,25 @@ public class VentanaPrincipalC extends JFrame {
 	private PanelHistorial ph;
 	private PanelTienda pt;
 	private PanelFavorito pf;
+	
 
-	public VentanaPrincipalC() throws IOException {
+	public VentanaPrincipalC(Properties prop) throws IOException {
 
-		setBounds(10, 10, 1290, 750);
+		setBounds(150, 150, 1300, 750);
 		setTitle("Mercado Libre");
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setResizable(true);
 		setLayout(null);
+		setResizable(false);
 		
-		ppc = new PanelPrincipalC();
-		pis = new PanelIniciarSesion();
-		pcu = new PanelCrearU();
-		pcm = new PanelClienteMenu();
-		pc = new PanelCarrito();
-		ph = new PanelHistorial();
-		pt = new PanelTienda();
-		pf = new PanelFavorito();
+		ppc = new PanelPrincipalC(prop);
+		pis = new PanelIniciarSesion(prop);
+		pcu = new PanelCrearU(prop);
+		pcm = new PanelClienteMenu(prop);
+		pc = new PanelCarrito(prop);
+		ph = new PanelHistorial(prop);
+		pt = new PanelTienda(prop);
+		pf = new PanelFavorito(prop);
 
 		add(ppc).setVisible(true);
 		add(pis).setVisible(false);
@@ -43,6 +45,53 @@ public class VentanaPrincipalC extends JFrame {
 		add(pf).setVisible(false);
 		
 
+	}
+	
+	public void refrescarUI(Properties prop) throws IOException {
+	    // Aplicar revalidate() y repaint() a todos los paneles
+	    ppc.setProp(prop);
+	    ppc.actualizarComps();
+	    ppc.revalidate();
+	    ppc.repaint();
+	    
+	    pis.setProp(prop);
+	    pis.actualizarComps();
+	    pis.revalidate();
+	    pis.repaint();
+
+	    pcu.setProp(prop);
+	    pcu.actualizarComps();
+	    pcu.revalidate();
+	    pcu.repaint();
+
+	    pcm.setProp(prop);
+	    pcm.actualizarComps();
+	    pcm.revalidate();
+	    pcm.repaint();
+
+	    pc.setProp(prop);
+	    pc.actualizarComps();
+	    pc.revalidate();
+	    pc.repaint();
+
+	    ph.setProp(prop);
+	    ph.actualizarComps();
+	    ph.revalidate();
+	    ph.repaint();
+
+	    pt.setProp(prop);
+	    pt.actualizarComps();
+	    pt.revalidate();
+	    pt.repaint();
+
+	    pf.setProp(prop);
+	    pf.actualizarComps();
+	    pf.revalidate();
+	    pf.repaint();
+	    
+	    // También actualizar la ventana principal
+	    this.revalidate();
+	    this.repaint();
 	}
 
 	public PanelCarrito getPc() {

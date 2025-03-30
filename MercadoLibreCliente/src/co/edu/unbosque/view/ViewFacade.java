@@ -1,6 +1,7 @@
 package co.edu.unbosque.view;
 
 import java.io.IOException;
+import java.util.Properties;
 
 public class ViewFacade {
 
@@ -8,12 +9,11 @@ public class ViewFacade {
 	private VentanaPrincipalC vpc;
 	
 	
-	public ViewFacade() throws IOException {
+	public ViewFacade(Properties prop) throws IOException {
 		vemer = new VentanaEmergente();
-		vpc = new VentanaPrincipalC();
+		vpc = new VentanaPrincipalC(prop);
 	}
-
-
+	
 	public VentanaEmergente getVemer() {
 		return vemer;
 	}
