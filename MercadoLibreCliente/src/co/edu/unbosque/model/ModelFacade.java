@@ -1,6 +1,8 @@
 package co.edu.unbosque.model;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import co.edu.unbosque.model.persistence.BanoDAO;
 import co.edu.unbosque.model.persistence.CarritoDAO;
@@ -15,7 +17,6 @@ import co.edu.unbosque.model.persistence.VideoJuegoDAO;
 public class ModelFacade { // Clase que actúa como fachada para manejar los DAOs
 
 	private BanoDAO banoDAO; // DAO para gestionar productos de baño
-	private CarritoDAO carritoDAO; // DAO para gestionar el carrito de compras
 	private ClienteDAO clienteDAO; // DAO para gestionar clientes
 	private CocinaDAO cocinaDAO; // DAO para gestionar productos de cocina
 	private DeporteDAO deporteDAO; // DAO para gestionar productos deportivos
@@ -23,17 +24,14 @@ public class ModelFacade { // Clase que actúa como fachada para manejar los DAO
 	private PapeleriaDAO papeleriaDAO; // DAO para gestionar productos de papelería
 	private TrabajadorDAO trabajadorDAO; // DAO para gestionar trabajadores
 	private VideoJuegoDAO videoJuegoDAO; // DAO para gestionar videojuegos
-	private ArrayList<Producto> listaProducto; // Lista para almacenar productos
-	private ArrayList<Ocio> pOcio;
-	private ArrayList<Oficina> pOficina;
-	private ArrayList<Hogar> pHogar;
-
+	
 	private Cliente clienteActual;
+	private ArrayList<Producto> productosRecomendados;
+	
 
 	public ModelFacade() { // Constructor de la clase
 
 		banoDAO = new BanoDAO(); // Inicializa el DAO de baño
-		carritoDAO = new CarritoDAO(); // Inicializa el DAO del carrito
 		clienteDAO = new ClienteDAO(); // Inicializa el DAO de cliente
 		cocinaDAO = new CocinaDAO(); // Inicializa el DAO de cocina
 		deporteDAO = new DeporteDAO(); // Inicializa el DAO de deporte
@@ -41,37 +39,58 @@ public class ModelFacade { // Clase que actúa como fachada para manejar los DAO
 		papeleriaDAO = new PapeleriaDAO(); // Inicializa el DAO de papelería
 		trabajadorDAO = new TrabajadorDAO(); // Inicializa el DAO de trabajador
 		videoJuegoDAO = new VideoJuegoDAO(); // Inicializa el DAO de videojuegos
-		listaProducto = new ArrayList<>(); // Inicializa la lista de productos
+		productosRecomendados = new ArrayList<>(); // Inicializa la lista de producto
 	}
 			
 	public ArrayList<Ocio> generarProductosOcio(){
-		pOcio = new ArrayList<>();
+		ArrayList<Ocio> pOcio = new ArrayList<>();
 		pOcio.addAll(videoJuegoDAO.getListaVideoJuegos());
 		pOcio.addAll(deporteDAO.getListaDeportes());
 		return pOcio;
 	}
 	
 	public ArrayList<Hogar> generarProductosHogar(){
-		pHogar = new ArrayList<>();
+		ArrayList<Hogar> pHogar = new ArrayList<>();
 		pHogar.addAll(cocinaDAO.getListaCocinas());
 		pHogar.addAll(banoDAO.getListaBanos());
 		return pHogar;
 	}
 	
 	public ArrayList<Oficina> generarProductosOficina(){
-		pOficina = new ArrayList<>();
+		ArrayList<Oficina> pOficina = new ArrayList<>();
 		pOficina.addAll(papeleriaDAO.getListaPapeleria());
 		pOficina.addAll(electrodomesticoDAO.getListaElectrodomesticos());
 		return pOficina;
 	}
 	
-	public void anadirTodoProducto() {
+	public ArrayList<Producto> anadirTodoProducto() {
+		ArrayList<Producto> listaProducto = new ArrayList<>(); // Inicializa la lista de productos
 		listaProducto.addAll(banoDAO.getListaBanos());
 		listaProducto.addAll(cocinaDAO.getListaCocinas());
 		listaProducto.addAll(deporteDAO.getListaDeportes());
 		listaProducto.addAll(electrodomesticoDAO.getListaElectrodomesticos());
 		listaProducto.addAll(papeleriaDAO.getListaPapeleria());
 		listaProducto.addAll(videoJuegoDAO.getListaVideoJuegos());
+		return listaProducto;
+	}
+	
+	public ArrayList<Producto> tresAleatorios(ArrayList<Producto> productos) {
+	    ArrayList<Producto> aleatorios = new ArrayList<>();
+	    
+	    if (productos.size() <= 3) {
+	        this.productosRecomendados = new ArrayList<>(productos);
+	        return new ArrayList<>(productos);
+	    }
+	    
+	    ArrayList<Producto> copia = new ArrayList<>(productos);
+	    Collections.shuffle(copia);
+	    
+	    for (int i = 0; i < 3; i++) {
+	        aleatorios.add(copia.get(i));
+	    }
+	    
+	    this.productosRecomendados = new ArrayList<>(aleatorios);
+	    return aleatorios;
 	}
 	
 	public String convertirAHtml(String texto) {
@@ -87,15 +106,6 @@ public class ModelFacade { // Clase que actúa como fachada para manejar los DAO
 	public void setBanoDAO(BanoDAO banoDAO) {
 		this.banoDAO = banoDAO;
 	}
-
-	public CarritoDAO getCarritoDAO() {
-		return carritoDAO;
-	}
-
-	public void setCarritoDAO(CarritoDAO carritoDAO) {
-		this.carritoDAO = carritoDAO;
-	}
-
 	public ClienteDAO getClienteDAO() {
 		return clienteDAO;
 	}
@@ -152,38 +162,6 @@ public class ModelFacade { // Clase que actúa como fachada para manejar los DAO
 		this.videoJuegoDAO = videoJuegoDAO;
 	}
 
-	public ArrayList<Producto> getListaProducto() {
-		return listaProducto;
-	}
-
-	public void setListaProducto(ArrayList<Producto> listaProducto) {
-		this.listaProducto = listaProducto;
-	}
-
-	public ArrayList<Ocio> getpOcio() {
-		return pOcio;
-	}
-
-	public void setpOcio(ArrayList<Ocio> pOcio) {
-		this.pOcio = pOcio;
-	}
-
-	public ArrayList<Oficina> getpOficina() {
-		return pOficina;
-	}
-
-	public void setpOficina(ArrayList<Oficina> pOficina) {
-		this.pOficina = pOficina;
-	}
-
-	public ArrayList<Hogar> getpHogar() {
-		return pHogar;
-	}
-
-	public void setpHogar(ArrayList<Hogar> pHogar) {
-		this.pHogar = pHogar;
-	}
-
 	public Cliente getClienteActual() {
 		return clienteActual;
 	}
@@ -192,4 +170,12 @@ public class ModelFacade { // Clase que actúa como fachada para manejar los DAO
 		this.clienteActual = clienteActual;
 	}
 
+	public ArrayList<Producto> getProductosRecomendados() {
+		return productosRecomendados;
+	}
+
+	public void setProductosRecomendados(ArrayList<Producto> productosRecomendados) {
+		this.productosRecomendados = productosRecomendados;
+	}
+	
 }

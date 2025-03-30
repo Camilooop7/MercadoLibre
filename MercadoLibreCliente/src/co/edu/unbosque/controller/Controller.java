@@ -74,6 +74,10 @@ public class Controller implements ActionListener {
 
 		vf.getVpc().getPcm().getBtnHistorial().addActionListener(this);
 		vf.getVpc().getPcm().getBtnHistorial().setActionCommand("btnHistorial");
+		vf.getVpc().getPh().getBtnVolver().addActionListener(this);
+		vf.getVpc().getPh().getBtnVolver().setActionCommand("btnVolverH");
+		vf.getVpc().getPh().getBtnLimpiar().addActionListener(this);
+		vf.getVpc().getPh().getBtnLimpiar().setActionCommand("btnLimpiarH");
 
 		vf.getVpc().getPcm().getBtnTienda().addActionListener(this);
 		vf.getVpc().getPcm().getBtnTienda().setActionCommand("btnTienda");
@@ -104,7 +108,7 @@ public class Controller implements ActionListener {
 		case "btnIniciarS": {
 			vf.getVpc().getPpc().setVisible(false);
 			vf.getVpc().getPis().setVisible(true);
-
+			
 			break;
 		}
 		case "btnCrearU": {
@@ -126,8 +130,13 @@ public class Controller implements ActionListener {
 
 				vf.getVpc().getPis().setVisible(false);
 				vf.getVpc().getPcm().setVisible(true);
+				
 				mf.setClienteActual(mf.getClienteDAO().encontrarUsuario(usuario, contrasena));
-
+				
+				vf.getVpc().getPcm().actualizarInfo(mf.tresAleatorios(mf.anadirTodoProducto()));
+				asignarFuncionesComponentesProducto("Recomendados");
+				
+				
 			} else {
 				vf.getVemer().mostrar("Problema en el usuario o contraseña.");
 			}
@@ -267,6 +276,7 @@ public class Controller implements ActionListener {
 				vf.getVpc().getPc().actualizarInfo(mf.getClienteActual().getCarrito().getListaCarrito());
 				vf.getVpc().getPcm().setVisible(false);
 				vf.getVpc().getPc().setVisible(true);
+				asignarFuncionesComponentesProducto("Carrito");
 			}
 			break;
 		}
@@ -276,15 +286,31 @@ public class Controller implements ActionListener {
 			break;
 		}
 		case "btnCarritoComprar": {
+			if(mf.getClienteActual().getCarrito().getListaCarrito().size() <= 0) {
+				vf.getVemer().mostrar("El carrito está vacio");
+				break;
+			}
 			mf.getClienteActual().getListaCarritos().add(mf.getClienteActual().getCarrito());
-			mf.setClienteActual(null);
-			vf.getVpc().getPc().actualizarInfo(mf.getClienteActual().getCarrito().getListaCarrito());
+			mf.getClienteActual().setCarrito(null);
+			vf.getVpc().getPcm().setVisible(true);
+			vf.getVpc().getPc().setVisible(false);
+			vf.getVemer().mostrar("Compra realizada");
 			break;
 		}
 		case "btnHistorial": {
 			vf.getVpc().getPh().actualizarInfo(mf.getClienteActual().getListaCarritos());
 			vf.getVpc().getPcm().setVisible(false);
 			vf.getVpc().getPh().setVisible(true);
+			break;
+		}
+		case "btnVolverH": {
+			vf.getVpc().getPcm().setVisible(true);
+			vf.getVpc().getPh().setVisible(false);
+			break;
+		}
+		case "btnLimpiarH": {
+			mf.getClienteActual().getListaCarritos().removeAll(mf.getClienteActual().getListaCarritos());
+			vf.getVpc().getPh().actualizarInfo(mf.getClienteActual().getListaCarritos());
 			break;
 		}
 		}
@@ -428,8 +454,9 @@ public class Controller implements ActionListener {
 			break;
 		}
 		case "Carrito": {
-			for (JButton btn : vf.getVpc().getPc().getBotonesAnadir()) {
-				btn.setActionCommand(String.valueOf(vf.getVpc().getPc().getBotonesAnadir().indexOf(btn)));
+			for (JButton btn : vf.getVpc().getPc().getBotonesEliminar()) {
+				System.out.println("s");
+				btn.setActionCommand(String.valueOf(vf.getVpc().getPc().getBotonesEliminar().indexOf(btn)));
 				btn.addActionListener(e -> {
 					int indice = Integer.parseInt(e.getActionCommand());
 					mf.getClienteActual().getCarrito().getListaCarrito().remove(indice);
@@ -440,6 +467,37 @@ public class Controller implements ActionListener {
 			}
 			break;
 		}
+		
+		case "Recomendados": {
+		    ArrayList<Producto> recomendados = mf.getProductosRecomendados();
+		    
+		    for (JButton btn : vf.getVpc().getPcm().getBotonesAnadir()) {
+		        btn.setActionCommand(String.valueOf(vf.getVpc().getPcm().getBotonesAnadir().indexOf(btn)));
+		        btn.addActionListener(e -> {
+		            int indice = Integer.parseInt(e.getActionCommand());
+		            if (indice < 0 || indice >= recomendados.size()) return;
+		            
+		            if (mf.getClienteActual().getCarrito() == null) {
+		                mf.getClienteActual().setCarrito(new Carrito());
+		            }
+		            mf.getClienteActual().getCarrito().getListaCarrito().add(recomendados.get(indice));
+		            mf.getClienteDAO().escribirSerializado();
+		        });
+		    }
+		    
+		    for (JButton btn : vf.getVpc().getPcm().getBotonesFav()) {
+		        btn.setActionCommand(String.valueOf(vf.getVpc().getPcm().getBotonesFav().indexOf(btn)));
+		        btn.addActionListener(e -> {
+		            int indice = Integer.parseInt(e.getActionCommand());
+		            if (indice < 0 || indice >= recomendados.size()) return;
+		            
+		            mf.getClienteActual().getListaProductoFavorito().add(recomendados.get(indice));
+		            mf.getClienteDAO().escribirSerializado();
+		        });
+		    }
+		    break;
+		}
+		
 		default:
 			break;
 		}

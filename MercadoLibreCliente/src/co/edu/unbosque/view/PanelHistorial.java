@@ -2,6 +2,7 @@ package co.edu.unbosque.view;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -26,7 +27,7 @@ import co.edu.unbosque.model.Producto;
 
 public class PanelHistorial extends JPanel {
 	private JLabel fondo;
-	private JButton btnVolver;
+	private JButton btnVolver, btnLimpiar;
 	
 	/** Scroll que es usado para navegar en los productos del almacen. */
     private JScrollPane scrollPane;
@@ -37,86 +38,90 @@ public class PanelHistorial extends JPanel {
     /** Botón para eliminar un producto del almacen. */
     private ArrayList<JButton> botonesFav;
 	
-	public PanelHistorial() throws IOException{
-    	setBounds(0, 0, 1290, 750);
+    public PanelHistorial() throws IOException {
+        setBounds(0, 0, 1290, 750);
         botonesAnadir = new ArrayList<>();
         botonesFav = new ArrayList<>();
         setLayout(new BorderLayout());
-        
+
         panelContenido = new JPanel();
         panelContenido.setLayout(new GridLayout(0, 1, 10, 10));
-        
-		fondo = new JLabel();
-		BufferedImage fd = ImageIO.read(new File("src/co/edu/unbosque/view/Fondoa.png"));
-		ImageIcon imagenFondo = new ImageIcon(fd);
-		Image fdRedim = fd.getScaledInstance(1290, 750, Image.SCALE_SMOOTH);
-		fondo.setIcon(new ImageIcon(fdRedim));
-		fondo.setBounds(0, 0, 1290, 750);
 
+        fondo = new JLabel();
+        BufferedImage fd = ImageIO.read(new File("src/co/edu/unbosque/view/Fondoa.png"));
+        ImageIcon imagenFondo = new ImageIcon(fd.getScaledInstance(1290, 750, Image.SCALE_SMOOTH));
+        fondo.setIcon(imagenFondo);
+        fondo.setBounds(0, 0, 1290, 750);
+
+
+        btnLimpiar = new JButton();
+        btnLimpiar.setBounds(1050, 600, 200, 100);
+        btnLimpiar.setText("Limpiar historial");
+        btnLimpiar.setFocusable(false);
+		btnLimpiar.setBackground(Color.WHITE);
+		btnLimpiar.setForeground(Color.black);
+		btnLimpiar.setBackground(new Color(235, 219, 79));
+		btnLimpiar.setFont(new Font("Baloo", Font.BOLD, 15));
         
         btnVolver = new JButton();
-		btnVolver.setBounds(1120, 70, 120, 70);
-		btnVolver.setFocusable(false);
-		btnVolver.setBackground(new Color(0, 0, 0));
-		btnVolver.setContentAreaFilled(false);
-		btnVolver.setOpaque(false);
-		btnVolver.setVisible(true);
+        btnVolver.setBounds(1120, 70, 120, 70);
+        btnVolver.setFocusable(false);
+        btnVolver.setBackground(new Color(0, 0, 0));
+        btnVolver.setContentAreaFilled(false);
+        btnVolver.setOpaque(false);
 
-        agregarProductos(-1, new ArrayList<>());
-        
+       
+        JScrollPane scrollPrincipal = new JScrollPane(panelContenido);
+        scrollPrincipal.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        scrollPrincipal.setBounds(50, 230, 1000, 480);
 
-        scrollPane = new JScrollPane(panelContenido);
-        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-        scrollPane.setBackground(Color.green);
-        scrollPane.setBounds(150, 230, 1000, 480);
-        
-        JPanel pP = new JPanel();
-        pP.setBounds(150, 230, 1000, 500);
-        pP.setBackground(Color.GREEN);
-        
-        
         add(btnVolver);
-        //add(pP);
-        add(scrollPane);
+        add(btnLimpiar);
+        add(scrollPrincipal);
         add(fondo);
     }
 
-    /**
-     * Agrega productos con sus botones correspondientes.
-     * 
-     * @param cantidad   Cantidad de productos a agregar.
-     * @param listaDatos Lista con la información de cada producto.
-     */
     public void agregarProductos(int cantidad, ArrayList<Carrito> listaDatos) {
         if (cantidad == -1) {
             return;
         }
-        
+
         for (int i = 0; i < cantidad; i++) {
+        	JLabel nProducto = new JLabel(" " + (i+1));
+        	
             JPanel panelCarrito = new JPanel();
             panelCarrito.setLayout(new BorderLayout());
-            panelCarrito.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-            panelCarrito.setBackground(new Color(198,195,195));
+            panelCarrito.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
+            panelCarrito.setBackground(new Color(198, 195, 195));
             
-            for (int j = 0; j < listaDatos.get(i).getListaCarrito().size(); j++) {
-                JPanel panelProducto = new JPanel();
-                panelProducto.setLayout(new BorderLayout());
+            panelCarrito.add(nProducto, BorderLayout.NORTH);
+            
+            JPanel panelProductos = new JPanel();
+            panelProductos.setLayout(new GridLayout(0, 1, 5, 5));
+
+            for (Producto producto : listaDatos.get(i).getListaCarrito()) {
+                JPanel panelProducto = new JPanel(new BorderLayout());
                 panelProducto.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-                panelProducto.setBackground(new Color(198,195,195));
-                
-                JLabel lblImagen = new JLabel(asignarImagen(listaDatos.get(i).getListaCarrito().get(j)));
+                panelProducto.setBackground(new Color(230, 230, 230));
+
+                JLabel lblImagen = new JLabel(asignarImagen(producto));
                 lblImagen.setHorizontalAlignment(SwingConstants.CENTER);
                 panelProducto.add(lblImagen, BorderLayout.EAST);
 
-                JTextArea txtAreaInfo = new JTextArea(listaDatos.get(i).getListaCarrito().get(j).toString());
+                JTextArea txtAreaInfo = new JTextArea(producto.toString());
                 txtAreaInfo.setEditable(false);
-                txtAreaInfo.setFont(new Font("Baloo", Font.BOLD, 25));
-                txtAreaInfo.setBackground(new Color(198,195,195));
-                panelProducto.add(txtAreaInfo, BorderLayout.WEST);
+                txtAreaInfo.setFont(new Font("Baloo", Font.BOLD, 18));
+                txtAreaInfo.setBackground(new Color(230, 230, 230));
+                panelProducto.add(txtAreaInfo, BorderLayout.CENTER);
 
-                panelCarrito.add(panelProducto);
+                panelProductos.add(panelProducto);
             }
-            
+
+            JScrollPane scrollProductos = new JScrollPane(panelProductos);
+            scrollProductos.setPreferredSize(new Dimension(950, 450));
+            scrollProductos.setBorder(BorderFactory.createEmptyBorder());
+
+            panelCarrito.add(scrollProductos, BorderLayout.CENTER);
             panelContenido.add(panelCarrito);
         }
     }
@@ -125,7 +130,6 @@ public class PanelHistorial extends JPanel {
         try {
             String ruta = obj.getImagen();
             
-            // Convertir rutas Windows a formato válido
             ruta = ruta.replace("\\", "/");
          
     		BufferedImage fd = ImageIO.read(new File(ruta));
@@ -156,4 +160,60 @@ public class PanelHistorial extends JPanel {
         repaint();
     }
 
+	public JLabel getFondo() {
+		return fondo;
+	}
+
+	public void setFondo(JLabel fondo) {
+		this.fondo = fondo;
+	}
+
+	public JButton getBtnVolver() {
+		return btnVolver;
+	}
+
+	public void setBtnVolver(JButton btnVolver) {
+		this.btnVolver = btnVolver;
+	}
+
+	public JScrollPane getScrollPane() {
+		return scrollPane;
+	}
+
+	public void setScrollPane(JScrollPane scrollPane) {
+		this.scrollPane = scrollPane;
+	}
+
+	public JPanel getPanelContenido() {
+		return panelContenido;
+	}
+
+	public void setPanelContenido(JPanel panelContenido) {
+		this.panelContenido = panelContenido;
+	}
+
+	public ArrayList<JButton> getBotonesAnadir() {
+		return botonesAnadir;
+	}
+
+	public void setBotonesAnadir(ArrayList<JButton> botonesAnadir) {
+		this.botonesAnadir = botonesAnadir;
+	}
+
+	public ArrayList<JButton> getBotonesFav() {
+		return botonesFav;
+	}
+
+	public void setBotonesFav(ArrayList<JButton> botonesFav) {
+		this.botonesFav = botonesFav;
+	}
+
+	public JButton getBtnLimpiar() {
+		return btnLimpiar;
+	}
+
+	public void setBtnLimpiar(JButton btnLimpiar) {
+		this.btnLimpiar = btnLimpiar;
+	}
+    
 }
