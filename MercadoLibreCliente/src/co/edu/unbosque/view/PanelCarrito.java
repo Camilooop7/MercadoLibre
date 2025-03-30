@@ -44,6 +44,7 @@ public class PanelCarrito extends JPanel {
         setLayout(new BorderLayout());
         
         panelContenido = new JPanel();
+        panelContenido.setBackground(new Color(198,195,195));
         panelContenido.setLayout(new GridLayout(0, 1, 10, 10));
         
 		fondo = new JLabel();
@@ -210,14 +211,6 @@ public class PanelCarrito extends JPanel {
 
 	public void setPanelContenido(JPanel panelContenido) {
 		this.panelContenido = panelContenido;
-	}
-
-	public ArrayList<JButton> getBotonesAnadir() {
-		return botonesEliminar;
-	}
-
-	public void setBotonesAnadir(ArrayList<JButton> botonesAnadir) {
-		this.botonesEliminar = botonesAnadir;
 	}
 
 	public JButton getBtnComprar() {
