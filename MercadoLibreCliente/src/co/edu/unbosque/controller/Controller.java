@@ -311,6 +311,7 @@ public class Controller implements ActionListener {
 		case "btnLimpiarH": {
 			mf.getClienteActual().getListaCarritos().removeAll(mf.getClienteActual().getListaCarritos());
 			vf.getVpc().getPh().actualizarInfo(mf.getClienteActual().getListaCarritos());
+			mf.getClienteDAO().escribirSerializado();
 			break;
 		}
 		}
@@ -455,7 +456,6 @@ public class Controller implements ActionListener {
 		}
 		case "Carrito": {
 			for (JButton btn : vf.getVpc().getPc().getBotonesEliminar()) {
-				System.out.println("s");
 				btn.setActionCommand(String.valueOf(vf.getVpc().getPc().getBotonesEliminar().indexOf(btn)));
 				btn.addActionListener(e -> {
 					int indice = Integer.parseInt(e.getActionCommand());

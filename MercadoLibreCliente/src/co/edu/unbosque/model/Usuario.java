@@ -8,10 +8,10 @@ import java.io.Serializable;
 public abstract class Usuario implements Serializable {
     
     /** Nombre del usuario */
-    private String nombre;
+    private String nombre = "";
     
     /** Contraseña del usuario */
-    private String contrasena;
+    private String contrasena = "";
 
     /** Constructor por defecto */
     public Usuario() {
