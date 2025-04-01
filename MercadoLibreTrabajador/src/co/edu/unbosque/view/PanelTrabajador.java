@@ -6,6 +6,7 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Properties;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -21,11 +22,13 @@ public class PanelTrabajador extends JPanel {
 	private JButton btnEliminarProducto;
 	private JButton btnModificarUsuario;
 	private JButton btnSalir;
+	private Properties prop;
 
-	public PanelTrabajador() throws IOException {
+	public PanelTrabajador(Properties prop) throws IOException {
 
 		setBounds(0, 0, 1290, 750);
 		setLayout(null);
+		this.prop = prop;
 
 		fondo = new JLabel();
 		BufferedImage fd = ImageIO.read(new File("src/co/edu/unbosque/view/FondoPT.png"));
@@ -135,5 +138,14 @@ public class PanelTrabajador extends JPanel {
 	public void setBtnSalir(JButton btnSalir) {
 		this.btnSalir = btnSalir;
 	}
+
+	public Properties getProp() {
+		return prop;
+	}
+
+	public void setProp(Properties prop) {
+		this.prop = prop;
+	}
+	
 
 }

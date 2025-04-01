@@ -2,6 +2,7 @@ package co.edu.unbosque.view;
 
 import java.awt.GridLayout;
 import java.io.IOException;
+import java.util.Properties;
 
 import javax.swing.JFrame;
 
@@ -12,11 +13,11 @@ public class VentanaPrincipalT extends JFrame {
 	private PanelCrearU pcu;
 	private PanelTrabajador pt;
 	private PanelAnadirProducto pap;
-	private PanelUsuarios pmu;
+	private PanelUsuario pmu;
 	private PanelElimianarProducto pep;
 	private PanelActualizarProducto papro;
 
-	public VentanaPrincipalT() throws IOException {
+	public VentanaPrincipalT(Properties prop) throws IOException {
 
 		setBounds(10, 10, 1290, 750);
 		setTitle("Mercado Libre");
@@ -24,14 +25,14 @@ public class VentanaPrincipalT extends JFrame {
 		setResizable(false);
 		setLayout(null);
 
-		ppt = new PanelPrincipalT();
-		pis = new PanelIniciarSesion();
-		pcu = new PanelCrearU();
-		pt = new PanelTrabajador();
-		pap = new PanelAnadirProducto();
-		pmu = new PanelUsuarios();
-		pep = new PanelElimianarProducto();
-		papro = new PanelActualizarProducto();
+		ppt = new PanelPrincipalT(prop);
+		pis = new PanelIniciarSesion(prop);
+		pcu = new PanelCrearU(prop);
+		pt = new PanelTrabajador(prop);
+		pap = new PanelAnadirProducto(prop);
+		pmu = new PanelUsuario(prop);
+		pep = new PanelElimianarProducto(prop);
+		papro = new PanelActualizarProducto(prop);
 
 		add(ppt).setVisible(true);
 		add(pis).setVisible(false);
@@ -42,6 +43,53 @@ public class VentanaPrincipalT extends JFrame {
 		add(pep).setVisible(false);
 		add(papro).setVisible(false);
 
+	}
+	
+	public void refrescarUI(Properties prop) throws IOException {
+	    // Aplicar revalidate() y repaint() a todos los paneles
+	    ppt.setProp(prop);
+	    ppt.actualizarComps();
+	    ppt.revalidate();
+	    ppt.repaint();
+	    
+	    pis.setProp(prop);
+	    pis.actualizarComps();
+	    pis.revalidate();
+	    pis.repaint();
+
+	    pcu.setProp(prop);
+	    pcu.actualizarComps();
+	    pcu.revalidate();
+	    pcu.repaint();
+
+	    pt.setProp(prop);
+	    pt.actualizarComps();
+	    pt.revalidate();
+	    pt.repaint();
+
+	    pap.setProp(prop);
+	    pap.actualizarComps();
+	    pap.revalidate();
+	    pap.repaint();
+
+	    pmu.setProp(prop);
+	    pmu.actualizarComps();
+	    pmu.revalidate();
+	    pmu.repaint();
+
+	    pep.setProp(prop);
+	    pep.actualizarComps();
+	    pep.revalidate();
+	    pep.repaint();
+
+	    papro.setProp(prop);
+	    papro.actualizarComps();
+	    papro.revalidate();
+	    papro.repaint();
+	    
+	    // También actualizar la ventana principal
+	    this.revalidate();
+	    this.repaint();
 	}
 
 	public PanelPrincipalT getPpt() {
@@ -84,11 +132,11 @@ public class VentanaPrincipalT extends JFrame {
 		this.pap = pap;
 	}
 
-	public PanelUsuarios getPmu() {
+	public PanelUsuario getPmu() {
 		return pmu;
 	}
 
-	public void setPmu(PanelUsuarios pmu) {
+	public void setPmu(PanelUsuario pmu) {
 		this.pmu = pmu;
 	}
 
@@ -109,4 +157,6 @@ public class VentanaPrincipalT extends JFrame {
 	}
 	
 
+	
+	
 }

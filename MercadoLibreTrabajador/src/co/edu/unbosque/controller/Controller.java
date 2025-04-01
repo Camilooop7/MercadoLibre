@@ -4,9 +4,12 @@ import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Properties;
 
 import javax.imageio.ImageIO;
 
@@ -36,11 +39,22 @@ public class Controller implements ActionListener {
 	private ModelFacade mf;
 	private ViewFacade vf;
 	private Trabajador tActual;
+	private Properties prop;
 
 	public Controller() throws IOException {
+prop = new Properties();
+		
+		try {
+			prop.load(new FileInputStream(new File("src/archivos/textingles.properties")));
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
 		FileManager.crearCarpeta();
 		mf = new ModelFacade();
-		vf = new ViewFacade();
+		vf = new ViewFacade(prop);
 		asignarLectores();
 	}
 
@@ -277,7 +291,6 @@ public class Controller implements ActionListener {
 					
 					vf.getVpt().getPis().setVisible(false);
 					vf.getVpt().getPt().setVisible(true);
-					mf.getTrabajadorDAO().crear(new Trabajador((String) vf.getVpt().getPis().getNombreUsuario(),"",a,""));
 				} else {
 					vf.getVemer().mostrarError("Contraseña o Nombre incorrecto, verifiquelos o cree una cuenta");
 				}
@@ -2204,6 +2217,39 @@ public class Controller implements ActionListener {
 				e2.printStackTrace();
 			} catch (ImageException e2) {
 				vf.getVemer().mostrarError("No seleciono una imagen");
+			}
+			break;
+		}
+		
+		case "espanol":{
+			try {
+				prop.load(new FileInputStream(new File("src/archivos/textespanol.properties")));
+			} catch (FileNotFoundException o) {
+				o.printStackTrace();
+			} catch (IOException o) {
+				o.printStackTrace();
+			}
+			try {
+				vf.getVpc().refrescarUI(prop);
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			break;
+		}
+		case "ingles":{
+			try {
+				prop.load(new FileInputStream(new File("src/archivos/textingles.properties")));
+			} catch (FileNotFoundException o) {
+				o.printStackTrace();
+			} catch (IOException o) {
+				o.printStackTrace();
+			}
+			try {
+				vf.getVpc().refrescarUI(prop);
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
 			}
 			break;
 		}

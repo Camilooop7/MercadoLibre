@@ -6,6 +6,7 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Properties;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -30,11 +31,14 @@ public class PanelAnadirProducto extends JPanel {
 	private PanelAgregarPapeleria papape;
 	private PanelAgregarVideoJuego pavj;
 	private PanelAgregarDeporte pade;
+	private Properties prop;
 
-	public PanelAnadirProducto() throws IOException {
+	public PanelAnadirProducto(Properties prop) throws IOException {
 
 		setBounds(0, 0, 1290, 750);
 		setLayout(null);
+		
+		this.prop = prop;
 
 		fondo = new JLabel();
 		BufferedImage fd = ImageIO.read(new File("src/co/edu/unbosque/view/FondoTBack.png"));
@@ -213,5 +217,15 @@ public class PanelAnadirProducto extends JPanel {
 	public void setPade(PanelAgregarDeporte pade) {
 		this.pade = pade;
 	}
+
+	public Properties getProp() {
+		return prop;
+	}
+
+	public void setProp(Properties prop) {
+		this.prop = prop;
+	}
+	
+	
 
 }
