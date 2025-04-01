@@ -277,7 +277,6 @@ public class Controller implements ActionListener {
 					
 					vf.getVpt().getPis().setVisible(false);
 					vf.getVpt().getPt().setVisible(true);
-					mf.getTrabajadorDAO().crear(new Trabajador((String) vf.getVpt().getPis().getNombreUsuario(),"",a,""));
 				} else {
 					vf.getVemer().mostrarError("Contraseña o Nombre incorrecto, verifiquelos o cree una cuenta");
 				}
