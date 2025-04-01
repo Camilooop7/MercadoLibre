@@ -6,6 +6,7 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Properties;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -30,10 +31,13 @@ public class PanelCrearU extends JPanel {
 	private JLabel textEstandarNombre;
 	private JCheckBox mostrarContrasena;
 	private JCheckBox mostrarContrasena2;
+	private Properties prop;
 
-	public PanelCrearU() throws IOException {
+	public PanelCrearU(Properties prop) throws IOException {
 		setBounds(0, 0, 1290, 750);
 		setLayout(null);
+		
+		this.prop = prop;
 
 		fondo = new JLabel();
 		BufferedImage fd = ImageIO.read(new File("src/co/edu/unbosque/view/FondoTC.png"));
@@ -239,5 +243,15 @@ public class PanelCrearU extends JPanel {
 	public void setMostrarContrasena2(JCheckBox mostrarContrasena2) {
 		this.mostrarContrasena2 = mostrarContrasena2;
 	}
+
+	public Properties getProp() {
+		return prop;
+	}
+
+	public void setProp(Properties prop) {
+		this.prop = prop;
+	}
+	
+	
 
 }

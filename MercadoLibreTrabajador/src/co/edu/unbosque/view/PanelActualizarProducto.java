@@ -9,6 +9,7 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Properties;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -43,6 +44,7 @@ public class PanelActualizarProducto extends JPanel {
 	private PanelAgregarPapeleria papape;
 	private PanelAgregarVideoJuego pagvj;
 	private PanelAgregarDeporte padepor;
+	private Properties prop;
 
 	
 	/**
@@ -50,7 +52,7 @@ public class PanelActualizarProducto extends JPanel {
 	 * que se encuentra en la ventana. además se declara la excepción de
 	 * IOexception.
 	 */
-	public PanelActualizarProducto() throws IOException {
+	public PanelActualizarProducto(Properties prop) throws IOException {
 
 		/**
 		 * Uso del setBounds para fijar la posción del panel setLayaout permite
@@ -59,6 +61,7 @@ public class PanelActualizarProducto extends JPanel {
 		setBounds(0, 0, 1290, 750);
 		setLayout(null);
 
+		this.prop = prop;
 		/**
 		 * Inicialización del JLabel BufferedImage con el objetivo de establecer la
 		 * ubicación del archivo de la imagen dentro de los archivos. Image Redim
@@ -344,6 +347,14 @@ public class PanelActualizarProducto extends JPanel {
 
 	public void setPadepor(PanelAgregarDeporte padepor) {
 		this.padepor = padepor;
+	}
+
+	public Properties getProp() {
+		return prop;
+	}
+
+	public void setProp(Properties prop) {
+		this.prop = prop;
 	}
 	
 
