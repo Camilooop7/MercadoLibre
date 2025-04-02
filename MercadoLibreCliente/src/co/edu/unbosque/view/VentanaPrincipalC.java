@@ -50,42 +50,42 @@ public class VentanaPrincipalC extends JFrame {
 	public void refrescarUI(Properties prop) throws IOException {
 	    // Aplicar revalidate() y repaint() a todos los paneles
 	    ppc.setProp(prop);
-	    ppc.actualizarComps();
+	    ppc.actualizarComp();
 	    ppc.revalidate();
 	    ppc.repaint();
 	    
 	    pis.setProp(prop);
-	    pis.actualizarComps();
+	    pis.actualizarComp();
 	    pis.revalidate();
 	    pis.repaint();
 
 	    pcu.setProp(prop);
-	    pcu.actualizarComps();
+	    pcu.actualizarComp();
 	    pcu.revalidate();
 	    pcu.repaint();
 
 	    pcm.setProp(prop);
-	    pcm.actualizarComps();
+	    pcm.actualizarComp();
 	    pcm.revalidate();
 	    pcm.repaint();
 
 	    pc.setProp(prop);
-	    pc.actualizarComps();
+	    pc.actualizarComp();
 	    pc.revalidate();
 	    pc.repaint();
 
 	    ph.setProp(prop);
-	    ph.actualizarComps();
+	    ph.actualizarComp();
 	    ph.revalidate();
 	    ph.repaint();
 
 	    pt.setProp(prop);
-	    pt.actualizarComps();
+	    pt.actualizarComp();
 	    pt.revalidate();
 	    pt.repaint();
 
 	    pf.setProp(prop);
-	    pf.actualizarComps();
+	    pf.actualizarComp();
 	    pf.revalidate();
 	    pf.repaint();
 	    

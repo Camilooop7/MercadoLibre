@@ -11,6 +11,7 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Properties;
 
 import javax.imageio.ImageIO;
 import javax.swing.ButtonGroup;
@@ -45,6 +46,7 @@ public class PanelAgregarCocina extends JPanel {
 	private JRadioButton siR;
 	private JRadioButton noR;
 	private int a=0;
+	private Properties prop;
 
 	
 	/**
@@ -52,7 +54,7 @@ public class PanelAgregarCocina extends JPanel {
 	 * que se encuentra en la ventana. además se declara la excepción de
 	 * IOexception.
 	 */
-	public PanelAgregarCocina() throws IOException {
+	public PanelAgregarCocina(Properties prop) throws IOException {
 
 		/**
 		 * Uso del setBounds para fijar la posción del panel setLayaout permite
@@ -60,6 +62,8 @@ public class PanelAgregarCocina extends JPanel {
 		 */
 		setBounds(412, 250, 780, 433);
 		setLayout(null);
+		
+		this.prop = prop;
 
 		/**
 		 * Inicialización del JLabel BufferedImage con el objetivo de establecer la
@@ -99,7 +103,7 @@ public class PanelAgregarCocina extends JPanel {
 		 */
 		textNombre = new JLabel();
 		textNombre.setBounds(44, 40, 150, 60);
-		textNombre.setText("Nombre: ");
+		textNombre.setText(prop.getProperty("archivosdepropiedades.panel.principal.nombre"));
 		textNombre.setFont(new Font("Baloo", Font.BOLD, 24));
 		add(textNombre);
 
@@ -120,7 +124,7 @@ public class PanelAgregarCocina extends JPanel {
 		 */
 		textPrecio = new JLabel();
 		textPrecio.setBounds(50, 130, 150, 60);
-		textPrecio.setText("Precio: ");
+		textPrecio.setText(prop.getProperty("archivosdepropiedades.panel.principal.precio"));
 		textPrecio.setFont(new Font("Baloo", Font.BOLD, 24));
 		add(textPrecio);
 
@@ -139,7 +143,7 @@ public class PanelAgregarCocina extends JPanel {
 		 */
 		textDecoracion = new JLabel();
 		textDecoracion.setBounds(50, 190, 400, 60);
-		textDecoracion.setText("¿Es decoración? ");
+		textDecoracion.setText(prop.getProperty("archivosdepropiedades.panel.agregar.bano.esdecoracion"));
 		textDecoracion.setFont(new Font("Baloo", Font.BOLD, 26));
 		add(textDecoracion);
 
@@ -150,7 +154,7 @@ public class PanelAgregarCocina extends JPanel {
 		 * .borderpainte establcer e elimnar el borde
 		 * .contentareafilledestablecer su limite de texto
 		 */
-		siD = new JRadioButton("SI");
+		siD = new JRadioButton("TRUE");
 		siD.setBounds(257, 210, 80, 30); // Ajustar el tamaño para que el texto sea visible
 		siD.setFont(new Font("Baloo", Font.BOLD, 15));
 		siD.setOpaque(false);
@@ -166,7 +170,7 @@ public class PanelAgregarCocina extends JPanel {
 		 * .borderpainte establcer e elimnar el borde
 		 * .contentareafilledestablecer su limite de texto
 		 */
-		noD = new JRadioButton("NO");
+		noD = new JRadioButton("FALSE");
 		noD.setBounds(340, 210, 80, 30); // Ajustar el tamaño para que el texto sea visible
 		noD.setFont(new Font("Baloo", Font.BOLD, 15));
 		noD.setOpaque(false);
@@ -189,7 +193,7 @@ public class PanelAgregarCocina extends JPanel {
 		 */
 		textPeligro = new JLabel();
 		textPeligro.setBounds(50, 270, 400, 60);
-		textPeligro.setText("¿Es peligroso? ");
+		textPeligro.setText(prop.getProperty("archivosdepropiedades.panel.agregar.cocina.espeli"));
 		textPeligro.setFont(new Font("Baloo", Font.BOLD, 26));
 		add(textPeligro);
 
@@ -200,7 +204,7 @@ public class PanelAgregarCocina extends JPanel {
 		 * .borderpainte establcer e elimnar el borde
 		 * .contentareafilledestablecer su limite de texto
 		 */
-		siP = new JRadioButton("SI");
+		siP = new JRadioButton("TRUE");
 		siP.setBounds(257, 290, 80, 30); // Ajustar el tamaño para que el texto sea visible
 		siP.setFont(new Font("Baloo", Font.BOLD, 15));
 		siP.setOpaque(false);
@@ -216,7 +220,7 @@ public class PanelAgregarCocina extends JPanel {
 		 * .borderpainte establcer e elimnar el borde
 		 * .contentareafilledestablecer su limite de texto
 		 */
-		noP = new JRadioButton("NO");
+		noP = new JRadioButton("FALSE");
 		noP.setBounds(340, 290, 80, 30); // Ajustar el tamaño para que el texto sea visible
 		noP.setFont(new Font("Baloo", Font.BOLD, 15));
 		noP.setOpaque(false);
@@ -234,7 +238,7 @@ public class PanelAgregarCocina extends JPanel {
 
 		textResistecia = new JLabel();
 		textResistecia.setBounds(50, 350, 400, 60);
-		textResistecia.setText("¿Resiste altas temperatuas? ");
+		textResistecia.setText(prop.getProperty("archivosdepropiedades.panel.agregar.cocina.resistealtastemperaturas"));
 		textResistecia.setFont(new Font("Baloo", Font.BOLD, 26));
 		add(textResistecia);
 
@@ -245,7 +249,7 @@ public class PanelAgregarCocina extends JPanel {
 		 * .borderpainte establcer e elimnar el borde
 		 * .contentareafilledestablecer su limite de texto
 		 */
-		siR = new JRadioButton("SI");
+		siR = new JRadioButton("TRUE");
 		siR.setBounds(410, 370, 80, 30); // Ajustar el tamaño para que el texto sea visible
 		siR.setFont(new Font("Baloo", Font.BOLD, 15));
 		siR.setOpaque(false);
@@ -261,7 +265,7 @@ public class PanelAgregarCocina extends JPanel {
 		 * .borderpainte establcer e elimnar el borde
 		 * .contentareafilledestablecer su limite de texto
 		 */
-		noR = new JRadioButton("NO");
+		noR = new JRadioButton("FALSE");
 		noR.setBounds(494, 370, 80, 30); // Ajustar el tamaño para que el texto sea visible
 		noR.setFont(new Font("Baloo", Font.BOLD, 15));
 		noR.setOpaque(false);
@@ -278,6 +282,14 @@ public class PanelAgregarCocina extends JPanel {
 		grupo2.add(noR);
 
 		add(fondo);
+	}
+	
+	public void actualizarComps() {
+		textNombre.setText(prop.getProperty("archivosdepropiedades.panel.principal.nombre"));
+		textPrecio.setText(prop.getProperty("archivosdepropiedades.panel.principal.precio"));
+		textDecoracion.setText(prop.getProperty("archivosdepropiedades.panel.agregar.bano.esdecoracion"));
+		textPeligro.setText(prop.getProperty("archivosdepropiedades.panel.agregar.cocina.espeli"));
+		textResistecia.setText(prop.getProperty("archivosdepropiedades.panel.agregar.cocina.resistealtastemperaturas"));
 	}
 
 	/**
@@ -410,6 +422,15 @@ public class PanelAgregarCocina extends JPanel {
 	public void setA(int a) {
 		this.a = a;
 	}
+
+	public Properties getProp() {
+		return prop;
+	}
+
+	public void setProp(Properties prop) {
+		this.prop = prop;
+	}
+	
 	
 
 }

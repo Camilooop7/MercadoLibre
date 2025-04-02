@@ -40,7 +40,7 @@ public class PanelElimianarProducto extends JPanel {
 		this.prop = prop;
 
 		fondo = new JLabel();
-		BufferedImage fd = ImageIO.read(new File("src/co/edu/unbosque/view/FondoTBack.png"));
+		BufferedImage fd = ImageIO.read(new File(prop.getProperty("archivospropiedad.fondo.tback")));
 		ImageIcon imagenFondo = new ImageIcon(fd);
 		Image fdRedim = fd.getScaledInstance(1290, 750, Image.SCALE_SMOOTH);
 		fondo.setIcon(new ImageIcon(fdRedim));
@@ -58,7 +58,7 @@ public class PanelElimianarProducto extends JPanel {
 
 		btnHogar = new JButton();
 		btnHogar.setBounds(100, 290, 252, 70);
-		btnHogar.setText("Hogar");
+		btnHogar.setText(prop.getProperty("archivosdepropiedades.panel.agregar.producto.hogar"));
 		btnHogar.setFocusable(false);
 		btnHogar.setForeground(Color.black);
 		btnHogar.setBackground(new Color(235, 219, 79));
@@ -67,7 +67,7 @@ public class PanelElimianarProducto extends JPanel {
 
 		btnOficina = new JButton();
 		btnOficina.setBounds(100, 410, 252, 70);
-		btnOficina.setText("Oficina");
+		btnOficina.setText(prop.getProperty("archivosdepropiedades.panel.agregar.producto.oficina"));
 		btnOficina.setFocusable(false);
 		btnOficina.setForeground(Color.black);
 		btnOficina.setBackground(new Color(235, 219, 79));
@@ -76,22 +76,22 @@ public class PanelElimianarProducto extends JPanel {
 
 		btnOcio = new JButton();
 		btnOcio.setBounds(100, 530, 252, 70);
-		btnOcio.setText("Ocio");
+		btnOcio.setText(prop.getProperty("archivosdepropiedades.panel.agregar.producto.ocio"));
 		btnOcio.setFocusable(false);
 		btnOcio.setForeground(Color.black);
 		btnOcio.setBackground(new Color(235, 219, 79));
 		btnOcio.setFont(new Font("Baloo", Font.BOLD, 35));
 		add(btnOcio);
 
-		pah = new PanelAgregarH();
-		paof = new PanelAgregarOficina();
-		paoc = new PanelAgregarOcio();
+		pah = new PanelAgregarH(prop);
+		paof = new PanelAgregarOficina(prop);
 		pec = new PanelEliminarCocina();
-		peb = new PanelEliminarBano();
+		peb = new PanelEliminarBano(prop);
 		pee = new PanelEliminarElectro();
 		pepap = new PanelEliminarPapel();
 		pevj = new PanelEliminarVJ();
 		pedep = new PanelEliminarDeporte();
+		paoc = new PanelAgregarOcio(prop);
 
 		add(pah).setVisible(false);
 		add(paof).setVisible(false);
@@ -105,6 +105,54 @@ public class PanelElimianarProducto extends JPanel {
 
 		add(fondo);
 
+	}
+	
+	public void refrescarUI(Properties prop) throws IOException {
+	    // Aplicar revalidate() y repaint() a todos los paneles
+		 	
+		    
+		    paoc.setProp(prop);
+		    paoc.actualizarComps();
+		    paoc.revalidate();
+		    paoc.repaint();
+		    
+		  
+		    
+		    
+		    pah.setProp(prop);
+		    pah.actualizarComps();
+		    pah.revalidate();
+		    pah.repaint();
+		    
+		   
+		    paof.setProp(prop);
+		    paof.actualizarComps();
+		    paof.revalidate();
+		    paof.repaint();
+		    
+		    
+		    
+		  
+	    
+	    // También actualizar la ventana principal
+	    this.revalidate();
+	    this.repaint();
+	}
+	
+	public void actualizarCompss() throws IOException {
+		BufferedImage fd = ImageIO.read(new File(prop.getProperty("archivospropiedad.fondo.tback")));
+		ImageIcon imagenFondo = new ImageIcon(fd);
+		Image fdRedim = fd.getScaledInstance(1290, 750, Image.SCALE_SMOOTH);
+		fondo.setIcon(new ImageIcon(fdRedim));
+	}
+	
+	
+	
+	public void actualizarComps() {
+		btnHogar.setText(prop.getProperty("archivosdepropiedades.panel.agregar.producto.hogar"));
+		btnOficina.setText(prop.getProperty("archivosdepropiedades.panel.agregar.producto.oficina"));
+		btnOcio.setText(prop.getProperty("archivosdepropiedades.panel.agregar.producto.ocio"));
+		
 	}
 
 	public JLabel getFondo() {

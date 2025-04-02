@@ -10,6 +10,7 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Properties;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -33,6 +34,7 @@ public class PanelActualizarVJ extends JPanel {
 	private JTextArea text;
 	private String texto;
 	private JScrollPane barraV;
+	
 
 	/**
 	 * Constructor del panel donde se ejecuta la logica en general de cada parametro
@@ -46,6 +48,8 @@ public class PanelActualizarVJ extends JPanel {
 		 */
 		setBounds(412, 250, 780, 433);
 		setLayout(null);
+		
+		
 
 		/**
 		 * Inicialización del JLabel BufferedImage con el objetivo de establecer la

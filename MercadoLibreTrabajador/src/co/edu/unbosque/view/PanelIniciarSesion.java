@@ -37,7 +37,7 @@ public class PanelIniciarSesion extends JPanel {
 		this.prop = prop;
 
 		fondo = new JLabel();
-		BufferedImage fd = ImageIO.read(new File("src/co/edu/unbosque/view/FondoT.png"));
+		BufferedImage fd = ImageIO.read(new File(prop.getProperty("archivospropiedad.fondo.t")));
 		ImageIcon imagenFondo = new ImageIcon(fd);
 		Image fdRedim = fd.getScaledInstance(1290, 750, Image.SCALE_SMOOTH);
 		fondo.setIcon(new ImageIcon(fdRedim));
@@ -45,7 +45,7 @@ public class PanelIniciarSesion extends JPanel {
 
 		btnVolver = new JButton();
 		btnVolver.setBounds(800, 530, 170, 50);
-		btnVolver.setText("Volver");
+		btnVolver.setText(prop.getProperty("archivosdepropiedades.panel.iniciarsesion.volver"));
 		btnVolver.setFocusable(false);
 		btnVolver.setForeground(Color.black);
 		btnVolver.setBackground(new Color(246, 86, 86));
@@ -54,7 +54,7 @@ public class PanelIniciarSesion extends JPanel {
 
 		btnIngresar = new JButton();
 		btnIngresar.setBounds(480, 530, 320, 50);
-		btnIngresar.setText("Ingresar");
+		btnIngresar.setText(prop.getProperty("archivosdepropiedades.panel.iniciarsesion.ingresar"));
 		btnIngresar.setFocusable(false);
 		btnIngresar.setForeground(Color.black);
 		btnIngresar.setBackground(new Color(235, 219, 79));
@@ -81,25 +81,32 @@ public class PanelIniciarSesion extends JPanel {
 
 		textNombre = new JLabel();
 		textNombre.setBounds(230, 300, 400, 60);
-		textNombre.setText("Nombre de usuario:");
+		textNombre.setText(prop.getProperty("archivosdepropiedades.panel.iniciarsesion.nombreusuario"));
 		textNombre.setFont(new Font("Baloo", Font.BOLD, 26));
 		add(textNombre);
 
 		textContra = new JLabel();
 		textContra.setBounds(324, 400, 400, 60);
-		textContra.setText("Contraseña: ");
+		textContra.setText(prop.getProperty("archivosdepropiedades.panel.iniciarsesion.contrasena"));
 		textContra.setFont(new Font("Baloo", Font.BOLD, 26));
 		add(textContra);
 
 		textEstandar = new JLabel();
 		textEstandar.setBounds(480, 441, 800, 60);
-		textEstandar.setText(
-				"Debe contener 8 caracteres, una mayuscula, una minuscula, un simbolo y al menos un número.  ");
+		textEstandar.setText(prop.getProperty("archivosdepropiedades.panel.iniciarsesion.caracteres"));
 		textEstandar.setFont(new Font("Baloo", Font.BOLD, 10));
 		add(textEstandar);
 
 		add(fondo);
 
+	}
+	
+	public void actualizarComps() {
+		btnVolver.setText(prop.getProperty("archivosdepropiedades.panel.iniciarsesion.volver"));
+		btnIngresar.setText(prop.getProperty("archivosdepropiedades.panel.iniciarsesion.ingresar"));
+		textNombre.setText(prop.getProperty("archivosdepropiedades.panel.iniciarsesion.nombreusuario"));
+		textContra.setText(prop.getProperty("archivosdepropiedades.panel.iniciarsesion.contrasena"));
+		textEstandar.setText(prop.getProperty("archivosdepropiedades.panel.iniciarsesion.caracteres"));
 	}
 
 	public JLabel getFondo() {

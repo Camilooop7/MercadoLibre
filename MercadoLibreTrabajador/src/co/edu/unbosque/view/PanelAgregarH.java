@@ -9,6 +9,7 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Properties;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -26,13 +27,14 @@ public class PanelAgregarH extends JPanel {
 	private JLabel fondo;
 	private JButton btnCocina;
 	private JButton btnBano;
+	private Properties prop;
 
 	/**
 	 * Constructor del panel donde se ejecuta la logica en general de cada parametro
 	 * que se encuentra en la ventana. además se declara la excepción de
 	 * IOexception.
 	 */
-	public PanelAgregarH() throws IOException {
+	public PanelAgregarH(Properties prop) throws IOException {
 
 		/**
 		 * Uso del setBounds para fijar la posción del panel setLayaout permite
@@ -40,6 +42,7 @@ public class PanelAgregarH extends JPanel {
 		 */
 		setBounds(412, 250, 780, 433);
 		setLayout(null);
+		this.prop = prop;
 
 		/**
 		 * Inicialización del JLabel BufferedImage con el objetivo de establecer la
@@ -47,7 +50,7 @@ public class PanelAgregarH extends JPanel {
 		 * redimenzionar las medidas establecidas de la imagen.
 		 */
 		fondo = new JLabel();
-		BufferedImage fd = ImageIO.read(new File("src/co/edu/unbosque/view/FondoHogar.png"));
+		BufferedImage fd = ImageIO.read(new File(prop.getProperty("archivospropiedad.fondo.fondohogar")));
 		ImageIcon imagenFondo = new ImageIcon(fd);
 		Image fdRedim = fd.getScaledInstance(780, 433, Image.SCALE_SMOOTH);
 		fondo.setIcon(new ImageIcon(fdRedim));
@@ -92,6 +95,13 @@ public class PanelAgregarH extends JPanel {
 		add(fondo);
 
 	}
+	
+	public void actualizarComps() throws IOException {
+		BufferedImage fd = ImageIO.read(new File(prop.getProperty("archivospropiedad.fondo.fondohogar")));
+		ImageIcon imagenFondo = new ImageIcon(fd);
+		Image fdRedim = fd.getScaledInstance(780, 433, Image.SCALE_SMOOTH);
+		fondo.setIcon(new ImageIcon(fdRedim));
+	}
 
 	/**
 	 * Getters & Stters
@@ -120,5 +130,15 @@ public class PanelAgregarH extends JPanel {
 	public void setBtnBano(JButton btnBano) {
 		this.btnBano = btnBano;
 	}
+
+	public Properties getProp() {
+		return prop;
+	}
+
+	public void setProp(Properties prop) {
+		this.prop = prop;
+	}
+	
+	
 
 }

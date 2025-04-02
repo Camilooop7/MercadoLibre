@@ -69,7 +69,7 @@ public class PanelFavorito extends JPanel{
 		btnVolver.setBorderPainted(false);
 		btnVolver.setVisible(true);
 
-        agregarProductos(-1, new ArrayList<>());
+        agregarProducto(-1, new ArrayList<>());
         
 
         scrollPane = new JScrollPane(panelContenido);
@@ -88,7 +88,7 @@ public class PanelFavorito extends JPanel{
         add(fondo);
     }
     
-    public void actualizarComps() throws IOException {
+    public void actualizarComp() throws IOException {
     	BufferedImage fd = ImageIO.read(new File(prop.getProperty("archivospropiedad.fondo.fondovolver")));
 		ImageIcon imagenFondo = new ImageIcon(fd);
 		Image fdRedim = fd.getScaledInstance(1290, 750, Image.SCALE_SMOOTH);
@@ -101,7 +101,7 @@ public class PanelFavorito extends JPanel{
      * @param cantidad   Cantidad de productos a agregar.
      * @param listaDatos Lista con la información de cada producto.
      */
-    public void agregarProductos(int cantidad, ArrayList<Producto> listaDatos) {
+    public void agregarProducto(int cantidad, ArrayList<Producto> listaDatos) {
         if (cantidad == -1) {
             return;
         }
@@ -172,7 +172,7 @@ public class PanelFavorito extends JPanel{
         botonesAnadir.clear();
         botonesFav.clear();
         panelContenido.removeAll();
-        agregarProductos(listaDatos.size(), listaDatos);
+        agregarProducto(listaDatos.size(), listaDatos);
         revalidate();
         repaint();
     }

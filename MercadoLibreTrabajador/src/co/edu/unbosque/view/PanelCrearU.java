@@ -40,7 +40,7 @@ public class PanelCrearU extends JPanel {
 		this.prop = prop;
 
 		fondo = new JLabel();
-		BufferedImage fd = ImageIO.read(new File("src/co/edu/unbosque/view/FondoTC.png"));
+		BufferedImage fd = ImageIO.read(new File(prop.getProperty("archivospropiedad.fondo.tc")));
 		ImageIcon imagenFondo = new ImageIcon(fd);
 		Image fdRedim = fd.getScaledInstance(1300, 746, Image.SCALE_SMOOTH);
 		fondo.setIcon(new ImageIcon(fdRedim));
@@ -48,7 +48,7 @@ public class PanelCrearU extends JPanel {
 
 		btnVolver = new JButton();
 		btnVolver.setBounds(800, 600, 170, 50);
-		btnVolver.setText("Volver");
+		btnVolver.setText(prop.getProperty("archivosdepropiedades.panel.crear.volver.u"));
 		btnVolver.setFocusable(false);
 		btnVolver.setForeground(Color.black);
 		btnVolver.setBackground(new Color(246, 86, 86));
@@ -57,7 +57,7 @@ public class PanelCrearU extends JPanel {
 
 		btnIngresar = new JButton();
 		btnIngresar.setBounds(480, 600, 320, 50);
-		btnIngresar.setText("Crear Usuario");
+		btnIngresar.setText(prop.getProperty("archivosdepropiedades.panel.crear.crearusuario.u"));
 		btnIngresar.setFocusable(false);
 		btnIngresar.setForeground(Color.black);
 		btnIngresar.setBackground(new Color(235, 219, 79));
@@ -97,37 +97,46 @@ public class PanelCrearU extends JPanel {
 
 		textNombre = new JLabel();
 		textNombre.setBounds(230, 300, 400, 60);
-		textNombre.setText("Nombre de usuario:");
+		textNombre.setText(prop.getProperty("archivosdepropiedades.panel.crear.nombre.u"));
 		textNombre.setFont(new Font("Baloo", Font.BOLD, 26));
 		add(textNombre);
 
 		textContra1 = new JLabel();
 		textContra1.setBounds(324, 400, 400, 60);
-		textContra1.setText("Contraseña: ");
+		textContra1.setText(prop.getProperty("archivosdepropiedades.panel.crear.contrasena.u"));
 		textContra1.setFont(new Font("Baloo", Font.BOLD, 26));
 		add(textContra1);
 
 		textContra2 = new JLabel();
 		textContra2.setBounds(230, 500, 400, 60);
-		textContra2.setText("Repetir contraseña: ");
+		textContra2.setText(prop.getProperty("archivosdepropiedades.panel.crear.contrasena.re"));
 		textContra2.setFont(new Font("Baloo", Font.BOLD, 26));
 		add(textContra2);
 
 		textEstandarNombre = new JLabel();
 		textEstandarNombre.setBounds(480, 341, 400, 60);
-		textEstandarNombre.setText("Debe contener al menos 8 caracteres.");
+		textEstandarNombre.setText(prop.getProperty("archivosdepropiedades.panel.crear.caracteres.u"));
 		textEstandarNombre.setFont(new Font("Baloo", Font.BOLD, 10));
 		add(textEstandarNombre);
 
 		textEstandarContra = new JLabel();
 		textEstandarContra.setBounds(480, 441, 800, 60);
-		textEstandarContra.setText(
-				"Debe contener 8 caracteres, una mayuscula, una minuscula, un simbolo y al menos un número.  ");
+		textEstandarContra.setText(prop.getProperty("archivosdepropiedades.panel.crear.caracterescontrasena.u"));
 		textEstandarContra.setFont(new Font("Baloo", Font.BOLD, 10));
 		add(textEstandarContra);
 
 		add(fondo);
 
+	}
+	
+	public void actualizarComps() {
+		btnVolver.setText(prop.getProperty("archivosdepropiedades.panel.crear.volver.u"));
+		btnIngresar.setText(prop.getProperty("archivosdepropiedades.panel.crear.crearusuario.u"));
+		textNombre.setText(prop.getProperty("archivosdepropiedades.panel.crear.nombre.u"));
+		textContra1.setText(prop.getProperty("archivosdepropiedades.panel.crear.contrasena.u"));
+		textContra2.setText(prop.getProperty("archivosdepropiedades.panel.crear.contrasena.re"));
+		textEstandarNombre.setText(prop.getProperty("archivosdepropiedades.panel.crear.caracteres.u"));
+		textEstandarContra.setText(prop.getProperty("archivosdepropiedades.panel.crear.caracterescontrasena.u"));
 	}
 
 	public JLabel getFondo() {

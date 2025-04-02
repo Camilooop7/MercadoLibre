@@ -33,7 +33,7 @@ public class PanelUsuario extends JPanel {
 		this.prop = prop;
 
 		fondo = new JLabel();
-		BufferedImage fd = ImageIO.read(new File("src/co/edu/unbosque/view/FondoTBack.png"));
+		BufferedImage fd = ImageIO.read(new File(prop.getProperty("archivospropiedad.fondo.tback")));
 		ImageIcon imagenFondo = new ImageIcon(fd);
 		Image fdRedim = fd.getScaledInstance(1290, 750, Image.SCALE_SMOOTH);
 		fondo.setIcon(new ImageIcon(fdRedim));
@@ -49,7 +49,7 @@ public class PanelUsuario extends JPanel {
 		btnVolver.setVisible(true);
 		add(btnVolver);
 
-		pmu = new PanelModificarU();
+		pmu = new PanelModificarU(prop);
 		pmt = new PanelModificarT();
 		pmc = new PanelModificarC();
 
@@ -58,6 +58,31 @@ public class PanelUsuario extends JPanel {
 		add(pmu).setVisible(true);
 
 		add(fondo);
+	}
+	
+	public void refrescarUI(Properties prop) throws IOException {
+	    // Aplicar revalidate() y repaint() a todos los paneles
+		
+		
+	    pmu.setProp(prop);
+	    pmu.actualizarComps();
+	    pmu.revalidate();
+	    pmu.repaint();
+	    
+	    
+	    
+	  
+	    
+	    // También actualizar la ventana principal
+	    this.revalidate();
+	    this.repaint();
+	}
+	
+	public void actualizarComps() throws IOException{
+		BufferedImage fd = ImageIO.read(new File(prop.getProperty("archivospropiedad.fondo.tback")));
+		ImageIcon imagenFondo = new ImageIcon(fd);
+		Image fdRedim = fd.getScaledInstance(1290, 750, Image.SCALE_SMOOTH);
+		fondo.setIcon(new ImageIcon(fdRedim));
 	}
 
 	public JLabel getFondo() {

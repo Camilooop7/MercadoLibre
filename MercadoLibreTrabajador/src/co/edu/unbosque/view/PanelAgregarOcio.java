@@ -9,6 +9,7 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Properties;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -26,13 +27,15 @@ public class PanelAgregarOcio extends JPanel {
 	private JLabel fondo;
 	private JButton btnVideoJuego;
 	private JButton btnDeporte;
+	private Properties prop;
+	
 	
 	/**
 	 * Constructor del panel donde se ejecuta la logica en general de cada parametro
 	 * que se encuentra en la ventana. además se declara la excepción de
 	 * IOexception.
 	 */
-	public PanelAgregarOcio()throws IOException {
+	public PanelAgregarOcio(Properties prop)throws IOException {
 
 		/**
 		 * Uso del setBounds para fijar la posción del panel setLayaout permite
@@ -40,6 +43,9 @@ public class PanelAgregarOcio extends JPanel {
 		 */
 		setBounds(412, 250, 780, 433);
 		setLayout(null);
+		this.prop = prop;
+		
+		
 
 		/**
 		 * Inicialización del JLabel BufferedImage con el objetivo de establecer la
@@ -47,7 +53,7 @@ public class PanelAgregarOcio extends JPanel {
 		 * redimenzionar las medidas establecidas de la imagen.
 		 */
 		fondo = new JLabel();
-		BufferedImage fd = ImageIO.read(new File("src/co/edu/unbosque/view/FondoOcio.png"));
+		BufferedImage fd = ImageIO.read(new File(prop.getProperty("archivospropiedad.fondo.fondoocio")));
 		ImageIcon imagenFondo = new ImageIcon(fd);
 		Image fdRedim = fd.getScaledInstance(780, 433, Image.SCALE_SMOOTH);
 		fondo.setIcon(new ImageIcon(fdRedim));
@@ -84,6 +90,14 @@ public class PanelAgregarOcio extends JPanel {
 		add(fondo);
 
 	}
+	
+	public void actualizarComps() throws IOException {
+		BufferedImage fd = ImageIO.read(new File(prop.getProperty("archivospropiedad.fondo.fondoocio")));
+		ImageIcon imagenFondo = new ImageIcon(fd);
+		Image fdRedim = fd.getScaledInstance(780, 433, Image.SCALE_SMOOTH);
+		fondo.setIcon(new ImageIcon(fdRedim));
+	}
+	
 
 	/**
 	 * Getters & Stters
@@ -112,5 +126,17 @@ public class PanelAgregarOcio extends JPanel {
 	public void setBtnDeporte(JButton btnDeporte) {
 		this.btnDeporte = btnDeporte;
 	}
+
+	public Properties getProp() {
+		return prop;
+	}
+
+	public void setProp(Properties prop) {
+		this.prop = prop;
+	}
+
+	
+	
+	
 
 }

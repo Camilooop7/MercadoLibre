@@ -49,7 +49,7 @@ public class PanelOficina extends JPanel{
         scrollPane = new JScrollPane(panelContenido);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 
-        agregarProductos(-1, new ArrayList<>());
+        agregarProducto(-1, new ArrayList<>());
 
         add(scrollPane, BorderLayout.CENTER);
     }
@@ -60,7 +60,7 @@ public class PanelOficina extends JPanel{
      * @param cantidad   Cantidad de productos a agregar.
      * @param listaDatos Lista con la información de cada producto.
      */
-    public void agregarProductos(int cantidad, ArrayList<Oficina> listaDatos) {
+    public void agregarProducto(int cantidad, ArrayList<Oficina> listaDatos) {
         if (cantidad == -1) {
             return;
         }
@@ -131,7 +131,7 @@ public class PanelOficina extends JPanel{
         botonesAnadir.clear();
         botonesFav.clear();
         panelContenido.removeAll();
-        agregarProductos(listaDatos.size(), listaDatos);
+        agregarProducto(listaDatos.size(), listaDatos);
         revalidate();
         repaint();
     }

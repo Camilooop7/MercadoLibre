@@ -16,6 +16,8 @@ public class VentanaPrincipalT extends JFrame {
 	private PanelUsuario pmu;
 	private PanelElimianarProducto pep;
 	private PanelActualizarProducto papro;
+	
+	
 
 	public VentanaPrincipalT(Properties prop) throws IOException {
 
@@ -33,7 +35,10 @@ public class VentanaPrincipalT extends JFrame {
 		pmu = new PanelUsuario(prop);
 		pep = new PanelElimianarProducto(prop);
 		papro = new PanelActualizarProducto(prop);
+		
+		
 
+		
 		add(ppt).setVisible(true);
 		add(pis).setVisible(false);
 		add(pcu).setVisible(false);
@@ -42,11 +47,22 @@ public class VentanaPrincipalT extends JFrame {
 		add(pmu).setVisible(false);
 		add(pep).setVisible(false);
 		add(papro).setVisible(false);
+		
 
 	}
 	
 	public void refrescarUI(Properties prop) throws IOException {
 	    // Aplicar revalidate() y repaint() a todos los paneles
+		
+		pap.refrescarUI(prop);
+		pmu.refrescarUI(prop);
+		papro.refrescarUI(prop);
+		pep.refrescarUI(prop);
+		
+		pap.actualizarCompss();
+		pep.actualizarCompss();
+		papro.actualizarCompss();
+		
 	    ppt.setProp(prop);
 	    ppt.actualizarComps();
 	    ppt.revalidate();
@@ -86,6 +102,8 @@ public class VentanaPrincipalT extends JFrame {
 	    papro.actualizarComps();
 	    papro.revalidate();
 	    papro.repaint();
+	    
+	   
 	    
 	    // También actualizar la ventana principal
 	    this.revalidate();

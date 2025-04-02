@@ -11,6 +11,7 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Properties;
 
 import javax.imageio.ImageIO;
 import javax.swing.ButtonGroup;
@@ -43,6 +44,7 @@ public class PanelAgregarDeporte extends JPanel {
 	private JLabel textDeporte;
 	private JTextField deporte;
 	private int a = 0;
+	private Properties prop;
 
 	
 	/**
@@ -50,7 +52,7 @@ public class PanelAgregarDeporte extends JPanel {
 	 * que se encuentra en la ventana. además se declara la excepción de
 	 * IOexception.
 	 */
-	public PanelAgregarDeporte() throws IOException {
+	public PanelAgregarDeporte(Properties prop) throws IOException {
 
 		/**
 		 * Uso del setBounds para fijar la posción del panel setLayaout permite
@@ -58,6 +60,7 @@ public class PanelAgregarDeporte extends JPanel {
 		 */
 		setBounds(412, 250, 780, 433);
 		setLayout(null);
+		this.prop = prop;
 
 		/**
 		 * Inicialización del JLabel BufferedImage con el objetivo de establecer la
@@ -65,7 +68,7 @@ public class PanelAgregarDeporte extends JPanel {
 		 * redimenzionar las medidas establecidas de la imagen.
 		 */
 		fondo = new JLabel();
-		BufferedImage fd = ImageIO.read(new File("src/co/edu/unbosque/view/PanelAgregar.png"));
+		BufferedImage fd = ImageIO.read(new File(prop.getProperty("archivospropiedad.panel.agre")));
 		ImageIcon imagenFondo = new ImageIcon(fd);
 		Image fdRedim = fd.getScaledInstance(780, 433, Image.SCALE_SMOOTH);
 		fondo.setIcon(new ImageIcon(fdRedim));
@@ -96,7 +99,7 @@ public class PanelAgregarDeporte extends JPanel {
 		 */
 		textNombre = new JLabel();
 		textNombre.setBounds(44, 40, 150, 60);
-		textNombre.setText("Nombre: ");
+		textNombre.setText(prop.getProperty("archivosdepropiedades.panel.principal.nombre"));
 		textNombre.setFont(new Font("Baloo", Font.BOLD, 24));
 		add(textNombre);
 
@@ -117,7 +120,7 @@ public class PanelAgregarDeporte extends JPanel {
 		 */
 		textPrecio = new JLabel();
 		textPrecio.setBounds(50, 130, 150, 60);
-		textPrecio.setText("Precio: ");
+		textPrecio.setText(prop.getProperty("archivosdepropiedades.panel.principal.precio"));
 		textPrecio.setFont(new Font("Baloo", Font.BOLD, 24));
 		add(textPrecio);
 
@@ -136,7 +139,7 @@ public class PanelAgregarDeporte extends JPanel {
 		 */
 		textAccesorio = new JLabel();
 		textAccesorio.setBounds(50, 190, 400, 60);
-		textAccesorio.setText("¿Es accesorio? ");
+		textAccesorio.setText(prop.getProperty("archivosdepropiedades.panel.agregar.deporte.esaccesorio"));
 		textAccesorio.setFont(new Font("Baloo", Font.BOLD, 26));
 		add(textAccesorio);
 
@@ -147,7 +150,7 @@ public class PanelAgregarDeporte extends JPanel {
 		 * .borderpainte establcer e elimnar el borde
 		 * .contentareafilledestablecer su limite de texto
 		 */
-		siA = new JRadioButton("SI");
+		siA = new JRadioButton("TRUE");
 		siA.setBounds(257, 210, 80, 30); // Ajustar el tamaño para que el texto sea visible
 		siA.setFont(new Font("Baloo", Font.BOLD, 15));
 		siA.setOpaque(false);
@@ -163,7 +166,7 @@ public class PanelAgregarDeporte extends JPanel {
 		 * .borderpainte establcer e elimnar el borde
 		 * .contentareafilledestablecer su limite de texto
 		 */
-		noA = new JRadioButton("NO");
+		noA = new JRadioButton("FALSE");
 		noA.setBounds(340, 210, 80, 30); // Ajustar el tamaño para que el texto sea visible
 		noA.setFont(new Font("Baloo", Font.BOLD, 15));
 		noA.setOpaque(false);
@@ -186,7 +189,7 @@ public class PanelAgregarDeporte extends JPanel {
 		 */
 		textDeporte = new JLabel();
 		textDeporte.setBounds(40, 270, 150, 60);
-		textDeporte.setText("Deporte:");
+		textDeporte.setText(prop.getProperty("archivosdepropiedades.panel.agregar.deporte"));
 		textDeporte.setFont(new Font("Baloo", Font.BOLD, 24));
 		add(textDeporte);
 
@@ -201,6 +204,14 @@ public class PanelAgregarDeporte extends JPanel {
 		add(deporte);
 
 		add(fondo);
+	}
+	
+	public void actualizarComps() {
+		textNombre.setText(prop.getProperty("archivosdepropiedades.panel.principal.nombre"));
+		textPrecio.setText(prop.getProperty("archivosdepropiedades.panel.principal.precio"));
+		textAccesorio.setText(prop.getProperty("archivosdepropiedades.panel.agregar.deporte.esaccesorio"));
+		textDeporte.setText(prop.getProperty("archivosdepropiedades.panel.agregar.deporte"));
+		
 	}
 
 	/**
@@ -301,5 +312,15 @@ public class PanelAgregarDeporte extends JPanel {
 	public void setA(int a) {
 		this.a = a;
 	}
+
+	public Properties getProp() {
+		return prop;
+	}
+
+	public void setProp(Properties prop) {
+		this.prop = prop;
+	}
+	
+	
 
 }

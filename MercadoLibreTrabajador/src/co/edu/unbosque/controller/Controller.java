@@ -45,7 +45,7 @@ public class Controller implements ActionListener {
 prop = new Properties();
 		
 		try {
-			prop.load(new FileInputStream(new File("src/archivos/textingles.properties")));
+			prop.load(new FileInputStream(new File("src/archivos/textespanol.properties")));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -71,6 +71,10 @@ prop = new Properties();
 		vf.getVpt().getPpt().getBtnCrearU().setActionCommand("btnCrearU");
 		vf.getVpt().getPpt().getBtnSalir().addActionListener(this);
 		vf.getVpt().getPpt().getBtnSalir().setActionCommand("btnSalir");
+		vf.getVpt().getPpt().getBtnEspanol().addActionListener(this);
+		vf.getVpt().getPpt().getBtnEspanol().setActionCommand("espanol");
+		vf.getVpt().getPpt().getBtnIngles().addActionListener(this);
+		vf.getVpt().getPpt().getBtnIngles().setActionCommand("ingles");
 
 		vf.getVpt().getPis().getBtnIngresar().addActionListener(this);
 		vf.getVpt().getPis().getBtnIngresar().setActionCommand("btnIngresarI");
@@ -2230,7 +2234,7 @@ prop = new Properties();
 				o.printStackTrace();
 			}
 			try {
-				vf.getVpc().refrescarUI(prop);
+				vf.getVpt().refrescarUI(prop);
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -2246,7 +2250,7 @@ prop = new Properties();
 				o.printStackTrace();
 			}
 			try {
-				vf.getVpc().refrescarUI(prop);
+				vf.getVpt().refrescarUI(prop);
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();

@@ -6,6 +6,7 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Properties;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -18,10 +19,13 @@ public class PanelModificarU extends JPanel {
 	private JLabel fondo;
 	private JButton btnTrabajador;
 	private JButton btnCliente;
+	private Properties prop;
 
-	public PanelModificarU() throws IOException {
+	public PanelModificarU(Properties prop) throws IOException {
 		setBounds(166, 245, 950, 433);
 		setLayout(null);
+		
+		this.prop = prop;
 
 		fondo = new JLabel();
 		BufferedImage fd = ImageIO.read(new File("src/co/edu/unbosque/view/FondoUs.png"));
@@ -53,6 +57,13 @@ public class PanelModificarU extends JPanel {
 		add(fondo);
 
 	}
+	
+	public void actualizarComps() throws IOException {
+		BufferedImage fd = ImageIO.read(new File(prop.getProperty("archivospropiedad.fondo.user")));
+		ImageIcon imagenFondo = new ImageIcon(fd);
+		Image fdRedim = fd.getScaledInstance(950, 433, Image.SCALE_SMOOTH);
+		fondo.setIcon(new ImageIcon(fdRedim));
+	}
 
 	public JLabel getFondo() {
 		return fondo;
@@ -77,5 +88,16 @@ public class PanelModificarU extends JPanel {
 	public void setBtnCliente(JButton btnCliente) {
 		this.btnCliente = btnCliente;
 	}
+
+	public Properties getProp() {
+		return prop;
+	}
+
+	public void setProp(Properties prop) {
+		this.prop = prop;
+	}
+	
+	
+	
 
 }

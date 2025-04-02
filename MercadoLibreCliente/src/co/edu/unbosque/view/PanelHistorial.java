@@ -85,14 +85,14 @@ public class PanelHistorial extends JPanel {
         add(fondo);
     }
     
-    public void actualizarComps() throws IOException {
+    public void actualizarComp() throws IOException {
         BufferedImage fd = ImageIO.read(new File(prop.getProperty("archivospropiedad.fondo.fondovolver")));
         ImageIcon imagenFondo = new ImageIcon(fd.getScaledInstance(1290, 750, Image.SCALE_SMOOTH));
         fondo.setIcon(imagenFondo);
         btnLimpiar.setText(prop.getProperty("archivospropiedad.boton.limpiar"));
     }
     
-    public void agregarProductos(int cantidad, ArrayList<Carrito> listaDatos) {
+    public void agregarProducto(int cantidad, ArrayList<Carrito> listaDatos) {
         if (cantidad == -1) {
             return;
         }
@@ -166,7 +166,7 @@ public class PanelHistorial extends JPanel {
         botonesAnadir.clear();
         botonesFav.clear();
         panelContenido.removeAll();
-        agregarProductos(listaDatos.size(), listaDatos);
+        agregarProducto(listaDatos.size(), listaDatos);
         revalidate();
         repaint();
     }

@@ -6,6 +6,7 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Properties;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -24,10 +25,13 @@ public class PanelEliminarBano extends JPanel {
 	private JTextArea text;
 	private String texto;
 	private JScrollPane barraV;
+	private Properties prop;
 
-	public PanelEliminarBano() throws IOException {
+	public PanelEliminarBano(Properties prop) throws IOException {
 		setBounds(412, 250, 780, 433);
 		setLayout(null);
+		
+		this.prop = prop;
 
 		fondo = new JLabel();
 		BufferedImage fd = ImageIO.read(new File("src/co/edu/unbosque/view/PanelEliminar.png"));
@@ -77,6 +81,9 @@ public class PanelEliminarBano extends JPanel {
 
 		add(fondo);
 	}
+	
+	
+	
 
 	public JLabel getFondo() {
 		return fondo;

@@ -93,7 +93,7 @@ public class PanelPrincipalC extends JPanel {
 		add(fondo); // TODO Auto-generated constructor stub
 	}
 	
-	public void actualizarComps() throws IOException {
+	public void actualizarComp() throws IOException {
 		BufferedImage fd = ImageIO.read(new File(prop.getProperty("archivospropiedad.fondo.fondoidioma")));
 		ImageIcon imagenFondo = new ImageIcon(fd);
 		Image fdRedim = fd.getScaledInstance(1290, 750, Image.SCALE_SMOOTH);

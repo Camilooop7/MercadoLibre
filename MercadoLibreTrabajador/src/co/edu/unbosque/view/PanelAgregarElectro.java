@@ -10,6 +10,7 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Properties;
 
 import javax.imageio.ImageIO;
 import javax.swing.ButtonGroup;
@@ -40,13 +41,14 @@ public class PanelAgregarElectro extends JPanel {
 	private JLabel textFuenteEnergia;
 	private JTextField fuenteEnergia;
 	private int a = 0;
+	private Properties prop;
 
 	/**
 	 * Constructor del panel donde se ejecuta la logica en general de cada parametro
 	 * que se encuentra en la ventana. además se declara la excepción de
 	 * IOexception.
 	 */
-	public PanelAgregarElectro() throws IOException {
+	public PanelAgregarElectro(Properties prop) throws IOException {
 
 		/**
 		 * Uso del setBounds para fijar la posción del panel setLayaout permite
@@ -55,6 +57,7 @@ public class PanelAgregarElectro extends JPanel {
 		setBounds(412, 250, 780, 433);
 		setLayout(null);
 
+		this.prop = prop;
 		/**
 		 * Inicialización del JLabel BufferedImage con el objetivo de establecer la
 		 * ubicación del archivo de la imagen dentro de los archivos. Image Redim
@@ -92,7 +95,7 @@ public class PanelAgregarElectro extends JPanel {
 		 */
 		textNombre = new JLabel();
 		textNombre.setBounds(44, 40, 150, 60);
-		textNombre.setText("Nombre: ");
+		textNombre.setText(prop.getProperty("archivosdepropiedades.panel.principal.nombre"));
 		textNombre.setFont(new Font("Baloo", Font.BOLD, 24));
 		add(textNombre);
 
@@ -113,7 +116,7 @@ public class PanelAgregarElectro extends JPanel {
 		 */
 		textPrecio = new JLabel();
 		textPrecio.setBounds(50, 130, 150, 60);
-		textPrecio.setText("Precio: ");
+		textPrecio.setText(prop.getProperty("archivosdepropiedades.panel.principal.precio"));
 		textPrecio.setFont(new Font("Baloo", Font.BOLD, 24));
 		add(textPrecio);
 
@@ -132,7 +135,7 @@ public class PanelAgregarElectro extends JPanel {
 		 */
 		textPortatil = new JLabel();
 		textPortatil.setBounds(50, 190, 400, 60);
-		textPortatil.setText("¿Es Portatil? ");
+		textPortatil.setText(prop.getProperty("archivosdepropiedades.panel.agregar.electro.esportatil"));
 		textPortatil.setFont(new Font("Baloo", Font.BOLD, 26));
 		add(textPortatil);
 
@@ -143,7 +146,7 @@ public class PanelAgregarElectro extends JPanel {
 		 * .borderpainte establcer e elimnar el borde
 		 * .contentareafilledestablecer su limite de texto
 		 */
-		siD = new JRadioButton("SI");
+		siD = new JRadioButton("TRUE");
 		siD.setBounds(257, 210, 80, 30); // Ajustar el tamaño para que el texto sea visible
 		siD.setFont(new Font("Baloo", Font.BOLD, 15));
 		siD.setOpaque(false);
@@ -159,7 +162,7 @@ public class PanelAgregarElectro extends JPanel {
 		 * .borderpainte establcer e elimnar el borde
 		 * .contentareafilledestablecer su limite de texto
 		 */
-		noD = new JRadioButton("NO");
+		noD = new JRadioButton("FALSE");
 		noD.setBounds(340, 210, 80, 30); // Ajustar el tamaño para que el texto sea visible
 		noD.setFont(new Font("Baloo", Font.BOLD, 15));
 		noD.setOpaque(false);
@@ -182,7 +185,7 @@ public class PanelAgregarElectro extends JPanel {
 		 */
 		textFuenteEnergia = new JLabel();
 		textFuenteEnergia.setBounds(42, 265, 400, 60);
-		textFuenteEnergia.setText("Fuente de energia: ");
+		textFuenteEnergia.setText(prop.getProperty("archivosdepropiedades.panel.agregar.electro.fuentedeenergia"));
 		textFuenteEnergia.setFont(new Font("Baloo", Font.BOLD, 22));
 		add(textFuenteEnergia);
 
@@ -197,6 +200,13 @@ public class PanelAgregarElectro extends JPanel {
 		add(fuenteEnergia);
 
 		add(fondo);
+	}
+	
+	public void actualizarComps() {
+		textNombre.setText(prop.getProperty("archivosdepropiedades.panel.principal.nombre"));
+		textPrecio.setText(prop.getProperty("archivosdepropiedades.panel.principal.precio"));
+		textPortatil.setText(prop.getProperty("archivosdepropiedades.panel.agregar.electro.esportatil"));
+		textFuenteEnergia.setText(prop.getProperty("archivosdepropiedades.panel.agregar.electro.fuentedeenergia"));
 	}
 
 	/**
@@ -318,6 +328,15 @@ public class PanelAgregarElectro extends JPanel {
 	public void setA(int a) {
 		this.a = a;
 	}
+
+	public Properties getProp() {
+		return prop;
+	}
+
+	public void setProp(Properties prop) {
+		this.prop = prop;
+	}
+	
 	
 
 }

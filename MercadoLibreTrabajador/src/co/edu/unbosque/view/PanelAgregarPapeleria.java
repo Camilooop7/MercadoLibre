@@ -10,6 +10,7 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Properties;
 
 import javax.imageio.ImageIO;
 import javax.swing.ButtonGroup;
@@ -40,13 +41,14 @@ public class PanelAgregarPapeleria extends JPanel {
 	private JLabel textCantidadPorPaquete;
 	private JSpinner cantidadPorPaquete;
 	private int a = 0;
+	private Properties prop;
 	
 	/**
 	 * Constructor del panel donde se ejecuta la logica en general de cada parametro
 	 * que se encuentra en la ventana. además se declara la excepción de
 	 * IOexception.
 	 */
-	public PanelAgregarPapeleria() throws IOException {
+	public PanelAgregarPapeleria(Properties prop) throws IOException {
 
 		/**
 		 * Uso del setBounds para fijar la posción del panel setLayaout permite
@@ -54,6 +56,7 @@ public class PanelAgregarPapeleria extends JPanel {
 		 */
 		setBounds(412, 250, 780, 433);
 		setLayout(null);
+		this.prop = prop;
 
 		/**
 		 * Inicialización del JLabel BufferedImage con el objetivo de establecer la
@@ -61,7 +64,7 @@ public class PanelAgregarPapeleria extends JPanel {
 		 * redimenzionar las medidas establecidas de la imagen.
 		 */
 		fondo = new JLabel();
-		BufferedImage fd = ImageIO.read(new File("src/co/edu/unbosque/view/PanelAgregar.png"));
+		BufferedImage fd = ImageIO.read(new File(prop.getProperty("archivospropiedad.panel.agre")));
 		ImageIcon imagenFondo = new ImageIcon(fd);
 		Image fdRedim = fd.getScaledInstance(780, 433, Image.SCALE_SMOOTH);
 		fondo.setIcon(new ImageIcon(fdRedim));
@@ -92,7 +95,7 @@ public class PanelAgregarPapeleria extends JPanel {
 		 */
 		textNombre = new JLabel();
 		textNombre.setBounds(44, 40, 150, 60);
-		textNombre.setText("Nombre: ");
+		textNombre.setText(prop.getProperty("archivosdepropiedades.panel.principal.nombre"));
 		textNombre.setFont(new Font("Baloo", Font.BOLD, 24));
 		add(textNombre);
 
@@ -113,7 +116,7 @@ public class PanelAgregarPapeleria extends JPanel {
 		 */
 		textPrecio = new JLabel();
 		textPrecio.setBounds(50, 130, 150, 60);
-		textPrecio.setText("Precio: ");
+		textPrecio.setText(prop.getProperty("archivosdepropiedades.panel.principal.precio"));
 		textPrecio.setFont(new Font("Baloo", Font.BOLD, 24));
 		add(textPrecio);
 
@@ -132,7 +135,7 @@ public class PanelAgregarPapeleria extends JPanel {
 		 */
 		textPortatil = new JLabel();
 		textPortatil.setBounds(50, 190, 400, 60);
-		textPortatil.setText("¿Es Portatil? ");
+		textPortatil.setText(prop.getProperty("archivosdepropiedades.panel.agregar.papeleria.esportatil"));
 		textPortatil.setFont(new Font("Baloo", Font.BOLD, 26));
 		add(textPortatil);
 
@@ -143,7 +146,7 @@ public class PanelAgregarPapeleria extends JPanel {
 		 * .borderpainte establcer e elimnar el borde
 		 * .contentareafilledestablecer su limite de texto
 		 */
-		siD = new JRadioButton("SI");
+		siD = new JRadioButton("TRUE");
 		siD.setBounds(257, 210, 80, 30); // Ajustar el tamaño para que el texto sea visible
 		siD.setFont(new Font("Baloo", Font.BOLD, 15));
 		siD.setOpaque(false);
@@ -159,7 +162,7 @@ public class PanelAgregarPapeleria extends JPanel {
 		 * .borderpainte establcer e elimnar el borde
 		 * .contentareafilledestablecer su limite de texto
 		 */
-		noD = new JRadioButton("NO");
+		noD = new JRadioButton("FALSE");
 		noD.setBounds(340, 210, 80, 30); // Ajustar el tamaño para que el texto sea visible
 		noD.setFont(new Font("Baloo", Font.BOLD, 15));
 		noD.setOpaque(false);
@@ -182,7 +185,7 @@ public class PanelAgregarPapeleria extends JPanel {
 		 */
 		textCantidadPorPaquete = new JLabel();
 		textCantidadPorPaquete.setBounds(42, 265, 410, 60);
-		textCantidadPorPaquete.setText("cantidad por paquete:");
+		textCantidadPorPaquete.setText(prop.getProperty("archivosdepropiedades.panel.agregar.papeleria.capa"));
 		textCantidadPorPaquete.setFont(new Font("Baloo", Font.BOLD, 22));
 		add(textCantidadPorPaquete);
 
@@ -199,6 +202,14 @@ public class PanelAgregarPapeleria extends JPanel {
 
 		
 		add(fondo);
+	}
+	
+	
+	public void actualizarComps() {
+		textNombre.setText(prop.getProperty("archivosdepropiedades.panel.principal.nombre"));
+		textPrecio.setText(prop.getProperty("archivosdepropiedades.panel.principal.precio"));
+		textPortatil.setText(prop.getProperty("archivosdepropiedades.panel.agregar.papeleria.esportatil"));
+		textCantidadPorPaquete.setText(prop.getProperty("archivosdepropiedades.panel.agregar.papeleria.capa"));
 	}
 	
 	/**
@@ -301,6 +312,16 @@ public class PanelAgregarPapeleria extends JPanel {
 	public void setCantidadPorPaquete(JSpinner cantidadPorPaquete) {
 		this.cantidadPorPaquete = cantidadPorPaquete;
 	}
+
+	public Properties getProp() {
+		return prop;
+	}
+
+	public void setProp(Properties prop) {
+		this.prop = prop;
+	}
+	
+	
 
 
 }

@@ -93,7 +93,7 @@ public class PanelIniciarSesion extends JPanel {
 
 	}
 	
-	public void actualizarComps() {
+	public void actualizarComp() {
 		btnVolver.setText(prop.getProperty("archivospropiedad.boton.volver"));
 		btnIngresar.setText(prop.getProperty("archivospropiedad.boton.ingresar"));
 		textNombre.setText(prop.getProperty("archivospropiedad.texto.usuario"));

@@ -31,7 +31,7 @@ public class PanelTrabajador extends JPanel {
 		this.prop = prop;
 
 		fondo = new JLabel();
-		BufferedImage fd = ImageIO.read(new File("src/co/edu/unbosque/view/FondoPT.png"));
+		BufferedImage fd = ImageIO.read(new File(prop.getProperty("archivospropiedad.fondo.pt")));
 		ImageIcon imagenFondo = new ImageIcon(fd);
 		Image fdRedim = fd.getScaledInstance(1290, 750, Image.SCALE_SMOOTH);
 		fondo.setIcon(new ImageIcon(fdRedim));
@@ -89,6 +89,13 @@ public class PanelTrabajador extends JPanel {
 
 		add(fondo);
 
+	}
+	
+	public void actualizarComps() throws IOException{
+		BufferedImage fd = ImageIO.read(new File(prop.getProperty("archivospropiedad.fondo.pt")));
+		ImageIcon imagenFondo = new ImageIcon(fd);
+		Image fdRedim = fd.getScaledInstance(1290, 750, Image.SCALE_SMOOTH);
+		fondo.setIcon(new ImageIcon(fdRedim));
 	}
 
 	public JLabel getFondo() {

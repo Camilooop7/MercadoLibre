@@ -9,6 +9,7 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Properties;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -26,13 +27,14 @@ public class PanelAgregarOficina extends JPanel {
 	private JLabel fondo;
 	private JButton btnElectrodomestico;
 	private JButton btnPapeleria;
+	private Properties prop;
 
 	/**
 	 * Constructor del panel donde se ejecuta la logica en general de cada parametro
 	 * que se encuentra en la ventana. además se declara la excepción de
 	 * IOexception.
 	 */
-	public PanelAgregarOficina() throws IOException {
+	public PanelAgregarOficina(Properties prop) throws IOException {
 
 		/**
 		 * Uso del setBounds para fijar la posción del panel setLayaout permite
@@ -40,6 +42,7 @@ public class PanelAgregarOficina extends JPanel {
 		 */
 		setBounds(412, 250, 780, 433);
 		setLayout(null);
+		this.prop = prop;
 
 		/**
 		 * Inicialización del JLabel BufferedImage con el objetivo de establecer la
@@ -92,6 +95,13 @@ public class PanelAgregarOficina extends JPanel {
 		add(fondo);
 
 	}
+	
+	public void actualizarComps() throws IOException {
+		BufferedImage fd = ImageIO.read(new File(prop.getProperty("archivospropiedad.fondo.fondooficina")));
+		ImageIcon imagenFondo = new ImageIcon(fd);
+		Image fdRedim = fd.getScaledInstance(780, 433, Image.SCALE_SMOOTH);
+		fondo.setIcon(new ImageIcon(fdRedim));
+	}
 
 	/**
 	 * Getters & Stters
@@ -121,4 +131,14 @@ public class PanelAgregarOficina extends JPanel {
 		this.btnPapeleria = btnPapeleria;
 	}
 
+	public Properties getProp() {
+		return prop;
+	}
+
+	public void setProp(Properties prop) {
+		this.prop = prop;
+	}
+
+	
+	
 }

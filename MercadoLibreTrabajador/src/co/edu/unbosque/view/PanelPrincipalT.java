@@ -21,6 +21,7 @@ public class PanelPrincipalT extends JPanel {
 	private JButton btnIniciarS;
 	private JButton btnCrearU;
 	private JButton btnSalir;
+	private JButton btnEspanol, btnIngles;
 	private Properties prop;
 
 	public PanelPrincipalT(Properties prop) throws IOException {
@@ -31,7 +32,7 @@ public class PanelPrincipalT extends JPanel {
 		this.prop = prop;
 		
 		fondo = new JLabel();
-		BufferedImage fd = ImageIO.read(new File("src/co/edu/unbosque/view/FondoT.png"));
+		BufferedImage fd = ImageIO.read(new File(prop.getProperty("archivospropiedad.fondo.t")));
 		ImageIcon imagenFondo = new ImageIcon(fd);
 		Image fdRedim = fd.getScaledInstance(1290, 750, Image.SCALE_SMOOTH);
 		fondo.setIcon(new ImageIcon(fdRedim));
@@ -67,11 +68,34 @@ public class PanelPrincipalT extends JPanel {
 		btnSalir.setFont(new Font("Baloo", Font.BOLD, 35));
 		add(btnSalir);
 
+		btnEspanol = new JButton();
+		btnEspanol.setBounds(1190, 75, 85, 90);
+		btnEspanol.setFocusable(false);
+		btnEspanol.setBackground(Color.WHITE);
+		btnEspanol.setBackground(new Color(246, 86, 86));
+		btnEspanol.setContentAreaFilled(false);
+		btnEspanol.setOpaque(false);
+		btnEspanol.setBorderPainted(false);
+		btnEspanol.setVisible(true);
+		add(btnEspanol);
+
+		btnIngles = new JButton();
+		btnIngles.setBounds(1095, 75, 87, 90);
+		btnIngles.setContentAreaFilled(false);
+		btnIngles.setOpaque(false);
+		btnIngles.setVisible(true);
+		btnIngles.setBorderPainted(false);
+		btnIngles.setFocusable(false);
+		btnIngles.setBackground(Color.WHITE);
+		btnIngles.setBackground(new Color(246, 86, 86));
+		add(btnIngles);
+		
+		
 		add(fondo); 
 	}
 	
 	public void actualizarComps() throws IOException {
-		BufferedImage fd = ImageIO.read(new File(prop.getProperty("archivospropiedad.fondo.fondoidioma")));
+		BufferedImage fd = ImageIO.read(new File(prop.getProperty("archivospropiedad.fondo.t")));
 		ImageIcon imagenFondo = new ImageIcon(fd);
 		Image fdRedim = fd.getScaledInstance(1290, 750, Image.SCALE_SMOOTH);
 		fondo.setIcon(new ImageIcon(fdRedim));
@@ -120,6 +144,22 @@ public class PanelPrincipalT extends JPanel {
 
 	public void setProp(Properties prop) {
 		this.prop = prop;
+	}
+
+	public JButton getBtnEspanol() {
+		return btnEspanol;
+	}
+
+	public void setBtnEspanol(JButton btnEspanol) {
+		this.btnEspanol = btnEspanol;
+	}
+
+	public JButton getBtnIngles() {
+		return btnIngles;
+	}
+
+	public void setBtnIngles(JButton btnIngles) {
+		this.btnIngles = btnIngles;
 	}
 	
 	

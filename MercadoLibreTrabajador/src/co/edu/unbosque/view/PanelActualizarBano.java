@@ -10,6 +10,7 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Properties;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -33,6 +34,7 @@ public class PanelActualizarBano extends JPanel {
 	private JTextArea text;
 	private String texto;
 	private JScrollPane barraV;
+	
 
 	
 	/**
@@ -131,6 +133,8 @@ public class PanelActualizarBano extends JPanel {
 
 		add(fondo);
 	}
+	
+	
 
 	
 	/**
@@ -179,4 +183,9 @@ public class PanelActualizarBano extends JPanel {
 		text.setText(texto);
 	}
 
+
+	
+
+	
+	
 }

@@ -115,20 +115,20 @@ public class PanelClienteMenu extends JPanel {
         scrollPane.setBounds(0, 210, 1280, 300);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 
-        agregarProductos(-1, new ArrayList<>());
+        agregarProducto(-1, new ArrayList<>());
 
         add(scrollPane, BorderLayout.CENTER);
 		add(fondo); 
 	}
 	
-	public void actualizarComps() throws IOException {
+	public void actualizarComp() throws IOException {
 		BufferedImage fd = ImageIO.read(new File(prop.getProperty("archivospropiedad.fondo.fondomenu")));
 		ImageIcon imagenFondo = new ImageIcon(fd);
 		Image fdRedim = fd.getScaledInstance(1290, 750, Image.SCALE_SMOOTH);
 		fondo.setIcon(new ImageIcon(fdRedim));
 	}
 	
-	public void agregarProductos(int cantidad, ArrayList<Producto> listaDatos) {
+	public void agregarProducto(int cantidad, ArrayList<Producto> listaDatos) {
         if (cantidad == -1) {
             return;
         }
@@ -198,7 +198,7 @@ public class PanelClienteMenu extends JPanel {
         botonesAnadir.clear();
         botonesFav.clear();
         panelContenido.removeAll();
-        agregarProductos(listaDatos.size(), listaDatos);
+        agregarProducto(listaDatos.size(), listaDatos);
         revalidate();
         repaint();
     }

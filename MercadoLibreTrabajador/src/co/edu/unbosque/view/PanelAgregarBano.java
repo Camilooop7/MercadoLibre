@@ -11,6 +11,7 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Properties;
 
 import javax.imageio.ImageIO;
 import javax.swing.ButtonGroup;
@@ -43,13 +44,14 @@ public class PanelAgregarBano extends JPanel {
 	private JRadioButton siL;
 	private JRadioButton noL;
 	private int a = 0;
+	private Properties prop;
 
 	/**
 	 * Constructor del panel donde se ejecuta la logica en general de cada parametro
 	 * que se encuentra en la ventana. además se declara la excepción de
 	 * IOexception.
 	 */
-	public PanelAgregarBano() throws IOException {
+	public PanelAgregarBano(Properties prop) throws IOException {
 
 		/**
 		 * Uso del setBounds para fijar la posción del panel setLayaout permite
@@ -57,6 +59,7 @@ public class PanelAgregarBano extends JPanel {
 		 */
 		setBounds(412, 250, 780, 433);
 		setLayout(null);
+		this.prop = prop;
 
 		/**
 		 * Inicialización del JLabel BufferedImage con el objetivo de establecer la
@@ -96,7 +99,7 @@ public class PanelAgregarBano extends JPanel {
 		 */
 		textNombre = new JLabel();
 		textNombre.setBounds(44, 40, 150, 60);
-		textNombre.setText("Nombre: ");
+		textNombre.setText(prop.getProperty("archivosdepropiedades.panel.principal.nombre"));
 		textNombre.setFont(new Font("Baloo", Font.BOLD, 24));
 		add(textNombre);
 
@@ -117,7 +120,7 @@ public class PanelAgregarBano extends JPanel {
 		 */
 		textPrecio = new JLabel();
 		textPrecio.setBounds(50, 130, 150, 60);
-		textPrecio.setText("Precio: ");
+		textPrecio.setText(prop.getProperty("archivosdepropiedades.panel.principal.precio"));
 		textPrecio.setFont(new Font("Baloo", Font.BOLD, 24));
 		add(textPrecio);
 
@@ -136,7 +139,7 @@ public class PanelAgregarBano extends JPanel {
 		 */
 		textDecoracion = new JLabel();
 		textDecoracion.setBounds(50, 190, 400, 60);
-		textDecoracion.setText("¿Es decoración? ");
+		textDecoracion.setText(prop.getProperty("archivosdepropiedades.panel.agregar.bano.esdecoracion"));
 		textDecoracion.setFont(new Font("Baloo", Font.BOLD, 26));
 		add(textDecoracion);
 
@@ -147,7 +150,7 @@ public class PanelAgregarBano extends JPanel {
 		 * .borderpainte establcer e elimnar el borde
 		 * .contentareafilledestablecer su limite de texto
 		 */
-		siD = new JRadioButton("SI");
+		siD = new JRadioButton("TRUE");
 		siD.setBounds(257, 210, 80, 30); // Ajustar el tamaño para que el texto sea visible
 		siD.setFont(new Font("Baloo", Font.BOLD, 15));
 		siD.setOpaque(false);
@@ -163,7 +166,7 @@ public class PanelAgregarBano extends JPanel {
 		 * .borderpainte establcer e elimnar el borde
 		 * .contentareafilledestablecer su limite de texto
 		 */
-		noD = new JRadioButton("NO");
+		noD = new JRadioButton("FALSE");
 		noD.setBounds(340, 210, 80, 30); // Ajustar el tamaño para que el texto sea visible
 		noD.setFont(new Font("Baloo", Font.BOLD, 15));
 		noD.setOpaque(false);
@@ -187,7 +190,7 @@ public class PanelAgregarBano extends JPanel {
 		 */
 		textLimpieza = new JLabel();
 		textLimpieza.setBounds(50, 270, 400, 60);
-		textLimpieza.setText("¿Es de Limpieza? ");
+		textLimpieza.setText(prop.getProperty("archivosdepropiedades.panel.agregar.bano.esdelimpieza"));
 		textLimpieza.setFont(new Font("Baloo", Font.BOLD, 26));
 		add(textLimpieza);
 
@@ -198,7 +201,7 @@ public class PanelAgregarBano extends JPanel {
 		 * .borderpainte establcer e elimnar el borde
 		 * .contentareafilledestablecer su limite de texto
 		 */
-		siL = new JRadioButton("SI");
+		siL = new JRadioButton("TRUE");
 		siL.setBounds(265, 290, 80, 30); // Ajustar el tamaño para que el texto sea visible
 		siL.setFont(new Font("Baloo", Font.BOLD, 15));
 		siL.setOpaque(false);
@@ -214,7 +217,7 @@ public class PanelAgregarBano extends JPanel {
 		 * .borderpainte establcer e elimnar el borde
 		 * .contentareafilledestablecer su limite de texto
 		 */
-		noL = new JRadioButton("NO");
+		noL = new JRadioButton("FALSE");
 		noL.setBounds(350, 290, 80, 30); // Ajustar el tamaño para que el texto sea visible
 		noL.setFont(new Font("Baloo", Font.BOLD, 15));
 		noL.setOpaque(false);
@@ -231,6 +234,13 @@ public class PanelAgregarBano extends JPanel {
 		grupo1.add(noL);
 
 		add(fondo);
+	}
+	
+	public void actualizarComps() {
+		textNombre.setText(prop.getProperty("archivosdepropiedades.panel.principal.nombre"));
+		textPrecio.setText(prop.getProperty("archivosdepropiedades.panel.principal.precio"));
+		textDecoracion.setText(prop.getProperty("archivosdepropiedades.panel.agregar.bano.esdecoracion"));
+		textLimpieza.setText(prop.getProperty("archivosdepropiedades.panel.agregar.bano.esdelimpieza"));
 	}
 
 	/**
@@ -339,6 +349,16 @@ public class PanelAgregarBano extends JPanel {
 	public void setA(int a) {
 		this.a = a;
 	}
+
+	public Properties getProp() {
+		return prop;
+	}
+
+	public void setProp(Properties prop) {
+		this.prop = prop;
+	}
+	
+	
 	
 
 }
