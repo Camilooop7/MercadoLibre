@@ -3,41 +3,86 @@ package co.edu.unbosque.model;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+/**
+ * Clase abstracta que representa productos de oficina, hereda de Producto.
+ */
+public abstract class Oficina extends Producto implements Serializable {
 
-public abstract class Oficina extends Producto implements Serializable { // Declara la clase abstracta Oficina que
-																			// hereda de Producto
+	/**
+	 * Indica si el producto es portátil.
+	 */
+	private boolean esPortatil;
 
-	private boolean esPortatil; // Atributo que indica si el producto es portátil
-
-	public Oficina() { // Constructor vacío
-		// TODO Auto-generated constructor stub
+	/**
+	 * Constructor vacío.
+	 */
+	public Oficina() {
+		// Constructor vacío
 	}
 
-	public Oficina(boolean esPortatil) { // Constructor que recibe esPortatil
-		super(); // Llama al constructor de la clase padre
-		this.esPortatil = esPortatil; // Asigna el valor recibido
+	/**
+	 * Constructor que inicializa el atributo esPortatil.
+	 * 
+	 * @param esPortatil Indica si el producto es portátil.
+	 */
+	public Oficina(boolean esPortatil) {
+		super();
+		this.esPortatil = esPortatil;
 	}
 
+	/**
+	 * Constructor que inicializa todos los atributos.
+	 * 
+	 * @param nombre     Nombre del producto.
+	 * @param precio     Precio del producto.
+	 * @param id         Identificador único.
+	 * @param fecha      Fecha de creación.
+	 * @param imagen     Ruta de la imagen.
+	 * @param esPortatil Indica si el producto es portátil.
+	 */
 	public Oficina(String nombre, int precio, int id, String fecha, String imagen, boolean esPortatil) {
-		super(nombre, precio, id, fecha, imagen); // Llama al constructor de Producto
-		this.esPortatil = esPortatil; // Asigna el valor recibido
+		super(nombre, precio, id, fecha, imagen);
+		this.esPortatil = esPortatil;
 	}
 
+	/**
+	 * Constructor que inicializa atributos excepto esPortatil.
+	 * 
+	 * @param nombre Nombre del producto.
+	 * @param precio Precio del producto.
+	 * @param id     Identificador único.
+	 * @param fecha  Fecha de creación.
+	 * @param imagen Ruta de la imagen.
+	 */
 	public Oficina(String nombre, int precio, int id, String fecha, String imagen) {
-		super(nombre, precio, id, fecha, imagen); // Llama al constructor de Producto
-		// TODO Auto-generated constructor stub
+		super(nombre, precio, id, fecha, imagen);
 	}
 
-	public boolean isEsPortatil() { // Método para obtener esPortatil
-		return esPortatil; // Retorna el valor de esPortatil
+	/**
+	 * Obtiene si el producto es portátil.
+	 * 
+	 * @return true si es portátil, false en caso contrario.
+	 */
+	public boolean isEsPortatil() {
+		return esPortatil;
 	}
 
-	public void setEsPortatil(boolean esPortatil) { // Método para modificar esPortatil
-		this.esPortatil = esPortatil; // Asigna el nuevo valor
+	/**
+	 * Establece si el producto es portátil.
+	 * 
+	 * @param esPortatil Nuevo valor para el atributo esPortatil.
+	 */
+	public void setEsPortatil(boolean esPortatil) {
+		this.esPortatil = esPortatil;
 	}
 
+	/**
+	 * Representa el objeto como una cadena de texto.
+	 * 
+	 * @return Cadena con la información del objeto.
+	 */
 	@Override
-	public String toString() { // Método para representar el objeto como cadena
-		return super.toString() + "\n" + "\n¿Es portatil? " + (esPortatil?"Si" : "No"); // Retorna la información del objeto
+	public String toString() {
+		return super.toString() + "\n" + "\n¿Es portátil? " + (esPortatil ? "Si" : "No");
 	}
 }
