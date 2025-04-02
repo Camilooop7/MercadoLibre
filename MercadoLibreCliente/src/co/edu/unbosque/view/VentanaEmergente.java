@@ -2,54 +2,63 @@ package co.edu.unbosque.view;
 
 import javax.swing.JOptionPane;
 
+/**
+ * Clase que representa una ventana emergente para interactuar con el usuario.
+ */
 public class VentanaEmergente {
-	/*
-	 * Constgructor vacio.
-	 */
-	public VentanaEmergente() {
-	}
 
-	/*
-	 * metodo donde se muestra una ventana emergente la cual tiene como parametro un
-	 * String.
-	 */
-	public void mostrar(String mensaje) {
-		JOptionPane.showMessageDialog(null, mensaje);
-	}
+    /**
+     * Constructor vacío de la clase VentanaEmergente.
+     */
+    public VentanaEmergente() {
+        // Constructor vacío
+    }
 
-	/*
-	 * metodo donde se muestra una ventana emergente solicitando un numero entero al
-	 * usuario la cual tiene como parametro un String. y retorna el valor asignado.
-	 */
-	public int leerInt(String mensaje) {
-		String aux = JOptionPane.showInputDialog(mensaje);
-		int dato = Integer.parseInt(aux);
-		return dato;
-	}
+    /**
+     * Muestra una ventana emergente con un mensaje.
+     * 
+     * @param mensaje Mensaje a mostrar en la ventana emergente.
+     */
+    public void mostrar(String mensaje) {
+        JOptionPane.showMessageDialog(null, mensaje);
+    }
 
-	/*
-	 * Metodo el cual atravez de una ventana socilita un texto recibe un parametro
-	 * String y retorna el dato del usuario.
-	 * 
-	 */
-	public String leerTexto(String mensaje) {
-		String dato = JOptionPane.showInputDialog(mensaje);
-		return dato;
-	}
+    /**
+     * Muestra una ventana emergente solicitando un número entero al usuario.
+     * 
+     * @param mensaje Mensaje a mostrar en la ventana emergente.
+     * @return Número entero ingresado por el usuario.
+     */
+    public int leerInt(String mensaje) {
+        String aux = JOptionPane.showInputDialog(mensaje);
+        int dato = Integer.parseInt(aux);
+        return dato;
+    }
 
-	/*
-	 * Metodo el cual emite una ventana emergente solicitando un boolean. definido
-	 * con la palabra si.
-	 */
-	public boolean leerBoleano(String mensaje) {
+    /**
+     * Muestra una ventana emergente solicitando un texto al usuario.
+     * 
+     * @param mensaje Mensaje a mostrar en la ventana emergente.
+     * @return Texto ingresado por el usuario.
+     */
+    public String leerTexto(String mensaje) {
+        String dato = JOptionPane.showInputDialog(mensaje);
+        return dato;
+    }
 
-		String entrada = JOptionPane.showInputDialog(mensaje).toLowerCase();
-		if (entrada.contains("si")) {
-			return true;
-		} else {
-			return false;
-		}
-
-	}
-
+    /**
+     * Muestra una ventana emergente solicitando un valor booleano al usuario.
+     * El valor se define con la palabra "si".
+     * 
+     * @param mensaje Mensaje a mostrar en la ventana emergente.
+     * @return Valor booleano ingresado por el usuario.
+     */
+    public boolean leerBoleano(String mensaje) {
+        String entrada = JOptionPane.showInputDialog(mensaje).toLowerCase();
+        if (entrada.contains("si")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

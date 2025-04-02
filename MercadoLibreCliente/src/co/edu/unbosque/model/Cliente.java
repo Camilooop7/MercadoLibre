@@ -1,67 +1,128 @@
-package co.edu.unbosque.model; 
+package co.edu.unbosque.model;
 
-import java.io.Serializable; 
-import java.util.ArrayList; 
+import java.io.Serializable;
+import java.util.ArrayList;
 
-public class Cliente extends Usuario implements Serializable { // Declara la clase Cliente, que hereda de Usuario e implementa Serializable
-	
+/**
+ * Clase que representa un cliente, hereda de Usuario.
+ */
+public class Cliente extends Usuario implements Serializable {
+
+	/**
+	 * Carrito actual del cliente.
+	 */
 	private Carrito carrito;
+
+	/**
+	 * Lista de carritos asociados al cliente.
+	 */
 	private ArrayList<Carrito> listaCarritos;
-	private ArrayList<Producto> listaProductoFavorito; // Atributo que almacena una lista de productos favoritos del cliente
 
-	public Cliente() { 
+	/**
+	 * Lista de productos favoritos del cliente.
+	 */
+	private ArrayList<Producto> listaProductoFavorito;
+
+	/**
+	 * Constructor vacío.
+	 */
+	public Cliente() {
 		carrito = null;
 		listaCarritos = new ArrayList<>();
-		listaProductoFavorito = new ArrayList<>(); // Inicializa la lista de productos favoritos al crear un objeto Cliente
+		listaProductoFavorito = new ArrayList<>();
 	}
 
-	public Cliente(ArrayList<Producto> listaProductoFavorito) { 
-		super(); // Llama al constructor de la clase padre (Usuario)
-		this.listaProductoFavorito = listaProductoFavorito; // Asigna la lista de productos favoritos
+	/**
+	 * Constructor que inicializa la lista de productos favoritos.
+	 * 
+	 * @param listaProductoFavorito Lista de productos favoritos del cliente.
+	 */
+	public Cliente(ArrayList<Producto> listaProductoFavorito) {
+		super();
+		this.listaProductoFavorito = listaProductoFavorito;
 		carrito = null;
 		listaCarritos = new ArrayList<>();
-		listaProductoFavorito = new ArrayList<>(); // Inicializa la lista de productos favoritos al crear un objeto Cliente
 	}
 
-	public Cliente(String nombre, String contrasena, ArrayList<Producto> listaProductoFavorito) { 
-		super(nombre, contrasena); // Llama al constructor de la clase padre con nombre y contraseña
-		this.listaProductoFavorito = listaProductoFavorito; // Asigna la lista de productos favoritos
+	/**
+	 * Constructor que inicializa el nombre, la contraseña y la lista de productos favoritos.
+	 * 
+	 * @param nombre                Nombre del cliente.
+	 * @param contrasena            Contraseña del cliente.
+	 * @param listaProductoFavorito Lista de productos favoritos del cliente.
+	 */
+	public Cliente(String nombre, String contrasena, ArrayList<Producto> listaProductoFavorito) {
+		super(nombre, contrasena);
+		this.listaProductoFavorito = listaProductoFavorito;
 		carrito = null;
 		listaCarritos = new ArrayList<>();
-		listaProductoFavorito = new ArrayList<>(); // Inicializa la lista de productos favoritos al crear un objeto Cliente
 	}
 
-	public Cliente(String nombre, String contrasena) { 
-		super(nombre, contrasena); // Llama al constructor de la clase padre con nombre y contraseña
+	/**
+	 * Constructor que inicializa el nombre y la contraseña.
+	 * 
+	 * @param nombre     Nombre del cliente.
+	 * @param contrasena Contraseña del cliente.
+	 */
+	public Cliente(String nombre, String contrasena) {
+		super(nombre, contrasena);
 		carrito = null;
 		listaCarritos = new ArrayList<>();
-		listaProductoFavorito = new ArrayList<>(); // Inicializa la lista de productos favoritos al crear un objeto Cliente
-		// Constructor sin inicializar la lista de productos favoritos
+		listaProductoFavorito = new ArrayList<>();
 	}
 
-	public ArrayList<Producto> getListaProductoFavorito() { 
-		return listaProductoFavorito; // Devuelve la lista de productos favoritos del cliente
+	/**
+	 * Obtiene la lista de productos favoritos del cliente.
+	 * 
+	 * @return Lista de productos favoritos.
+	 */
+	public ArrayList<Producto> getListaProductoFavorito() {
+		return listaProductoFavorito;
 	}
 
-	public void setListaProductoFavorito(ArrayList<Producto> listaProductoFavorito) { 
-		this.listaProductoFavorito = listaProductoFavorito; // Permite asignar una nueva lista de productos favoritos
+	/**
+	 * Establece la lista de productos favoritos del cliente.
+	 * 
+	 * @param listaProductoFavorito Nueva lista de productos favoritos.
+	 */
+	public void setListaProductoFavorito(ArrayList<Producto> listaProductoFavorito) {
+		this.listaProductoFavorito = listaProductoFavorito;
 	}
 
+	/**
+	 * Obtiene el carrito actual del cliente.
+	 * 
+	 * @return Carrito actual.
+	 */
 	public Carrito getCarrito() {
 		return carrito;
 	}
 
+	/**
+	 * Establece el carrito actual del cliente.
+	 * 
+	 * @param carrito Nuevo carrito.
+	 */
 	public void setCarrito(Carrito carrito) {
 		this.carrito = carrito;
 	}
 
+	/**
+	 * Obtiene la lista de carritos asociados al cliente.
+	 * 
+	 * @return Lista de carritos.
+	 */
 	public ArrayList<Carrito> getListaCarritos() {
 		return listaCarritos;
 	}
 
+	/**
+	 * Establece la lista de carritos asociados al cliente.
+	 * 
+	 * @param listaCarritos Nueva lista de carritos.
+	 */
 	public void setListaCarritos(ArrayList<Carrito> listaCarritos) {
 		this.listaCarritos = listaCarritos;
 	}
-	
 }
 

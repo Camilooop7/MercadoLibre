@@ -14,17 +14,33 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+/**
+ * Clase que representa el panel principal de la aplicación.
+ * Permite al usuario iniciar sesión, crear una cuenta o salir de la aplicación.
+ */
 public class PanelPrincipalC extends JPanel {
-	
-	
-	private JLabel fondo;
-	private JButton btnIniciarS;
-	private JButton btnCrearU;
-	private JButton btnSalir;
-	private JButton btnEspanol, btnIngles;
-	private Properties prop;
+    /** Fondo del panel. */
+    private JLabel fondo;
+    /** Botón para iniciar sesión. */
+    private JButton btnIniciarS;
+    /** Botón para crear una cuenta. */
+    private JButton btnCrearU;
+    /** Botón para salir de la aplicación. */
+    private JButton btnSalir;
+    /** Botón para cambiar el idioma a español. */
+    private JButton btnEspanol;
+    /** Botón para cambiar el idioma a inglés. */
+    private JButton btnIngles;
+    /** Propiedades para la configuración del panel. */
+    private Properties prop;
 
-	public PanelPrincipalC(Properties prop) throws IOException {
+    /**
+     * Constructor que inicializa el panel principal.
+     * 
+     * @param prop Propiedades para configurar el panel.
+     * @throws IOException Si ocurre un error al cargar las imágenes.
+     */
+    public PanelPrincipalC(Properties prop) throws IOException {
 		
 		setBounds(0, 0, 1290, 750);
 		setLayout(null);
@@ -92,7 +108,12 @@ public class PanelPrincipalC extends JPanel {
 
 		add(fondo); // TODO Auto-generated constructor stub
 	}
-	
+
+    /**
+     * Actualiza los componentes del panel con base en las propiedades.
+     * 
+     * @throws IOException Si ocurre un error al cargar las imágenes.
+     */
 	public void actualizarComp() throws IOException {
 		BufferedImage fd = ImageIO.read(new File(prop.getProperty("archivospropiedad.fondo.fondoidioma")));
 		ImageIcon imagenFondo = new ImageIcon(fd);
@@ -104,6 +125,7 @@ public class PanelPrincipalC extends JPanel {
 		btnSalir.setText(prop.getProperty("archivospropiedad.boton.salir"));
 	}
 
+    // Métodos getter y setter
 	public JLabel getFondo() {
 		return fondo;
 	}
