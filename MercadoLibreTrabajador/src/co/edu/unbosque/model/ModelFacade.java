@@ -9,6 +9,7 @@ import co.edu.unbosque.model.persistence.CocinaDAO;
 import co.edu.unbosque.model.persistence.DeporteDAO;
 import co.edu.unbosque.model.persistence.ElectrodomesticoDAO;
 import co.edu.unbosque.model.persistence.PapeleriaDAO;
+import co.edu.unbosque.model.persistence.TrabajadorActualDAO;
 import co.edu.unbosque.model.persistence.TrabajadorDAO;
 import co.edu.unbosque.model.persistence.VideoJuegoDAO;
 /**
@@ -56,6 +57,10 @@ public class ModelFacade {
 	 */
 	private ArrayList<Producto> listaProducto; 
 	/**
+	 * Lista para TrabajadorActual
+	 */
+	private TrabajadorActualDAO trabajadorActualDAO;
+	/**
 	 * Constructor de la clase. Inicializa los DAOs y las listas.
 	 */
 	public ModelFacade() {
@@ -70,6 +75,7 @@ public class ModelFacade {
 		trabajadorDAO = new TrabajadorDAO();
 		videoJuegoDAO = new VideoJuegoDAO();
 		listaProducto = new ArrayList<>();
+		trabajadorActualDAO = new TrabajadorActualDAO();
 	}
 	/**
 	 * Convierte un texto en formato HTML.
@@ -256,5 +262,24 @@ public class ModelFacade {
 	public void setListaProducto(ArrayList<Producto> listaProducto) {
 		this.listaProducto = listaProducto;
 	}
+	/**
+	 * Obtiene el DAO de TrabajadorActual.
+	 * 
+	 * @return DAO de TrabajadorActual.
+	 */
+	
+	public TrabajadorActualDAO getTrabajadorActualDAO() {
+		return trabajadorActualDAO;
+	}
+	/**
+	 * Establece el DAO de TrabajadorActual.
+	 * 
+	 * @param videoJuegoDAO DAO de TrabajadorActual.
+	 */
+	
+	public void setTrabajadorActualDAO(TrabajadorActualDAO trabajadorActualDAO) {
+		this.trabajadorActualDAO = trabajadorActualDAO;
+	}
 
+	
 }

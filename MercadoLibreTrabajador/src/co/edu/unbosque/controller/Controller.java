@@ -21,6 +21,7 @@ import co.edu.unbosque.model.Electrodomestico;
 import co.edu.unbosque.model.ModelFacade;
 import co.edu.unbosque.model.Papeleria;
 import co.edu.unbosque.model.Trabajador;
+import co.edu.unbosque.model.TrabajadorActual;
 import co.edu.unbosque.model.VideoJuego;
 import co.edu.unbosque.model.persistence.FileManager;
 import co.edu.unbosque.util.exception.CapitalException;
@@ -773,7 +774,7 @@ prop = new Properties();
 				// Crear el objeto Cocina con la URL de la imagen
 				mf.getCocinaDAO().crear(new Cocina(nombre, precio, id, fecha, imagen, esDecoracion,
 						resisteAltaTemperatuta, esPeligroso));
-				mf.getTrabajadorDAO().crear(new Trabajador((String) vf.getVpt().getPis().getNombreUsuario(), "", a, nombre)); 
+				mf.getTrabajadorActualDAO().crear(new TrabajadorActual((String) vf.getVpt().getPis().getNombreUsuario(), a, nombre)); 
 				vf.getVemer().mostrar(prop.getProperty("archivosdepropiedades.boton.botonagregarpro.anadirexito"));
 
 			} catch (NegativeNumberException e2) {
@@ -858,7 +859,7 @@ prop = new Properties();
 				// Crear el objeto Cocina con la URL de la imagen
 				mf.getBanoDAO().crear(new Bano(nombre, precio, id, fecha, imagen, esDecoracion, esLimpieza));
 				vf.getVemer().mostrar(prop.getProperty("archivosdepropiedades.boton.botonagregarpro.anadirexito"));
-				mf.getTrabajadorDAO().crear(new Trabajador((String) vf.getVpt().getPis().getNombreUsuario(), "", a, nombre)); 
+				mf.getTrabajadorActualDAO().crear(new TrabajadorActual((String) vf.getVpt().getPis().getNombreUsuario(), a, nombre)); 
 
 			} catch (NegativeNumberException e2) {
 				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.excepcion.number"));
@@ -933,7 +934,7 @@ prop = new Properties();
 				mf.getElectrodomesticoDAO()
 						.crear(new Electrodomestico(nombre, precio, id, fecha, imagen, esPortatil, fuenteEnergia));
 				vf.getVemer().mostrar(prop.getProperty("archivosdepropiedades.boton.botonagregarpro.anadirexito"));
-				mf.getTrabajadorDAO().crear(new Trabajador((String) vf.getVpt().getPis().getNombreUsuario(), "", a, nombre)); 
+				mf.getTrabajadorActualDAO().crear(new TrabajadorActual((String) vf.getVpt().getPis().getNombreUsuario(), a, nombre)); 
 
 			} catch (NegativeNumberException e2) {
 				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.excepcion.number"));
@@ -1008,7 +1009,7 @@ prop = new Properties();
 				mf.getPapeleriaDAO()
 						.crear(new Papeleria(nombre, precio, id, fecha, imagen, esPortatil, cantidadPaquete));
 				vf.getVemer().mostrar(prop.getProperty("archivosdepropiedades.boton.botonagregarpro.anadirexito"));
-				mf.getTrabajadorDAO().crear(new Trabajador((String) vf.getVpt().getPis().getNombreUsuario(), "", a, nombre)); 
+				mf.getTrabajadorActualDAO().crear(new TrabajadorActual((String) vf.getVpt().getPis().getNombreUsuario(), a, nombre)); 
 
 			} catch (NegativeNumberException e2) {
 				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.excepcion.number"));
@@ -1084,7 +1085,7 @@ prop = new Properties();
 				mf.getVideoJuegoDAO()
 						.crear(new VideoJuego(nombre, precio, id, fecha, imagen, esAccesorio, referenciaConsola));
 				vf.getVemer().mostrar(prop.getProperty("archivosdepropiedades.boton.botonagregarpro.anadirexito"));
-				mf.getTrabajadorDAO().crear(new Trabajador((String) vf.getVpt().getPis().getNombreUsuario(), "", a, nombre)); 
+				mf.getTrabajadorActualDAO().crear(new TrabajadorActual((String) vf.getVpt().getPis().getNombreUsuario(), a, nombre));  
 
 			} catch (NegativeNumberException e2) {
 				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.excepcion.number"));
@@ -1162,7 +1163,7 @@ prop = new Properties();
 				// Crear el objeto Cocina con la URL de la imagen
 				mf.getDeporteDAO().crear(new Deporte(nombre, precio, id, fecha, imagen, esAccesorio, deporte));
 				vf.getVemer().mostrar(prop.getProperty("archivosdepropiedades.boton.botonagregarpro.anadirexito"));
-				mf.getTrabajadorDAO().crear(new Trabajador((String) vf.getVpt().getPis().getNombreUsuario(), "", a, nombre)); 
+				mf.getTrabajadorActualDAO().crear(new TrabajadorActual((String) vf.getVpt().getPis().getNombreUsuario(), a, nombre));  
 
 			} catch (NegativeNumberException e2) {
 				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.excepcion.number"));
