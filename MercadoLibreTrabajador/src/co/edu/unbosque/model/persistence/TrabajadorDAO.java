@@ -15,12 +15,11 @@ public class TrabajadorDAO implements OperacionDAO<Trabajador> {
 	 * 
 	 */
 	private final String SERIAL_FILE_NAME = "trabajador.dat";
-	private final String TEXT_FILE_NAME = "trabajador.csv";
 	/**
 	 * Variable la cual contiene un arraylist y además se define el nombre.
 	 */
 	private ArrayList<Trabajador> listaTrabajadores;
-	private ArrayList<Trabajador> listaProductosT;
+	
 
 	/*
 	 * Constructor en cual cual se llama al metodo de cargarSerializado y se
@@ -29,7 +28,7 @@ public class TrabajadorDAO implements OperacionDAO<Trabajador> {
 	public TrabajadorDAO() {
 		// TODO Auto-generated constructor stub
 		listaTrabajadores = new ArrayList<>();
-		listaProductosT = new ArrayList<>();
+		
 		cargarSerializado();
 	}
 
@@ -41,8 +40,6 @@ public class TrabajadorDAO implements OperacionDAO<Trabajador> {
 	@Override
 	public void crear(Trabajador nuevoDato) {
 		listaTrabajadores.add(nuevoDato);
-		listaProductosT.add(nuevoDato);
-		escribirArchivoTexto();
 		escribirSerializado();
 	}
 
@@ -110,7 +107,6 @@ public class TrabajadorDAO implements OperacionDAO<Trabajador> {
 	@Override
 	public void escribirSerializado() {
 		FileManager.escribirArchivoSerializado(SERIAL_FILE_NAME, listaTrabajadores);
-		FileManager.escribirArchivoSerializado("productoT.dat", listaProductosT);
 	}
 
 	/**
@@ -125,10 +121,7 @@ public class TrabajadorDAO implements OperacionDAO<Trabajador> {
 		if (listaTrabajadores == null) {
 			listaTrabajadores = new ArrayList<>();
 		}
-		listaProductosT = (ArrayList<Trabajador>) FileManager.leerArchivoSerialziado("productoT.dat");
-		if (listaProductosT == null) {
-			listaProductosT = new ArrayList<>();
-		}
+		
 	}
 
 	/**
@@ -171,15 +164,7 @@ public class TrabajadorDAO implements OperacionDAO<Trabajador> {
 		return false;
 	}
 
-	public void escribirArchivoTexto() {
-		String contenido = "";
-		for (int i = 0; i < listaProductosT.size(); i++) {
-			contenido += listaProductosT.get(i).getNombre() + ";";
-			contenido += listaProductosT.get(i).getFecha() + ";";
-			contenido += listaProductosT.get(i).getProducto() + "\n";
-		}
-		FileManager.escribirArchivoTexto(TEXT_FILE_NAME, contenido);
-	}
+	
 
 	public ArrayList<Trabajador> getListaTrabajadores() {
 		return listaTrabajadores;
@@ -189,12 +174,5 @@ public class TrabajadorDAO implements OperacionDAO<Trabajador> {
 		this.listaTrabajadores = listaTrabajadores;
 	}
 
-	public ArrayList<Trabajador> getListaProductosT() {
-		return listaProductosT;
-	}
-
-	public void setListaProductosT(ArrayList<Trabajador> listaProductosT) {
-		this.listaProductosT = listaProductosT;
-	}
 
 }
