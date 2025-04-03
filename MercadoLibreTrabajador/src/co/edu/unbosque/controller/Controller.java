@@ -291,24 +291,24 @@ prop = new Properties();
 
 				if (mf.getTrabajadorDAO().encontrarUsuario(usuario, contrasena) != null) {
 
-					vf.getVemer().mostrar("Inicio Exitoso");
+					vf.getVemer().mostrar(prop.getProperty("archivosdepropiedades.boton.botoningresari.iniciarsesion"));
 					
 					vf.getVpt().getPis().setVisible(false);
 					vf.getVpt().getPt().setVisible(true);
 				} else {
-					vf.getVemer().mostrarError("Contraseña o Nombre incorrecto, verifiquelos o cree una cuenta");
+					vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.boton.botoningresari.incorrecto"));
 				}
 
 			} catch (CharacterException e1) {
-				vf.getVemer().mostrarError("No cumple los requisitos de caracteres.");
+				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.excepcion.caracter"));
 			} catch (CapitalException e1) {
-				vf.getVemer().mostrarError("Debe contener al menos una mayuscula.");
+				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.excepcion.capital"));
 			} catch (SmallException e1) {
-				vf.getVemer().mostrarError("Debe contener al menos una minuscula.");
+				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.excepcion.small"));
 			} catch (NumberException e1) {
-				vf.getVemer().mostrarError("Debe contener al menos un número.");
+				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.excepcion.number"));
 			} catch (SymbolException e1) {
-				vf.getVemer().mostrar("Debe contener al menos un simbolo.");
+				vf.getVemer().mostrar(prop.getProperty("archivosdepropiedades.excepcion.symbol"));
 			}
 
 			break;
@@ -359,28 +359,28 @@ prop = new Properties();
 				ExceptionCheker.checkerUsername(verificar);
 
 				mf.getTrabajadorDAO().crear(new Trabajador(usuario, contrasena1));
-				vf.getVemer().mostrar("Usuario creado con exito, Regrese al menu para iniciar sesión.");
+				vf.getVemer().mostrar("No cumple los requisitos de caracteres.");
 
 			} catch (CharacterException e1) {
-				vf.getVemer().mostrarError("No cumple los requisitos de caracteres.");
+				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.excepcion.caracter"));
 				e1.printStackTrace();
 			} catch (EqualPasswordException e1) {
-				vf.getVemer().mostrarError("Las contraseñas no son iguales.");
+				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.excepcion.equalpassword"));
 				e1.printStackTrace();
 			} catch (CapitalException e1) {
-				vf.getVemer().mostrarError("Debe contener al menos una mayuscula.");
+				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.excepcion.capital"));
 				e1.printStackTrace();
 			} catch (SmallException e1) {
-				vf.getVemer().mostrarError("Debe contener al menos una minuscula.");
+				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.excepcion.small"));
 				e1.printStackTrace();
 			} catch (NumberException e1) {
-				vf.getVemer().mostrarError("Debe contener al menos un número.");
+				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.excepcion.number"));
 				e1.printStackTrace();
 			} catch (SymbolException e1) {
-				vf.getVemer().mostrarError("Debe contener al menos un simbolo.");
+				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.excepcion.symbol"));
 				e1.printStackTrace();
 			} catch (UsernameException e1) {
-				vf.getVemer().mostrarError("Nombre de usuario ya registrado, intente nuevamente.");
+				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.excepcion.username"));
 				e1.printStackTrace();
 			}
 
@@ -521,65 +521,65 @@ prop = new Properties();
 		}
 		case "eliminarT": {
 			try {
-				int a = vf.getVemer().leerInt("¿Cual desea eliminar?");
+				int a = vf.getVemer().leerInt(prop.getProperty("archivosdepropiedades.eliminar.t.cualeliminar"));
 				a--;
 				ExceptionCheker.checkerNegativeNumber(a);
 				if (mf.getTrabajadorDAO().encontrar(a)) {
 
 					mf.getTrabajadorDAO().eliminar(a);
-					vf.getVemer().mostrar("Eliminado con exito");
+					vf.getVemer().mostrar(prop.getProperty("archivosdepropiedades.eliminar.t.cualeliminar"));
 					vf.getVpt().getPmu().getPmt().setTexto(mf.getTrabajadorDAO().mostrarTodo());
 				} else {
-					vf.getVemer().mostrarError("la posicion a eliminar no esta en la lista");
+					vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.eliminar.t.eliminaposicion"));
 				}
 
 			} catch (NegativeNumberException e1) {
-				vf.getVemer().mostrarError("Numero no valido.");
+				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.actualizarpro.negativeexception"));
 				e1.printStackTrace();
 			}
 			break;
 		}
 		case "modificarT": {
-			int a = vf.getVemer().leerInt("Cual desea eliminar");
+			int a = vf.getVemer().leerInt(prop.getProperty("archivosdepropiedades.modificar.t.cualactu"));
 			a--;
 			try {
 				ExceptionCheker.checkerNegativeNumber(a);
 				if (mf.getTrabajadorDAO().encontrar(a)) {
 
-					String nombre = vf.getVemer().leerTexto("Nombre nuevo:");
+					String nombre = vf.getVemer().leerTexto(prop.getProperty("archivosdepropiedades.modificar.t.nombre"));
 					boolean verificar = mf.getTrabajadorDAO().encontrarNombre(nombre);
 					ExceptionCheker.checkerCharacter(nombre);
 					ExceptionCheker.checkerUsername(verificar);
-					String contra = vf.getVemer().leerTexto("Contraseña nueva:");
+					String contra = vf.getVemer().leerTexto(prop.getProperty("archivosdepropiedades.modificar.t.contrasena"));
 					ExceptionCheker.checkerPasword(contra);
 					mf.getTrabajadorDAO().actulizar(a, new Trabajador(nombre, contra));
-					vf.getVemer().mostrar("Actualizado con exito");
+					vf.getVemer().mostrar(prop.getProperty("archivosdepropiedades.modificar.t.exito"));
 					vf.getVpt().getPmu().getPmt().setTexto(mf.getTrabajadorDAO().mostrarTodo());
 
 				} else {
-					vf.getVemer().mostrarError("La posicion que desea actualizar no esta en la lista");
+					vf.getVemer().mostrarError("La posicion que desea actualizar no esta en la lista.");
 				}
 
 			} catch (NegativeNumberException e1) {
-				vf.getVemer().mostrarError("Numero no valido.");
+				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.excepcion.negative"));
 				e1.printStackTrace();
 			} catch (CharacterException e1) {
-				vf.getVemer().mostrarError("No cumple los requisitos de caracteres.");
+				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.excepcion.caracter"));
 				e1.printStackTrace();
 			} catch (UsernameException e1) {
-				vf.getVemer().mostrarError("Nombre de usuario ya registrado, intente nuevamente.");
+				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.excepcion.username"));
 				e1.printStackTrace();
 			} catch (CapitalException e1) {
-				vf.getVemer().mostrarError("Debe contener al menos una mayuscula.");
+				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.excepcion.capital"));
 				e1.printStackTrace();
 			} catch (SmallException e1) {
-				vf.getVemer().mostrarError("Debe contener al menos una minuscula.");
+				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.excepcion.small"));
 				e1.printStackTrace();
 			} catch (NumberException e1) {
-				vf.getVemer().mostrarError("Debe contener al menos un número.");
+				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.excepcion.number"));
 				e1.printStackTrace();
 			} catch (SymbolException e1) {
-				vf.getVemer().mostrarError("Debe contener al menos un simbolo.");
+				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.excepcion.symbol"));
 				e1.printStackTrace();
 			}
 
@@ -594,67 +594,67 @@ prop = new Properties();
 		}
 		case "eliminarC": {
 			try {
-				int a = vf.getVemer().leerInt("¿Cual desea eliminar?");
+				int a = vf.getVemer().leerInt(prop.getProperty("archivosdepropiedades.eliminar.t.cualeliminar"));
 				a = a - 1;
 				ExceptionCheker.checkerNegativeNumber(a);
 				if (mf.getClienteDAO().encontrar(a)) {
 
 					mf.getClienteDAO().eliminar(a);
-					vf.getVemer().mostrar("Eliminado con exito");
+					vf.getVemer().mostrar(prop.getProperty("archivosdepropiedades.eliminar.t.eliminadoexito"));
 					vf.getVpt().getPmu().getPmc().setTexto(mf.getClienteDAO().mostrarTodo());
 
 				} else {
-					vf.getVemer().mostrarError("la posicion a eliminar no esta en la lista");
+					vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.eliminar.t.eliminaposicion"));
 				}
 
 			} catch (NegativeNumberException e1) {
-				vf.getVemer().mostrarError("Numero no valido.");
+				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.excepcion.negative"));
 				e1.printStackTrace();
 			}
 			break;
 		}
 		case "modificarC": {
 			try {
-				int a = vf.getVemer().leerInt("¿Cual desea actualizar?");
+				int a = vf.getVemer().leerInt(prop.getProperty("archivosdepropiedades.modificar.t.cualactu"));
 				a = a - 1;
 				ExceptionCheker.checkerNegativeNumber(a);
 				if (mf.getClienteDAO().encontrar(a)) {
 
-					String nombre = vf.getVemer().leerTexto("Nombre nuevo:");
+					String nombre = vf.getVemer().leerTexto(prop.getProperty("archivosdepropiedades.modificar.t.nombre"));
 					boolean verificar = mf.getClienteDAO().encontrarNombre(nombre);
 					ExceptionCheker.checkerCharacter(nombre);
 					ExceptionCheker.checkerUsername(verificar);
-					String contra = vf.getVemer().leerTexto("Contraseña nueva:");
+					String contra = vf.getVemer().leerTexto(prop.getProperty("archivosdepropiedades.modificar.t.contrasena"));
 					ExceptionCheker.checkerPasword(contra);
 					mf.getClienteDAO().actulizar(a, new Cliente(nombre, contra));
 
-					vf.getVemer().mostrar("Actualizado con exito");
+					vf.getVemer().mostrar(prop.getProperty("archivosdepropiedades.modificar.t.exito"));
 					vf.getVpt().getPmu().getPmc().setTexto(mf.getClienteDAO().mostrarTodo());
 
 				} else {
-					vf.getVemer().mostrarError("la posicion que desea actualizar no esta en la lista");
+					vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.modificar.t.nolista"));
 				}
 
 			} catch (NegativeNumberException e1) {
-				vf.getVemer().mostrarError("Numero no valido.");
+				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.excepcion.negative"));
 				e1.printStackTrace();
 			} catch (CharacterException e1) {
-				vf.getVemer().mostrarError("No cumple los requisitos de caracteres.");
+				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.excepcion.caracter"));
 				e1.printStackTrace();
 			} catch (UsernameException e1) {
-				vf.getVemer().mostrarError("Nombre de usuario ya registrado, intente nuevamente.");
+				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.excepcion.username"));
 				e1.printStackTrace();
 			} catch (CapitalException e1) {
-				vf.getVemer().mostrarError("Debe contener al menos una mayuscula.");
+				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.excepcion.capital"));
 				e1.printStackTrace();
 			} catch (SmallException e1) {
-				vf.getVemer().mostrarError("Debe contener al menos una minuscula.");
+				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.excepcion.small"));
 				e1.printStackTrace();
 			} catch (NumberException e1) {
-				vf.getVemer().mostrarError("Debe contener al menos un número.");
+				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.excepcion.number"));;
 				e1.printStackTrace();
 			} catch (SymbolException e1) {
-				vf.getVemer().mostrarError("Debe contener al menos un simbolo.");
+				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.excepcion.symbol"));
 				e1.printStackTrace();
 			}
 			break;
@@ -762,9 +762,9 @@ prop = new Properties();
 						imagen = destino.getPath();
 
 					} catch (IOException ex) {
-						vf.getVemer().mostrarError("No se pudo cargar la imagen.");
+						vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.boton.botonagregarpro.cargaimagen"));
 					} catch (IllegalArgumentException ex) {
-						vf.getVemer().mostrarError("El archivo seleccionado no es una imagen válida.");
+						vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.boton.botonagregarpro.archivoseleccionado"));
 					}
 				} else {
 					ExceptionCheker.checkerImage();
@@ -774,16 +774,17 @@ prop = new Properties();
 				mf.getCocinaDAO().crear(new Cocina(nombre, precio, id, fecha, imagen, esDecoracion,
 						resisteAltaTemperatuta, esPeligroso));
 				mf.getTrabajadorDAO().crear(new Trabajador((String) vf.getVpt().getPis().getNombreUsuario(), "", a, nombre)); 
-				vf.getVemer().mostrar("El producto fue añadido con exito");
+				vf.getVemer().mostrar(prop.getProperty("archivosdepropiedades.boton.botonagregarpro.anadirexito"));
 
 			} catch (NegativeNumberException e2) {
-				vf.getVemer().mostrarError("Número no válido.");
+				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.excepcion.number"));
+				
 				e2.printStackTrace();
 			} catch (IsBlackException e2) {
-				vf.getVemer().mostrarError("Completar toda la información.");
+				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.boton.botonagregarpro.completa"));
 				e2.printStackTrace();
 			} catch (ImageException e2) {
-				vf.getVemer().mostrarError("No seleciono una imagen");
+				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.boton.botonagregarpro.seleccionimagen"));
 			}
 			break;
 		}
@@ -846,9 +847,9 @@ prop = new Properties();
 						imagen = destino.getPath();
 
 					} catch (IOException ex) {
-						vf.getVemer().mostrarError("No se pudo cargar la imagen.");
+						vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.actualizarpro.cargaimagen"));
 					} catch (IllegalArgumentException ex) {
-						vf.getVemer().mostrarError("El archivo seleccionado no es una imagen válida.");
+						vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.actualizarpro.noimagen"));
 					}
 				} else {
 					ExceptionCheker.checkerImage();
@@ -856,17 +857,18 @@ prop = new Properties();
 
 				// Crear el objeto Cocina con la URL de la imagen
 				mf.getBanoDAO().crear(new Bano(nombre, precio, id, fecha, imagen, esDecoracion, esLimpieza));
-				vf.getVemer().mostrar("El producto fue añadido con exito");
+				vf.getVemer().mostrar(prop.getProperty("archivosdepropiedades.boton.botonagregarpro.anadirexito"));
 				mf.getTrabajadorDAO().crear(new Trabajador((String) vf.getVpt().getPis().getNombreUsuario(), "", a, nombre)); 
 
 			} catch (NegativeNumberException e2) {
-				vf.getVemer().mostrarError("Número no válido.");
+				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.excepcion.number"));
+				
 				e2.printStackTrace();
 			} catch (IsBlackException e2) {
-				vf.getVemer().mostrarError("Completar toda la información.");
+				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.boton.botonagregarpro.completa"));
 				e2.printStackTrace();
 			} catch (ImageException e2) {
-				vf.getVemer().mostrarError("No seleciono una imagen");
+				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.boton.botonagregarpro.seleccionimagen"));
 			}
 			break;
 		}
@@ -919,9 +921,9 @@ prop = new Properties();
 						imagen = destino.getPath();
 
 					} catch (IOException ex) {
-						vf.getVemer().mostrarError("No se pudo cargar la imagen.");
+						vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.actualizarpro.cargaimagen"));
 					} catch (IllegalArgumentException ex) {
-						vf.getVemer().mostrarError("El archivo seleccionado no es una imagen válida.");
+						vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.actualizarpro.noimagen"));
 					}
 				} else {
 					ExceptionCheker.checkerImage();
@@ -930,17 +932,18 @@ prop = new Properties();
 				// Crear el objeto Cocina con la URL de la imagen
 				mf.getElectrodomesticoDAO()
 						.crear(new Electrodomestico(nombre, precio, id, fecha, imagen, esPortatil, fuenteEnergia));
-				vf.getVemer().mostrar("El producto fue añadido con exito");
+				vf.getVemer().mostrar(prop.getProperty("archivosdepropiedades.boton.botonagregarpro.anadirexito"));
 				mf.getTrabajadorDAO().crear(new Trabajador((String) vf.getVpt().getPis().getNombreUsuario(), "", a, nombre)); 
 
 			} catch (NegativeNumberException e2) {
-				vf.getVemer().mostrarError("Número no válido.");
+				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.excepcion.number"));
+				
 				e2.printStackTrace();
 			} catch (IsBlackException e2) {
-				vf.getVemer().mostrarError("Completar toda la información.");
+				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.boton.botonagregarpro.completa"));
 				e2.printStackTrace();
 			} catch (ImageException e2) {
-				vf.getVemer().mostrarError("No seleciono una imagen");
+				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.boton.botonagregarpro.seleccionimagen"));
 			}
 			break;
 		}
@@ -993,9 +996,9 @@ prop = new Properties();
 						imagen = destino.getPath();
 
 					} catch (IOException ex) {
-						vf.getVemer().mostrarError("No se pudo cargar la imagen.");
+						vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.actualizarpro.cargaimagen"));
 					} catch (IllegalArgumentException ex) {
-						vf.getVemer().mostrarError("El archivo seleccionado no es una imagen válida.");
+						vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.actualizarpro.noimagen"));
 					}
 				} else {
 					ExceptionCheker.checkerImage();
@@ -1004,17 +1007,18 @@ prop = new Properties();
 				// Crear el objeto Cocina con la URL de la imagen
 				mf.getPapeleriaDAO()
 						.crear(new Papeleria(nombre, precio, id, fecha, imagen, esPortatil, cantidadPaquete));
-				vf.getVemer().mostrar("El producto fue añadido con exito");
+				vf.getVemer().mostrar(prop.getProperty("archivosdepropiedades.boton.botonagregarpro.anadirexito"));
 				mf.getTrabajadorDAO().crear(new Trabajador((String) vf.getVpt().getPis().getNombreUsuario(), "", a, nombre)); 
 
 			} catch (NegativeNumberException e2) {
-				vf.getVemer().mostrarError("Número no válido.");
+				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.excepcion.number"));
+				
 				e2.printStackTrace();
 			} catch (IsBlackException e2) {
-				vf.getVemer().mostrarError("Completar toda la información.");
+				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.boton.botonagregarpro.completa"));
 				e2.printStackTrace();
 			} catch (ImageException e2) {
-				vf.getVemer().mostrarError("No seleciono una imagen");
+				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.boton.botonagregarpro.seleccionimagen"));
 			}
 			break;
 		}
@@ -1068,9 +1072,9 @@ prop = new Properties();
 						imagen = destino.getPath();
 
 					} catch (IOException ex) {
-						vf.getVemer().mostrarError("No se pudo cargar la imagen.");
+						vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.actualizarpro.cargaimagen"));
 					} catch (IllegalArgumentException ex) {
-						vf.getVemer().mostrarError("El archivo seleccionado no es una imagen válida.");
+						vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.actualizarpro.noimagen"));
 					}
 				} else {
 					ExceptionCheker.checkerImage();
@@ -1079,17 +1083,18 @@ prop = new Properties();
 				// Crear el objeto Cocina con la URL de la imagen
 				mf.getVideoJuegoDAO()
 						.crear(new VideoJuego(nombre, precio, id, fecha, imagen, esAccesorio, referenciaConsola));
-				vf.getVemer().mostrar("El producto fue añadido con exito");
+				vf.getVemer().mostrar(prop.getProperty("archivosdepropiedades.boton.botonagregarpro.anadirexito"));
 				mf.getTrabajadorDAO().crear(new Trabajador((String) vf.getVpt().getPis().getNombreUsuario(), "", a, nombre)); 
 
 			} catch (NegativeNumberException e2) {
-				vf.getVemer().mostrarError("Número no válido.");
+				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.excepcion.number"));
+				
 				e2.printStackTrace();
 			} catch (IsBlackException e2) {
-				vf.getVemer().mostrarError("Completar toda la información.");
+				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.boton.botonagregarpro.completa"));
 				e2.printStackTrace();
 			} catch (ImageException e2) {
-				vf.getVemer().mostrarError("No seleciono una imagen");
+				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.boton.botonagregarpro.seleccionimagen"));
 			}
 			break;
 		}
@@ -1146,9 +1151,9 @@ prop = new Properties();
 						imagen = destino.getPath();
 
 					} catch (IOException ex) {
-						vf.getVemer().mostrarError("No se pudo cargar la imagen.");
+						vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.actualizarpro.cargaimagen"));
 					} catch (IllegalArgumentException ex) {
-						vf.getVemer().mostrarError("El archivo seleccionado no es una imagen válida.");
+						vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.actualizarpro.noimagen"));
 					}
 				} else {
 					ExceptionCheker.checkerImage();
@@ -1156,17 +1161,18 @@ prop = new Properties();
 
 				// Crear el objeto Cocina con la URL de la imagen
 				mf.getDeporteDAO().crear(new Deporte(nombre, precio, id, fecha, imagen, esAccesorio, deporte));
-				vf.getVemer().mostrar("El producto fue añadido con exito");
+				vf.getVemer().mostrar(prop.getProperty("archivosdepropiedades.boton.botonagregarpro.anadirexito"));
 				mf.getTrabajadorDAO().crear(new Trabajador((String) vf.getVpt().getPis().getNombreUsuario(), "", a, nombre)); 
 
 			} catch (NegativeNumberException e2) {
-				vf.getVemer().mostrarError("Número no válido.");
+				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.excepcion.number"));
+				
 				e2.printStackTrace();
 			} catch (IsBlackException e2) {
-				vf.getVemer().mostrarError("Completar toda la información.");
+				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.boton.botonagregarpro.completa"));
 				e2.printStackTrace();
 			} catch (ImageException e2) {
-				vf.getVemer().mostrarError("No seleciono una imagen");
+				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.boton.botonagregarpro.seleccionimagen"));
 			}
 			break;
 		}
@@ -1282,22 +1288,22 @@ prop = new Properties();
 
 			try {
 
-				int a = vf.getVemer().leerInt("¿Digite la posicion del producto que desea Eliminar?");
+				int a = vf.getVemer().leerInt(prop.getProperty("archivosdepropiedades.eliminar.posicion"));
 				a = a - 1;
 				ExceptionCheker.checkerNegativeNumber(a);
 				if (mf.getCocinaDAO().encontrar(a)) {
 
 					mf.getCocinaDAO().eliminar(a);
-					vf.getVemer().mostrar("El producto fue eliminado con exito");
+					vf.getVemer().mostrar(prop.getProperty("archivosdepropiedades.eliminar.eliminadoexito"));
 					vf.getVpt().getPep().getPec().setTexto(mf.getCocinaDAO().mostrarTodo());
 
 				} else {
-					vf.getVemer().mostrarError("la posicion a eliminar no esta en la lista");
+					vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.eliminar.eliminarposicion"));
 
 				}
 
 			} catch (NegativeNumberException e1) {
-				vf.getVemer().mostrarError("Numero no valido.");
+				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.excepcion.negative"));
 				e1.printStackTrace();
 			}
 
@@ -1307,22 +1313,22 @@ prop = new Properties();
 
 			try {
 
-				int a = vf.getVemer().leerInt("¿Digite la posicion del producto que desea Eliminar?");
+				int a = vf.getVemer().leerInt(prop.getProperty("archivosdepropiedades.eliminar.posicion"));
 				a = a - 1;
 				ExceptionCheker.checkerNegativeNumber(a);
 				if (mf.getBanoDAO().encontrar(a)) {
 
 					mf.getBanoDAO().eliminar(a);
-					vf.getVemer().mostrar("El producto fue eliminado con exito");
+					vf.getVemer().mostrar(prop.getProperty("archivosdepropiedades.eliminar.eliminadoexito"));
 					vf.getVpt().getPep().getPeb().setTexto(mf.getBanoDAO().mostrarTodo());
 
 				} else {
-					vf.getVemer().mostrarError("la posicion a eliminar no esta en la lista");
+					vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.eliminar.eliminarposicion"));
 
 				}
 
 			} catch (NegativeNumberException e1) {
-				vf.getVemer().mostrarError("Numero no valido.");
+				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.excepcion.negative"));
 				e1.printStackTrace();
 			}
 
@@ -1332,22 +1338,22 @@ prop = new Properties();
 
 			try {
 
-				int a = vf.getVemer().leerInt("¿Digite la posicion del producto que desea Eliminar?");
+				int a = vf.getVemer().leerInt(prop.getProperty("archivosdepropiedades.eliminar.posicion"));
 				a = a - 1;
 				ExceptionCheker.checkerNegativeNumber(a);
 				if (mf.getElectrodomesticoDAO().encontrar(a)) {
 
 					mf.getElectrodomesticoDAO().eliminar(a);
-					vf.getVemer().mostrar("El producto fue eliminado con exito");
+					vf.getVemer().mostrar(prop.getProperty("archivosdepropiedades.eliminar.eliminadoexito"));
 					vf.getVpt().getPep().getPee().setTexto(mf.getElectrodomesticoDAO().mostrarTodo());
 
 				} else {
-					vf.getVemer().mostrarError("la posicion a eliminar no esta en la lista");
+					vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.eliminar.eliminarposicion"));
 
 				}
 
 			} catch (NegativeNumberException e1) {
-				vf.getVemer().mostrarError("Numero no valido.");
+				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.excepcion.negative"));
 				e1.printStackTrace();
 			}
 
@@ -1357,22 +1363,22 @@ prop = new Properties();
 
 			try {
 
-				int a = vf.getVemer().leerInt("¿Digite la posicion del producto que desea Eliminar?");
+				int a = vf.getVemer().leerInt(prop.getProperty("archivosdepropiedades.eliminar.posicion"));
 				a = a - 1;
 				ExceptionCheker.checkerNegativeNumber(a);
 				if (mf.getPapeleriaDAO().encontrar(a)) {
 
 					mf.getPapeleriaDAO().eliminar(a);
-					vf.getVemer().mostrar("El producto fue eliminado con exito");
+					vf.getVemer().mostrar(prop.getProperty("archivosdepropiedades.eliminar.eliminadoexito"));
 					vf.getVpt().getPep().getPepap().setTexto(mf.getPapeleriaDAO().mostrarTodo());
 			
 				} else {
-					vf.getVemer().mostrarError("la posicion a eliminar no esta en la lista");
+					vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.eliminar.eliminarposicion"));
 
 				}
 
 			} catch (NegativeNumberException e1) {
-				vf.getVemer().mostrarError("Numero no valido.");
+				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.excepcion.negative"));
 				e1.printStackTrace();
 			}
 
@@ -1382,23 +1388,23 @@ prop = new Properties();
 
 			try {
 
-				int a = vf.getVemer().leerInt("¿Digite la posicion del producto que desea Eliminar?");
+				int a = vf.getVemer().leerInt(prop.getProperty("archivosdepropiedades.eliminar.posicion"));
 				a = a - 1;
 				ExceptionCheker.checkerNegativeNumber(a);
 				if (mf.getVideoJuegoDAO().encontrar(a)) {
 
 					mf.getVideoJuegoDAO().eliminar(a);
-					vf.getVemer().mostrar("El producto fue eliminado con exito");
+					vf.getVemer().mostrar(prop.getProperty("archivosdepropiedades.eliminar.eliminadoexito"));
 					vf.getVpt().getPep().getPevj().setTexto(mf.getVideoJuegoDAO().mostrarTodo());
 				
 
 				} else {
-					vf.getVemer().mostrarError("la posicion a eliminar no esta en la lista");
+					vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.eliminar.eliminarposicion"));
 
 				}
 
 			} catch (NegativeNumberException e1) {
-				vf.getVemer().mostrarError("Numero no valido.");
+				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.excepcion.negative"));
 				e1.printStackTrace();
 			}
 
@@ -1408,22 +1414,22 @@ prop = new Properties();
 
 			try {
 
-				int a = vf.getVemer().leerInt("¿Digite la posicion del producto que desea Eliminar?");
+				int a = vf.getVemer().leerInt(prop.getProperty("archivosdepropiedades.eliminar.posicion"));
 				a = a - 1;
 				ExceptionCheker.checkerNegativeNumber(a);
 				if (mf.getDeporteDAO().encontrar(a)) {
 
 					mf.getDeporteDAO().eliminar(a);
-					vf.getVemer().mostrar("El producto fue eliminado con exito");
+					vf.getVemer().mostrar(prop.getProperty("archivosdepropiedades.eliminar.eliminadoexito"));
 					vf.getVpt().getPep().getPedep().setTexto(mf.getDeporteDAO().mostrarTodo());
 
 				} else {
-					vf.getVemer().mostrarError("la posicion a eliminar no esta en la lista");
+					vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.eliminar.eliminarposicion"));
 
 				}
 
 			} catch (NegativeNumberException e1) {
-				vf.getVemer().mostrarError("Numero no valido.");
+				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.excepcion.negative"));
 				e1.printStackTrace();
 			}
 			break;
@@ -1548,7 +1554,7 @@ prop = new Properties();
 
 			try {
 
-				int ac = vf.getVemer().leerInt("¿Digite la posicion del producto que desea Actualizar?");
+				int ac = vf.getVemer().leerInt(prop.getProperty("archivosdepropiedades.actualizar.posicion"));
 				ac = ac - 1;
 				vf.getVpt().getPapro().getPaco().setA(ac);
 				ExceptionCheker.checkerNegativeNumber(ac);
@@ -1559,12 +1565,12 @@ prop = new Properties();
 					vf.getVpt().getPapro().getPaco().setVisible(true);
 
 				} else {
-					vf.getVemer().mostrarError("la posicion a eliminar no esta en la lista");
+					vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.actualizar.posicioneliminar"));
 
 				}
 
 			} catch (NegativeNumberException e1) {
-				vf.getVemer().mostrarError("Numero no valido.");
+				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.excepcion.negative"));
 				e1.printStackTrace();
 			}
 
@@ -1643,9 +1649,9 @@ prop = new Properties();
 						imagen = destino.getPath();
 
 					} catch (IOException ex) {
-						vf.getVemer().mostrarError("No se pudo cargar la imagen.");
+						vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.actualizarpro.cargaimagen"));
 					} catch (IllegalArgumentException ex) {
-						vf.getVemer().mostrarError("El archivo seleccionado no es una imagen válida.");
+						vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.actualizarpro.noimagen"));
 					}
 				} else {
 					ExceptionCheker.checkerImage();
@@ -1655,7 +1661,7 @@ prop = new Properties();
 				mf.getCocinaDAO().actulizar(ac, new Cocina(nombre, precio, id, fecha, imagen, esDecoracion,
 						resisteAltaTemperatuta, esPeligroso));
 
-				vf.getVemer().mostrar("El producto fue actualizado con exito");
+				vf.getVemer().mostrar(prop.getProperty("archivosdepropiedades.actualizarpro.exitoactualizado"));
 				vf.getVpt().getPapro().getPaco().setVisible(false);
 				vf.getVpt().getPapro().getPac().setVisible(true);
 				vf.getVpt().getPapro().getPac().setTexto(mf.getCocinaDAO().mostrarTodo());
@@ -1663,13 +1669,14 @@ prop = new Properties();
 				vf.getVpt().getPapro().getPac().repaint();
 
 			} catch (NegativeNumberException e2) {
-				vf.getVemer().mostrarError("Número no válido.");
+				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.excepcion.number"));
+				
 				e2.printStackTrace();
 			} catch (IsBlackException e2) {
-				vf.getVemer().mostrarError("Completar toda la información.");
+				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.boton.botonagregarpro.completa"));
 				e2.printStackTrace();
 			} catch (ImageException e2) {
-				vf.getVemer().mostrarError("No seleciono una imagen");
+				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.boton.botonagregarpro.seleccionimagen"));
 			}
 			break;
 		}
@@ -1677,7 +1684,7 @@ prop = new Properties();
 
 			try {
 
-				int ac = vf.getVemer().leerInt("¿Digite la posicion del producto que desea Actualizar?");
+				int ac = vf.getVemer().leerInt(prop.getProperty("archivosdepropiedades.actualizar.posicion"));
 				ac = ac - 1;
 				vf.getVpt().getPapro().getPaba().setA(ac);
 				ExceptionCheker.checkerNegativeNumber(ac);
@@ -1688,12 +1695,12 @@ prop = new Properties();
 					vf.getVpt().getPapro().getPaba().setVisible(true);
 
 				} else {
-					vf.getVemer().mostrarError("la posicion a eliminar no esta en la lista");
+					vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.actualizar.posicioneliminar"));
 
 				}
 
 			} catch (NegativeNumberException e1) {
-				vf.getVemer().mostrarError("Numero no valido.");
+				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.excepcion.negative"));
 				e1.printStackTrace();
 			}
 
@@ -1761,9 +1768,9 @@ prop = new Properties();
 						imagen = destino.getPath();
 
 					} catch (IOException ex) {
-						vf.getVemer().mostrarError("No se pudo cargar la imagen.");
+						vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.actualizarpro.cargaimagen"));
 					} catch (IllegalArgumentException ex) {
-						vf.getVemer().mostrarError("El archivo seleccionado no es una imagen válida.");
+						vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.actualizarpro.noimagen"));
 					}
 				} else {
 					ExceptionCheker.checkerImage();
@@ -1772,7 +1779,7 @@ prop = new Properties();
 				// Crear el objeto Cocina con la URL de la imagen
 				mf.getBanoDAO().actulizar(ac, new Bano(nombre, precio, id, fecha, imagen, esDecoracion, esLimpieza));
 
-				vf.getVemer().mostrar("El producto fue actualizado con exito");
+				vf.getVemer().mostrar(prop.getProperty("archivosdepropiedades.actualizarpro.exitoactualizado"));
 				vf.getVpt().getPapro().getPaba().setVisible(false);
 				vf.getVpt().getPapro().getPab().setVisible(true);
 				vf.getVpt().getPapro().getPab().setTexto(mf.getBanoDAO().mostrarTodo());
@@ -1780,13 +1787,14 @@ prop = new Properties();
 				vf.getVpt().getPapro().getPab().repaint();
 
 			} catch (NegativeNumberException e2) {
-				vf.getVemer().mostrarError("Número no válido.");
+				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.excepcion.number"));
+				
 				e2.printStackTrace();
 			} catch (IsBlackException e2) {
-				vf.getVemer().mostrarError("Completar toda la información.");
+				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.boton.botonagregarpro.completa"));
 				e2.printStackTrace();
 			} catch (ImageException e2) {
-				vf.getVemer().mostrarError("No seleciono una imagen");
+				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.boton.botonagregarpro.seleccionimagen"));
 			}
 			break;
 		}
@@ -1794,7 +1802,7 @@ prop = new Properties();
 
 			try {
 
-				int ac = vf.getVemer().leerInt("¿Digite la posicion del producto que desea Actualizar?");
+				int ac = vf.getVemer().leerInt(prop.getProperty("archivosdepropiedades.actualizar.posicion"));
 				ac = ac - 1;
 				vf.getVpt().getPapro().getPaelec().setA(ac);
 				ExceptionCheker.checkerNegativeNumber(ac);
@@ -1805,12 +1813,12 @@ prop = new Properties();
 					vf.getVpt().getPapro().getPaelec().setVisible(true);
 
 				} else {
-					vf.getVemer().mostrarError("la posicion a eliminar no esta en la lista");
+					vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.actualizar.posicioneliminar"));
 
 				}
 
 			} catch (NegativeNumberException e1) {
-				vf.getVemer().mostrarError("Numero no valido.");
+				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.excepcion.negative"));
 				e1.printStackTrace();
 			}
 
@@ -1868,9 +1876,9 @@ prop = new Properties();
 						imagen = destino.getPath();
 
 					} catch (IOException ex) {
-						vf.getVemer().mostrarError("No se pudo cargar la imagen.");
+						vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.actualizarpro.cargaimagen"));
 					} catch (IllegalArgumentException ex) {
-						vf.getVemer().mostrarError("El archivo seleccionado no es una imagen válida.");
+						vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.actualizarpro.noimagen"));
 					}
 				} else {
 					ExceptionCheker.checkerImage();
@@ -1880,7 +1888,7 @@ prop = new Properties();
 				mf.getElectrodomesticoDAO().actulizar(ac,
 						new Electrodomestico(nombre, precio, id, fecha, imagen, esPortatil, fuenteEnergia));
 
-				vf.getVemer().mostrar("El producto fue actualizado con exito");
+				vf.getVemer().mostrar(prop.getProperty("archivosdepropiedades.actualizarpro.exitoactualizado"));
 				vf.getVpt().getPapro().getPaelec().setVisible(false);
 				vf.getVpt().getPapro().getPae().setVisible(true);
 				vf.getVpt().getPapro().getPae().setTexto(mf.getElectrodomesticoDAO().mostrarTodo());
@@ -1888,13 +1896,14 @@ prop = new Properties();
 				vf.getVpt().getPapro().getPae().repaint();
 
 			} catch (NegativeNumberException e2) {
-				vf.getVemer().mostrarError("Número no válido.");
+				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.excepcion.number"));
+				
 				e2.printStackTrace();
 			} catch (IsBlackException e2) {
-				vf.getVemer().mostrarError("Completar toda la información.");
+				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.boton.botonagregarpro.completa"));
 				e2.printStackTrace();
 			} catch (ImageException e2) {
-				vf.getVemer().mostrarError("No seleciono una imagen");
+				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.boton.botonagregarpro.seleccionimagen"));
 			}
 			break;
 		}
@@ -1902,7 +1911,7 @@ prop = new Properties();
 
 			try {
 
-				int ac = vf.getVemer().leerInt("¿Digite la posicion del producto que desea Actualizar?");
+				int ac = vf.getVemer().leerInt(prop.getProperty("archivosdepropiedades.actualizar.posicion"));
 				ac = ac - 1;
 				vf.getVpt().getPapro().getPapape().setA(ac);
 				ExceptionCheker.checkerNegativeNumber(ac);
@@ -1913,12 +1922,12 @@ prop = new Properties();
 					vf.getVpt().getPapro().getPapape().setVisible(true);
 
 				} else {
-					vf.getVemer().mostrarError("la posicion a eliminar no esta en la lista");
+					vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.actualizar.posicioneliminar"));
 
 				}
 
 			} catch (NegativeNumberException e1) {
-				vf.getVemer().mostrarError("Numero no valido.");
+				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.excepcion.negative"));
 				e1.printStackTrace();
 			}
 
@@ -1977,9 +1986,9 @@ prop = new Properties();
 						imagen = destino.getPath();
 
 					} catch (IOException ex) {
-						vf.getVemer().mostrarError("No se pudo cargar la imagen.");
+						vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.actualizarpro.cargaimagen"));
 					} catch (IllegalArgumentException ex) {
-						vf.getVemer().mostrarError("El archivo seleccionado no es una imagen válida.");
+						vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.actualizarpro.noimagen"));
 					}
 				} else {
 					ExceptionCheker.checkerImage();
@@ -1989,7 +1998,7 @@ prop = new Properties();
 				mf.getPapeleriaDAO().actulizar(ac,
 						new Papeleria(nombre, precio, id, fecha, imagen, esPortatil, cantidadPaquete));
 
-				vf.getVemer().mostrar("El producto fue actualizado con exito");
+				vf.getVemer().mostrar(prop.getProperty("archivosdepropiedades.actualizarpro.exitoactualizado"));
 				vf.getVpt().getPapro().getPapape().setVisible(false);
 				vf.getVpt().getPapro().getPapap().setVisible(true);
 				vf.getVpt().getPapro().getPapap().setTexto(mf.getPapeleriaDAO().mostrarTodo());
@@ -1997,13 +2006,14 @@ prop = new Properties();
 				vf.getVpt().getPapro().getPapap().repaint();
 
 			} catch (NegativeNumberException e2) {
-				vf.getVemer().mostrarError("Número no válido.");
+				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.excepcion.number"));
+				
 				e2.printStackTrace();
 			} catch (IsBlackException e2) {
-				vf.getVemer().mostrarError("Completar toda la información.");
+				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.boton.botonagregarpro.completa"));
 				e2.printStackTrace();
 			} catch (ImageException e2) {
-				vf.getVemer().mostrarError("No seleciono una imagen");
+				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.boton.botonagregarpro.seleccionimagen"));
 			}
 			break;
 		}
@@ -2011,7 +2021,7 @@ prop = new Properties();
 
 			try {
 
-				int ac = vf.getVemer().leerInt("¿Digite la posicion del producto que desea Actualizar?");
+				int ac = vf.getVemer().leerInt(prop.getProperty("archivosdepropiedades.actualizar.posicion"));
 				ac = ac - 1;
 				vf.getVpt().getPapro().getPagvj().setA(ac);
 				ExceptionCheker.checkerNegativeNumber(ac);
@@ -2022,12 +2032,12 @@ prop = new Properties();
 					vf.getVpt().getPapro().getPagvj().setVisible(true);
 
 				} else {
-					vf.getVemer().mostrarError("la posicion a eliminar no esta en la lista");
+					vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.actualizar.posicioneliminar"));
 
 				}
 
 			} catch (NegativeNumberException e1) {
-				vf.getVemer().mostrarError("Numero no valido.");
+				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.excepcion.negative"));
 				e1.printStackTrace();
 			}
 
@@ -2086,9 +2096,9 @@ prop = new Properties();
 						imagen = destino.getPath();
 
 					} catch (IOException ex) {
-						vf.getVemer().mostrarError("No se pudo cargar la imagen.");
+						vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.actualizarpro.cargaimagen"));
 					} catch (IllegalArgumentException ex) {
-						vf.getVemer().mostrarError("El archivo seleccionado no es una imagen válida.");
+						vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.actualizarpro.noimagen"));
 					}
 				} else {
 					ExceptionCheker.checkerImage();
@@ -2098,7 +2108,7 @@ prop = new Properties();
 				mf.getVideoJuegoDAO().actulizar(ac,
 						new VideoJuego(nombre, precio, id, fecha, imagen, esAccesorio, referenciaConsola));
 
-				vf.getVemer().mostrar("El producto fue actualizado con exito");
+				vf.getVemer().mostrar(prop.getProperty("archivosdepropiedades.actualizarpro.exitoactualizado"));
 				vf.getVpt().getPapro().getPagvj().setVisible(false);
 				vf.getVpt().getPapro().getPavj().setVisible(true);
 				vf.getVpt().getPapro().getPavj().setTexto(mf.getVideoJuegoDAO().mostrarTodo());
@@ -2106,13 +2116,14 @@ prop = new Properties();
 				vf.getVpt().getPapro().getPavj().repaint();
 
 			} catch (NegativeNumberException e2) {
-				vf.getVemer().mostrarError("Número no válido.");
+				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.excepcion.number"));
+				
 				e2.printStackTrace();
 			} catch (IsBlackException e2) {
-				vf.getVemer().mostrarError("Completar toda la información.");
+				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.boton.botonagregarpro.completa"));
 				e2.printStackTrace();
 			} catch (ImageException e2) {
-				vf.getVemer().mostrarError("No seleciono una imagen");
+				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.boton.botonagregarpro.seleccionimagen"));
 			}
 			break;
 		}
@@ -2120,7 +2131,7 @@ prop = new Properties();
 
 			try {
 
-				int ac = vf.getVemer().leerInt("¿Digite la posicion del producto que desea Actualizar?");
+				int ac = vf.getVemer().leerInt(prop.getProperty("archivosdepropiedades.actualizar.posicion"));
 				ac = ac - 1;
 				vf.getVpt().getPapro().getPadepor().setA(ac);
 				ExceptionCheker.checkerNegativeNumber(ac);
@@ -2131,12 +2142,12 @@ prop = new Properties();
 					vf.getVpt().getPapro().getPadepor().setVisible(true);
 
 				} else {
-					vf.getVemer().mostrarError("la posicion a eliminar no esta en la lista");
+					vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.actualizar.posicioneliminar"));
 
 				}
 
 			} catch (NegativeNumberException e1) {
-				vf.getVemer().mostrarError("Numero no valido.");
+				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.excepcion.negative"));
 				e1.printStackTrace();
 			}
 
@@ -2195,9 +2206,9 @@ prop = new Properties();
 						imagen = destino.getPath();
 
 					} catch (IOException ex) {
-						vf.getVemer().mostrarError("No se pudo cargar la imagen.");
+						vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.actualizarpro.cargaimagen"));
 					} catch (IllegalArgumentException ex) {
-						vf.getVemer().mostrarError("El archivo seleccionado no es una imagen válida.");
+						vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.actualizarpro.noimagen"));
 					}
 				} else {
 					ExceptionCheker.checkerImage();
@@ -2206,7 +2217,7 @@ prop = new Properties();
 				// Crear el objeto Cocina con la URL de la imagen
 				mf.getDeporteDAO().actulizar(ac, new Deporte(nombre, precio, id, fecha, imagen, esAccesorio, deporte));
 
-				vf.getVemer().mostrar("El producto fue actualizado con exito");
+				vf.getVemer().mostrar(prop.getProperty("archivosdepropiedades.actualizarpro.exitoactualizado"));
 				vf.getVpt().getPapro().getPadepor().setVisible(false);
 				vf.getVpt().getPapro().getPadep().setVisible(true);
 				vf.getVpt().getPapro().getPadep().setTexto(mf.getDeporteDAO().mostrarTodo());
@@ -2214,13 +2225,14 @@ prop = new Properties();
 				vf.getVpt().getPapro().getPadep().repaint();
 
 			} catch (NegativeNumberException e2) {
-				vf.getVemer().mostrarError("Número no válido.");
+				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.excepcion.number"));
+				
 				e2.printStackTrace();
 			} catch (IsBlackException e2) {
-				vf.getVemer().mostrarError("Completar toda la información.");
+				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.boton.botonagregarpro.completa"));
 				e2.printStackTrace();
 			} catch (ImageException e2) {
-				vf.getVemer().mostrarError("No seleciono una imagen");
+				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.boton.botonagregarpro.seleccionimagen"));
 			}
 			break;
 		}
