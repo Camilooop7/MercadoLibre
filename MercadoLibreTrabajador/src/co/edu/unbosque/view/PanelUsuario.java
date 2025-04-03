@@ -1,5 +1,9 @@
 package co.edu.unbosque.view;
 
+/**
+ * 
+ * Importanción de las librerias para el uso de imagenes, texto, botones, colores, paneles.
+ */
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
@@ -15,6 +19,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
+
+/**
+ * Clase la cual es llamada como Ventana y extiende JPanel 
+ * lo que permite agregar botones y o componentes de interfaz grafica.
+ * y creación de las variables con su nombre privadas.
+ */
 public class PanelUsuario extends JPanel {
 
 	private JLabel fondo;
@@ -26,12 +36,29 @@ public class PanelUsuario extends JPanel {
 	private Properties prop;
 	
 
+	
+	/**
+	 * Constructor del panel donde se ejecuta la logica en general de cada parametro
+	 * que se encuentra en la ventana. además se declara la excepción de
+	 * IOexception.
+	 */
 	public PanelUsuario(Properties prop) throws IOException {
+		
+		/**
+		 * Uso del setBounds para fijar la posción del panel setLayaout permite
+		 * modificar manualmente los elementos.
+		 */
 		setBounds(0, 0, 1290, 750);
 		setLayout(null);
 		
 		this.prop = prop;
 
+		
+		/**
+		 * Inicialización del JLabel BufferedImage con el objetivo de establecer la
+		 * ubicación del archivo de la imagen dentro de los archivos. Image Redim
+		 * redimenzionar las medidas establecidas de la imagen.
+		 */
 		fondo = new JLabel();
 		BufferedImage fd = ImageIO.read(new File(prop.getProperty("archivospropiedad.fondo.tback")));
 		ImageIcon imagenFondo = new ImageIcon(fd);
@@ -39,6 +66,15 @@ public class PanelUsuario extends JPanel {
 		fondo.setIcon(new ImageIcon(fdRedim));
 		fondo.setBounds(0, 0, 1290, 750);
 
+		
+		/**
+		 * En este caso se inicializa el Jbutton para su uso 
+		 * .setbounds para definir el tamaño y posicion dentro del panel
+		 * .setbackground se establece el color.
+		 * .contentareafilled para que el area de boton sea transparente
+		 * .borderpainted quitar el borde establecido preterminado del boton.
+		 * .add añadir el boton.
+		 */
 		btnVolver = new JButton();
 		btnVolver.setBounds(1092, 71, 130, 97);
 		btnVolver.setFocusable(false);
@@ -60,6 +96,12 @@ public class PanelUsuario extends JPanel {
 		add(fondo);
 	}
 	
+	
+	/**
+	 * Aplicar revalidate() y repaint() a todos los paneles
+	 * @param prop
+	 * @throws IOException
+	 */
 	public void refrescarUI(Properties prop) throws IOException {
 	    // Aplicar revalidate() y repaint() a todos los paneles
 		
@@ -78,6 +120,10 @@ public class PanelUsuario extends JPanel {
 	    this.repaint();
 	}
 	
+	/**
+	 * Meotodo el cual redimienciona la imagen del panel y su creación
+	 * @throws IOException
+	 */
 	public void actualizarComps() throws IOException{
 		BufferedImage fd = ImageIO.read(new File(prop.getProperty("archivospropiedad.fondo.tback")));
 		ImageIcon imagenFondo = new ImageIcon(fd);
@@ -85,6 +131,10 @@ public class PanelUsuario extends JPanel {
 		fondo.setIcon(new ImageIcon(fdRedim));
 	}
 
+	/**
+	 * Getters & Stters
+	 * @return fondo
+	 */
 	public JLabel getFondo() {
 		return fondo;
 	}

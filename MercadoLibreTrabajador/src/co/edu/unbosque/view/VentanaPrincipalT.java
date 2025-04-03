@@ -1,11 +1,22 @@
 package co.edu.unbosque.view;
 
+
+/**
+ * 
+ * Importanción de las librerias para el uso de imagenes, texto, botones, colores, paneles.
+ */
 import java.awt.GridLayout;
 import java.io.IOException;
 import java.util.Properties;
 
 import javax.swing.JFrame;
 
+
+/**
+ * Clase la cual es llamada como Ventana y extiende JPanel 
+ * lo que permite agregar botones y o componentes de interfaz grafica.
+ * y creación de las variables con su nombre privadas.
+ */
 public class VentanaPrincipalT extends JFrame {
 
 	private PanelPrincipalT ppt;
@@ -19,6 +30,11 @@ public class VentanaPrincipalT extends JFrame {
 	
 	
 
+	/**
+	 * Constructor del panel donde se ejecuta la logica en general de cada parametro
+	 * que se encuentra en la ventana. además se declara la excepción de
+	 * IOexception.
+	 */
 	public VentanaPrincipalT(Properties prop) throws IOException {
 
 		setBounds(10, 10, 1290, 750);
@@ -27,6 +43,10 @@ public class VentanaPrincipalT extends JFrame {
 		setResizable(false);
 		setLayout(null);
 
+		
+		/**
+		 * inicialización de paneles
+		 */
 		ppt = new PanelPrincipalT(prop);
 		pis = new PanelIniciarSesion(prop);
 		pcu = new PanelCrearU(prop);
@@ -38,7 +58,9 @@ public class VentanaPrincipalT extends JFrame {
 		
 		
 
-		
+		/**
+		 * inicialización de paneles e implementación con .add
+		 */
 		add(ppt).setVisible(true);
 		add(pis).setVisible(false);
 		add(pcu).setVisible(false);
@@ -51,6 +73,12 @@ public class VentanaPrincipalT extends JFrame {
 
 	}
 	
+	
+	/**
+	 * Aplicar revalidate() y repaint() a todos los paneles
+	 * @param prop
+	 * @throws IOException
+	 */
 	public void refrescarUI(Properties prop) throws IOException {
 	    // Aplicar revalidate() y repaint() a todos los paneles
 		
@@ -109,7 +137,11 @@ public class VentanaPrincipalT extends JFrame {
 	    this.revalidate();
 	    this.repaint();
 	}
-
+	
+	
+	/**
+	 * Getters & Stters
+	 */
 	public PanelPrincipalT getPpt() {
 		return ppt;
 	}

@@ -1,5 +1,10 @@
 package co.edu.unbosque.view;
 
+
+/**
+ * 
+ * Importanción de las librerias para el uso de imagenes, texto, botones, colores, paneles.
+ */
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
@@ -14,6 +19,12 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+
+/**
+ * Clase la cual es llamada como Ventana y extiende JPanel 
+ * lo que permite agregar botones y o componentes de interfaz grafica.
+ * y creación de las variables con su nombre privadas.
+ */
 public class PanelPrincipalT extends JPanel {
 	
 	
@@ -24,6 +35,12 @@ public class PanelPrincipalT extends JPanel {
 	private JButton btnEspanol, btnIngles;
 	private Properties prop;
 
+	
+	/**
+	 * Constructor del panel donde se ejecuta la logica en general de cada parametro
+	 * que se encuentra en la ventana. además se declara la excepción de
+	 * IOexception.
+	 */
 	public PanelPrincipalT(Properties prop) throws IOException {
 		
 		setBounds(0, 0, 1290, 750);
@@ -31,6 +48,12 @@ public class PanelPrincipalT extends JPanel {
 		
 		this.prop = prop;
 		
+		
+		/**
+		 * Inicialización del JLabel BufferedImage con el objetivo de establecer la
+		 * ubicación del archivo de la imagen dentro de los archivos. Image Redim
+		 * redimenzionar las medidas establecidas de la imagen.
+		 */
 		fondo = new JLabel();
 		BufferedImage fd = ImageIO.read(new File(prop.getProperty("archivospropiedad.fondo.t")));
 		ImageIcon imagenFondo = new ImageIcon(fd);
@@ -38,6 +61,14 @@ public class PanelPrincipalT extends JPanel {
 		fondo.setIcon(new ImageIcon(fdRedim));
 		fondo.setBounds(0, 0, 1290, 750);
 
+		/**
+		 * En este caso se inicializa el Jbutton para su uso 
+		 * .setbounds para definir el tamaño y posicion dentro del panel
+		 * .setbackground se establece el color.
+		 * .contentareafilled para que el area de boton sea transparente
+		 * .borderpainted quitar el borde establecido preterminado del boton.
+		 * .add añadir el boton.
+		 */
 		btnIniciarS = new JButton();
 		btnIniciarS.setBounds(140, 360, 290, 150);
 		btnIniciarS.setText(prop.getProperty("archivosdepropiedades.panel.principal.sesioni"));
@@ -48,6 +79,15 @@ public class PanelPrincipalT extends JPanel {
 		btnIniciarS.setFont(new Font("Baloo", Font.BOLD, 35));
 		add(btnIniciarS);
 
+		
+		/**
+		 * En este caso se inicializa el Jbutton para su uso 
+		 * .setbounds para definir el tamaño y posicion dentro del panel
+		 * .setbackground se establece el color.
+		 * .contentareafilled para que el area de boton sea transparente
+		 * .borderpainted quitar el borde establecido preterminado del boton.
+		 * .add añadir el boton.
+		 */
 		btnCrearU = new JButton();
 		btnCrearU.setBounds(500, 360, 290, 150);
 		btnCrearU.setText(prop.getProperty("archivosdepropiedades.panel.principal.crearc"));
@@ -58,6 +98,15 @@ public class PanelPrincipalT extends JPanel {
 		btnCrearU.setFont(new Font("Baloo", Font.BOLD, 35));
 		add(btnCrearU);
 
+		
+		/**
+		 * En este caso se inicializa el Jbutton para su uso 
+		 * .setbounds para definir el tamaño y posicion dentro del panel
+		 * .setbackground se establece el color.
+		 * .contentareafilled para que el area de boton sea transparente
+		 * .borderpainted quitar el borde establecido preterminado del boton.
+		 * .add añadir el boton.
+		 */
 		btnSalir = new JButton();
 		btnSalir.setBounds(860, 360, 290, 150);
 		btnSalir.setText(prop.getProperty("archivosdepropiedades.panel.principal.exit"));
@@ -68,6 +117,15 @@ public class PanelPrincipalT extends JPanel {
 		btnSalir.setFont(new Font("Baloo", Font.BOLD, 35));
 		add(btnSalir);
 
+		
+		/**
+		 * En este caso se inicializa el Jbutton para su uso 
+		 * .setbounds para definir el tamaño y posicion dentro del panel
+		 * .setbackground se establece el color.
+		 * .contentareafilled para que el area de boton sea transparente
+		 * .borderpainted quitar el borde establecido preterminado del boton.
+		 * .add añadir el boton.
+		 */
 		btnEspanol = new JButton();
 		btnEspanol.setBounds(1190, 75, 85, 90);
 		btnEspanol.setFocusable(false);
@@ -79,6 +137,14 @@ public class PanelPrincipalT extends JPanel {
 		btnEspanol.setVisible(true);
 		add(btnEspanol);
 
+		/**
+		 * En este caso se inicializa el Jbutton para su uso 
+		 * .setbounds para definir el tamaño y posicion dentro del panel
+		 * .setbackground se establece el color.
+		 * .contentareafilled para que el area de boton sea transparente
+		 * .borderpainted quitar el borde establecido preterminado del boton.
+		 * .add añadir el boton.
+		 */
 		btnIngles = new JButton();
 		btnIngles.setBounds(1095, 75, 87, 90);
 		btnIngles.setContentAreaFilled(false);
@@ -94,6 +160,10 @@ public class PanelPrincipalT extends JPanel {
 		add(fondo); 
 	}
 	
+	/**
+	 * Meotodo el cual redimienciona la imagen del panel y su creación
+	 * @throws IOException
+	 */
 	public void actualizarComps() throws IOException {
 		BufferedImage fd = ImageIO.read(new File(prop.getProperty("archivospropiedad.fondo.t")));
 		ImageIcon imagenFondo = new ImageIcon(fd);
@@ -106,6 +176,10 @@ public class PanelPrincipalT extends JPanel {
 	}
 	
 
+	/**
+	 * Getters & Stters
+	 * @return fondo
+	 */
 	public JLabel getFondo() {
 		return fondo;
 	}

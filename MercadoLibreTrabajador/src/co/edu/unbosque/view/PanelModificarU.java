@@ -1,5 +1,10 @@
 package co.edu.unbosque.view;
 
+
+/**
+ * 
+ * Importanción de las librerias para el uso de imagenes, texto, botones, colores, paneles.
+ */
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
@@ -14,6 +19,12 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+
+/**
+ * Clase la cual es llamada como Ventana y extiende JPanel 
+ * lo que permite agregar botones y o componentes de interfaz grafica.
+ * y creación de las variables con su nombre privadas.
+ */
 public class PanelModificarU extends JPanel {
 
 	private JLabel fondo;
@@ -21,12 +32,24 @@ public class PanelModificarU extends JPanel {
 	private JButton btnCliente;
 	private Properties prop;
 
+	
+	/**
+	 * Constructor del panel donde se ejecuta la logica en general de cada parametro
+	 * que se encuentra en la ventana. además se declara la excepción de
+	 * IOexception.
+	 */
 	public PanelModificarU(Properties prop) throws IOException {
 		setBounds(166, 245, 950, 433);
 		setLayout(null);
 		
 		this.prop = prop;
 
+		
+		/**
+		 * Inicialización del JLabel BufferedImage con el objetivo de establecer la
+		 * ubicación del archivo de la imagen dentro de los archivos. Image Redim
+		 * redimenzionar las medidas establecidas de la imagen.
+		 */
 		fondo = new JLabel();
 		BufferedImage fd = ImageIO.read(new File("src/co/edu/unbosque/view/FondoUs.png"));
 		ImageIcon imagenFondo = new ImageIcon(fd);
@@ -34,6 +57,14 @@ public class PanelModificarU extends JPanel {
 		fondo.setIcon(new ImageIcon(fdRedim));
 		fondo.setBounds(0, 0, 950, 433);
 
+		/**
+		 * En este caso se inicializa el Jbutton para su uso 
+		 * .setbounds para definir el tamaño y posicion dentro del panel
+		 * .setbackground se establece el color.
+		 * .contentareafilled para que el area de boton sea transparente
+		 * .borderpainted quitar el borde establecido preterminado del boton.
+		 * .add añadir el boton.
+		 */
 		btnTrabajador = new JButton();
 		btnTrabajador.setBounds(150, 140, 200, 150);
 		btnTrabajador.setFocusable(false);
@@ -44,6 +75,14 @@ public class PanelModificarU extends JPanel {
 		btnTrabajador.setVisible(true);
 		add(btnTrabajador);
 
+		/**
+		 * En este caso se inicializa el Jbutton para su uso 
+		 * .setbounds para definir el tamaño y posicion dentro del panel
+		 * .setbackground se establece el color.
+		 * .contentareafilled para que el area de boton sea transparente
+		 * .borderpainted quitar el borde establecido preterminado del boton.
+		 * .add añadir el boton.
+		 */
 		btnCliente = new JButton();
 		btnCliente.setBounds(545, 140, 260, 155);
 		btnCliente.setFocusable(false);
@@ -58,6 +97,10 @@ public class PanelModificarU extends JPanel {
 
 	}
 	
+	/**
+	 * Meotodo el cual redimienciona la imagen del panel y su creación
+	 * @throws IOException
+	 */
 	public void actualizarComps() throws IOException {
 		BufferedImage fd = ImageIO.read(new File(prop.getProperty("archivospropiedad.fondo.user")));
 		ImageIcon imagenFondo = new ImageIcon(fd);
@@ -65,6 +108,10 @@ public class PanelModificarU extends JPanel {
 		fondo.setIcon(new ImageIcon(fdRedim));
 	}
 
+	/**
+	 * Getters & Stters
+	 * @return fondo
+	 */
 	public JLabel getFondo() {
 		return fondo;
 	}

@@ -1,10 +1,19 @@
 package co.edu.unbosque.view;
 
+/**
+ * 
+ * Importanción de las librerias para el uso de imagenes, texto, botones, colores, paneles.
+ */
 import java.io.File;
 
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
+/**
+ * Clase la cual es llamada como Ventana y extiende JPanel 
+ * lo que permite agregar botones y o componentes de interfaz grafica.
+ * y creación de las variables con su nombre privadas.
+ */
 public class VentanaEmergente {
 	/*
 	 * Constgructor vacio.
@@ -52,6 +61,10 @@ public class VentanaEmergente {
 		return respuesta == 0;
 	}
 
+	/**
+	 * Metodo en el cual se crea un ciclo para encontrara y definir la ubicación del archivo
+	 * @return
+	 */
 	public File seleccionarArchivo() {
 		JFileChooser fileChooser = new JFileChooser();
 		int result = fileChooser.showOpenDialog(null);
