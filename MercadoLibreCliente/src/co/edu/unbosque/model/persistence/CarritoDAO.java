@@ -4,127 +4,128 @@ import java.util.ArrayList;
 import co.edu.unbosque.model.Carrito;
 
 /**
- * Clase en la cual se implementa la interfaz OperacionDAO
+ * Clase que implementa el DAO (Data Access Object) para gestionar objetos de tipo Carrito.
+ * Proporciona métodos para operaciones CRUD y persistencia en archivos.
  */
 public class CarritoDAO implements OperacionDAO<Carrito> {
 
-	/**
-	 * Se declara una variable constante definida por el final la cual no deja de
-	 * ser modificada una vez inicializada y se le indica el tipo de archivo .dat
-	 * 
-	 */
-	private final String SERIAL_FILE_NAME = "carrito.dat";
+    /**
+     * Nombre del archivo serializado para almacenar objetos de tipo Carrito.
+     */
+    private final String SERIAL_FILE_NAME = "carrito.dat";
 
-	/**
-	 * Variable la cual contiene un arraylist y además se define el nombre.
-	 */
-	private ArrayList<Carrito> listaCarritos;
+    /**
+     * Lista de objetos de tipo Carrito gestionados por este DAO.
+     */
+    private ArrayList<Carrito> listaCarritos;
 
-	/**
-	 * Constructor en cual cual se llama al metodo de cargarSerializado y se
-	 * inicializa la Arraylist.
-	 */
-	public CarritoDAO() {
-		// TODO Auto-generated constructor stub
-		listaCarritos = new ArrayList<>();
-		cargarSerializado();
-	}
+    /**
+     * Constructor que inicializa la lista y carga los datos serializados.
+     */
+    public CarritoDAO() {
+        listaCarritos = new ArrayList<>();
+        cargarSerializado();
+    }
 
-	/**
-	 * Metodo crear el cual recibe como parametro nuevoDato y se recurre a la lista
-	 * agregando el nuevoDato además de eso se llama al metodo de
-	 * escribirSerializado.
-	 */
-	@Override
-	public void crear(Carrito nuevoDato) {
-		listaCarritos.add(nuevoDato);
-		escribirSerializado();
-	}
+    /**
+     * Agrega un nuevo objeto de tipo Carrito a la lista y persiste los datos.
+     * @param nuevoDato El nuevo objeto de tipo Carrito a agregar.
+     */
+    @Override
+    public void crear(Carrito nuevoDato) {
+        listaCarritos.add(nuevoDato);
+        escribirSerializado();
+    }
 
-	/**
-	 * Metodo eliminar el cual recibe como parametro un dato tipo entero en el cual
-	 * se incluye un condicional tipo if, verifica y recorre los limites de las
-	 * lista eliminando el objeto en la posicion indicada, si no devuelve el numero
-	 * indicado si no se cumple el ciclo. Se llama al metodo de escribirSerializado.
-	 */
-	@Override
-	public int eliminar(int index) {
-		if (index >= 0 && index < listaCarritos.size()) {
-			listaCarritos.remove(index);
-			escribirSerializado();
-			return 0;
-		} else {
-			return 1;
-		}
-	}
+    /**
+     * Elimina un objeto de tipo Carrito de la lista según su índice y persiste los datos.
+     * @param index El índice del objeto a eliminar.
+     * @return 0 si la operación es exitosa, 1 si el índice es inválido.
+     */
+    @Override
+    public int eliminar(int index) {
+        if (index >= 0 && index < listaCarritos.size()) {
+            listaCarritos.remove(index);
+            escribirSerializado();
+            return 0;
+        } else {
+            return 1;
+        }
+    }
 
-	/**
-	 * Metodo actualizar el cual recibe como parametro un dato tipo entero y
-	 * nuevoDato en el cual se incluye un condicional tipo if, verifica y recorre
-	 * los limites de las lista actualizando el objeto en la posicion indicada con
-	 * el .set recibiendo los parametros definidos, si no devuelve el numero
-	 * indicado si no se cumple el ciclo. Se llama al metodo de escribirSerializado.
-	 */
-	@Override
-	public int actulizar(int index, Carrito nuevoDato) {
-		if (index >= 0 && index < listaCarritos.size()) {
-			listaCarritos.set(index, nuevoDato);
-			escribirSerializado();
-			return 0;
-		} else {
-			return 1;
-		}
-	}
-	
-	public boolean encontrar(int index) {
-		// TODO Auto-generated method stub
-		return index >= 0 && index < listaCarritos.size();
-	}
+    /**
+     * Actualiza un objeto de tipo Carrito en la lista según su índice y persiste los datos.
+     * @param index El índice del objeto a actualizar.
+     * @param nuevoDato El nuevo objeto de tipo Carrito que reemplazará al existente.
+     * @return 0 si la operación es exitosa, 1 si el índice es inválido.
+     */
+    @Override
+    public int actulizar(int index, Carrito nuevoDato) {
+        if (index >= 0 && index < listaCarritos.size()) {
+            listaCarritos.set(index, nuevoDato);
+            escribirSerializado();
+            return 0;
+        } else {
+            return 1;
+        }
+    }
 
-	/**
-	 * Metodo mosrtarTodo el cual no recibe parametros Se crea una variable tipo
-	 * String y se recorre la lista con el uso del for y se realiza la concatenación
-	 * de salida con el .toString, por ultimo se retorna la variable salida con su
-	 * respectivo to string.
-	 */
-	@Override
-	public String mostrarTodo() {
-		String salida = "";
-		for (Carrito carrito : listaCarritos) {
-			salida += carrito.toString() + "\n";
-		}
-		return salida;
-	}
+    /**
+     * Verifica si existe un objeto de tipo Carrito en el índice especificado.
+     * @param index El índice a verificar.
+     * @return true si el índice es válido, false en caso contrario.
+     */
+    @Override
+    public boolean encontrar(int index) {
+        return index >= 0 && index < listaCarritos.size();
+    }
 
-	/**
-	 * Metodo el cual tiene como objetivo guardar la lista definida dentro del
-	 * archivo como .dat
-	 */
-	@Override
-	public void escribirSerializado() {
-		FileManager.escribirArchivoSerializado(SERIAL_FILE_NAME, listaCarritos);
-	}
+    /**
+     * Retorna una representación en cadena de todos los objetos de tipo Carrito en la lista.
+     * @return Una cadena con todos los objetos de tipo Carrito.
+     */
+    @Override
+    public String mostrarTodo() {
+        String salida = "";
+        for (Carrito carrito : listaCarritos) {
+            salida += carrito.toString() + "\n";
+        }
+        return salida;
+    }
 
-	/**
-	 * Este metodo carga el archivo la lista en el archivoSerializado donde se lee
-	 * la lista con el leerArchivoSerializado en este caso SERIAL_FILE_NAME. Se
-	 * utiliza un condiconal tipo if en donde si la lista se encuentra vacia se
-	 * inicializa un nuevo array para la lista.
-	 */
-	@Override
-	public void cargarSerializado() {
-		listaCarritos = (ArrayList<Carrito>) FileManager.leerArchivoSerialziado(SERIAL_FILE_NAME);
-		if (listaCarritos == null) {
-			listaCarritos = new ArrayList<>();
-		}
-	}
+    /**
+     * Escribe la lista de objetos de tipo Carrito en un archivo serializado.
+     */
+    @Override
+    public void escribirSerializado() {
+        FileManager.escribirArchivoSerializado(SERIAL_FILE_NAME, listaCarritos);
+    }
 
-	public ArrayList<Carrito> getListaCarritos() {
-		return listaCarritos;
-	}
+    /**
+     * Carga la lista de objetos de tipo Carrito desde un archivo serializado.
+     * Si el archivo está vacío o no existe, inicializa una nueva lista.
+     */
+    @Override
+    public void cargarSerializado() {
+        listaCarritos = (ArrayList<Carrito>) FileManager.leerArchivoSerialziado(SERIAL_FILE_NAME);
+        if (listaCarritos == null) {
+            listaCarritos = new ArrayList<>();
+        }
+    }
 
-	public void setListaCarritos(ArrayList<Carrito> listaCarritos) {
-		this.listaCarritos = listaCarritos;
-	}
+    /**
+     * Obtiene la lista de objetos de tipo Carrito.
+     * @return La lista de objetos de tipo Carrito.
+     */
+    public ArrayList<Carrito> getListaCarritos() {
+        return listaCarritos;
+    }
 
+    /**
+     * Establece una nueva lista de objetos de tipo Carrito.
+     * @param listaCarritos La nueva lista de objetos de tipo Carrito.
+     */
+    public void setListaCarritos(ArrayList<Carrito> listaCarritos) {
+        this.listaCarritos = listaCarritos;
+    }
 }

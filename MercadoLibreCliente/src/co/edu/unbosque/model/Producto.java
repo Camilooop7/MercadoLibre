@@ -1,72 +1,151 @@
 package co.edu.unbosque.model;
 
-import java.io.Serializable; // Importa la interfaz Serializable
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-public abstract class Producto implements Serializable { // Declara la clase abstracta Producto
+/**
+ * Clase abstracta que representa un producto. Implementa la interfaz Serializable.
+ */
+public abstract class Producto implements Serializable {
 
-	private String nombre; // Atributo que almacena el nombre del producto
-	private int precio; // Atributo que almacena el precio del producto
-	private int id; // Atributo que almacena el identificador del producto
-	private String fecha; // Atributo que almacena la cantidad disponible del producto
-	private String imagen; // Atributo que almacena la ruta de la imagen del producto
+	/** Nombre del producto. */
+	private String nombre;
 
-	public Producto() { // Constructor vacío
-		// TODO Auto-generated constructor stub
+	/** Precio del producto. */
+	private int precio;
+
+	/** Identificador único del producto. */
+	private int id;
+
+	/** Fecha asociada al producto. */
+	private String fecha;
+
+	/** Ruta de la imagen del producto. */
+	private String imagen;
+
+	/**
+	 * Constructor vacío de la clase Producto.
+	 */
+	public Producto() {
+		// Constructor vacío
 	}
 
-	public Producto(String nombre, int precio, int id, String fecha, String imagen) { // Constructor con parámetros
-		super(); // Llama al constructor de la clase padre
-		this.nombre = nombre; // Asigna el valor del nombre
-		this.precio = precio; // Asigna el valor del precio
-		this.id = id; // Asigna el valor del id
-		this.fecha = fecha; // Asigna el valor de la cantidad
-		this.imagen = imagen; // Asigna la ruta de la imagen
+	/**
+	 * Constructor con parámetros para inicializar un producto.
+	 * 
+	 * @param nombre Nombre del producto.
+	 * @param precio Precio del producto.
+	 * @param id Identificador único del producto.
+	 * @param fecha Fecha asociada al producto.
+	 * @param imagen Ruta de la imagen del producto.
+	 */
+	public Producto(String nombre, int precio, int id, String fecha, String imagen) {
+		super();
+		this.nombre = nombre;
+		this.precio = precio;
+		this.id = id;
+		this.fecha = fecha;
+		this.imagen = imagen;
 	}
 
-	public String getNombre() { // Método para obtener el nombre del producto
-		return nombre; // Retorna el nombre
+	/**
+	 * Obtiene el nombre del producto.
+	 * 
+	 * @return Nombre del producto.
+	 */
+	public String getNombre() {
+		return nombre;
 	}
 
-	public void setNombre(String nombre) { // Método para modificar el nombre del producto
-		this.nombre = nombre; // Asigna el nuevo nombre
+	/**
+	 * Modifica el nombre del producto.
+	 * 
+	 * @param nombre Nuevo nombre del producto.
+	 */
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
-	public int getPrecio() { // Método para obtener el precio del producto
-		return precio; // Retorna el precio
+	/**
+	 * Obtiene el precio del producto.
+	 * 
+	 * @return Precio del producto.
+	 */
+	public int getPrecio() {
+		return precio;
 	}
 
-	public void setPrecio(int precio) { // Método para modificar el precio del producto
-		this.precio = precio; // Asigna el nuevo precio
+	/**
+	 * Modifica el precio del producto.
+	 * 
+	 * @param precio Nuevo precio del producto.
+	 */
+	public void setPrecio(int precio) {
+		this.precio = precio;
 	}
 
-	public int getId() { // Método para obtener el identificador del producto
-		return id; // Retorna el identificador
+	/**
+	 * Obtiene el identificador único del producto.
+	 * 
+	 * @return Identificador único del producto.
+	 */
+	public int getId() {
+		return id;
 	}
 
-	public void setId(int id) { // Método para modificar el identificador del producto
-		this.id = id; // Asigna el nuevo identificador
+	/**
+	 * Modifica el identificador único del producto.
+	 * 
+	 * @param id Nuevo identificador único del producto.
+	 */
+	public void setId(int id) {
+		this.id = id;
 	}
 
-	public String getImagen() { // Método para obtener la imagen del producto
-		return imagen; // Retorna la imagen
+	/**
+	 * Obtiene la ruta de la imagen del producto.
+	 * 
+	 * @return Ruta de la imagen del producto.
+	 */
+	public String getImagen() {
+		return imagen;
 	}
 
-	public void setImagen(String imagen) { // Método para modificar la imagen del producto
-		this.imagen = imagen; // Asigna la nueva imagen
+	/**
+	 * Modifica la ruta de la imagen del producto.
+	 * 
+	 * @param imagen Nueva ruta de la imagen del producto.
+	 */
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
 	}
 
+	/**
+	 * Obtiene la fecha asociada al producto.
+	 * 
+	 * @return Fecha asociada al producto.
+	 */
 	public String getFecha() {
 		return fecha;
 	}
 
+	/**
+	 * Modifica la fecha asociada al producto.
+	 * 
+	 * @param fecha Nueva fecha asociada al producto.
+	 */
 	public void setFecha(String fecha) {
 		this.fecha = fecha;
 	}
 
+	/**
+	 * Representa el objeto Producto como una cadena de texto.
+	 * 
+	 * @return Cadena de texto que representa el producto.
+	 */
 	@Override
-	public String toString() { // Método para representar el objeto como cadena
-		return "\nNombre: " + nombre + "\nPrecio: $" + precio + "\nID: " + id /*+ "\nFecha: " + fecha*/;
+	public String toString() {
+		return "\nNombre: " + nombre + "\nPrecio: $" + precio + "\nID: " + id;
 	}
 }

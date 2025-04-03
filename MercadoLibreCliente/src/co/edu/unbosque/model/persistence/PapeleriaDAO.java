@@ -4,58 +4,53 @@ import java.util.ArrayList;
 import co.edu.unbosque.model.Papeleria;
 
 /**
- * Clase en la cual se implementa la interfaz OperacionDAO para realizar operaciones
- * sobre objetos de tipo Papeleria. Estas operaciones incluyen crear, eliminar,
- * actualizar, y mostrar todos los objetos almacenados, además de guardar y cargar
- * los datos de un archivo serializado.
+ * Clase que implementa el DAO (Data Access Object) para gestionar objetos de tipo Papeleria.
+ * Proporciona métodos para operaciones CRUD y persistencia en archivos.
  */
 public class PapeleriaDAO implements OperacionDAO<Papeleria> {
 
     /**
-     * Se declara una variable constante definida por el final la cual 
-     * no se puede modificar una vez inicializada, y se le asigna el nombre 
-     * del archivo serializado (papeleria.dat).
+     * Nombre del archivo serializado para almacenar objetos de tipo Papeleria.
      */
     private final String SERIAL_FILE_NAME = "papeleria.dat";
-    private final String TEXT_FILE_NAME = "papeleria.csv";
-    
+
     /**
-     * Se declara una lista de tipo ArrayList que almacenará los objetos Papeleria.
+     * Nombre del archivo de texto para almacenar objetos de tipo Papeleria en formato CSV.
+     */
+    private final String TEXT_FILE_NAME = "papeleria.csv";
+
+    /**
+     * Lista de objetos de tipo Papeleria gestionados por este DAO.
      */
     private ArrayList<Papeleria> listaPapeleria;
-    
+
     /**
-     * Constructor de la clase, en el cual se inicializa la lista de papelería
-     * y se carga el archivo serializado si existe.
+     * Constructor que inicializa la lista y carga los datos serializados.
      */
     public PapeleriaDAO() {
-        // Inicialización de la lista de papelería y carga del archivo serializado.
         listaPapeleria = new ArrayList<>();
         cargarSerializado();
     }
 
     /**
-     * Método para crear un nuevo objeto Papeleria.
-     * Recibe un objeto Papeleria como parámetro y lo agrega a la lista.
-     * Luego, se llama al método para escribir la lista serializada en un archivo.
+     * Agrega un nuevo objeto de tipo Papeleria a la lista y persiste los datos.
+     * @param nuevoDato El nuevo objeto de tipo Papeleria a agregar.
      */
     @Override
     public void crear(Papeleria nuevoDato) {
-        // Agrega el nuevo objeto Papeleria a la lista y guarda la lista serializada.
         listaPapeleria.add(nuevoDato);
         escribirSerializado();
         escribirArchivo();
     }
 
     /**
-     * Método para eliminar un objeto Papeleria por su índice en la lista.
-     * Si el índice es válido, elimina el objeto y guarda la lista actualizada.
-     * Si el índice no es válido, retorna 1.
+     * Elimina un objeto de tipo Papeleria de la lista según su índice y persiste los datos.
+     * @param index El índice del objeto a eliminar.
+     * @return 0 si la operación es exitosa, 1 si el índice es inválido.
      */
     @Override
     public int eliminar(int index) {
         if (index >= 0 && index < listaPapeleria.size()) {
-            // Elimina el objeto en la posición indicada y guarda la lista actualizada.
             listaPapeleria.remove(index);
             escribirSerializado();
             escribirArchivo();
@@ -66,15 +61,14 @@ public class PapeleriaDAO implements OperacionDAO<Papeleria> {
     }
 
     /**
-     * Método para actualizar un objeto Papeleria en la lista.
-     * Recibe el índice del objeto a actualizar y el nuevo objeto Papeleria.
-     * Si el índice es válido, reemplaza el objeto en la lista y guarda la lista actualizada.
-     * Si el índice no es válido, retorna 1.
+     * Actualiza un objeto de tipo Papeleria en la lista según su índice y persiste los datos.
+     * @param index El índice del objeto a actualizar.
+     * @param nuevoDato El nuevo objeto de tipo Papeleria que reemplazará al existente.
+     * @return 0 si la operación es exitosa, 1 si el índice es inválido.
      */
     @Override
     public int actulizar(int index, Papeleria nuevoDato) {
         if (index >= 0 && index < listaPapeleria.size()) {
-            // Reemplaza el objeto en la posición indicada y guarda la lista actualizada.
             listaPapeleria.set(index, nuevoDato);
             escribirSerializado();
             escribirArchivo();
@@ -83,30 +77,34 @@ public class PapeleriaDAO implements OperacionDAO<Papeleria> {
             return 1;
         }
     }
-    public boolean encontrar(int index) {
-		// TODO Auto-generated method stub
-		return index >= 0 && index < listaPapeleria.size();
-	}
 
     /**
-     * Método para mostrar todos los objetos Papeleria almacenados en la lista.
-     * Se recorre la lista, concatenando los objetos a una cadena y la retorna.
+     * Verifica si existe un objeto de tipo Papeleria en el índice especificado.
+     * @param index El índice a verificar.
+     * @return true si el índice es válido, false en caso contrario.
+     */
+    @Override
+    public boolean encontrar(int index) {
+        return index >= 0 && index < listaPapeleria.size();
+    }
+
+    /**
+     * Retorna una representación en cadena de todos los objetos de tipo Papeleria en la lista.
+     * @return Una cadena con todos los objetos de tipo Papeleria.
      */
     @Override
     public String mostrarTodo() {
         String salida = "";
-        int a =1;
+        int a = 1;
         for (Papeleria papeleria : listaPapeleria) {
-            // Concatenación de la representación en cadena de cada objeto Papeleria.
-            salida += a+ ". "+papeleria.toString() + "\n";
+            salida += a + ". " + papeleria.toString() + "\n";
             a++;
         }
         return salida;
     }
 
     /**
-     * Método para escribir la lista de objetos Papeleria en un archivo serializado.
-     * Llama al método de FileManager para guardar la lista en un archivo.
+     * Escribe la lista de objetos de tipo Papeleria en un archivo serializado.
      */
     @Override
     public void escribirSerializado() {
@@ -114,41 +112,45 @@ public class PapeleriaDAO implements OperacionDAO<Papeleria> {
     }
 
     /**
-     * Método para cargar los datos serializados desde un archivo.
-     * Si el archivo no existe o está vacío, se inicializa una nueva lista vacía.
+     * Carga la lista de objetos de tipo Papeleria desde un archivo serializado.
+     * Si el archivo está vacío o no existe, inicializa una nueva lista.
      */
     @Override
     public void cargarSerializado() {
         listaPapeleria = (ArrayList<Papeleria>) FileManager.leerArchivoSerialziado(SERIAL_FILE_NAME);
         if (listaPapeleria == null) {
-            // Si no se pudo cargar el archivo, se inicializa una nueva lista vacía.
             listaPapeleria = new ArrayList<>();
         }
     }
-    
-    public void escribirArchivo() {
-		String contenido ="";
-		for (int i = 0; i < listaPapeleria.size(); i++) {
-			contenido += listaPapeleria.get(i).getNombre()+";";
-			contenido += listaPapeleria.get(i).getPrecio()+";";
-			contenido += listaPapeleria.get(i).getId()+";";
-			contenido += listaPapeleria.get(i).getFecha()+";";
-			contenido += listaPapeleria.get(i).getImagen()+";";
-			contenido += listaPapeleria.get(i).isEsPortatil()+";";
-			contenido += listaPapeleria.get(i).getCantidadPorPaquete()+"\n";
-		}
-		FileManager.escribirArchivoTexto(TEXT_FILE_NAME, contenido);
-	}
 
     /**
-     * Método para obtener la lista de objetos Papeleria.
+     * Escribe la lista de objetos de tipo Papeleria en un archivo de texto en formato CSV.
+     */
+    public void escribirArchivo() {
+        String contenido = "";
+        for (int i = 0; i < listaPapeleria.size(); i++) {
+            contenido += listaPapeleria.get(i).getNombre() + ";";
+            contenido += listaPapeleria.get(i).getPrecio() + ";";
+            contenido += listaPapeleria.get(i).getId() + ";";
+            contenido += listaPapeleria.get(i).getFecha() + ";";
+            contenido += listaPapeleria.get(i).getImagen() + ";";
+            contenido += listaPapeleria.get(i).isEsPortatil() + ";";
+            contenido += listaPapeleria.get(i).getCantidadPorPaquete() + "\n";
+        }
+        FileManager.escribirArchivoTexto(TEXT_FILE_NAME, contenido);
+    }
+
+    /**
+     * Obtiene la lista de objetos de tipo Papeleria.
+     * @return La lista de objetos de tipo Papeleria.
      */
     public ArrayList<Papeleria> getListaPapeleria() {
         return listaPapeleria;
     }
 
     /**
-     * Método para establecer la lista de objetos Papeleria.
+     * Establece una nueva lista de objetos de tipo Papeleria.
+     * @param listaPapeleria La nueva lista de objetos de tipo Papeleria.
      */
     public void setListaPapeleria(ArrayList<Papeleria> listaPapeleria) {
         this.listaPapeleria = listaPapeleria;

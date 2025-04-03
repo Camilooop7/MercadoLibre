@@ -3,21 +3,38 @@ package co.edu.unbosque.model;
 import java.io.Serializable; 
 import java.util.ArrayList;
 
-public class Carrito implements Serializable { // Declara la clase Carrito, que implementa Serializable para permitir su almacenamiento
+/**
+ * Clase que representa un carrito de compras.
+ */
+public class Carrito implements Serializable {
 
-	private ArrayList<Producto> listaCarrito; // Atributo que almacena una lista de productos en el carrito
+	/**
+	 * Lista de productos en el carrito.
+	 */
+	private ArrayList<Producto> listaCarrito;
 
-	public Carrito() { 
-		listaCarrito = new ArrayList<>(); // Inicializa la lista al crear un objeto Carrito
+	/**
+	 * Constructor vacío.
+	 */
+	public Carrito() {
+		listaCarrito = new ArrayList<>();
 	}
 
-	public ArrayList<Producto> getListaCarrito() { 
-		return listaCarrito; // Devuelve la lista de productos en el carrito
+	/**
+	 * Obtiene la lista de productos en el carrito.
+	 * 
+	 * @return Lista de productos en el carrito.
+	 */
+	public ArrayList<Producto> getListaCarrito() {
+		return listaCarrito;
 	}
 
-	public void setListaCarrito(ArrayList<Producto> listaCarrito) { 
-		this.listaCarrito = listaCarrito; // Permite asignar una nueva lista de productos al carrito
+	/**
+	 * Establece la lista de productos en el carrito.
+	 * 
+	 * @param listaCarrito Nueva lista de productos.
+	 */
+	public void setListaCarrito(ArrayList<Producto> listaCarrito) {
+		this.listaCarrito = listaCarrito;
 	}
-
 }
-

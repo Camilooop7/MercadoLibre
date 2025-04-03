@@ -1,43 +1,87 @@
 package co.edu.unbosque.model;
 
 import java.io.Serializable;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 
-public abstract class Ocio extends Producto implements Serializable { // Declara la clase Ocio como abstracta y hereda
-																		// de Producto
+/**
+ * Clase abstracta que representa productos de ocio, hereda de Producto.
+ */
+public abstract class Ocio extends Producto implements Serializable {
 
-	private boolean esAccesorio; // Atributo que indica si el producto es un accesorio
+	/**
+	 * Indica si el producto es un accesorio.
+	 */
+	private boolean esAccesorio;
 
-	public Ocio() { // Constructor vacío
-		// TODO Auto-generated constructor stub
+	/**
+	 * Constructor vacío.
+	 */
+	public Ocio() {
+		// Constructor vacío
 	}
 
-	public Ocio(boolean esAccesorio) { // Constructor que recibe esAccesorio
-		super(); // Llama al constructor de la clase padre
-		this.esAccesorio = esAccesorio; // Asigna el valor recibido
+	/**
+	 * Constructor que inicializa el atributo esAccesorio.
+	 * 
+	 * @param esAccesorio Indica si el producto es un accesorio.
+	 */
+	public Ocio(boolean esAccesorio) {
+		super();
+		this.esAccesorio = esAccesorio;
 	}
 
+	/**
+	 * Constructor que inicializa todos los atributos.
+	 * 
+	 * @param nombre      Nombre del producto.
+	 * @param precio      Precio del producto.
+	 * @param id          Identificador único.
+	 * @param fecha       Fecha de creación.
+	 * @param imagen      Ruta de la imagen.
+	 * @param esAccesorio Indica si el producto es un accesorio.
+	 */
 	public Ocio(String nombre, int precio, int id, String fecha, String imagen, boolean esAccesorio) {
-		super(nombre, precio, id, fecha, imagen); // Llama al constructor de Producto
-		this.esAccesorio = esAccesorio; // Asigna el valor recibido
+		super(nombre, precio, id, fecha, imagen);
+		this.esAccesorio = esAccesorio;
 	}
 
+	/**
+	 * Constructor que inicializa atributos excepto esAccesorio.
+	 * 
+	 * @param nombre Nombre del producto.
+	 * @param precio Precio del producto.
+	 * @param id     Identificador único.
+	 * @param fecha  Fecha de creación.
+	 * @param imagen Ruta de la imagen.
+	 */
 	public Ocio(String nombre, int precio, int id, String fecha, String imagen) {
-		super(nombre, precio, id, fecha, imagen); // Llama al constructor de Producto
-		// TODO Auto-generated constructor stub
+		super(nombre, precio, id, fecha, imagen);
 	}
 
-	public boolean isEsAccesorio() { // Método para obtener esAccesorio
-		return esAccesorio; // Retorna el valor de esAccesorio
+	/**
+	 * Obtiene si el producto es un accesorio.
+	 * 
+	 * @return true si es un accesorio, false en caso contrario.
+	 */
+	public boolean isEsAccesorio() {
+		return esAccesorio;
 	}
 
-	public void setEsAccesorio(boolean esAccesorio) { // Método para modificar esAccesorio
-		this.esAccesorio = esAccesorio; // Asigna el nuevo valor
+	/**
+	 * Establece si el producto es un accesorio.
+	 * 
+	 * @param esAccesorio Nuevo valor para el atributo esAccesorio.
+	 */
+	public void setEsAccesorio(boolean esAccesorio) {
+		this.esAccesorio = esAccesorio;
 	}
 
+	/**
+	 * Representa el objeto como una cadena de texto.
+	 * 
+	 * @return Cadena con la información del objeto.
+	 */
 	@Override
-	public String toString() { // Método para representar el objeto como cadena
-		return super.toString() + "\n" + "\n¿Es accesorio? " + (esAccesorio?"Si" : "No"); // Retorna la información del objeto
+	public String toString() {
+		return super.toString() + "\n" + "\n¿Es accesorio? " + (esAccesorio ? "Si" : "No");
 	}
 }

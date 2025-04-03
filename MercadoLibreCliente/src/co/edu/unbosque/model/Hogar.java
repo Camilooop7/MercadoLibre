@@ -1,45 +1,88 @@
-package co.edu.unbosque.model; 
+package co.edu.unbosque.model;
 
 import java.io.Serializable;
-import java.time.LocalDate;
-import java.time.LocalDateTime; 
 
-public abstract class Hogar extends Producto implements Serializable { // Clase abstracta Hogar que hereda de Producto e implementa Serializable
+/**
+ * Clase abstracta que representa productos del hogar, hereda de Producto.
+ */
+public abstract class Hogar extends Producto implements Serializable {
 
-	private boolean esDecoracion; // Atributo que indica si el producto es de decoración
+	/**
+	 * Indica si el producto es de decoración.
+	 */
+	private boolean esDecoracion;
 
-	public Hogar() { 
-		// Constructor vacío por defecto
+	/**
+	 * Constructor vacío.
+	 */
+	public Hogar() {
+		// Constructor vacío
 	}
 
-	public Hogar(boolean esDecoracion) { 
-		super(); // Llama al constructor de la clase padre (Producto)
-		this.esDecoracion = esDecoracion; // Asigna el valor al atributo esDecoracion
+	/**
+	 * Constructor que inicializa el atributo esDecoracion.
+	 * 
+	 * @param esDecoracion Indica si el producto es de decoración.
+	 */
+	public Hogar(boolean esDecoracion) {
+		super();
+		this.esDecoracion = esDecoracion;
 	}
 
-	public Hogar(String nombre, int precio, int id, String fecha, String imagen, boolean esDecoracion) { 
-		super(nombre, precio, id, fecha, imagen); // Llama al constructor de la clase padre con parámetros
-		this.esDecoracion = esDecoracion; // Asigna el valor al atributo esDecoracion
+	/**
+	 * Constructor que inicializa todos los atributos.
+	 * 
+	 * @param nombre        Nombre del producto.
+	 * @param precio        Precio del producto.
+	 * @param id            Identificador único.
+	 * @param fecha         Fecha de creación.
+	 * @param imagen        Ruta de la imagen.
+	 * @param esDecoracion  Indica si el producto es de decoración.
+	 */
+	public Hogar(String nombre, int precio, int id, String fecha, String imagen, boolean esDecoracion) {
+		super(nombre, precio, id, fecha, imagen);
+		this.esDecoracion = esDecoracion;
 	}
 
-	public Hogar(String nombre, int precio, int id, String fecha, String imagen) { 
-		super(nombre, precio, id, fecha, imagen); // Llama al constructor de la clase padre sin esDecoracion
-		// Constructor sin inicializar el atributo esDecoracion
+	/**
+	 * Constructor que inicializa atributos excepto esDecoracion.
+	 * 
+	 * @param nombre Nombre del producto.
+	 * @param precio Precio del producto.
+	 * @param id     Identificador único.
+	 * @param fecha  Fecha de creación.
+	 * @param imagen Ruta de la imagen.
+	 */
+	public Hogar(String nombre, int precio, int id, String fecha, String imagen) {
+		super(nombre, precio, id, fecha, imagen);
 	}
 
-	public boolean isEsDecoracion() { 
-		return esDecoracion; // Método getter que retorna si el producto es de decoración
+	/**
+	 * Obtiene si el producto es de decoración.
+	 * 
+	 * @return true si es de decoración, false en caso contrario.
+	 */
+	public boolean isEsDecoracion() {
+		return esDecoracion;
 	}
 
-	public void setEsDecoracion(boolean esDecoracion) { 
-		this.esDecoracion = esDecoracion; // Método setter para modificar si es de decoración
+	/**
+	 * Establece si el producto es de decoración.
+	 * 
+	 * @param esDecoracion Nuevo valor para el atributo esDecoracion.
+	 */
+	public void setEsDecoracion(boolean esDecoracion) {
+		this.esDecoracion = esDecoracion;
 	}
 
+	/**
+	 * Representa el objeto como una cadena de texto.
+	 * 
+	 * @return Cadena con la información del objeto.
+	 */
 	@Override
-	public String toString() { 
-		return super.toString() + "\n" + "\n¿Es decorativo? " + (esDecoracion?"Si" : "No"); 
-		// Sobrescribe toString para incluir el atributo esDecoracion
+	public String toString() {
+		return super.toString() + "\n" + "\n¿Es decorativo? " + (esDecoracion ? "Si" : "No");
 	}
-
 }
 

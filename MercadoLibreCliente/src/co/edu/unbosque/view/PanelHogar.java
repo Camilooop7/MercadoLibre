@@ -1,45 +1,38 @@
 package co.edu.unbosque.view;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.FlowLayout;
-import java.awt.Font;
-import java.awt.GridLayout;
-import java.awt.Image;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Properties;
-
 import javax.imageio.ImageIO;
-import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.SwingConstants;
-
+import javax.swing.*;
 import co.edu.unbosque.model.Hogar;
 
-public class PanelHogar extends JPanel{
-	/** Scroll que es usado para navegar en los productos del almacen. */
+/**
+ * Clase que representa el panel de productos del hogar.
+ * Permite visualizar los productos del hogar y realizar acciones como añadir al carrito o a favoritos.
+ */
+public class PanelHogar extends JPanel {
+    /** Scroll que es usado para navegar en los productos del almacén. */
     private JScrollPane scrollPane;
-    /** Panel en el que se guardan todos los productos del almacen. */
+    /** Panel en el que se guardan todos los productos del almacén. */
     private JPanel panelContenido;
-    /** Botón para anadir un producto al carrito. */
+    /** Lista de botones para añadir productos al carrito. */
     private ArrayList<JButton> botonesAnadir;
-    /** Botón para eliminar un producto del almacen. */
+    /** Lista de botones para añadir productos a favoritos. */
     private ArrayList<JButton> botonesFav;
-	private Properties prop;
+    /** Propiedades para la configuración del panel. */
+    private Properties prop;
 
     /**
      * Constructor que configura el panel con desplazamiento vertical.
+     * 
+     * @param prop Propiedades para configurar el panel.
      */
     public PanelHogar(Properties prop) {
-    	this.prop = prop;
-    	setBounds(380, 240, 870, 470);
+        this.prop = prop;
+        setBounds(380, 240, 870, 470);
         botonesAnadir = new ArrayList<>();
         botonesFav = new ArrayList<>();
         setLayout(new BorderLayout());
@@ -55,7 +48,7 @@ public class PanelHogar extends JPanel{
     }
 
     /**
-     * Agrega productos con sus botones correspondientes.
+     * Agrega productos con sus botones correspondientes al panel.
      * 
      * @param cantidad   Cantidad de productos a agregar.
      * @param listaDatos Lista con la información de cada producto.
@@ -101,18 +94,24 @@ public class PanelHogar extends JPanel{
         }
     }
 
-	private ImageIcon asignarImagen(Hogar obj) {
+    /**
+     * Asigna una imagen a un producto.
+     * 
+     * @param obj Producto al que se le asignará la imagen.
+     * @return Icono de la imagen asignada.
+     */
+    private ImageIcon asignarImagen(Hogar obj) {
         try {
             String ruta = obj.getImagen();
             
             // Convertir rutas Windows a formato válido
             ruta = ruta.replace("\\", "/");
          
-    		BufferedImage fd = ImageIO.read(new File(ruta));
+            BufferedImage fd = ImageIO.read(new File(ruta));
 
-    		ImageIcon imagen = new ImageIcon(fd);
-    		
-    		Image fdRedim = fd.getScaledInstance(500, 325, Image.SCALE_SMOOTH);
+            ImageIcon imagen = new ImageIcon(fd);
+            
+            Image fdRedim = fd.getScaledInstance(500, 325, Image.SCALE_SMOOTH);
             return new ImageIcon(fdRedim);
             
         } catch (Exception e) {
@@ -120,7 +119,6 @@ public class PanelHogar extends JPanel{
             return null;
         }
     }
-    
 
     /**
      * Actualiza la información mostrada en el panel.
@@ -136,44 +134,93 @@ public class PanelHogar extends JPanel{
         repaint();
     }
 
+    /**
+     * Obtiene el scroll para navegar en los productos del almacén.
+     * 
+     * @return Scroll para navegar en los productos.
+     */
     public JScrollPane getScrollPane() {
-		return scrollPane;
-	}
+        return scrollPane;
+    }
 
-	public void setScrollPane(JScrollPane scrollPane) {
-		this.scrollPane = scrollPane;
-	}
+    /**
+     * Establece el scroll para navegar en los productos del almacén.
+     * 
+     * @param scrollPane Scroll para navegar en los productos.
+     */
+    public void setScrollPane(JScrollPane scrollPane) {
+        this.scrollPane = scrollPane;
+    }
 
-	public JPanel getPanelContenido() {
-		return panelContenido;
-	}
+    /**
+     * Obtiene el panel que contiene los productos del almacén.
+     * 
+     * @return Panel que contiene los productos.
+     */
+    public JPanel getPanelContenido() {
+        return panelContenido;
+    }
 
-	public void setPanelContenido(JPanel panelContenido) {
-		this.panelContenido = panelContenido;
-	}
+    /**
+     * Establece el panel que contiene los productos del almacén.
+     * 
+     * @param panelContenido Panel que contiene los productos.
+     */
+    public void setPanelContenido(JPanel panelContenido) {
+        this.panelContenido = panelContenido;
+    }
 
-	public ArrayList<JButton> getBotonesAnadir() {
-		return botonesAnadir;
-	}
+    /**
+     * Obtiene la lista de botones para añadir productos al carrito.
+     * 
+     * @return Lista de botones para añadir productos.
+     */
+    public ArrayList<JButton> getBotonesAnadir() {
+        return botonesAnadir;
+    }
 
-	public void setBotonesAnadir(ArrayList<JButton> botonesAnadir) {
-		this.botonesAnadir = botonesAnadir;
-	}
+    /**
+     * Establece la lista de botones para añadir productos al carrito.
+     * 
+     * @param botonesAnadir Lista de botones para añadir productos.
+     */
+    public void setBotonesAnadir(ArrayList<JButton> botonesAnadir) {
+        this.botonesAnadir = botonesAnadir;
+    }
 
-	public ArrayList<JButton> getBotonesFav() {
-		return botonesFav;
-	}
+    /**
+     * Obtiene la lista de botones para añadir productos a favoritos.
+     * 
+     * @return Lista de botones para añadir productos a favoritos.
+     */
+    public ArrayList<JButton> getBotonesFav() {
+        return botonesFav;
+    }
 
-	public void setBotonesFav(ArrayList<JButton> botonesFav) {
-		this.botonesFav = botonesFav;
-	}
+    /**
+     * Establece la lista de botones para añadir productos a favoritos.
+     * 
+     * @param botonesFav Lista de botones para añadir productos a favoritos.
+     */
+    public void setBotonesFav(ArrayList<JButton> botonesFav) {
+        this.botonesFav = botonesFav;
+    }
 
-	public Properties getProp() {
-		return prop;
-	}
+    /**
+     * Obtiene las propiedades de configuración del panel.
+     * 
+     * @return Propiedades de configuración.
+     */
+    public Properties getProp() {
+        return prop;
+    }
 
-	public void setProp(Properties prop) {
-		this.prop = prop;
-	}
-	
+    /**
+     * Establece las propiedades de configuración del panel.
+     * 
+     * @param prop Propiedades de configuración.
+     */
+    public void setProp(Properties prop) {
+        this.prop = prop;
+    }
 }

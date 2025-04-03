@@ -4,163 +4,160 @@ import java.util.ArrayList;
 import co.edu.unbosque.model.Trabajador;
 
 /**
- * Clase en la cual se implementa la interfaz OperacionDAO
+ * Clase que implementa el DAO (Data Access Object) para gestionar objetos de tipo Trabajador.
+ * Proporciona métodos para operaciones CRUD y persistencia en archivos.
  */
 public class TrabajadorDAO implements OperacionDAO<Trabajador> {
-	/**
-	 * Se declara una variable constante definida por el final la cual 
-	 * no deja de ser modificada una vez inicializada y se le indica el 
-	 * tipo de archivo .dat
-	 * 
-	 */
-	private final String SERIAL_FILE_NAME = "trabajador.dat";
-	/**
-	 * Variable la cual contiene un arraylist y además se define el nombre.
-	 */
-	private ArrayList<Trabajador> listaTrabajadores;
 
-	/*
-	 * Constructor en cual cual se llama al metodo de cargarSerializado y
-	 * se inicializa la Arraylist.
-	 */
-	public TrabajadorDAO() {
-		// TODO Auto-generated constructor stub
-		listaTrabajadores = new ArrayList<>();
-		cargarSerializado();
-	}
+    /**
+     * Nombre del archivo serializado para almacenar objetos de tipo Trabajador.
+     */
+    private final String SERIAL_FILE_NAME = "trabajador.dat";
 
-	/**
-	 *Metodo crear el cual recibe como parametro nuevoDato y se recurre a la lista agregando el nuevoDato
-	 *además de eso se llama al metodo de escribirSerializado. 
-	 */
-	@Override
-	public void crear(Trabajador nuevoDato) {
-		listaTrabajadores.add(nuevoDato);
-		escribirSerializado();
-	}
+    /**
+     * Lista de objetos de tipo Trabajador gestionados por este DAO.
+     */
+    private ArrayList<Trabajador> listaTrabajadores;
 
-	/**
-	 *Metodo eliminar el cual recibe como parametro un dato tipo entero en el cual se incluye
-	 *un condicional tipo if, verifica y recorre los limites de las lista eliminando 
-	 *el objeto en la posicion indicada, si no devuelve el numero indicado si no se cumple el ciclo.
-	 *Se llama al metodo de escribirSerializado. 
-	 */
-	@Override
-	public int eliminar(int index) {
-		if (index >= 0 && index < listaTrabajadores.size()) {
-			listaTrabajadores.remove(index);
-			escribirSerializado();
-			return 0;
-		} else {
-			return 1;
-		}
-	}
+    /**
+     * Constructor que inicializa la lista y carga los datos serializados.
+     */
+    public TrabajadorDAO() {
+        listaTrabajadores = new ArrayList<>();
+        cargarSerializado();
+    }
 
-	/**
-	 *Metodo actualizar el cual recibe como parametro un dato tipo entero y nuevoDato en el cual se incluye
-	 *un condicional tipo if, verifica y recorre los limites de las lista actualizando 
-	 *el objeto en la posicion indicada con el .set recibiendo los parametros definidos, si no devuelve 
-	 *el numero indicado si no se cumple el ciclo.
-	 *Se llama al metodo de escribirSerializado. 
-	 */
-	@Override
-	public int actulizar(int index, Trabajador nuevoDato) {
-		if (index >= 0 && index < listaTrabajadores.size()) {
-			listaTrabajadores.set(index, nuevoDato);
-			escribirSerializado();
-			return 0;
-		} else {
-			return 1;
-		}
-	}
-	public boolean encontrar(int index) {
-		// TODO Auto-generated method stub
-		return index >= 0 && index <listaTrabajadores.size();
-	}
+    /**
+     * Agrega un nuevo objeto de tipo Trabajador a la lista y persiste los datos.
+     * @param nuevoDato El nuevo objeto de tipo Trabajador a agregar.
+     */
+    @Override
+    public void crear(Trabajador nuevoDato) {
+        listaTrabajadores.add(nuevoDato);
+        escribirSerializado();
+    }
 
-	/**
-	 *Metodo mosrtarTodo el cual no recibe parametros 
-	 *Se crea una variable tipo String y se recorre la lista con el uso del for 
-	 * y se realiza la concatenación de salida con el .toString, por ultimo se retorna la variable 
-	 * salida con su respectivo to string.
-	 */
-	@Override
-	public String mostrarTodo() {
-		String salida = "";
-		int a= 1;
-		for (Trabajador trabajador : listaTrabajadores) {
-			salida +=a+". "+ trabajador.toString()+"\n";
-			a++;
-		}
-		return salida.toString();
-	}
+    /**
+     * Elimina un objeto de tipo Trabajador de la lista según su índice y persiste los datos.
+     * @param index El índice del objeto a eliminar.
+     * @return 0 si la operación es exitosa, 1 si el índice es inválido.
+     */
+    @Override
+    public int eliminar(int index) {
+        if (index >= 0 && index < listaTrabajadores.size()) {
+            listaTrabajadores.remove(index);
+            escribirSerializado();
+            return 0;
+        } else {
+            return 1;
+        }
+    }
 
-	/**
-	 * Metodo el cual tiene como objetivo guardar la lista definida dentro del archivo como .dat
-	 */
-	@Override
-	public void escribirSerializado() {
-		FileManager.escribirArchivoSerializado(SERIAL_FILE_NAME, listaTrabajadores);
-	}
+    /**
+     * Actualiza un objeto de tipo Trabajador en la lista según su índice y persiste los datos.
+     * @param index El índice del objeto a actualizar.
+     * @param nuevoDato El nuevo objeto de tipo Trabajador que reemplazará al existente.
+     * @return 0 si la operación es exitosa, 1 si el índice es inválido.
+     */
+    @Override
+    public int actulizar(int index, Trabajador nuevoDato) {
+        if (index >= 0 && index < listaTrabajadores.size()) {
+            listaTrabajadores.set(index, nuevoDato);
+            escribirSerializado();
+            return 0;
+        } else {
+            return 1;
+        }
+    }
 
-	/**
-	 * Este metodo carga el archivo la lista en el archivoSerializado
-	 * donde se lee la lista con el leerArchivoSerializado en este caso SERIAL_FILE_NAME.
-	 * Se utiliza un condiconal tipo if en donde si la lista se encuentra vacia se inicializa 
-	 * un nuevo array para la lista.
-	 */
-	@Override
-	public void cargarSerializado() {
-		listaTrabajadores = (ArrayList<Trabajador>) FileManager.leerArchivoSerialziado(SERIAL_FILE_NAME);
-		if (listaTrabajadores == null) {
-			listaTrabajadores = new ArrayList<>();
-		}
-	}
+    /**
+     * Verifica si existe un objeto de tipo Trabajador en el índice especificado.
+     * @param index El índice a verificar.
+     * @return true si el índice es válido, false en caso contrario.
+     */
+    @Override
+    public boolean encontrar(int index) {
+        return index >= 0 && index < listaTrabajadores.size();
+    }
 
-	/**
-	 * Metodo el cual recorre la lista y busca la igualdad de nombre y constraseña guardados.
-	 * @param a como parametro un String
-	 * @param b como parametro un String
-	 * @return salida como nueva variable
-	 */
-	public Trabajador encontrarUsuario(String a, String b) {
+    /**
+     * Retorna una representación en cadena de todos los objetos de tipo Trabajador en la lista.
+     * @return Una cadena con todos los objetos de tipo Trabajador.
+     */
+    @Override
+    public String mostrarTodo() {
+        String salida = "";
+        int a = 1;
+        for (Trabajador trabajador : listaTrabajadores) {
+            salida += a + ". " + trabajador.toString() + "\n";
+            a++;
+        }
+        return salida;
+    }
 
-		Trabajador salida = null;
+    /**
+     * Escribe la lista de objetos de tipo Trabajador en un archivo serializado.
+     */
+    @Override
+    public void escribirSerializado() {
+        FileManager.escribirArchivoSerializado(SERIAL_FILE_NAME, listaTrabajadores);
+    }
 
-		for (Trabajador trabajador : listaTrabajadores) {
+    /**
+     * Carga la lista de objetos de tipo Trabajador desde un archivo serializado.
+     * Si el archivo está vacío o no existe, inicializa una nueva lista.
+     */
+    @Override
+    public void cargarSerializado() {
+        listaTrabajadores = (ArrayList<Trabajador>) FileManager.leerArchivoSerialziado(SERIAL_FILE_NAME);
+        if (listaTrabajadores == null) {
+            listaTrabajadores = new ArrayList<>();
+        }
+    }
 
-			if (trabajador.getNombre().equals(a) && trabajador.getContrasena().equals(b)) {
+    /**
+     * Busca un objeto de tipo Trabajador por su nombre y contraseña.
+     * @param nombre El nombre del trabajador.
+     * @param contrasena La contraseña del trabajador.
+     * @return El objeto Trabajador si se encuentra, null en caso contrario.
+     */
+    public Trabajador encontrarUsuario(String nombre, String contrasena) {
+        Trabajador salida = null;
+        for (Trabajador trabajador : listaTrabajadores) {
+            if (trabajador.getNombre().equals(nombre) && trabajador.getContrasena().equals(contrasena)) {
+                salida = trabajador;
+            }
+        }
+        return salida;
+    }
 
-				salida = trabajador;
+    /**
+     * Verifica si existe un objeto de tipo Trabajador con el nombre especificado.
+     * @param nombre El nombre a verificar.
+     * @return true si el nombre existe, false en caso contrario.
+     */
+    public boolean encontrarNombre(String nombre) {
+        for (Trabajador trabajador : listaTrabajadores) {
+            if (trabajador.getNombre().equals(nombre)) {
+                return true;
+            }
+        }
+        return false;
+    }
 
-			}
+    /**
+     * Obtiene la lista de objetos de tipo Trabajador.
+     * @return La lista de objetos de tipo Trabajador.
+     */
+    public ArrayList<Trabajador> getListaTrabajadores() {
+        return listaTrabajadores;
+    }
 
-		}
-		return salida;
-
-	}
-
-	
-	/**
-	 * Metodo el cual recorre la lista y busca la igualdad de nombre.
-	 * @param a como parametro un String
-	 * @return
-	 */
-	public boolean encontrarNombre(String nombre) {
-	    for (Trabajador trabajador : listaTrabajadores) {
-	        if (trabajador.getNombre().equals(nombre)) {
-	            return true;
-	        }
-	    }
-	    return false;
-	}
-
-	public ArrayList<Trabajador> getListaTrabajadores() {
-		return listaTrabajadores;
-	}
-
-	public void setListaTrabajadores(ArrayList<Trabajador> listaTrabajadores) {
-		this.listaTrabajadores = listaTrabajadores;
-	}
-
+    /**
+     * Establece una nueva lista de objetos de tipo Trabajador.
+     * @param listaTrabajadores La nueva lista de objetos de tipo Trabajador.
+     */
+    public void setListaTrabajadores(ArrayList<Trabajador> listaTrabajadores) {
+        this.listaTrabajadores = listaTrabajadores;
+    }
 }

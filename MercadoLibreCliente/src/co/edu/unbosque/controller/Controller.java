@@ -27,11 +27,26 @@ import co.edu.unbosque.util.exception.SmallException;
 import co.edu.unbosque.util.exception.SymbolException;
 import co.edu.unbosque.view.ViewFacade;
 
+/**
+ * Clase Controlador que maneja la interacción entre el modelo y la vista.
+ * Implementa ActionListener para gestionar las acciones del usuario.
+ */
 public class Controller implements ActionListener {
+	/** Facade para gestionar la capa del modelo. */
 	private ModelFacade mf;
+
+	/** Facade para gestionar la capa de la vista. */
 	private ViewFacade vf;
+
+	/** Objeto Properties para cargar propiedades específicas del idioma. */
 	private Properties prop;
-	
+
+	/**
+	 * Constructor de la clase Controller.
+	 * Inicializa las propiedades, crea carpetas necesarias y configura los facades del modelo y la vista.
+	 * 
+	 * @throws IOException si ocurre un error al cargar el archivo de propiedades.
+	 */
 	public Controller() throws IOException {
 		prop = new Properties();
 		
@@ -49,11 +64,19 @@ public class Controller implements ActionListener {
 		asignarLectores();
 	}
 
+	/**
+	 * Método que inicia la ejecución de la aplicación.
+	 * Hace visible la ventana principal.
+	 */
 	public void run() {
 		vf.getVpc().setVisible(true);
 
 	}
 
+	/**
+	 * Método que asigna los listeners a los botones de la interfaz gráfica.
+	 * Configura los comandos de acción para cada botón.
+	 */
 	public void asignarLectores() {
 
 		vf.getVpc().getPpc().getBtnIniciarS().addActionListener(this);
@@ -120,6 +143,11 @@ public class Controller implements ActionListener {
 
 	}
 
+	/**
+	 * Método que gestiona las acciones realizadas por el usuario en la interfaz gráfica.
+	 * 
+	 * @param e Evento de acción generado por el usuario.
+	 */
 	public void actionPerformed(ActionEvent e) {
 
 		switch (e.getActionCommand()) {
@@ -368,6 +396,11 @@ public class Controller implements ActionListener {
 		}
 	}
 
+	/**
+	 * Método que asigna las funciones específicas a los componentes de producto según su tipo.
+	 * 
+	 * @param producto Tipo de producto (Ocio, Hogar, Oficina, etc.).
+	 */
 	public void asignarFuncionesComponentesProducto(String producto) {
 		switch (producto) {
 		case "Ocio": {
@@ -563,6 +596,11 @@ public class Controller implements ActionListener {
 		}
 	}
 
+	/**
+	 * Método que actualiza la información de la interfaz gráfica según el tipo de producto.
+	 * 
+	 * @param producto Tipo de producto (Ocio, Hogar, Oficina, etc.).
+	 */
 	public void actualizarInfo(String producto) {
 		switch (producto) {
 		case "Ocio": {
