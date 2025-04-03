@@ -15,6 +15,11 @@ public class Cocina extends Hogar implements Serializable {
 	 */
 	private boolean resisteAltaTemperatuta;
 
+<<<<<<< HEAD
+	private boolean resisteAltaTemperatuta; // Atributo que indica si el producto resiste altas temperaturas
+	private boolean esPeligroso; // Atributo que indica si el producto es peligroso
+	private HashSet<Integer> code = new HashSet<>();
+=======
 	/**
 	 * Indica si el producto es peligroso.
 	 */
@@ -28,6 +33,7 @@ public class Cocina extends Hogar implements Serializable {
 	/**
 	 * Constructor vacío.
 	 */
+>>>>>>> 3e13f7f58cc1d969f274bd76850382e5724d1015
 	public Cocina() {
 		// Constructor vacío
 	}
@@ -120,8 +126,15 @@ public class Cocina extends Hogar implements Serializable {
 	 */
 	@Override
 	public String toString() {
+<<<<<<< HEAD
+		return super.toString() +"\n" + "\n¿Es peligroso? "
+				+ (esPeligroso?"Si" : "No")+"\n"+"\n¿Resiste altas temperaturas? " + (resisteAltaTemperatuta?"Si" : "No")+"\n";
+		// Sobrescribe toString para incluir los atributos resisteAltaTemperatuta y
+		// esPeligroso
+=======
 		return super.toString() + "\n" + "\n¿Resiste altas temperaturas? " + (resisteAltaTemperatuta ? "Si" : "No")
 				+ "\n" + "\n¿Es peligroso? " + (esPeligroso ? "Si" : "No") + "\n";
+>>>>>>> 3e13f7f58cc1d969f274bd76850382e5724d1015
 	}
 
 	/**
@@ -132,6 +145,15 @@ public class Cocina extends Hogar implements Serializable {
 	public int codigoAleatorio() {
 		int codigo;
 		Random random = new Random();
+<<<<<<< HEAD
+		
+		 do {
+	            codigo = random.nextInt((1999 - 1000 + 1)) + 1000;
+	        } while (code.contains(codigo));
+
+	        code.add(codigo);
+	        return codigo;
+=======
 
 		do {
 			codigo = random.nextInt((1999 - 1000 + 1)) + 1000;
@@ -139,6 +161,7 @@ public class Cocina extends Hogar implements Serializable {
 
 		generatedCodes.add(codigo);
 		return codigo;
+>>>>>>> 3e13f7f58cc1d969f274bd76850382e5724d1015
 	}
 }
 

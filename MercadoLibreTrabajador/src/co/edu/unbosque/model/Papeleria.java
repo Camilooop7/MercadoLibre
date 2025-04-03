@@ -15,6 +15,12 @@ public class Papeleria extends Oficina implements Serializable {
 	 */
 	private int cantidadPorPaquete;
 
+<<<<<<< HEAD
+	private int cantidadPorPaquete; // Atributo que indica la cantidad de productos por paquete
+	private HashSet<Integer> code = new HashSet<>();
+	public Papeleria() { // Constructor vacío
+		// TODO Auto-generated constructor stub
+=======
 	/**
 	 * Conjunto para almacenar códigos generados aleatoriamente.
 	 */
@@ -25,6 +31,7 @@ public class Papeleria extends Oficina implements Serializable {
 	 */
 	public Papeleria() {
 		// Constructor vacío
+>>>>>>> 3e13f7f58cc1d969f274bd76850382e5724d1015
 	}
 
 	/**
@@ -104,6 +111,15 @@ public class Papeleria extends Oficina implements Serializable {
 	public int codigoAleatorio() {
 		int codigo;
 		Random random = new Random();
+<<<<<<< HEAD
+		
+		 do {
+	            codigo = random.nextInt((4999 - 4000 + 1)) + 4000;
+	        } while (code.contains(codigo));
+
+	        code.add(codigo);
+	        return codigo;
+=======
 
 		do {
 			codigo = random.nextInt((4999 - 4000 + 1)) + 4000;
@@ -111,5 +127,6 @@ public class Papeleria extends Oficina implements Serializable {
 
 		generatedCodes.add(codigo);
 		return codigo;
+>>>>>>> 3e13f7f58cc1d969f274bd76850382e5724d1015
 	}
 }

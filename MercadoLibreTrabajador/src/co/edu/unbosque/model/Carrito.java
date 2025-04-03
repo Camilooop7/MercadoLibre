@@ -37,4 +37,8 @@ public class Carrito implements Serializable {
 	public void setListaCarrito(ArrayList<Producto> listaCarrito) {
 		this.listaCarrito = listaCarrito;
 	}
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 3e13f7f58cc1d969f274bd76850382e5724d1015

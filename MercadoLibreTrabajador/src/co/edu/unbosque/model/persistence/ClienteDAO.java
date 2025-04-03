@@ -2,7 +2,6 @@ package co.edu.unbosque.model.persistence;
 
 import java.util.ArrayList;
 import co.edu.unbosque.model.Cliente;
-import co.edu.unbosque.model.Cliente;
 
 /**
  * Clase en la cual se implementa la interfaz OperacionDAO

@@ -1,4 +1,5 @@
-coci;4242;1518;2025-04-02 19:14:10;..\archivos\imagenes\cocina\images.jpg;false;false;true
-414;1;1572;2025-04-02 19:40:47;..\archivos\imagenes\cocina\FondoOcio.png;true;false;true
-414;1;1218;2025-04-02 19:44:15;..\archivos\imagenes\cocina\FondoPT.png;true;false;true
+Cuchara;3500;1747;2025-04-02 20:23:49;..\archivos\imagenes\cocina\cuchara.jpg;false;true;false
+Vajilla;96500;1419;2025-04-02 20:24:24;..\archivos\imagenes\cocina\vajilla.png;true;true;true
+Guante Cocina;10000;1981;2025-04-02 20:25:15;..\archivos\imagenes\cocina\guante cocina.png;true;true;false
+Tabla Cocina;12000;1595;2025-04-02 20:26:18;..\archivos\imagenes\cocina\tablac.png;false;true;false
 

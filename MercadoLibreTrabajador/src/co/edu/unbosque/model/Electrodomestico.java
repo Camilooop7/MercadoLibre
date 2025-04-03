@@ -15,6 +15,11 @@ public class Electrodomestico extends Oficina implements Serializable {
 	 */
 	private String fuenteDeEnergia;
 
+<<<<<<< HEAD
+	private String fuenteDeEnergia; // Atributo que almacena la fuente de energía del electrodoméstico (ej.
+									// electricidad, gas)
+	private HashSet<Integer> code = new HashSet<>();
+=======
 	/**
 	 * Conjunto para almacenar códigos generados aleatoriamente.
 	 */
@@ -23,6 +28,7 @@ public class Electrodomestico extends Oficina implements Serializable {
 	/**
 	 * Constructor vacío.
 	 */
+>>>>>>> 3e13f7f58cc1d969f274bd76850382e5724d1015
 	public Electrodomestico() {
 		// Constructor vacío
 	}
@@ -104,6 +110,15 @@ public class Electrodomestico extends Oficina implements Serializable {
 	public int codigoAleatorio() {
 		int codigo;
 		Random random = new Random();
+<<<<<<< HEAD
+		
+		 do {
+	            codigo = random.nextInt((3999 - 3000 + 1)) + 3000;
+	        } while (code.contains(codigo));
+
+	        code.add(codigo);
+	        return codigo;
+=======
 
 		do {
 			codigo = random.nextInt((3999 - 3000 + 1)) + 3000;
@@ -111,5 +126,6 @@ public class Electrodomestico extends Oficina implements Serializable {
 
 		generatedCodes.add(codigo);
 		return codigo;
+>>>>>>> 3e13f7f58cc1d969f274bd76850382e5724d1015
 	}
 }

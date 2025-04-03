@@ -15,6 +15,10 @@ public class Deporte extends Ocio implements Serializable {
 	 */
 	private String deporte;
 
+<<<<<<< HEAD
+	private String deporte; // Atributo que almacena el nombre del deporte relacionado con el producto
+	private HashSet<Integer> code = new HashSet<>();
+=======
 	/**
 	 * Conjunto para almacenar códigos generados aleatoriamente.
 	 */
@@ -23,6 +27,7 @@ public class Deporte extends Ocio implements Serializable {
 	/**
 	 * Constructor vacío.
 	 */
+>>>>>>> 3e13f7f58cc1d969f274bd76850382e5724d1015
 	public Deporte() {
 		// Constructor vacío
 	}
@@ -103,6 +108,15 @@ public class Deporte extends Ocio implements Serializable {
 	public int codigoAleatorio() {
 		int codigo;
 		Random random = new Random();
+<<<<<<< HEAD
+		
+		 do {
+	            codigo = random.nextInt((6999 - 6000 + 1)) + 6000;
+	        } while (code.contains(codigo));
+
+	        code.add(codigo);
+	        return codigo;
+=======
 
 		do {
 			codigo = random.nextInt((6999 - 6000 + 1)) + 6000;
@@ -110,5 +124,6 @@ public class Deporte extends Ocio implements Serializable {
 
 		generatedCodes.add(codigo);
 		return codigo;
+>>>>>>> 3e13f7f58cc1d969f274bd76850382e5724d1015
 	}
 }

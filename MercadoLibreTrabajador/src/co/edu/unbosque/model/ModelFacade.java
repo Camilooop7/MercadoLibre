@@ -3,7 +3,6 @@ package co.edu.unbosque.model;
 import java.util.ArrayList;
 
 import co.edu.unbosque.model.persistence.BanoDAO;
-import co.edu.unbosque.model.persistence.CarritoDAO;
 import co.edu.unbosque.model.persistence.ClienteDAO;
 import co.edu.unbosque.model.persistence.CocinaDAO;
 import co.edu.unbosque.model.persistence.DeporteDAO;
@@ -12,6 +11,15 @@ import co.edu.unbosque.model.persistence.PapeleriaDAO;
 import co.edu.unbosque.model.persistence.TrabajadorActualDAO;
 import co.edu.unbosque.model.persistence.TrabajadorDAO;
 import co.edu.unbosque.model.persistence.VideoJuegoDAO;
+<<<<<<< HEAD
+
+public class ModelFacade { // Clase que actúa como fachada para manejar los DAOs
+
+	private BanoDAO banoDAO; // DAO para gestionar productos de baño
+	private ClienteDAO clienteDAO; // DAO para gestionar clientes
+	private CocinaDAO cocinaDAO; // DAO para gestionar productos de cocina
+	private DeporteDAO deporteDAO; // DAO para gestionar productos deportivos
+=======
 /**
  * Clase que actúa como fachada para manejar los DAOs y la lógica del modelo.
  */
@@ -39,6 +47,7 @@ public class ModelFacade {
 	/**
 	 * DAO para gestionar electrodomésticos.
 	 */
+>>>>>>> 3e13f7f58cc1d969f274bd76850382e5724d1015
 	private ElectrodomesticoDAO electrodomesticoDAO; // DAO para gestionar electrodomésticos
 	/**
 	 * DAO para gestionar productos de papelería.
@@ -65,6 +74,19 @@ public class ModelFacade {
 	 */
 	public ModelFacade() {
 
+<<<<<<< HEAD
+	public ModelFacade() { // Constructor de la clase
+
+		banoDAO = new BanoDAO(); // Inicializa el DAO de baño
+		clienteDAO = new ClienteDAO(); // Inicializa el DAO de cliente
+		cocinaDAO = new CocinaDAO(); // Inicializa el DAO de cocina
+		deporteDAO = new DeporteDAO(); // Inicializa el DAO de deporte
+		electrodomesticoDAO = new ElectrodomesticoDAO(); // Inicializa el DAO de electrodoméstico
+		papeleriaDAO = new PapeleriaDAO(); // Inicializa el DAO de papelería
+		trabajadorDAO = new TrabajadorDAO(); // Inicializa el DAO de trabajador
+		videoJuegoDAO = new VideoJuegoDAO(); // Inicializa el DAO de videojuegos
+		listaProducto = new ArrayList<>(); // Inicializa la lista de productos
+=======
 		banoDAO = new BanoDAO(); 
 		carritoDAO = new CarritoDAO(); 
 		clienteDAO = new ClienteDAO();
@@ -76,6 +98,7 @@ public class ModelFacade {
 		videoJuegoDAO = new VideoJuegoDAO();
 		listaProducto = new ArrayList<>();
 		trabajadorActualDAO = new TrabajadorActualDAO();
+>>>>>>> 3e13f7f58cc1d969f274bd76850382e5724d1015
 	}
 	/**
 	 * Convierte un texto en formato HTML.
@@ -113,6 +136,8 @@ public class ModelFacade {
 	 * @return DAO de carrito.
 	 */
 
+<<<<<<< HEAD
+=======
 	public CarritoDAO getCarritoDAO() {
 		return carritoDAO;
 	}
@@ -126,6 +151,7 @@ public class ModelFacade {
 	 * 
 	 * @return DAO de carrito.
 	 */
+>>>>>>> 3e13f7f58cc1d969f274bd76850382e5724d1015
 	public ClienteDAO getClienteDAO() {
 		return clienteDAO;
 	}

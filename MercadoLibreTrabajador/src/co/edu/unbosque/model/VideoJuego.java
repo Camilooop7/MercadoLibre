@@ -11,6 +11,9 @@ import java.util.Random;
  */
 public class VideoJuego extends Ocio implements Serializable {
 
+	/** Referencia de la consola en la que se puede jugar el videojuego */
+	private String referenciaConsola;
+	private HashSet<Integer> code = new HashSet<>();
     /**
      * Referencia de la consola en la que se puede jugar el videojuego.
      */
@@ -97,6 +100,16 @@ public class VideoJuego extends Ocio implements Serializable {
         return super.toString() + "\n" + "\nConsola: " + referenciaConsola + "\n";
     }
 
+<<<<<<< HEAD
+		do {
+			codigo = random.nextInt((5999 - 5000 + 1)) + 5000;
+		} while (code.contains(codigo));
+
+		code.add(codigo);
+		return codigo;
+	}
+}
+=======
     /**
      * Genera un código aleatorio único en el rango de 5000 a 5999.
      *
@@ -114,3 +127,4 @@ public class VideoJuego extends Ocio implements Serializable {
         return codigo;
     }
 }
+>>>>>>> 3e13f7f58cc1d969f274bd76850382e5724d1015
