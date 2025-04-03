@@ -8,7 +8,7 @@ import java.util.Random;
  * Clase que representa un baño, hereda de Hogar e implementa Serializable.
  */
 public class Bano extends Hogar implements Serializable {
-
+	private static final long serialVersionUID = 1L;		
 	/**
 	 * Indica si el producto es de limpieza.
 	 */

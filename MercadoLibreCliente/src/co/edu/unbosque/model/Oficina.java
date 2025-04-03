@@ -6,7 +6,7 @@ import java.io.Serializable;
  * Clase abstracta que representa productos de oficina, hereda de Producto.
  */
 public abstract class Oficina extends Producto implements Serializable {
-
+	private static final long serialVersionUID = 1L;		
 	/**
 	 * Indica si el producto es portátil.
 	 */

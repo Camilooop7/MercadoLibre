@@ -15,11 +15,11 @@ public class TrabajadorDAO implements OperacionDAO<Trabajador> {
 	 * 
 	 */
 	private final String SERIAL_FILE_NAME = "trabajador.dat";
+
 	/**
 	 * Variable la cual contiene un arraylist y además se define el nombre.
 	 */
 	private ArrayList<Trabajador> listaTrabajadores;
-	
 
 	/*
 	 * Constructor en cual cual se llama al metodo de cargarSerializado y se
@@ -28,7 +28,6 @@ public class TrabajadorDAO implements OperacionDAO<Trabajador> {
 	public TrabajadorDAO() {
 		// TODO Auto-generated constructor stub
 		listaTrabajadores = new ArrayList<>();
-		
 		cargarSerializado();
 	}
 
@@ -174,5 +173,6 @@ public class TrabajadorDAO implements OperacionDAO<Trabajador> {
 		this.listaTrabajadores = listaTrabajadores;
 	}
 
+	
 
 }

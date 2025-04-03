@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * Clase que representa un carrito de compras.
  */
 public class Carrito implements Serializable {
-
+	private static final long serialVersionUID = 1L;		
 	/**
 	 * Lista de productos en el carrito.
 	 */

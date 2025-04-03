@@ -8,7 +8,7 @@ import java.util.Random;
  * Clase que representa productos de papelería, hereda de Oficina.
  */
 public class Papeleria extends Oficina implements Serializable {
-
+	private static final long serialVersionUID = 1L;		
 	/**
 	 * Cantidad de productos por paquete.
 	 */

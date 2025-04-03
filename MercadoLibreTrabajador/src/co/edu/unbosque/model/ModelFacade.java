@@ -3,6 +3,7 @@ package co.edu.unbosque.model;
 import java.util.ArrayList;
 
 import co.edu.unbosque.model.persistence.BanoDAO;
+import co.edu.unbosque.model.persistence.CarritoDAO;
 import co.edu.unbosque.model.persistence.ClienteDAO;
 import co.edu.unbosque.model.persistence.CocinaDAO;
 import co.edu.unbosque.model.persistence.DeporteDAO;
@@ -11,70 +12,65 @@ import co.edu.unbosque.model.persistence.PapeleriaDAO;
 import co.edu.unbosque.model.persistence.TrabajadorActualDAO;
 import co.edu.unbosque.model.persistence.TrabajadorDAO;
 import co.edu.unbosque.model.persistence.VideoJuegoDAO;
-<<<<<<< HEAD
 
-public class ModelFacade { // Clase que actúa como fachada para manejar los DAOs
-
-	private BanoDAO banoDAO; // DAO para gestionar productos de baño
-	private ClienteDAO clienteDAO; // DAO para gestionar clientes
-	private CocinaDAO cocinaDAO; // DAO para gestionar productos de cocina
-	private DeporteDAO deporteDAO; // DAO para gestionar productos deportivos
-=======
 /**
  * Clase que actúa como fachada para manejar los DAOs y la lógica del modelo.
  */
-public class ModelFacade { 
+public class ModelFacade { // Clase que actúa como fachada para manejar los DAOs
+
+	/**
+	 * Clase que actúa como fachada para manejar los DAOs y la lógica del modelo.
+	 */
 	/**
 	 * DAO para gestionar productos de baño.
 	 */
-	private BanoDAO banoDAO; 
+	private BanoDAO banoDAO;
 	/**
 	 * DAO para gestionar el carrito de compras
 	 */
-	private CarritoDAO carritoDAO; 
+	private CarritoDAO carritoDAO;
 	/**
 	 * DAO para gestionar clientes.
 	 */
-	private ClienteDAO clienteDAO; 
+	private ClienteDAO clienteDAO;
 	/**
 	 * DAO para gestionar productos de cocina.
 	 */
-	private CocinaDAO cocinaDAO; 
+	private CocinaDAO cocinaDAO;
 	/**
 	 * DAO para gestionar productos deportivos.
 	 */
-	private DeporteDAO deporteDAO; 
+	private DeporteDAO deporteDAO;
 	/**
 	 * DAO para gestionar electrodomésticos.
 	 */
->>>>>>> 3e13f7f58cc1d969f274bd76850382e5724d1015
 	private ElectrodomesticoDAO electrodomesticoDAO; // DAO para gestionar electrodomésticos
 	/**
 	 * DAO para gestionar productos de papelería.
 	 */
-	private PapeleriaDAO papeleriaDAO; 
+	private PapeleriaDAO papeleriaDAO;
 	/**
 	 * DAO para gestionar trabajadores.
 	 */
-	private TrabajadorDAO trabajadorDAO; 
+	private TrabajadorDAO trabajadorDAO;
 	/**
 	 * DAO para gestionar videojuegos.
 	 */
-	private VideoJuegoDAO videoJuegoDAO; 
+	private VideoJuegoDAO videoJuegoDAO;
 	/**
 	 * Lista para almacenar productos
 	 */
-	private ArrayList<Producto> listaProducto; 
+
+	private ArrayList<Producto> listaProducto;
 	/**
 	 * Lista para TrabajadorActual
 	 */
-	private TrabajadorActualDAO trabajadorActualDAO;
+	private TrabajadorActualDAO trabajadorActualDAO; 
+
 	/**
 	 * Constructor de la clase. Inicializa los DAOs y las listas.
 	 */
-	public ModelFacade() {
 
-<<<<<<< HEAD
 	public ModelFacade() { // Constructor de la clase
 
 		banoDAO = new BanoDAO(); // Inicializa el DAO de baño
@@ -86,20 +82,19 @@ public class ModelFacade {
 		trabajadorDAO = new TrabajadorDAO(); // Inicializa el DAO de trabajador
 		videoJuegoDAO = new VideoJuegoDAO(); // Inicializa el DAO de videojuegos
 		listaProducto = new ArrayList<>(); // Inicializa la lista de productos
-=======
-		banoDAO = new BanoDAO(); 
-		carritoDAO = new CarritoDAO(); 
+		banoDAO = new BanoDAO();
+		carritoDAO = new CarritoDAO();
 		clienteDAO = new ClienteDAO();
-		cocinaDAO = new CocinaDAO(); 
-		deporteDAO = new DeporteDAO(); 
-		electrodomesticoDAO = new ElectrodomesticoDAO(); 
-		papeleriaDAO = new PapeleriaDAO(); 
+		cocinaDAO = new CocinaDAO();
+		deporteDAO = new DeporteDAO();
+		electrodomesticoDAO = new ElectrodomesticoDAO();
+		papeleriaDAO = new PapeleriaDAO();
 		trabajadorDAO = new TrabajadorDAO();
 		videoJuegoDAO = new VideoJuegoDAO();
 		listaProducto = new ArrayList<>();
 		trabajadorActualDAO = new TrabajadorActualDAO();
->>>>>>> 3e13f7f58cc1d969f274bd76850382e5724d1015
 	}
+
 	/**
 	 * Convierte un texto en formato HTML.
 	 * 
@@ -111,6 +106,7 @@ public class ModelFacade {
 		return "<html><p>" + cadena + "</p></html>";
 
 	}
+
 	/**
 	 * Obtiene el DAO de productos de baño.
 	 * 
@@ -120,6 +116,7 @@ public class ModelFacade {
 	public BanoDAO getBanoDAO() {
 		return banoDAO;
 	}
+
 	/**
 	 * Establece el DAO de productos de baño.
 	 * 
@@ -129,15 +126,13 @@ public class ModelFacade {
 	public void setBanoDAO(BanoDAO banoDAO) {
 		this.banoDAO = banoDAO;
 	}
-	
+
 	/**
 	 * Obtiene el DAO de carrito.
 	 * 
 	 * @return DAO de carrito.
 	 */
 
-<<<<<<< HEAD
-=======
 	public CarritoDAO getCarritoDAO() {
 		return carritoDAO;
 	}
@@ -151,7 +146,6 @@ public class ModelFacade {
 	 * 
 	 * @return DAO de carrito.
 	 */
->>>>>>> 3e13f7f58cc1d969f274bd76850382e5724d1015
 	public ClienteDAO getClienteDAO() {
 		return clienteDAO;
 	}
@@ -164,6 +158,7 @@ public class ModelFacade {
 	public void setClienteDAO(ClienteDAO clienteDAO) {
 		this.clienteDAO = clienteDAO;
 	}
+
 	/**
 	 * Obtiene el DAO de productos de cocina.
 	 * 
@@ -173,6 +168,7 @@ public class ModelFacade {
 	public CocinaDAO getCocinaDAO() {
 		return cocinaDAO;
 	}
+
 	/**
 	 * Establece el DAO de productos de cocina.
 	 * 
@@ -182,6 +178,7 @@ public class ModelFacade {
 	public void setCocinaDAO(CocinaDAO cocinaDAO) {
 		this.cocinaDAO = cocinaDAO;
 	}
+
 	/**
 	 * Obtiene el DAO de productos deportivos.
 	 * 
@@ -191,6 +188,7 @@ public class ModelFacade {
 	public DeporteDAO getDeporteDAO() {
 		return deporteDAO;
 	}
+
 	/**
 	 * Establece el DAO de productos deportivos.
 	 * 
@@ -200,6 +198,7 @@ public class ModelFacade {
 	public void setDeporteDAO(DeporteDAO deporteDAO) {
 		this.deporteDAO = deporteDAO;
 	}
+
 	/**
 	 * Obtiene el DAO de electrodomésticos.
 	 * 
@@ -209,6 +208,7 @@ public class ModelFacade {
 	public ElectrodomesticoDAO getElectrodomesticoDAO() {
 		return electrodomesticoDAO;
 	}
+
 	/**
 	 * Establece el DAO de electrodomésticos.
 	 * 
@@ -218,6 +218,7 @@ public class ModelFacade {
 	public void setElectrodomesticoDAO(ElectrodomesticoDAO electrodomesticoDAO) {
 		this.electrodomesticoDAO = electrodomesticoDAO;
 	}
+
 	/**
 	 * Obtiene el DAO de productos de papelería.
 	 * 
@@ -227,6 +228,7 @@ public class ModelFacade {
 	public PapeleriaDAO getPapeleriaDAO() {
 		return papeleriaDAO;
 	}
+
 	/**
 	 * Establece el DAO de productos de papelería.
 	 * 
@@ -236,6 +238,7 @@ public class ModelFacade {
 	public void setPapeleriaDAO(PapeleriaDAO papeleriaDAO) {
 		this.papeleriaDAO = papeleriaDAO;
 	}
+
 	/**
 	 * Obtiene el DAO de trabajadores.
 	 * 
@@ -244,6 +247,7 @@ public class ModelFacade {
 	public TrabajadorDAO getTrabajadorDAO() {
 		return trabajadorDAO;
 	}
+
 	/**
 	 * Establece el DAO de trabajadores.
 	 * 
@@ -253,6 +257,7 @@ public class ModelFacade {
 	public void setTrabajadorDAO(TrabajadorDAO trabajadorDAO) {
 		this.trabajadorDAO = trabajadorDAO;
 	}
+
 	/**
 	 * Obtiene el DAO de videojuegos.
 	 * 
@@ -262,6 +267,7 @@ public class ModelFacade {
 	public VideoJuegoDAO getVideoJuegoDAO() {
 		return videoJuegoDAO;
 	}
+
 	/**
 	 * Establece el DAO de videojuegos.
 	 * 
@@ -280,6 +286,7 @@ public class ModelFacade {
 	public ArrayList<Producto> getListaProducto() {
 		return listaProducto;
 	}
+
 	/**
 	 * Establece la lista de productos.
 	 * 
@@ -293,7 +300,7 @@ public class ModelFacade {
 	 * 
 	 * @return DAO de TrabajadorActual.
 	 */
-	
+
 	public TrabajadorActualDAO getTrabajadorActualDAO() {
 		return trabajadorActualDAO;
 	}
@@ -302,7 +309,6 @@ public class ModelFacade {
 	 * 
 	 * @param videoJuegoDAO DAO de TrabajadorActual.
 	 */
-	
 	public void setTrabajadorActualDAO(TrabajadorActualDAO trabajadorActualDAO) {
 		this.trabajadorActualDAO = trabajadorActualDAO;
 	}

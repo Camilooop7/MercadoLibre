@@ -8,7 +8,7 @@ import java.util.Random;
  * Representa un videojuego que extiende de la clase Ocio e implementa la interfaz Serializable.
  */
 public class VideoJuego extends Ocio implements Serializable {
-
+	private static final long serialVersionUID = 1L;		
     /**
      * Referencia de la consola en la que se puede jugar el videojuego.
      */

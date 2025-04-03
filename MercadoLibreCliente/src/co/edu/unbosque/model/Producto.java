@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
  * Clase abstracta que representa un producto. Implementa la interfaz Serializable.
  */
 public abstract class Producto implements Serializable {
-
+	private static final long serialVersionUID = 1L;		
 	/** Nombre del producto. */
 	private String nombre;
 

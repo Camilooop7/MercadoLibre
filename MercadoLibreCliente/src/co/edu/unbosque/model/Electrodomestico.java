@@ -8,7 +8,7 @@ import java.util.Random;
  * Clase que representa electrodomésticos, hereda de Oficina.
  */
 public class Electrodomestico extends Oficina implements Serializable {
-
+	private static final long serialVersionUID = 1L;		
 	/**
 	 * Fuente de energía del electrodoméstico (ej. electricidad, gas).
 	 */

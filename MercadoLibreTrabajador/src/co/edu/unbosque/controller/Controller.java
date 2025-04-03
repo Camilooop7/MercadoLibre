@@ -35,13 +35,23 @@ import co.edu.unbosque.util.exception.SymbolException;
 import co.edu.unbosque.util.exception.UsernameException;
 import co.edu.unbosque.util.exception.SmallException;
 import co.edu.unbosque.view.ViewFacade;
-
+/**
+ * Clase Controlador que maneja la interacción entre el modelo y la vista.
+ * Implementa ActionListener para gestionar las acciones del usuario.
+ */
 public class Controller implements ActionListener {
+	/** Facade para gestionar la capa del modelo. */
 	private ModelFacade mf;
+	/** Facade para gestionar la capa de la vista. */
 	private ViewFacade vf;
-	private Trabajador tActual;
+	/** Objeto Properties para cargar propiedades específicas del idioma. */
 	private Properties prop;
-
+	/**
+	 * Constructor de la clase Controller.
+	 * Inicializa las propiedades, crea carpetas necesarias y configura los facades del modelo y la vista.
+	 * 
+	 * @throws IOException si ocurre un error al cargar el archivo de propiedades.
+	 */
 	public Controller() throws IOException {
 prop = new Properties();
 		
@@ -58,11 +68,18 @@ prop = new Properties();
 		vf = new ViewFacade(prop);
 		asignarLectores();
 	}
-
+	/**
+	 * Método que inicia la ejecución de la aplicación.
+	 * Hace visible la ventana principal.
+	 */
 	public void run() {
 		vf.getVpt().setVisible(true);
 
 	}
+	/**
+	 * Método que asigna los listeners a los botones de la interfaz gráfica.
+	 * Configura los comandos de acción para cada botón.
+	 */
 
 	public void asignarLectores() {
 
@@ -259,7 +276,12 @@ prop = new Properties();
 		vf.getVpt().getPapro().getPadepor().getBtnAgregar().setActionCommand("ActualizarProDepor");
 		// TODO botones
 	}
-
+	
+	/**
+	 * Método que gestiona las acciones realizadas por el usuario en la interfaz gráfica.
+	 * 
+	 * @param e Evento de acción generado por el usuario.
+	 */
 	public void actionPerformed(ActionEvent e) {
 
 		switch (e.getActionCommand()) {
@@ -360,7 +382,7 @@ prop = new Properties();
 				ExceptionCheker.checkerUsername(verificar);
 
 				mf.getTrabajadorDAO().crear(new Trabajador(usuario, contrasena1));
-				vf.getVemer().mostrar("No cumple los requisitos de caracteres.");
+				vf.getVemer().mostrar("Creado exitosamente, regrese a iniciar sesión");
 
 			} catch (CharacterException e1) {
 				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.excepcion.caracter"));
@@ -934,7 +956,7 @@ prop = new Properties();
 				mf.getElectrodomesticoDAO()
 						.crear(new Electrodomestico(nombre, precio, id, fecha, imagen, esPortatil, fuenteEnergia));
 				vf.getVemer().mostrar(prop.getProperty("archivosdepropiedades.boton.botonagregarpro.anadirexito"));
-				mf.getTrabajadorActualDAO().crear(new TrabajadorActual((String) vf.getVpt().getPis().getNombreUsuario(), a, nombre)); 
+				mf.getTrabajadorActualDAO().crear(new TrabajadorActual((String) vf.getVpt().getPis().getNombreUsuario(), a, nombre));  
 
 			} catch (NegativeNumberException e2) {
 				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.excepcion.number"));
@@ -1009,7 +1031,7 @@ prop = new Properties();
 				mf.getPapeleriaDAO()
 						.crear(new Papeleria(nombre, precio, id, fecha, imagen, esPortatil, cantidadPaquete));
 				vf.getVemer().mostrar(prop.getProperty("archivosdepropiedades.boton.botonagregarpro.anadirexito"));
-				mf.getTrabajadorActualDAO().crear(new TrabajadorActual((String) vf.getVpt().getPis().getNombreUsuario(), a, nombre)); 
+				mf.getTrabajadorActualDAO().crear(new TrabajadorActual((String) vf.getVpt().getPis().getNombreUsuario(), a, nombre));  
 
 			} catch (NegativeNumberException e2) {
 				vf.getVemer().mostrarError(prop.getProperty("archivosdepropiedades.excepcion.number"));

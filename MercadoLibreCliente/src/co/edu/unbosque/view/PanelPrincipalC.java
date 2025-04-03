@@ -125,128 +125,59 @@ public class PanelPrincipalC extends JPanel {
 		btnSalir.setText(prop.getProperty("archivospropiedad.boton.salir"));
 	}
 
-    /**
-     * Obtiene el fondo del panel.
-     * 
-     * @return JLabel que representa el fondo.
-     */
+    // Métodos getter y setter
 	public JLabel getFondo() {
 		return fondo;
 	}
 
-    /**
-     * Establece el fondo del panel.
-     * 
-     * @param fondo JLabel que representa el fondo.
-     */
 	public void setFondo(JLabel fondo) {
 		this.fondo = fondo;
 	}
 
-    /**
-     * Obtiene el botón para iniciar sesión.
-     * 
-     * @return JButton para iniciar sesión.
-     */
 	public JButton getBtnIniciarS() {
 		return btnIniciarS;
 	}
 
-    /**
-     * Establece el botón para iniciar sesión.
-     * 
-     * @param btnIniciarS JButton para iniciar sesión.
-     */
 	public void setBtnIniciarS(JButton btnIniciarS) {
 		this.btnIniciarS = btnIniciarS;
 	}
 
-    /**
-     * Obtiene el botón para crear una cuenta.
-     * 
-     * @return JButton para crear una cuenta.
-     */
 	public JButton getBtnCrearU() {
 		return btnCrearU;
 	}
 
-    /**
-     * Establece el botón para crear una cuenta.
-     * 
-     * @param btnCrearU JButton para crear una cuenta.
-     */
 	public void setBtnCrearU(JButton btnCrearU) {
 		this.btnCrearU = btnCrearU;
 	}
 
-    /**
-     * Obtiene el botón para salir de la aplicación.
-     * 
-     * @return JButton para salir de la aplicación.
-     */
 	public JButton getBtnSalir() {
 		return btnSalir;
 	}
 
-    /**
-     * Establece el botón para salir de la aplicación.
-     * 
-     * @param btnSalir JButton para salir de la aplicación.
-     */
 	public void setBtnSalir(JButton btnSalir) {
 		this.btnSalir = btnSalir;
 	}
 
-    /**
-     * Obtiene el botón para cambiar el idioma a español.
-     * 
-     * @return JButton para cambiar el idioma a español.
-     */
 	public JButton getBtnEspanol() {
 		return btnEspanol;
 	}
 
-    /**
-     * Establece el botón para cambiar el idioma a español.
-     * 
-     * @param btnEspanol JButton para cambiar el idioma a español.
-     */
 	public void setBtnEspanol(JButton btnEspanol) {
 		this.btnEspanol = btnEspanol;
 	}
 
-    /**
-     * Obtiene el botón para cambiar el idioma a inglés.
-     * 
-     * @return JButton para cambiar el idioma a inglés.
-     */
 	public JButton getBtnIngles() {
 		return btnIngles;
 	}
 
-    /**
-     * Establece el botón para cambiar el idioma a inglés.
-     * 
-     * @param btnIngles JButton para cambiar el idioma a inglés.
-     */
 	public void setBtnIngles(JButton btnIngles) {
 		this.btnIngles = btnIngles;
 	}
 
-    /**
-     * Obtiene las propiedades del panel.
-     * 
-     * @return Properties con la configuración del panel.
-     */
 	public Properties getProp() {
 		return prop;
 	}
 
-    /**
-     * Establece las propiedades del panel.
-     * 
-     * @param prop Properties con la configuración del panel.
-     */
 	public void setProp(Properties prop) {
 		this.prop = prop;
 	}

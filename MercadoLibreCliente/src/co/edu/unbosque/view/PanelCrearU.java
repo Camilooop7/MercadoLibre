@@ -278,11 +278,6 @@ public class PanelCrearU extends JPanel {
     public JButton getBtnIngresar() {
         return btnIngresar;
     }
-    /**
-     * Obtiene el campo de texto para la primera contraseña.
-     * 
-     * @return Campo de texto para la primera contraseña.
-     */
 	public JPasswordField getContrasena1F() {
 		return this.contrasena1;
 	}

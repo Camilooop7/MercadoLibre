@@ -6,6 +6,7 @@ import java.util.ArrayList;
  * Clase que representa un cliente, hereda de Usuario.
  */
 public class Cliente extends Usuario implements Serializable {
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * Carrito actual del cliente.
@@ -123,8 +124,4 @@ public class Cliente extends Usuario implements Serializable {
 	public void setListaCarritos(ArrayList<Carrito> listaCarritos) {
 		this.listaCarritos = listaCarritos;
 	}
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 3e13f7f58cc1d969f274bd76850382e5724d1015

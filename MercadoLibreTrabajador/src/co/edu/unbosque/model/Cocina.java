@@ -1,29 +1,28 @@
 package co.edu.unbosque.model;
 
+import co.edu.unbosque.model.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Random;
+
 /**
  * Clase que representa productos de cocina, hereda de Hogar.
  */
 public class Cocina extends Hogar implements Serializable {
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * Indica si el producto resiste altas temperaturas.
 	 */
-	private boolean resisteAltaTemperatuta;
 
-<<<<<<< HEAD
 	private boolean resisteAltaTemperatuta; // Atributo que indica si el producto resiste altas temperaturas
 	private boolean esPeligroso; // Atributo que indica si el producto es peligroso
 	private HashSet<Integer> code = new HashSet<>();
-=======
 	/**
 	 * Indica si el producto es peligroso.
 	 */
-	private boolean esPeligroso;
 
 	/**
 	 * Conjunto para almacenar códigos generados aleatoriamente.
@@ -33,15 +32,16 @@ public class Cocina extends Hogar implements Serializable {
 	/**
 	 * Constructor vacío.
 	 */
->>>>>>> 3e13f7f58cc1d969f274bd76850382e5724d1015
 	public Cocina() {
 		// Constructor vacío
 	}
 
 	/**
-	 * Constructor que inicializa los atributos resisteAltaTemperatuta y esPeligroso.
+	 * Constructor que inicializa los atributos resisteAltaTemperatuta y
+	 * esPeligroso.
 	 * 
-	 * @param resisteAltaTemperatuta Indica si el producto resiste altas temperaturas.
+	 * @param resisteAltaTemperatuta Indica si el producto resiste altas
+	 *                               temperaturas.
 	 * @param esPeligroso            Indica si el producto es peligroso.
 	 */
 	public Cocina(boolean resisteAltaTemperatuta, boolean esPeligroso) {
@@ -70,7 +70,8 @@ public class Cocina extends Hogar implements Serializable {
 	}
 
 	/**
-	 * Constructor que inicializa atributos excepto resisteAltaTemperatuta y esPeligroso.
+	 * Constructor que inicializa atributos excepto resisteAltaTemperatuta y
+	 * esPeligroso.
 	 * 
 	 * @param nombre       Nombre del producto.
 	 * @param precio       Precio del producto.
@@ -126,15 +127,10 @@ public class Cocina extends Hogar implements Serializable {
 	 */
 	@Override
 	public String toString() {
-<<<<<<< HEAD
-		return super.toString() +"\n" + "\n¿Es peligroso? "
-				+ (esPeligroso?"Si" : "No")+"\n"+"\n¿Resiste altas temperaturas? " + (resisteAltaTemperatuta?"Si" : "No")+"\n";
+		return super.toString() + "\n" + "\n¿Es peligroso? " + (esPeligroso ? "Si" : "No") + "\n"
+				+ "\n¿Resiste altas temperaturas? " + (resisteAltaTemperatuta ? "Si" : "No") + "\n";
 		// Sobrescribe toString para incluir los atributos resisteAltaTemperatuta y
 		// esPeligroso
-=======
-		return super.toString() + "\n" + "\n¿Resiste altas temperaturas? " + (resisteAltaTemperatuta ? "Si" : "No")
-				+ "\n" + "\n¿Es peligroso? " + (esPeligroso ? "Si" : "No") + "\n";
->>>>>>> 3e13f7f58cc1d969f274bd76850382e5724d1015
 	}
 
 	/**
@@ -145,23 +141,13 @@ public class Cocina extends Hogar implements Serializable {
 	public int codigoAleatorio() {
 		int codigo;
 		Random random = new Random();
-<<<<<<< HEAD
-		
-		 do {
-	            codigo = random.nextInt((1999 - 1000 + 1)) + 1000;
-	        } while (code.contains(codigo));
-
-	        code.add(codigo);
-	        return codigo;
-=======
 
 		do {
 			codigo = random.nextInt((1999 - 1000 + 1)) + 1000;
-		} while (generatedCodes.contains(codigo));
+		} while (code.contains(codigo));
 
-		generatedCodes.add(codigo);
+		code.add(codigo);
 		return codigo;
->>>>>>> 3e13f7f58cc1d969f274bd76850382e5724d1015
+
 	}
 }
-

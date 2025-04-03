@@ -338,7 +338,7 @@ public class PanelHistorial extends JPanel {
     /**
      * Establece el boton limpiar del panel.
      * 
-     * @param btnLimpiar Boton limpiar del panel.
+     * @param prop Boton limpiar del panel.
      */
 	public void setBtnLimpiar(JButton btnLimpiar) {
 		this.btnLimpiar = btnLimpiar;

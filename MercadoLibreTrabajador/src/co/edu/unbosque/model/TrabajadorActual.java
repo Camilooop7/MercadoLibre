@@ -2,6 +2,7 @@ package co.edu.unbosque.model;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+
 /**
  * Representa un TrabajadorActual e implementa la interfaz Serializable.
  */

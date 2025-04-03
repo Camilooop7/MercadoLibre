@@ -6,7 +6,7 @@ import java.io.Serializable;
  * Clase abstracta que representa productos de ocio, hereda de Producto.
  */
 public abstract class Ocio extends Producto implements Serializable {
-
+	private static final long serialVersionUID = 1L;		
 	/**
 	 * Indica si el producto es un accesorio.
 	 */

@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * Clase que representa un cliente, hereda de Usuario.
  */
 public class Cliente extends Usuario implements Serializable {
-
+	private static final long serialVersionUID = 1L;		
 	/**
 	 * Carrito actual del cliente.
 	 */

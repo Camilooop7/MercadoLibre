@@ -8,7 +8,7 @@ import java.util.Random;
  * Clase que representa productos de cocina, hereda de Hogar.
  */
 public class Cocina extends Hogar implements Serializable {
-
+	private static final long serialVersionUID = 1L;		
 	/**
 	 * Indica si el producto resiste altas temperaturas.
 	 */

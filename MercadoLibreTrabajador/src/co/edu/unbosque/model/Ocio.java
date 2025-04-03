@@ -9,8 +9,10 @@ import java.time.LocalDateTime;
  */
 public abstract class Ocio extends Producto implements Serializable {
 
+	private static final long serialVersionUID = 1L;
 	/**
 	 * Indica si el producto es un accesorio.
+	 * 
 	 */
 	private boolean esAccesorio;
 

@@ -5,30 +5,27 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Random;
+
 /**
  * Clase que representa electrodomésticos, hereda de Oficina.
  */
 public class Electrodomestico extends Oficina implements Serializable {
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * Fuente de energía del electrodoméstico (ej. electricidad, gas).
 	 */
-	private String fuenteDeEnergia;
 
-<<<<<<< HEAD
 	private String fuenteDeEnergia; // Atributo que almacena la fuente de energía del electrodoméstico (ej.
 									// electricidad, gas)
-	private HashSet<Integer> code = new HashSet<>();
-=======
 	/**
 	 * Conjunto para almacenar códigos generados aleatoriamente.
 	 */
-	private HashSet<Integer> generatedCodes = new HashSet<>();
+	private HashSet<Integer> code = new HashSet<>();
 
 	/**
 	 * Constructor vacío.
 	 */
->>>>>>> 3e13f7f58cc1d969f274bd76850382e5724d1015
 	public Electrodomestico() {
 		// Constructor vacío
 	}
@@ -110,22 +107,13 @@ public class Electrodomestico extends Oficina implements Serializable {
 	public int codigoAleatorio() {
 		int codigo;
 		Random random = new Random();
-<<<<<<< HEAD
-		
-		 do {
-	            codigo = random.nextInt((3999 - 3000 + 1)) + 3000;
-	        } while (code.contains(codigo));
-
-	        code.add(codigo);
-	        return codigo;
-=======
 
 		do {
 			codigo = random.nextInt((3999 - 3000 + 1)) + 3000;
-		} while (generatedCodes.contains(codigo));
+		} while (code.contains(codigo));
 
-		generatedCodes.add(codigo);
+		code.add(codigo);
 		return codigo;
->>>>>>> 3e13f7f58cc1d969f274bd76850382e5724d1015
+
 	}
 }

@@ -1,26 +1,24 @@
 package co.edu.unbosque.model;
 
-import java.io.Serializable; 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Random;
+
 /**
  * Clase que representa productos de papelería, hereda de Oficina.
  */
 public class Papeleria extends Oficina implements Serializable {
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * Cantidad de productos por paquete.
 	 */
 	private int cantidadPorPaquete;
 
-<<<<<<< HEAD
-	private int cantidadPorPaquete; // Atributo que indica la cantidad de productos por paquete
 	private HashSet<Integer> code = new HashSet<>();
-	public Papeleria() { // Constructor vacío
-		// TODO Auto-generated constructor stub
-=======
+	// TODO Auto-generated constructor stub
 	/**
 	 * Conjunto para almacenar códigos generados aleatoriamente.
 	 */
@@ -31,7 +29,6 @@ public class Papeleria extends Oficina implements Serializable {
 	 */
 	public Papeleria() {
 		// Constructor vacío
->>>>>>> 3e13f7f58cc1d969f274bd76850382e5724d1015
 	}
 
 	/**
@@ -111,22 +108,12 @@ public class Papeleria extends Oficina implements Serializable {
 	public int codigoAleatorio() {
 		int codigo;
 		Random random = new Random();
-<<<<<<< HEAD
-		
-		 do {
-	            codigo = random.nextInt((4999 - 4000 + 1)) + 4000;
-	        } while (code.contains(codigo));
-
-	        code.add(codigo);
-	        return codigo;
-=======
 
 		do {
 			codigo = random.nextInt((4999 - 4000 + 1)) + 4000;
-		} while (generatedCodes.contains(codigo));
+		} while (code.contains(codigo));
 
-		generatedCodes.add(codigo);
+		code.add(codigo);
 		return codigo;
->>>>>>> 3e13f7f58cc1d969f274bd76850382e5724d1015
 	}
 }

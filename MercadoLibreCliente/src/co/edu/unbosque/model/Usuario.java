@@ -6,7 +6,7 @@ import java.io.Serializable;
  * Representa un usuario abstracto que implementa la interfaz Serializable.
  */
 public abstract class Usuario implements Serializable {
-
+	private static final long serialVersionUID = 1L;		
     /**
      * Nombre del usuario.
      */

@@ -8,7 +8,7 @@ import java.util.Random;
  * Clase que representa productos relacionados con deportes, hereda de Ocio.
  */
 public class Deporte extends Ocio implements Serializable {
-
+	private static final long serialVersionUID = 1L;		
 	/**
 	 * Nombre del deporte relacionado con el producto.
 	 */

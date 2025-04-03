@@ -5,32 +5,28 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Random;
-
-<<<<<<< HEAD
-public class Bano extends Hogar implements Serializable { // Declara la clase Bano, que hereda de Hogar e implementa
-															// Serializable
-	private boolean esLimpieza; // Atributo booleano que indica si el producto es de limpieza
-	private HashSet<Integer> code = new HashSet<>();
-=======
 /**
  * Clase que representa un baño, hereda de Hogar e implementa Serializable.
  */
-public class Bano extends Hogar implements Serializable {
-
+public class Bano extends Hogar implements Serializable { // Declara la clase Bano, que hereda de Hogar e implementa
+	private static final long serialVersionUID = 1L;														// Serializable
 	/**
 	 * Indica si el producto es de limpieza.
 	 */
-	private boolean esLimpieza;
-
+	private boolean esLimpieza; // Atributo booleano que indica si el producto es de limpieza
 	/**
 	 * Conjunto para almacenar códigos generados aleatoriamente y evitar duplicados.
 	 */
-	private HashSet<Integer> generatedCodes = new HashSet<>();
+	private HashSet<Integer> code = new HashSet<>();
+
+
+	
+
+	
 
 	/**
 	 * Constructor vacío por defecto.
 	 */
->>>>>>> 3e13f7f58cc1d969f274bd76850382e5724d1015
 	public Bano() {
 		// Constructor vacío por defecto
 	}

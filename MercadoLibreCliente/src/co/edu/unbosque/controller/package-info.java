@@ -1,5 +1,6 @@
 /**
- * Este paquete contiene las clases relacionadas con el control de la aplicación.
- * Gestiona la interacción entre la vista y el modelo, y maneja los eventos de la interfaz gráfica.
+ * Este paquete se encarga de controlar y recibir las acciones que 
+ * esta ejecutando el usuario al momento de la inicialización del aplicativo.
+ * Contiene la clase para chekear las excepciones y la creación de suparametros y funciones. 
  */
 package co.edu.unbosque.controller;

@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
  * Representa un trabajador que extiende de la clase Usuario e implementa la interfaz Serializable.
  */
 public class Trabajador extends Usuario implements Serializable{
+	private static final long serialVersionUID = 1L;
 
 	 /**
      * Fecha asociada al trabajador.

@@ -10,19 +10,21 @@ import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.util.Scanner;
-
+/**
+ * funcion especial de leer y guaradr archivos
+ */
 public class FileManager {
 	/**
-	 * funcion especial de leer y guaradr archivos
-	 */
-
+     * Ruta de la carpeta donde se almacenarán los archivos.
+     */
+	private static final String RUTA_CARPETA = "../archivos";
 	/**
 	 * estos 3 son para acrhivos de texto
 	 */
 	private static Scanner lectorArchivo;
 	private static File archivo;
 	private static PrintWriter escritorArchivo;
-	private static final String RUTA_CARPETA = "../archivos";
+	
 	/**
 	 * atributos para archivos serealizado
 	 */
